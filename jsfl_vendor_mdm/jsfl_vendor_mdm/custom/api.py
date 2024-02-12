@@ -2,8 +2,7 @@ import frappe
 
 @frappe.whitelist(allow_guest = True)
 def new(doc):
-    print(doc)
-
+    # print(doc)
     new_doc=frappe.new_doc("OTP Authentication")
     new_doc.update(doc)
     new_doc.insert(ignore_permissions=True)
