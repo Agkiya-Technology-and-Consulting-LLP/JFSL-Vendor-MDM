@@ -108,7 +108,7 @@
                     placeholder="Mobile Number" />
                 </div>
 
-                <button class="btn btn-primary btn-block mb-4" v-on:click="signUp()">
+                <button class="btn btn-primary btn-block mb-4" v-on:click="newUser()">
                   Register
                 </button>
 
@@ -221,19 +221,45 @@ export default {
         console.log("invalid ")
       }
     }
-  }
   },
-  updated() {
-    if (this.emailotp) {
-      if (this.recievedOtp == this.emailotp) {
-        this.otpsent = false
-        this.varified = true
-        console.log("Verified")
-      } else {
-        console.log("invalid ")
+  newUser() {
+      try {
+        const user = createResource({
+          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.api.new_user",
+          makeParams: () => ({
+            doc: {
+              email: this.email,
+              // :this.title,
+              first_name: this.first_name,
+              last_name: this.last_name,
+              mobile_no: this.mobile_no,
+              // redirect_to:''
+            }
+          }),
+          auto: true,
+          onSuccess: (data) => {
+            console.log(data);
+          },
+          onError: (error) => {
+            console.error("Error:", error);
+          }
+        })
+      } catch (error) {
+        console.log(error)
       }
     }
-  }
+  },
+  // updated() {
+  //   if (this.emailotp) {
+  //     if (this.recievedOtp == this.emailotp) {
+  //       this.otpsent = false
+  //       this.varified = true
+  //       console.log("Verified")
+  //     } else {
+  //       console.log("invalid ")
+  //     }
+  //   }
+  // }
 }
 </script>
 <style scoped>
