@@ -20,7 +20,6 @@
               <h1 style="color:blue ; text-align: center;">Welcome</h1>
               <p style="text-align: center; color: rgb(108, 108, 252);">Login with your Supplier ID</p>
               <form @submit.prevent="submit">
-                <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input required type="text" name="email" id="form3Example1" class="form-control" v-model="email"
                     placeholder="Supplier ID" />
@@ -29,19 +28,15 @@
                   <input required type="password" name="password" id="form3Example3" v-model="password"
                     class="form-control" placeholder="Enter Password" />
                 </div>
-                <!-- Submit button -->
                 <button class="btn btn-primary btn-block mb-4" v-on:click="submit()" :disabled="!email || !password">
                   Login
                 </button>
-
-                <!-- Register buttons -->
                 <div class="text-center">
                   <p>Not registered with us? <a style="color:blue" v-on:click="show=!show">Sign up</a></p>
-                  <!-- <p>Not registered with us?  <router-link to="/account/signup"> SignUp</router-link></p> -->
-
                 </div>
-                <!-- <div >THis is Sighup Form</div> -->
+               
               </form>
+             
             </div>
             <div class="card-body px-4 py-5 px-md-5" v-if="show && !varified">
               <h1 style="color:blue ; text-align: center;">Sign Up</h1>
@@ -125,6 +120,9 @@
         </div>
       </div>
     </div>
+    <div>
+    
+    </div>
   </section>
 </template>
 
@@ -145,12 +143,13 @@ export default {
       title:'',
       first_name:'',
       mobile_no:'',
-      last_name:''
+      last_name:'',
+      otp:''
     }
   },
   methods: {
     submit() {
-      console.log("submit")
+      //console.log("submit")
       // let formData = new FormData(e.target);
       session.login.submit({
         // email: formData.get('email'),
@@ -202,6 +201,60 @@ export default {
             this.otpsent = true
             this.recievedOtp = data.email_otp
             console.log(this.recievedOtp);
+          },
+          onError: (error) => {
+            console.error("Error:", error);
+          }
+        });
+      } catch (error) {
+        console.error("Exception:", error);
+      }
+    },
+
+
+    async sendOTPLogin() {
+      try {
+        this.options = !this.options;
+
+        const otp = await createResource({
+          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.request_verification_code",
+          makeParams: () => ({
+            
+              email: this.email
+            
+          }),
+          auto: true,
+          onSuccess: (data) => {
+            this.otpsent = true
+            this.recievedOtp = data.email_otp
+            console.log(this.recievedOtp);
+          },
+          onError: (error) => {
+            console.error("Error:", error);
+          }
+        });
+      } catch (error) {
+        console.error("Exception:", error);
+      }
+    },
+
+    async login() {
+      try {
+        this.options = !this.options;
+
+        const otp = await createResource({
+          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.verify_code_and_login",
+          makeParams: () => ({
+            
+              email: this.email,
+              verification_code:this.otp
+            
+          }),
+          auto: true,
+          onSuccess: (data) => {
+            this.otpsent = true
+            this.recievedOtp = data.email_otp
+            console.log(data);
           },
           onError: (error) => {
             console.error("Error:", error);
