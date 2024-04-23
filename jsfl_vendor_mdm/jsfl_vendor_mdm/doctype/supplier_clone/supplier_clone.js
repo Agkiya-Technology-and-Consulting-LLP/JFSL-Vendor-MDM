@@ -2,20 +2,39 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Supplier Clone', {
-	// send_back_to_supplier: function(frm) {
-    //     // Pass the current state to the server-side function
-    //     frappe.call({
-    //         method: 'jsfl_vendor_mdm.jsfl_vendor_mdm.supplier_clone.on_send_back_to_supplier',
-    //         args: {
-    //             docname: frm.doc.name,
-    //             state: frm.doc.workflow_state
-    //         },
-    //         callback: function(r) {
-    //             if (r.message) {
-    //                 frappe.show_alert(r.message);
-    //                 frm.reload_doc();
-    //             }
-    //         }
-    //     });
-    // }
+	company_turnover: function(frm) {
+        var turnover = frm.doc.company_turnover; 
+        var company_size ;
+        if (turnover === '> 250000000') {
+            company_size = 'Large Scale';
+        } else if (turnover === '> 100000000') {
+            company_size = 'Mid Scale';
+        } else if (turnover === '> 50000000') {
+            company_size = 'Small Scale';
+        } else {
+            company_size = 'Micro';
+        }
+        frm.set_value('company_size', company_size);
+    },
+
+    company_size: function(frm) {
+        var size = frm.doc.company_size; 
+        var turnover ;
+        if (size === 'Large Scale') {
+            turnover = '> 250000000';
+        } else if (size === 'Mid Scale') {
+            turnover = '> 100000000';
+        } else if (size === 'Small Scale') {
+            turnover = '> 50000000';
+        } else {
+            turnover = '<50000000';
+        }
+        frm.set_value('company_turnover', turnover);
+    },
+    
+    company_name: function(frm) {
+        if (frm.doc.company_name) {
+            frm.set_value('name_', frm.doc.company_name);
+        }
+    },
 });
