@@ -7,7 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sent_back_by",
+  "company_details_tab",
   "company_details_section",
   "company_name",
   "company_type",
@@ -27,6 +27,7 @@
   "iso_4000",
   "has_18000",
   "any_other_certification",
+  "pan_and_gst_details_tab",
   "pan_details_section",
   "permanent_account_number",
   "proprietors_name",
@@ -40,6 +41,7 @@
   "column_break_d2vjk",
   "gst_valid_from",
   "gst_registration_number",
+  "address_and_residential_details_tab",
   "registered_address_section",
   "name_",
   "addressline_1",
@@ -56,6 +58,7 @@
   "permanent_account_no",
   "column_break_uqhzm",
   "tax_identification_no_tin",
+  "media_and_other_details_tab",
   "section_break_sts9p",
   "website",
   "linkedin",
@@ -66,6 +69,7 @@
   "youtube",
   "other_details_section",
   "applicable_other",
+  "sales_tax_esipf_msmed_details_tab",
   "sales_tax_section",
   "type_of_supplier_under_vat",
   "lst_number",
@@ -83,6 +87,14 @@
   "select_your_enterprise_type",
   "column_break_fc3ph",
   "udyam_registration_number",
+  "reason_section_tab",
+  "push_back_by_mdm_manager",
+  "reason_by_mdm_manager",
+  "reason_by_company_user_team",
+  "column_break_jlkck",
+  "company_user_team_id",
+  "l1_manager_id",
+  "reason_by_l1_manager",
   "amended_from"
  ],
  "fields": [
@@ -262,13 +274,15 @@
    "fieldname": "region",
    "fieldtype": "Data",
    "label": "Region",
-   "read_only_depends_on": "eval: doc.country == ''"
+   "read_only_depends_on": "eval: doc.country == ''",
+   "reqd": 1
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "city",
    "fieldtype": "Data",
-   "label": "City"
+   "label": "City",
+   "reqd": 1
   },
   {
    "depends_on": "applicable_address",
@@ -547,17 +561,74 @@
    "label": "Applicable"
   },
   {
-   "fieldname": "sent_back_by",
+   "fieldname": "reason_by_mdm_manager",
+   "fieldtype": "Small Text",
+   "label": "Reason By MDM Manager"
+  },
+  {
+   "fieldname": "reason_by_l1_manager",
+   "fieldtype": "Small Text",
+   "label": "Reason By L1 Manager"
+  },
+  {
+   "fieldname": "reason_by_company_user_team",
+   "fieldtype": "Small Text",
+   "label": "Reason By Company User Team"
+  },
+  {
+   "fieldname": "reason_section_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reason Section"
+  },
+  {
+   "fieldname": "company_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Company Details"
+  },
+  {
+   "fieldname": "pan_and_gst_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "PAN And GST Details"
+  },
+  {
+   "fieldname": "address_and_residential_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Address And Residential Details"
+  },
+  {
+   "fieldname": "media_and_other_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media And Other Details"
+  },
+  {
+   "fieldname": "sales_tax_esipf_msmed_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sales Tax, ESI,PF, MSMED Details"
+  },
+  {
+   "fieldname": "column_break_jlkck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "push_back_by_mdm_manager",
    "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Sent Back By",
-   "read_only": 1
+   "label": "Push Back By MDM Manager"
+  },
+  {
+   "fieldname": "company_user_team_id",
+   "fieldtype": "Data",
+   "label": "Company User Team Id "
+  },
+  {
+   "fieldname": "l1_manager_id",
+   "fieldtype": "Data",
+   "label": "L1 Manager Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-04 16:18:20.778118",
+ "modified": "2024-04-22 13:31:10.229775",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
@@ -584,8 +655,7 @@
    "read": 1,
    "report": 1,
    "role": "Guest_supplier",
-   "share": 1,
-   "write": 1
+   "share": 1
   },
   {
    "email": 1,
