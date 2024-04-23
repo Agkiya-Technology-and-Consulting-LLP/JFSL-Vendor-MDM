@@ -1,0 +1,119 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2024-03-21 11:31:24.866737",
+  "name": "Pending",
+  "style": "",
+  "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2024-03-21 11:31:24.867988",
+  "name": "Approved",
+  "style": "Success",
+  "workflow_state_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2024-03-21 11:31:24.868955",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-26 13:49:12.027421",
+  "name": "Approval Pending By Company User Team",
+  "style": "",
+  "workflow_state_name": "Approval Pending By Company User Team"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-26 13:49:36.023957",
+  "name": "Approval Pending By L1 Manager",
+  "style": "",
+  "workflow_state_name": "Approval Pending By L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-26 13:49:56.269461",
+  "name": "Approval Pending By MDM Manager",
+  "style": "",
+  "workflow_state_name": "Approval Pending By MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-26 14:58:03.305723",
+  "name": "Saved",
+  "style": "",
+  "workflow_state_name": "Saved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-06 15:00:55.747715",
+  "name": "Sent By MDM manager",
+  "style": "",
+  "workflow_state_name": "Sent By MDM manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-08 18:32:09.115200",
+  "name": "Sent Back By MDM Manager",
+  "style": "",
+  "workflow_state_name": "Sent Back By MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-08 18:32:26.481542",
+  "name": "Sent Back By L1 Manager",
+  "style": "",
+  "workflow_state_name": "Sent Back By L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-20 12:31:13.087128",
+  "name": "Push Back By MDM Manager",
+  "style": "",
+  "workflow_state_name": "Push Back By MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-20 17:47:35.420884",
+  "name": "Pushed Back By MDM Manager",
+  "style": "",
+  "workflow_state_name": "Pushed Back By MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-04-20 17:48:05.223647",
+  "name": "Pushed Back By L1 Manager",
+  "style": "",
+  "workflow_state_name": "Pushed Back By L1 Manager"
+ }
+]

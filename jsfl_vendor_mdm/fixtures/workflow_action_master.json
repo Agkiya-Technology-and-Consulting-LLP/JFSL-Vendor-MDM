@@ -1,0 +1,72 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-21 11:31:24.879257",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-21 11:31:24.880069",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-21 11:31:24.880699",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-26 14:59:14.891809",
+  "name": "Submit",
+  "workflow_action_name": "Submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-03-26 15:16:22.311705",
+  "name": "Send Back To Supplier",
+  "workflow_action_name": "Send Back To Supplier"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-02 12:08:17.998604",
+  "name": "Send Back To Company User Team",
+  "workflow_action_name": "Send Back To Company User Team"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-02 12:08:31.471150",
+  "name": "Send Back To L1 Manager",
+  "workflow_action_name": "Send Back To L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-20 12:32:44.472946",
+  "name": "Push Back To Supplier",
+  "workflow_action_name": "Push Back To Supplier"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-20 12:33:30.756758",
+  "name": "Push Back To Company User Team",
+  "workflow_action_name": "Push Back To Company User Team"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2024-04-20 12:34:39.013544",
+  "name": "Push Back To L1 Manager",
+  "workflow_action_name": "Push Back To L1 Manager"
+ }
+]
