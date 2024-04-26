@@ -1,4 +1,8 @@
 import frappe
+from frappe import _
+import random
+import smtplib
+from email.message import EmailMessage
 
 @frappe.whitelist(allow_guest = True)
 def new(doc):
@@ -68,4 +72,5 @@ def send_verification_code(email, code):
         msg['To']=email
         msg.set_content("OTP for account varification is \n "+ code)
         server.send_message(msg)
+        
         
