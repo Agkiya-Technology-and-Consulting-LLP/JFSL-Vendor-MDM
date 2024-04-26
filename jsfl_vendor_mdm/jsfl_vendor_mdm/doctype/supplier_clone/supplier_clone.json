@@ -622,13 +622,14 @@
   {
    "fieldname": "l1_manager_id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "L1 Manager Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-22 13:31:10.229775",
+ "modified": "2024-04-26 13:38:34.893314",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
