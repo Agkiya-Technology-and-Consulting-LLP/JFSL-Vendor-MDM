@@ -71,6 +71,4 @@ def send_verification_code(email, code):
         msg['From']=from_
         msg['To']=email
         msg.set_content("OTP for account varification is \n "+ code)
-        server.send_message(msg)
-        
-        
+        server.send_message(msg)        
