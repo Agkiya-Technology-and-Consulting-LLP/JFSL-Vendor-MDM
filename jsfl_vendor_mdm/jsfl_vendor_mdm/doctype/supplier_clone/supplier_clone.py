@@ -73,15 +73,18 @@ class SupplierClone(Document):
                 frappe.throw("Reason By Company User Team field is mandatory for Company User Team to fill before sending back the doc.")   
 
         # Freez Window for multiple users
-        if self.company_user_check and ("Company User Team" in frappe.get_roles()):
-            self.company_user=frappe.session.user
-        else:
-            self.company_user=''
-        if self.l1_manager_check and ("L1 Manager" in frappe.get_roles()):
-            self.l1_manager=frappe.session.user
-        else:
-            self.l1_manager=''
-        if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
-            self.mdm_manager=frappe.session.user
-        else:
-            self.mdm_manager=''
+        if frappe.session.user!='Administrator':
+            if self.company_user_check and ("Company User Team" in frappe.get_roles()):
+                self.company_user=frappe.session.user
+            if self.l1_manager_check and ("L1 Manager" in frappe.get_roles()):
+                self.l1_manager=frappe.session.user
+            if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
+                self.mdm_manager=frappe.session.user
+
+
+            if not self.company_user_check and self.workflow_state=='Approval Pending By L1 Manager':
+                frappe.throw("Please Check Company User Check")
+            if not self.l1_manager_check and self.workflow_state =='Approval Pending By MDM Manager':
+                frappe.throw("Please Check L1 Manager Check")
+            if not self.mdm_manager_check and self.workflow_state =='Approved':
+                frappe.throw("Please Check MDM Manager Check ")
