@@ -7,12 +7,21 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('@/pages/Home.vue'),
+    children: [
+      { path: '/welcome', component: () => import('@/components/Welcomehome.vue') },
+      { path: '/companydetails', component: () => import('@/components/Companydetails.vue') },
+      { path: '/Categorybusiness', component: () => import('@/components/Categorybusiness.vue') },
+      { path: '/contactdetails', component: () => import('@/components/Contactdetails.vue') },
+      { path: '/accountdetails', component: () => import('@/components/Accountdetails.vue') },
+      { path: '/documentdetails', component: () => import('@/components/Documentdetails.vue') },
+      
+    ]
   },
   {
     name: 'Login',
     path: '/account/login',
     component: () => import('@/pages/Login.vue'),
-  },
+  }
 ]
 
 let router = createRouter({

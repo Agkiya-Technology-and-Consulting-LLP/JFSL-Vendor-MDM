@@ -4,9 +4,10 @@
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            Welcome <br />
-            <span style="color: hsl(218, 81%, 75%)">Reliance Supplier Portal</span>
+          <div class="bg-image"><img src="../assets/Jio_Financial_Services_Logo.png" alt="Jio Image"></div>
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%,50%)">
+            Welcome , <br />
+            <span style="color: hsl(218, 81%, 60%)">Reliance Supplier Portal</span>
           </h1>
         </div>
 
@@ -85,8 +86,8 @@
                 <div class="form-outline mb-4">
                   <select required name="title" id="form3Example4" class="form-control" v-model="title" placeholder="select title">
                     <option value="" selected>Select title</option>
-                    <option value="m/s">m/s</option>
-                    <option value="master">Master</option>
+                    <option value="m/s">Mr.</option>
+                    <option value="master">Mister</option>
                     <option value="miss">Miss</option>
                   </select>
                 </div>
@@ -164,6 +165,7 @@ export default {
       try {
         const user = await createResource({
           url: 'frappe.core.doctype.user.user.sign_up',
+          
           params: {
             email: this.email,
             full_name: this.first_name+' ' +this.last_name,
@@ -294,7 +296,7 @@ export default {
             console.log(data);
           },
           onError: (error) => {
-            console.error("Error:", error);
+            console.error("this is Error:", error);
           }
         })
       } catch (error) {
@@ -317,15 +319,20 @@ export default {
 </script>
 <style scoped>
 .background-radial-gradient {
-  padding: 2rem 3rem;
+  /* padding: 2rem 3rem; */
   display: flex;
   justify-content: space-between;
-  background: url(https://supplierfirst.ril.com/user/login_bg.e04cfc7678e7f23182a3.jpg) no-repeat top left;
+  /* background: url("../assets/Jio_Financial_Services_Logo.png")no-repeat; */
   height: 100vh;
 }
 
 .bg-glass {
   background-color: hsla(0, 0%, 100%, 0.9) !important;
   backdrop-filter: saturate(200%) blur(25px);
+}
+.bg-image img{
+  margin-left: 5rem;
+  width: 50%;
+  height: auto;
 }
 </style>
