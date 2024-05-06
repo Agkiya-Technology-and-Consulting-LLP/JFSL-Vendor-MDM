@@ -229,3 +229,9 @@ app_license = "mit"
 
 
 website_route_rules = [{'from_route': '/frontend/<path:app_path>', 'to_route': 'frontend'}, {'from_route': '/dashboard/<path:app_path>', 'to_route': 'dashboard'},]
+fixtures = [
+    "Workflow",
+    "Workflow State",
+    "Workflow Action",
+    "Workflow Action Master"
+]
