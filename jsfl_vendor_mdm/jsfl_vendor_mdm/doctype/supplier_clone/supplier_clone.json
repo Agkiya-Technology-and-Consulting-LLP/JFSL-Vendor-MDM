@@ -8,6 +8,34 @@
  "engine": "InnoDB",
  "field_order": [
   "workflow_state",
+  "supplier_deatils_section",
+  "supplier_name",
+  "related_party",
+  "consent",
+  "reason",
+  "column_break_4scrt",
+  "supplier_group",
+  "supplier_type",
+  "is_specified_person",
+  "is_aadhar_pan_linked",
+  "non_pan",
+  "einvoice_applicable",
+  "is_transporter",
+  "image",
+  "defaults_section",
+  "billing_currency",
+  "price_list",
+  "column_break_jxqc7",
+  "payment_terms",
+  "internal_supplier_section",
+  "is_internal_supplier",
+  "represents_company",
+  "column_break_jwiya",
+  "allowed_to_transact_with",
+  "more_information_section",
+  "supplier_details",
+  "column_break_ll4ub",
+  "print_language",
   "viewed_by_tab",
   "company_user",
   "l1_manager",
@@ -45,12 +73,15 @@
   "column_break_r0age",
   "ownership_information",
   "gst_goods_services",
+  "gst_registration_number",
   "gst_status",
-  "gst_status_valid_from",
   "applicable_gst",
   "column_break_d2vjk",
   "gst_valid_from",
-  "gst_registration_number",
+  "gst_status_valid_from",
+  "gst_transporter_id",
+  "cin_section",
+  "cin",
   "address_and_residential_details_tab",
   "registered_address_section",
   "name_",
@@ -66,8 +97,17 @@
   "residential_details_section",
   "residential_status",
   "permanent_account_no",
+  "tax_withholding_category",
   "column_break_uqhzm",
   "tax_identification_no_tin",
+  "tax_category",
+  "contact_details_tab",
+  "salutation",
+  "column_break_96fsu",
+  "first_name",
+  "column_break_bjjug",
+  "last_name",
+  "mark_as_primary",
   "media_and_other_details_tab",
   "section_break_sts9p",
   "website",
@@ -79,7 +119,7 @@
   "youtube",
   "other_details_section",
   "applicable_other",
-  "sales_tax_esipf_msmed_details_tab",
+  "sales_tax_esipf_msmed_and_wct_details_tab",
   "sales_tax_section",
   "type_of_supplier_under_vat",
   "lst_number",
@@ -92,11 +132,16 @@
   "esi_number",
   "applicable_esi",
   "pf_provident_fund_section",
+  "epf_number",
   "applicable_pf",
   "msmed_section",
   "select_your_enterprise_type",
+  "msme_applicable",
   "column_break_fc3ph",
+  "msme_certificate_number",
   "udyam_registration_number",
+  "wct_section",
+  "wct",
   "reason_section_tab",
   "push_back_by_mdm_manager",
   "reason_by_mdm_manager",
@@ -598,7 +643,7 @@
   {
    "fieldname": "pan_and_gst_details_tab",
    "fieldtype": "Tab Break",
-   "label": "PAN And GST Details"
+   "label": "PAN, GST And CIN Details"
   },
   {
    "fieldname": "address_and_residential_details_tab",
@@ -609,11 +654,6 @@
    "fieldname": "media_and_other_details_tab",
    "fieldtype": "Tab Break",
    "label": "Media And Other Details"
-  },
-  {
-   "fieldname": "sales_tax_esipf_msmed_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Sales Tax, ESI,PF, MSMED Details"
   },
   {
    "fieldname": "column_break_jlkck",
@@ -702,12 +742,261 @@
    "label": "Workflow State",
    "no_copy": 1,
    "options": "Workflow State"
+  },
+  {
+   "fieldname": "supplier_deatils_section",
+   "fieldtype": "Tab Break",
+   "label": "Supplier Deatils"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "related_party",
+   "fieldtype": "Select",
+   "label": "Related Party",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "consent",
+   "fieldtype": "Data",
+   "label": "Consent"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Data",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "column_break_4scrt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_group",
+   "fieldtype": "Link",
+   "label": "Supplier Group",
+   "options": "Supplier Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier_type",
+   "fieldtype": "Select",
+   "label": "Supplier Type",
+   "options": "\nCompany\nIndividual\nFirm\nHindu Undivided Family\nTRUST\nBody of Individuals\nAssociation of Persons\nArtificial Juridical Person\nLocal Authority\nGovernment\nNon PAN",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_specified_person",
+   "fieldtype": "Check",
+   "label": "Is Specified Person"
+  },
+  {
+   "fieldname": "is_aadhar_pan_linked",
+   "fieldtype": "Select",
+   "label": "Is Aadhar PAN linked",
+   "options": "\nYES\nNO\nN/A"
+  },
+  {
+   "default": "0",
+   "fieldname": "non_pan",
+   "fieldtype": "Check",
+   "label": "Non PAN"
+  },
+  {
+   "fieldname": "einvoice_applicable",
+   "fieldtype": "Select",
+   "label": "eInvoice Applicable",
+   "options": "No\nYes"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_transporter",
+   "fieldtype": "Check",
+   "label": "Is Transporter"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "label": "Image"
+  },
+  {
+   "fieldname": "defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "billing_currency",
+   "fieldtype": "Link",
+   "label": "Billing Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "column_break_jxqc7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_terms",
+   "fieldtype": "Link",
+   "label": "Default Payment Terms Template",
+   "options": "Payment Terms Template"
+  },
+  {
+   "fieldname": "internal_supplier_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Supplier"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_internal_supplier",
+   "fieldtype": "Check",
+   "label": "Is Internal Supplier"
+  },
+  {
+   "fieldname": "represents_company",
+   "fieldtype": "Link",
+   "label": "Represents Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_jwiya",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "allowed_to_transact_with",
+   "fieldtype": "Table",
+   "label": "Allowed To Transact With",
+   "options": "Allowed To Transact With"
+  },
+  {
+   "fieldname": "more_information_section",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "supplier_details",
+   "fieldtype": "Text",
+   "label": "Supplier Details"
+  },
+  {
+   "fieldname": "column_break_ll4ub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "print_language",
+   "fieldtype": "Link",
+   "label": "Print Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "tax_category",
+   "fieldtype": "Link",
+   "label": "Tax Category",
+   "options": "Tax Category"
+  },
+  {
+   "fieldname": "tax_withholding_category",
+   "fieldtype": "Link",
+   "label": "Tax Withholding Category",
+   "options": "Tax Withholding Category"
+  },
+  {
+   "default": "0",
+   "fieldname": "msme_applicable",
+   "fieldtype": "Check",
+   "label": "MSME Applicable"
+  },
+  {
+   "fieldname": "msme_certificate_number",
+   "fieldtype": "Data",
+   "label": "MSME Certificate Number"
+  },
+  {
+   "depends_on": "eval:doc.is_transporter",
+   "fieldname": "gst_transporter_id",
+   "fieldtype": "Data",
+   "label": "GST Transporter ID"
+  },
+  {
+   "fieldname": "cin_section",
+   "fieldtype": "Section Break",
+   "label": "CIN"
+  },
+  {
+   "fieldname": "cin",
+   "fieldtype": "Data",
+   "label": "CIN"
+  },
+  {
+   "fieldname": "epf_number",
+   "fieldtype": "Data",
+   "label": "EPF Number"
+  },
+  {
+   "fieldname": "sales_tax_esipf_msmed_and_wct_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sales Tax, ESI,PF, MSMED And WCT Details"
+  },
+  {
+   "fieldname": "wct_section",
+   "fieldtype": "Section Break",
+   "label": "WCT"
+  },
+  {
+   "fieldname": "wct",
+   "fieldtype": "Data",
+   "label": "WCT"
+  },
+  {
+   "fieldname": "contact_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark_as_primary",
+   "fieldtype": "Check",
+   "label": "Mark as Primary"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Select",
+   "label": "Salutation",
+   "options": "Mr\nMrs\nMs",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_96fsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "column_break_bjjug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-27 15:49:36.523191",
+ "modified": "2024-05-01 20:42:13.576991",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

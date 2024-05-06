@@ -15,6 +15,8 @@ from frappe.model import docfield
 class SupplierClone(Document):     
 
     def validate(self):
+        # if self.email_id :
+            
         if self.resistration_date_cst and getdate(self.resistration_date_cst) > getdate():
             frappe.throw("Registration Date for CST Number cannot be greater than today's date.")
         
