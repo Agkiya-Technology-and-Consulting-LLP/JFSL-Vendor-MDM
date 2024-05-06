@@ -71,3 +71,17 @@ class SupplierClone(Document):
             or (old_workflow_state == "Pushed Back By MDM Manager" and current_workflow_state == "Saved")):
             if((not self.reason_by_company_user_team)):
                 frappe.throw("Reason By Company User Team field is mandatory for Company User Team to fill before sending back the doc.")   
+
+        # Freez Window for multiple users
+        if self.company_user_check and ("Company User Team" in frappe.get_roles()):
+            self.company_user=frappe.session.user
+        else:
+            self.company_user=''
+        if self.l1_manager_check and ("L1 Manager" in frappe.get_roles()):
+            self.l1_manager=frappe.session.user
+        else:
+            self.l1_manager=''
+        if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
+            self.mdm_manager=frappe.session.user
+        else:
+            self.mdm_manager=''
