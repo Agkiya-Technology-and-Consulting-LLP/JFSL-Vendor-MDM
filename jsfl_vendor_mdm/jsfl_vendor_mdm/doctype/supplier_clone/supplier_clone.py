@@ -80,7 +80,7 @@ class SupplierClone(Document):
             # frappe.msgprint(roles_string)
         else:
             self.sent_back_by = " "
-            
+
         current_workflow_state = self.workflow_state
         old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
         if ((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Pushed Back By MDM Manager")):
