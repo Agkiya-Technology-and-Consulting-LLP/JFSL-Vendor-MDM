@@ -103,11 +103,29 @@
   "tax_category",
   "contact_details_tab",
   "salutation",
+  "contact_number",
   "column_break_96fsu",
   "first_name",
+  "email_id",
   "column_break_bjjug",
   "last_name",
   "mark_as_primary",
+  "bank_details_section",
+  "account_details_section",
+  "account_number",
+  "confirm_account_number",
+  "ifsc_code",
+  "column_break_h3zvt",
+  "name_of_bank",
+  "branch_contact_number",
+  "branch_email_id",
+  "bank_address_section",
+  "bank_address",
+  "branch_country",
+  "branch_zipcode",
+  "column_break_w8uwk",
+  "branch_state",
+  "branch_city",
   "media_and_other_details_tab",
   "section_break_sts9p",
   "website",
@@ -142,6 +160,17 @@
   "udyam_registration_number",
   "wct_section",
   "wct",
+  "upload_documents_tab",
+  "address_proof",
+  "panaadhar",
+  "pf",
+  "gst",
+  "lstcst",
+  "column_break_frhho",
+  "msmedudyam_registration",
+  "esic",
+  "tinuin",
+  "cin_attach",
   "reason_section_tab",
   "push_back_by_mdm_manager",
   "reason_by_mdm_manager",
@@ -991,12 +1020,159 @@
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Phone",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id",
+   "options": "Email"
+  },
+  {
+   "fieldname": "bank_details_section",
+   "fieldtype": "Tab Break",
+   "label": "Bank Details"
+  },
+  {
+   "fieldname": "account_details_section",
+   "fieldtype": "Section Break",
+   "label": "Account Details"
+  },
+  {
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "confirm_account_number",
+   "fieldtype": "Data",
+   "label": "Confirm Account Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ifsc_code",
+   "fieldtype": "Data",
+   "label": "IFSC Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_h3zvt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "name_of_bank",
+   "fieldtype": "Data",
+   "label": "Name Of Bank",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch_contact_number",
+   "fieldtype": "Data",
+   "label": "Branch Contact number"
+  },
+  {
+   "fieldname": "branch_email_id",
+   "fieldtype": "Data",
+   "label": "Branch Email Id"
+  },
+  {
+   "fieldname": "bank_address_section",
+   "fieldtype": "Section Break",
+   "label": "Bank Address"
+  },
+  {
+   "fieldname": "bank_address",
+   "fieldtype": "Data",
+   "label": "Bank Address"
+  },
+  {
+   "fieldname": "branch_country",
+   "fieldtype": "Data",
+   "label": "Country"
+  },
+  {
+   "fieldname": "branch_zipcode",
+   "fieldtype": "Data",
+   "label": "Zipcode"
+  },
+  {
+   "fieldname": "column_break_w8uwk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch_state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "branch_city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "upload_documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Upload Documents"
+  },
+  {
+   "fieldname": "address_proof",
+   "fieldtype": "Attach",
+   "label": "Address Proof"
+  },
+  {
+   "fieldname": "panaadhar",
+   "fieldtype": "Attach",
+   "label": "PAN/Aadhar"
+  },
+  {
+   "fieldname": "pf",
+   "fieldtype": "Attach",
+   "label": "PF"
+  },
+  {
+   "fieldname": "gst",
+   "fieldtype": "Attach",
+   "label": "GST"
+  },
+  {
+   "fieldname": "lstcst",
+   "fieldtype": "Attach",
+   "label": "LST/CST"
+  },
+  {
+   "fieldname": "column_break_frhho",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "msmedudyam_registration",
+   "fieldtype": "Attach",
+   "label": "MSMED/Udyam Registration"
+  },
+  {
+   "fieldname": "esic",
+   "fieldtype": "Attach",
+   "label": "ESIC"
+  },
+  {
+   "fieldname": "tinuin",
+   "fieldtype": "Attach",
+   "label": "TIN/UIN"
+  },
+  {
+   "fieldname": "cin_attach",
+   "fieldtype": "Attach",
+   "label": "CIN"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-01 20:42:13.576991",
+ "modified": "2024-05-06 17:17:10.793146",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
