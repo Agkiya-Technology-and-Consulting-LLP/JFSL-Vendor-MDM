@@ -14,6 +14,8 @@ const routes = [
       { path: '/contactdetails', component: () => import('@/components/Contactdetails.vue') },
       { path: '/accountdetails', component: () => import('@/components/Accountdetails.vue') },
       { path: '/documentdetails', component: () => import('@/components/Documentdetails.vue') },
+      { path: '/codeofConduct', component: () => import('@/components/codeofConduct.vue') },
+      { path: '/privacyPolicy', component: () => import('@/components/privacyPolicy.vue') },
       
     ]
   },

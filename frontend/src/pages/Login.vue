@@ -6,8 +6,8 @@
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
           <div class="bg-image"><img src="../assets/Jio_Financial_Services_Logo.png" alt="Jio Image"></div>
           <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%,50%)">
-            Welcome , <br />
-            <span style="color: hsl(218, 81%, 60%)">Reliance Supplier Portal</span>
+            Welcome to, JFSL Portal
+            <!-- <span style="color: hsl(218, 81%, 60%)">JFSL Portal</span> -->
           </h1>
         </div>
 
