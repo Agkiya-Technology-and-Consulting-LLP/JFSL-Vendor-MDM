@@ -1,9 +1,13 @@
+from email.message import EmailMessage
+import random
+import smtplib
 import frappe
+from frappe.auth import LoginManager
+from frappe.sessions import Session, clear_sessions, delete_session, get_expiry_in_seconds
+
 
 @frappe.whitelist(allow_guest = True)
 def new(doc):
-    print(doc)
-
     new_doc=frappe.new_doc("OTP Authentication")
     new_doc.update(doc)
     new_doc.insert(ignore_permissions=True)
@@ -26,9 +30,9 @@ def request_verification_code(email):
         verification_code = generate_verification_code()
         send_verification_code(email, verification_code)
         frappe.cache().hset("verification_code", user, verification_code)
-        return _("Verification code sent successfully.")
+        return ("Verification code sent successfully.")
     else:
-        return _("Email not found.")
+        return ("Email not found.")
 
 @frappe.whitelist(allow_guest=True)
 def verify_code_and_login(email, verification_code):
@@ -69,3 +73,66 @@ def send_verification_code(email, code):
         msg['To']=email
         msg.set_content("OTP for account varification is \n "+ code)
         server.send_message(msg)        
+
+@frappe.whitelist(allow_guest=True)
+def login(doc):
+    user=frappe.get_doc("User",doc['email'])
+    print(f"{user.name},{user.full_name},{user.user_type}")
+    obj={
+        'user':user.name,
+        'full_name':user.full_name,
+        'user_type':user.user_type
+    }
+    
+    return make_session(obj)
+
+#Login without password
+def make_session(obj,resume=False):
+    print(f":::{obj['user_type']}:::")
+    frappe.local.session_obj = Session(
+			user=obj["user"], resume=resume, full_name=obj["full_name"], user_type=obj['user_type']
+		)
+    obj["user"] = frappe.local.session_obj.user
+    frappe.local.session = frappe.local.session_obj.data
+    print(frappe.local.session)
+    # obj.clear_active_sessions()
+    return frappe.local.session.sid
+
+
+# import frappe
+# from frappe import _
+
+@frappe.whitelist(allow_guest=True)
+def check(doc):
+    try:
+        # Log the input doc for debugging
+        frappe.logger().debug(f"Received doc: {doc}")
+
+        # Ensure 'doc' is a dictionary and has the 'email' key
+        if not isinstance(doc, dict) or 'email' not in doc:
+            frappe.throw(_("Invalid document format or missing email"))
+
+        # Check if the user exists
+        exists = frappe.db.exists("User", doc['email'])
+        frappe.logger().debug(f"User exists: {exists}")
+
+        # Create and insert the new document
+        new_doc = frappe.new_doc("OTP Authentication")
+        new_doc.update(doc)
+        new_doc.insert(ignore_permissions=True)
+        
+        # Log the new document creation
+        frappe.logger().debug(f"New OTP Authentication doc created: {new_doc.name}")
+
+        return new_doc
+
+    except Exception as e:
+        # Log the error for debugging
+        frappe.logger().error(f"Error in check method: {str(e)}")
+        frappe.throw(_("An error occurred while processing the request: ") + str(e))
+
+@frappe.whitelist(allow_guest=True)
+def checkUserExists(doc):
+    user=frappe.db.exists("User",doc['email'])
+    user_doc=frappe.get_doc("User",user)
+    return user_doc

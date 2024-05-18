@@ -17,7 +17,7 @@
 
           <div class="card bg-glass">
 
-            <div class="card-body px-4 py-5 px-md-5" v-if="!show">
+            <!-- <div class="card-body px-4 py-5 px-md-5" v-if="!show">
               <h1 style="color:blue ; text-align: center;">Welcome</h1>
               <p style="text-align: center; color: rgb(108, 108, 252);">Login with your Supplier ID</p>
               <form @submit.prevent="submit">
@@ -38,7 +38,67 @@
                
               </form>
              
-            </div>
+            </div> -->
+            
+            <div class="card-body px-4 py-5 px-md-5" v-if="!show && !userExists">
+              <h1 style="color:blue ; text-align: center;">Welcome</h1>
+              <p style="text-align: center; color: rgb(108, 108, 252);">Login with your Supplier ID</p>
+              <!-- <form > -->
+                <div class="form-outline mb-4">
+                      <input required type="text" name="email" id="form3Example1" class="form-control" v-model="email"
+                        placeholder="Supplier ID" />
+                    </div>
+
+                <button class="btn btn-primary btn-block mb-4" v-on:click="checkUserExists()" :disabled="!email ">
+                  Login
+                </button>
+                <div class="text-center">
+                  <p>Not registered with us? <a style="color:blue" v-on:click="show=!show">Sign up</a></p>
+                </div>
+              <!-- </form> -->
+              </div>
+
+              <div class="card-body px-4 py-5 px-md-5" v-if="userExists && !enter_otp">
+              <h1 style="color:blue ; text-align: center;">Welcome</h1>
+              <p style="text-align: center; color: rgb(108, 108, 252);">Select Agent and OTP delivery method.</p>
+              <!-- <form > -->
+                <div class="form-outline mb-4">
+                <label>
+                  <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoEmail" />
+                   &nbsp; Email: {{ email }}
+                </label><br>
+                <label>
+                  <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoMobile" />
+                  &nbsp; Mobile: {{ mobile_no  }}
+                </label><br>
+                <label>
+                  <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoBoth" />
+                  &nbsp; Both: Email {{ eamil }} & Mobile {{ mobile_no }}
+                </label><br>
+              </div>
+
+                <button class="btn btn-primary btn-block mb-4" v-on:click="send()" :disabled="!email_otp_send ">
+                  Continue
+                </button>
+                <div class="text-center">
+                  <p>Not registered with us? <a style="color:blue" v-on:click="()=>{show=!show; userExists=!userExists}">Sign up</a></p>
+                </div>
+              <!-- </form> -->
+              </div>
+              
+
+              <div class="card-body px-4 py-5 px-md-5" v-if="enter_otp">
+              <h1 style="color:blue ; text-align: center;">Welcome</h1>
+                <div class="form-outline mb-4" v-if="enter_otp">
+                  <input required type="text" name="emailotp" id="emailotp" class="form-control" v-model="emailotp"
+                    placeholder="Enter otp" />
+                </div>
+                <button class="btn btn-primary btn-block mb-4" v-if="enter_otp" v-on:click="logintoportal()" >
+                  Next
+                </button>
+                </div>
+
+
             <div class="card-body px-4 py-5 px-md-5" v-if="show && !varified">
               <h1 style="color:blue ; text-align: center;">Sign Up</h1>
               <p style="text-align: center; color: rgb(108, 108, 252);">Kindly enter your Email ID to proceed</p>
@@ -131,6 +191,7 @@
 // import axios from "axios" 
 import { session } from '../data/session'
 import { createResource } from 'frappe-ui'
+
 export default {
   name: 'Login',
   data() {
@@ -145,7 +206,10 @@ export default {
       first_name:'',
       mobile_no:'',
       last_name:'',
-      otp:''
+      otp:'',
+      userExists:false,
+      email_otp_send:'',
+      enter_otp:false
     }
   },
   methods: {
@@ -277,10 +341,22 @@ export default {
       }
     }
   },
+  logintoportal(){
+    if (this.emailotp) {
+      if (this.recievedOtp == this.emailotp) {
+        this.otpsent = false
+        // this.varified = true
+        this.loginwithoutpass()
+        console.log("Verified")
+      } else {
+        console.log("invalid ")
+      }
+    }
+  },
   newUser() {
       try {
         const user = createResource({
-          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.api.new_user",
+          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.new_user",
           makeParams: () => ({
             doc: {
               email: this.email,
@@ -302,8 +378,95 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    loginwithoutpass(){
+      const user = createResource({
+          url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.login",
+          makeParams: () => ({
+            doc: {
+              email: this.email,
+            }
+          }),
+          auto: true,
+          onSuccess: (data) => {
+            if (data) {
+              let url = window.location.origin;
+              const downloadUrl = url + "/frontend/?sid=" + data;
+              let homeUrl = url + '/welcome';
+              
+              // Log the downloadUrl for debugging purposes
+              console.log(downloadUrl);
+              window.location.replace(url + '/frontend/welcome');
+              // Replace the current URL with the download URL
+              window.location.replace(downloadUrl);
+
+              // If needed, replace the current URL with the home URL afterwards
+              // You may want to set a delay or some condition here if both actions are required
+              setTimeout(() => {
+                window.location.replace(url + '/frontend/welcome');
+              }, 1000); // Adjust the delay as needed
+            }
+
+              
+          },
+          onError: (error) => {
+            console.error("this is Error:", error);
+          }
+        })
+    },
+    sendOTPforLogintoEmail() {
+      const us = createResource({
+        url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check",
+        makeParams: () => ({
+          doc: {
+            email: this.email
+          }
+        }),
+        auto: true,
+        onSuccess: (data) => {
+          console.log(data);
+          this.enter_otp=true
+          this.recievedOtp=data.email_otp
+        },
+        onError: (error) => {
+          console.error('Error:', error);
+          alert(`An error occurred: ${error.message}`);
+        }
+      });
+    },
+    checkUserExists(){
+      const user_exists = createResource({
+        url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.checkUserExists",
+        makeParams: () => ({
+          doc: {
+            email: this.email
+          }
+        }),
+        auto: true,
+        onSuccess: (data) => {
+          if (data){
+            console.log(data);
+            this.userExists=true
+            this.mobile_no=data.mobile_no
+          }else{
+            alert("User Not Registered")
+          }
+          
+        },
+        onError: (error) => {
+          console.error('Error:', error);
+          alert(`An error occurred: ${error.message}`);
+        }
+      });
+    },
+    send(){
+      console.log(this.email_otp_send)
+      if(this.email_otp_send=="otpSendtoEmail"){
+        this.sendOTPforLogintoEmail()
+      }
     }
-  },
+  }
   // updated() {
   //   if (this.emailotp) {
   //     if (this.recievedOtp == this.emailotp) {
