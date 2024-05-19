@@ -69,7 +69,18 @@
                   },
                   onError: (error) => {
                       console.error('Error:', error);
-                      alert(`An error occurred: ${error.message}`);
+                      // alert(`An error occurred: ${error.message}`);
+                      let url = window.location.origin;
+                      let targetPath='/frontend/codeofConduct'
+                      let targetUrl = url + targetPath;
+                      if (window.location.pathname !== targetPath) {
+                        window.location.replace(targetUrl);
+
+                        // Optionally reload the window after a short delay
+                        setTimeout(() => {
+                          window.location.reload();
+                        }, 500); // Adjust the delay as needed
+                      }
                   }
               });
         
