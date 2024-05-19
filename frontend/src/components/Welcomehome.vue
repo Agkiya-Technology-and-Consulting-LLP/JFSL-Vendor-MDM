@@ -77,3 +77,12 @@
 
     </div>
 </template>
+<style scoped>
+@media only screen and (max-width: 480px) {
+    .boxes{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+    }
+}
+</style>
