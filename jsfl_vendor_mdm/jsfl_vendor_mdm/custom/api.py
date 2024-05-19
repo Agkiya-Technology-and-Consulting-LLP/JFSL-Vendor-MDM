@@ -136,3 +136,17 @@ def checkUserExists(doc):
     user=frappe.db.exists("User",doc['email'])
     user_doc=frappe.get_doc("User",user)
     return user_doc
+
+@frappe.whitelist(allow_guest=True)
+def get_supplier_detail(doc):
+    supplier=frappe.get_doc("Supplier Clone",{"supplier_email_id":doc['email']})
+    print(f"<><><><><{supplier}")
+    return supplier
+
+@frappe.whitelist(allow_guest=True)
+def save_supplier_detail(doc):
+    supplier=frappe.get_doc("Supplier Clone",doc['docname'])
+    print(f"<><><><><{supplier}")
+    supplier.update(doc)
+    supplier.save(ignore_permissions=True)
+    return supplier

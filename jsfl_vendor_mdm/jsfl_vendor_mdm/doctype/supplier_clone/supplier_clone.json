@@ -13,6 +13,7 @@
   "related_party",
   "consent",
   "reason",
+  "supplier_email_id",
   "column_break_4scrt",
   "supplier_group",
   "supplier_type",
@@ -1167,12 +1168,18 @@
    "fieldname": "cin_attach",
    "fieldtype": "Attach",
    "label": "CIN"
+  },
+  {
+   "fieldname": "supplier_email_id",
+   "fieldtype": "Link",
+   "label": "Supplier Email Id",
+   "options": "User"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-06 17:17:10.793146",
+ "modified": "2024-05-18 16:06:16.027583",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

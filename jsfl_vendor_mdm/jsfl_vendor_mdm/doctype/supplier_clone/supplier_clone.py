@@ -53,33 +53,20 @@ class SupplierClone(Document):
         if self.date_of_establishment and getdate(self.date_of_establishment) > getdate():
             frappe.throw("Date of establishment cannot be greater than today's date.")  
         
-        if self.sent_back_by:
-            current_workflow_state = self.workflow_state
-            old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
-            if((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Approval Pending By L1 Manager") or(old_workflow_state == "Approval Pending By L1 Manager" and current_workflow_state == "Approval Pending By Company User Team") or (old_workflow_state == "Approval Pending By Company User Team" and current_workflow_state == "Saved")):
-                self.sent_back_by = frappe.session.user
-            else:
-               self.sent_back_by = " " 
-            # self.sent_back_by = frappe.session.user 
-            # roles = frappe.get_roles(frappe.session.user)
-            # roles_string = ",".join(roles)
-            # frappe.msgprint(roles_string)
-        else:
-            self.sent_back_by = " "
+        # if self.sent_back_by:
+        #     current_workflow_state = self.workflow_state
+        #     old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
+        #     if((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Approval Pending By L1 Manager") or(old_workflow_state == "Approval Pending By L1 Manager" and current_workflow_state == "Approval Pending By Company User Team") or (old_workflow_state == "Approval Pending By Company User Team" and current_workflow_state == "Saved")):
+        #         self.sent_back_by = frappe.session.user
+        #     else:
+        #        self.sent_back_by = " " 
+        #     # self.sent_back_by = frappe.session.user 
+        #     # roles = frappe.get_roles(frappe.session.user)
+        #     # roles_string = ",".join(roles)
+        #     # frappe.msgprint(roles_string)
+        # else:
+        #     self.sent_back_by = " "
 
-        if self.sent_back_by:
-            current_workflow_state = self.workflow_state
-            old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
-            if((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Approval Pending By L1 Manager") or(old_workflow_state == "Approval Pending By L1 Manager" and current_workflow_state == "Approval Pending By Company User Team") or (old_workflow_state == "Approval Pending By Company User Team" and current_workflow_state == "Saved")):
-                self.sent_back_by = frappe.session.user
-            else:
-               self.sent_back_by = " " 
-            # self.sent_back_by = frappe.session.user 
-            # roles = frappe.get_roles(frappe.session.user)
-            # roles_string = ",".join(roles)
-            # frappe.msgprint(roles_string)
-        else:
-            self.sent_back_by = " "
 
         current_workflow_state = self.workflow_state
         old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
