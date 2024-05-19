@@ -14,6 +14,8 @@
   "consent",
   "reason",
   "supplier_email_id",
+  "accept_code_of_conduct",
+  "accept_esg_policy",
   "column_break_4scrt",
   "supplier_group",
   "supplier_type",
@@ -1174,12 +1176,24 @@
    "fieldtype": "Link",
    "label": "Supplier Email Id",
    "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_code_of_conduct",
+   "fieldtype": "Check",
+   "label": "Accept Code of Conduct"
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_esg_policy",
+   "fieldtype": "Check",
+   "label": "Accept Esg Policy"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-18 16:06:16.027583",
+ "modified": "2024-05-19 16:37:28.984180",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

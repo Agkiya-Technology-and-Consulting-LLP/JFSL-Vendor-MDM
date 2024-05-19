@@ -150,3 +150,11 @@ def save_supplier_detail(doc):
     supplier.update(doc)
     supplier.save(ignore_permissions=True)
     return supplier
+
+@frappe.whitelist(allow_guest=True)
+def accept_code_of_conduct():
+    supplier =frappe.new_doc("Supplier Clone")
+    supplier.supplier_email_id=frappe.session.user
+    supplier.accept_code_of_conduct=1
+    supplier.insert(ignore_permissions=True, ignore_mandatory=True)
+    return supplier
