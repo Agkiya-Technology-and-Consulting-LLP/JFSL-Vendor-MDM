@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end mt-1 mb-3">
-                <Button type="button" class="savebutton">Save</Button>
+                <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
             </div>
             </div>
         </div>
@@ -88,6 +88,12 @@ export default {
             }
         }
     },
+    methods: {
+        ValidateEmail() { 
+            console.log('values is here', this.form);
+        }
+    }
+
 };
 </script>
 

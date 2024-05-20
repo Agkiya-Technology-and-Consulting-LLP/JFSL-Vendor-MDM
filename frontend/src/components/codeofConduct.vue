@@ -39,20 +39,21 @@ function logout() {
       session.logout.submit();
     }
 function accept_code_of_conduct(){
-  // const supplier = createResource({
-  //                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.accept_code_of_conduct",
-  //                 makeParams: () => ({
-  //                 }),
-  //                 auto: true,
-  //                 onSuccess: (data) => {
-  //                   console.log(data)
-  //                   let targetPath='/frontend/codeofConduct'
-  //                   let targetUrl = url + targetPath;
-  //                   window.location.replace(targetUrl);
-  //                 },onError :(error)=>{
-  //                   console.log(error)
-  //                 }
-  //               })
+  const supplier = createResource({
+                  url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.accept_code_of_conduct",
+                  makeParams: () => ({
+                  }),
+                  auto: true,
+                  onSuccess: (data) => {
+                    console.log(data)
+                    let url = window.location.origin;
+                    let targetPath='/frontend/privacyPolicy'
+                    let targetUrl = url + targetPath;
+                    window.location.replace(targetUrl);
+                  },onError :(error)=>{
+                    console.log(error)
+                  }
+                })
   console.log("LLLL")
 }
 const pdfUrl = "http://127.0.0.1:8001/files/document.pdf"; 

@@ -9,47 +9,52 @@
                 <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="company" class="form-label">Company</label>
-                        <input type="text" class="form-control" id="company" placeholder="Company">
+                        <select class="form-control" id="company" v-model="form.company">
+                            <option value="" disabled selected>Select Company</option>
+                            <option value="Agkiya">Agkiya</option>
+                            <option value="SMB">SMB</option>
+                            <!-- Add more options as needed -->
+                        </select>
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="companyName" class="form-label">Company Name</label>
-                        <input type="text" class="form-control" id="companyName" placeholder="Company Name">
+                        <input type="text" class="form-control" id="companyName" v-model="form.company_name" placeholder="Company Name">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="companyType" class="form-label">Company Type</label>
-                        <select name="" id="companyType" class="form-control">
+                        <select name="" id="companyType" class="form-control" v-model="form.company_type">
                             <option value="M/S">M/S</option>
                         </select>
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="registrationNumber" class="form-label">Company Registration Number</label>
-                        <input type="text" class="form-control" id="registrationNumber" placeholder="Company Number">
+                        <input type="text" class="form-control" id="registrationNumber" v-model="form.company_registration_number" placeholder="Company Number">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="Registration" class="form-label">Small Scale Industries Registration No.</label>
-                        <input type="text" class="form-control" id="Registration"
+                        <input type="text" class="form-control" id="Registration" v-model="form.small_scale_industries_registration_no"
                             placeholder="Small Scale Industries Registration No.">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="Establishment" class="form-label">Date Of Establishment</label>
-                        <input type="date" class="form-control" id="Establishment" placeholder="Date Of Establishment">
+                        <input type="date" class="form-control" id="Establishment" placeholder="Date Of Establishment" v-model="form.date_of_establishment">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="About Company" class="form-label">About Company</label>
-                        <input type="text" class="form-control" id="About Company" placeholder="About Company">
+                        <input type="text" class="form-control" id="About Company" v-model="form.about_company" placeholder="About Company">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="D & B-N-D-I Number" class="form-label">D & B-N-D-I Number</label>
-                        <input type="text" class="form-control" id="D & B-N-D-I Number"
+                        <input type="text" class="form-control" id="D & B-N-D-I Number" v-model="form.d_b_n_d_i_number"
                             placeholder="D & B-N-D-I Number">
                     </div>
                 </div>
@@ -57,12 +62,12 @@
                 <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="Logo" class="form-label">Logo</label>
-                        <input type="file" class="form-control" id="Logo">
+                        <input type="file" class="form-control"  id="Logo" >
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="Company Turnover" class="form-label">Company Turnover</label>
-                        <select name="" id="Company Turnover" class="form-control">
+                        <select name="" id="Company Turnover" class="form-control" v-model="form.company_turnover">
                             <option value="">>250000000</option>
                             <option value="">>10000000</option>
                             <option value="">>50000000</option>
@@ -72,7 +77,7 @@
 
                     <div class="col-md-3 mb-3">
                         <label for="Company Size" class="form-label">Company Size</label>
-                        <select name="" id="Company Size" class="form-control">
+                        <select name="" id="Company Size" class="form-control"  v-model="form.company_size">
                             <option value="">Large Scale</option>
                             <option value="">>Mid Scale</option>
                             <option value="">Small Scale</option>
@@ -82,7 +87,7 @@
 
                     <div class="col-md-3 mb-3">
                         <label for="Small Scale" class="form-label">Natl. Small Scale Industries Rg No.</label>
-                        <input type="text" class="form-control" id="Small Scale"
+                        <input type="text" class="form-control" id="Small Scale"  v-model="form.natl_small_scale_industries_registration_no"
                             placeholder="Small Scale registration no">
                     </div>
                 </div>
@@ -90,22 +95,22 @@
                 <div class="row mt-3">
                     <h6>Certification</h6>
                     <div class="col-md-3 mb-3">
-                        <input type="checkbox" class="form-check-input mr-2" id="iso 9001">
-                        <label for="iso 9001" class="form-check-label">ISO 9001-2000</label>
+                        <input type="checkbox" class="form-check-input mr-2" id="iso 9001" v-model="form.iso_9001_2000">
+                        <label for="iso 9001" class="form-check-label" >ISO 9001-2000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
-                        <input type="checkbox" id="iso 4000" class="form-check-input mr-2">
+                        <input type="checkbox" id="iso 4000" class="form-check-input mr-2" v-model="form.iso_4000">
                         <label for="iso 4000" class="form-check-label">ISO 4000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
-                        <input type="checkbox" id="HAS 18000" class="form-check-input mr-2">
+                        <input type="checkbox" id="HAS 18000" class="form-check-input mr-2" v-model="form.has_18000">
                         <label for="HAS 18000" class="form-check-label">HAS 18000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
-                        <input type="checkbox" id="Any" class="form-check-input mr-2">
+                        <input type="checkbox" id="Any" class="form-check-input mr-2" v-model="form.any_other_certification">
                         <label for="Any" class="form-check-label">Any other Certification</label>
                     </div>
                 </div>
@@ -117,18 +122,18 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="pan" class="form-label">Permanent account number</label>
-                        <input type="text" class="form-control" id="pan" placeholder="Enter PAN No">
+                        <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number" placeholder="Enter PAN No">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Ownership" class="form-label">Ownership information</label>
-                        <input type="text" class="form-control" id="Ownership" placeholder="Ownership information">
+                        <input type="text" class="form-control" id="Ownership" v-model="form.ownership_information" placeholder="Ownership information">
 
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Proprietor" class="form-label">Proprietor's Name</label>
-                        <input type="text" class="form-control" id="Proprietor" placeholder="Proprietor's Name">
+                        <input type="text" class="form-control" id="Proprietor" v-model="form.proprietors_name" placeholder="Proprietor's Name">
                     </div>
                 </div>
 
@@ -139,23 +144,23 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="GST" class="form-label">GST Registration Number</label>
-                        <input type="text" class="form-control" id="GST" placeholder="Enter GST No">
+                        <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="valid" class="form-label">GST valid from</label>
-                        <input type="date" class="form-control" id="valid">
+                        <input type="date" class="form-control" id="valid" v-model="form.gst_valid_from">
 
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="GST Status" class="form-label">GST Status</label>
-                        <input type="text" class="form-control" id="GST Status" placeholder="GST Status">
+                        <input type="text" class="form-control" id="GST Status" v-model="form.gst_status" placeholder="GST Status">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="GST Status " class="form-label">GST Status valid from</label>
-                        <input type="date" class="form-control" id="GST Status ">
+                        <input type="date" class="form-control" id="GST Status " v-model="form.gst_status_valid_from">
                     </div>
                 </div>
 
@@ -166,7 +171,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="CIN" class="form-label">CIN</label>
-                        <input type="text" class="form-control" id="CIN" placeholder="Enter CIN No">
+                        <input type="text" class="form-control" id="CIN" placeholder="Enter CIN No"  v-model="form.cin">
                     </div>
                 </div>
 
@@ -177,19 +182,19 @@
                 <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="Name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Name">
+                        <input type="text" class="form-control" id="Name" v-model="form.name_" placeholder="Name">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Address(Line 1)" class="form-label">Address(Line 1)</label>
-                        <input type="text" class="form-control" id="Address(Line 1)" placeholder="Address(Line 1)">
+                        <input type="text" class="form-control" id="Address(Line 1)" v-model="form.addressline_1" placeholder="Address(Line 1)">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Address(Line 2)" class="form-label">Address(Line 2)</label>
-                        <input type="text" class="form-control" id="Address(Line 2)" placeholder="Address(Line 2)">
+                        <input type="text" class="form-control" id="Address(Line 2)" v-model="form.addressline_2" placeholder="Address(Line 2)">
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Address(Line 3)" class="form-label">Address(Line 3)</label>
-                        <input type="text" class="form-control" id="Address(Line 3)" placeholder="Address(Line 3)">
+                        <input type="text" class="form-control" id="Address(Line 3)" v-model="form.addressline_3" placeholder="Address(Line 3)">
                     </div>
 
                 </div>
@@ -197,22 +202,22 @@
                 <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="Country" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="Country" placeholder="Country">
+                        <input type="text" class="form-control" id="Country" v-model="form.country"  placeholder="Country">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="City" class="form-label">City</label>
-                        <input type="text" class="form-control" id="City" placeholder="City">
+                        <input type="text" class="form-control" id="City" v-model="form.city" placeholder="City">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="" class="form-label">Region</label>
-                        <input type="text" class="form-control" id="Region" placeholder="Region">
+                        <input type="text" class="form-control" id="Region" v-model="form.region" placeholder="Region">
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="" class="form-label">Pincode</label>
-                        <input type="text" class="form-control" id="Pincode" placeholder="Pincode">
+                        <input type="text" class="form-control" id="Pincode"  v-model="form.pincode" placeholder="Pincode">
                     </div>
                 </div>
 
@@ -220,7 +225,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="Residential Status" class="form-label">Residential Status</label>
-                        <select name="Residential Status" id="Residential Status" class="form-control">
+                        <select name="Residential Status" id="Residential Status" class="form-control" v-model="form.residential_status">
                             <option value="">Resident of India</option>
                             <option value="">Non-Resident of India</option>
                             <option value="">Foreign company having branch in india</option>
@@ -228,25 +233,25 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="TIN" class="form-label">Tax Identification No. (TIN)</label>
-                        <input type="text" class="form-control" id="TIN" placeholder="TIN No">
+                        <input type="text" class="form-control" id="TIN" v-model="form.tax_identification_no_tin" placeholder="TIN No">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Permanent Account No." class="form-label">Permanent Account No.</label>
-                        <input type="text" class="form-control" id="Permanent Account No."
+                        <input type="text" class="form-control" id="Permanent Account No." v-model="form.permanent_account_no"
                             placeholder="Permanent Account No.">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Tax Category" class="form-label">Tax Category</label>
-                        <input type="text" class="form-control" id="Tax Category" placeholder="Tax Category">
+                        <input type="text" class="form-control" id="Tax Category" placeholder="Tax Category" v-model="form.tax_category">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Tax Withholding Category" class="form-label">Tax Withholding Category</label>
-                        <input type="text" class="form-control" id="Tax Withholding Category"
+                        <input type="text" class="form-control" id="Tax Withholding Category" v-model="form.tax_withholding_category"
                             placeholder="Tax Withholding Category">
                     </div>
                 </div>
@@ -260,7 +265,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="Supplier under VAT" class="form-label">Type of Supplier under VAT</label>
-                        <select name="Supplier under VAT" id="Supplier under VAT" class="form-control">
+                        <select name="Supplier under VAT" id="Supplier under VAT" class="form-control" v-model="form.type_of_supplier_under_vat">
                             <option value="">Registered Dealear</option>
                             <option value="">Un-Registered Dealear</option>
                             <option value="">Incentive Unit</option>
@@ -273,24 +278,24 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="CST Number" class="form-label">CST Number</label>
-                        <input type="text" class="form-control" id="CST Number" placeholder="CST Number">
+                        <input type="text" class="form-control" id="CST Number" v-model="form.cst_number" placeholder="CST Number">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="LST Number" class="form-label">LST Number</label>
-                        <input type="text" class="form-control" id="LST Number" placeholder="LST Number">
+                        <input type="text" class="form-control" id="LST Number" v-model="form.lst_number" placeholder="LST Number">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Date for CST" class="form-label">Registration Date for CST</label>
-                        <input type="date" class="form-control" id="Date for CST" placeholder="Date for CST">
+                        <input type="date" class="form-control" id="Date for CST"  v-model="form.resistration_date_cst" placeholder="Date for CST">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Date for LST" class="form-label">Registration Date for LST</label>
-                        <input type="date" class="form-control" id="Date for LST" placeholder="Date for LST">
+                        <input type="date" class="form-control" id="Date for LST" v-model="form.registration_date_lst" placeholder="Date for LST">
                     </div>
                 </div>
 
@@ -298,7 +303,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="ESI Number" class="form-label">ESI Number</label>
-                        <input type="text" class="form-control" id="ESI Number" placeholder="ESI Number">
+                        <input type="text" class="form-control" id="ESI Number" v-model="form.esi_number" placeholder="ESI Number">
                     </div>
                 </div>
 
@@ -306,7 +311,7 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="EPF Number" class="form-label">EPF Number</label>
-                        <input type="text" class="form-control" id="EPF Number" placeholder="EPF Number">
+                        <input type="text" class="form-control" id="EPF Number" v-model="form.epf_number" placeholder="EPF Number">
                     </div>
                 </div>
 
@@ -314,7 +319,7 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Enterprise type" class="form-label">Select your Enterprise type</label>
-                        <select name="Enterprise type" id="Enterprise type" class="form-control">
+                        <select name="Enterprise type" id="Enterprise type" v-model="form.select_your_enterprise_type" class="form-control">
                             <option value="">Micro Enterprise</option>
                             <option value="">Small Enterprise</option>
                             <option value="">Medium Enterprise</option>
@@ -323,13 +328,13 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="Certificate Number" class="form-label">MSME Certificate Number</label>
-                        <input type="text" class="form-control" id="Certificate Number"
+                        <input type="text" class="form-control" id="Certificate Number" v-model="form.msme_certificate_number"
                             placeholder="Certificate Number">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Udyam" class="form-label">Udyam Registration Number </label>
-                        <input type="text" class="form-control" id="Udyam" placeholder="Udyam">
+                        <input type="text" class="form-control" id="Udyam" placeholder="Udyam" v-model="form.udyam_registration_number">
                     </div>
                 </div>
 
@@ -337,7 +342,7 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Enterprise type" class="form-label">WCT</label>
-                        <input type="text" class="form-control" id="WCT" placeholder="WCT">
+                        <input type="text" class="form-control" id="WCT" v-model="form.wct" placeholder="WCT">
                     </div>
                 </div>
 
@@ -346,15 +351,220 @@
 
             </div>
             <div class="d-flex justify-content-end mt-1 mb-3">
-                <Button type="button" class="savebutton">Save</Button>
+                <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
 };
+</script> -->
+<script>
+import { ref, defineComponent, onMounted, reactive } from "vue";
+import { sessionUser } from "../data/session";
+import { createResource } from 'frappe-ui';
+
+
+
+export default defineComponent({
+    name: 'ContactDetails',
+    setup() {
+        const form = reactive({
+            company: '',
+            company_name: '',
+            company_type: '',
+            company_registration_number:'',
+            small_scale_industries_registration_no: '',
+            date_of_establishment: '',
+            docname:'',
+            about_company:'',
+            d_b_n_d_i_number:'',
+            company_turnover:'',
+            company_size:'',
+            natl_small_scale_industries_registration_no:'',
+            iso_9001_2000:'',
+            iso_4000:'',
+            has_18000:'',
+            any_other_certification:'',
+            permanent_account_number:'',
+            ownership_information:'',
+            proprietors_name:'',
+            gst_registration_number:'',
+            gst_valid_from:'',
+            gst_status:'',
+            gst_status_valid_from:'',
+            cin:'',
+            name_:'',
+            addressline_1:'',
+            addressline_2:'',
+            addressline_3:'',
+            country:'',
+            city:'',
+            region:'',
+            pincode :'',
+            residential_status:'',
+            tax_identification_no_tin:'',
+            permanent_account_no:'',
+            tax_category:'',
+            tax_withholding_category:'',
+            type_of_supplier_under_vat:'',
+            cst_number:'',
+            lst_number:'',
+            resistration_date_cst:'',
+            registration_date_lst:'',
+            esi_number:'',
+            epf_number:'',
+            select_your_enterprise_type:'',
+            msme_certificate_number :'',
+            udyam_registration_number: '',
+            wct:''
+            
+        });
+
+        const loginUser = sessionUser();
+
+        onMounted(() => {
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        email: loginUser
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                    console.log(data);
+                    form.company = data.company;
+                    form.company_name = data.company_name;
+                    form.company_type = data.company_type;
+                    form.company_registration_number = data.company_registration_number;
+                    form.small_scale_industries_registration_no = data.small_scale_industries_registration_no;
+                    form.date_of_establishment = data.date_of_establishment;
+                    form.about_company = data.about_company;
+                    form.d_b_n_d_i_number = data.d_b_n_d_i_number;
+                    form.company_turnover = data.company_turnover;
+                    form.company_size = data.company_size;
+                    form.natl_small_scale_industries_registration_no = data.natl_small_scale_industries_registration_no;
+                    form.iso_9001_2000 = data.iso_9001_2000;
+                    form.iso_4000=data.iso_4000
+                    form.has_18000=data.has_18000
+                    form.any_other_certification = data.any_other_certification
+                    form.permanent_account_number = data.permanent_account_number
+                    form.ownership_information = data.ownership_information
+                    form.proprietors_name = data.proprietors_name
+                    form.gst_registration_number =data.gst_registration_number
+                    form.gst_valid_from = data.gst_valid_from
+                    form.gst_status = data.gst_status
+                    form.gst_status_valid_from = data.gst_status_valid_from
+                    form.cin = data.cin
+                    form.name_ = data.name_
+                    form.addressline_1 =data.addressline_1
+                    form.addressline_2 =data.addressline_2
+                    form.addressline_3 =data.addressline_3
+                    form.country = data.country
+                    form.city = data.city
+                    form.region = data.region
+                    form.pincode = data.pincode
+                    form.residential_status = data.residential_status
+                    form.tax_identification_no_tin = data.tax_identification_no_tin,
+                    form.permanent_account_no = data.permanent_account_no
+                    form.tax_category = data.tax_category
+                    form.tax_withholding_category = data.tax_withholding_category
+                    form.type_of_supplier_under_vat = data.type_of_supplier_under_vat
+                    form.cst_number = data.cst_number
+                    form.lst_number=data.lst_number
+                    form.resistration_date_cst = data.resistration_date_cst
+                    form.registration_date_lst = data.registration_date_lst
+                    form.esi_number=data.esi_number
+                    form.epf_number = data.epf_number
+                    form.select_your_enterprise_type = data.select_your_enterprise_type
+                    form.msme_certificate_number = data.msme_certificate_number
+                    form.udyam_registration_number = data.udyam_registration_number
+                    form.wct = data.wct
+                    form.docname=data.name
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        const ValidateEmail = () => {
+            console.log('values are here', form);
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        company: form.company,
+                        company_name: form.company_name,
+                        company_type: form.company_type,
+                        company_registration_number: form.company_registration_number,
+                        small_scale_industries_registration_no: form.small_scale_industries_registration_no,
+                        docname:form.docname,
+                        date_of_establishment:form.date_of_establishment,
+                        about_company:form.about_company,
+                        d_b_n_d_i_number:form.d_b_n_d_i_number,
+                        company_turnover:form.company_turnover,
+                        company_size:form.company_size,
+                        natl_small_scale_industries_registration_no :form.natl_small_scale_industries_registration_no,
+                        iso_9001_2000 : form.iso_9001_2000,
+                        iso_4000:form.iso_4000,
+                        has_18000:form.has_18000,
+                        any_other_certification:form.any_other_certification,
+                        permanent_account_number :form.permanent_account_number,
+                        ownership_information:form.ownership_information,
+                        proprietors_name:form.proprietors_name,
+                        gst_registration_number:form.gst_registration_number,
+                        gst_valid_from:form.gst_valid_from,
+                        gst_status:form.gst_status,
+                        gst_status_valid_from:form.gst_status_valid_from,
+                        cin:form.cin,
+                        name_ :form.name_,
+                        addressline_1:form.addressline_1,
+                        addressline_2:form.addressline_2,
+                        addressline_3:form.addressline_3,
+                        country:form.country,
+                        city :form.city,
+                        region :form.region,
+                        pincode:form.pincode,
+                        residential_status :form.residential_status,
+                        tax_identification_no_tin : form.tax_identification_no_tin,
+                        permanent_account_no :form.permanent_account_no,
+                        tax_category:form.tax_category,
+                        tax_withholding_category :form.tax_withholding_category,
+                        type_of_supplier_under_vat :form.type_of_supplier_under_vat,
+                        cst_number:form.cst_number,
+                        lst_number:form.lst_number,
+                        resistration_date_cst:form.resistration_date_cst,
+                        registration_date_lst:form.registration_date_lst,
+                        esi_number:form.esi_number,
+                        epf_number:form.epf_number,
+                        select_your_enterprise_type:form.select_your_enterprise_type,
+                        msme_certificate_number : form.msme_certificate_number,
+                        udyam_registration_number: form.udyam_registration_number,
+                        wct:form.wct
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                    console.log(data)
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                    alert(`An error occurred: ${error.message}`);
+                }
+            });
+
+        };
+
+        return {
+            form,
+            ValidateEmail
+        };
+    }
+});
 </script>
 
 <style scoped>
