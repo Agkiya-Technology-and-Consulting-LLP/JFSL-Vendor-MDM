@@ -234,7 +234,7 @@ fixtures = [
     "Workflow Action Master"
 ]
 
-website_route_rules = [{'from_route': '/frontend/<path:app_path>', 'to_route': 'frontend'}, {'from_route': '/dashboard/<path:app_path>', 'to_route': 'dashboard'},]
+website_route_rules = [{'from_route': '/frontend/<path:app_path>', 'to_route': 'frontend'}]
 
 permission_query_conditions = {
     "Supplier Clone": "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.permissions.get_permission_query_conditions",

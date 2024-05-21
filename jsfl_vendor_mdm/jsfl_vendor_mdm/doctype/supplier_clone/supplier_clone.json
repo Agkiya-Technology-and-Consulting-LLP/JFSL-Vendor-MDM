@@ -13,6 +13,9 @@
   "related_party",
   "consent",
   "reason",
+  "supplier_email_id",
+  "accept_code_of_conduct",
+  "accept_esg_policy",
   "column_break_4scrt",
   "supplier_group",
   "supplier_type",
@@ -191,8 +194,7 @@
    "fieldname": "company_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Company Name",
-   "reqd": 1
+   "label": "Company Name"
   },
   {
    "fieldname": "about_company",
@@ -210,15 +212,13 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Company Type",
-   "options": "M/S",
-   "reqd": 1
+   "options": "M/S"
   },
   {
    "fieldname": "date_of_establishment",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date Of Establishment",
-   "reqd": 1
+   "label": "Date Of Establishment"
   },
   {
    "fieldname": "company_turnover",
@@ -268,8 +268,7 @@
    "depends_on": "applicable_pan",
    "fieldname": "permanent_account_number",
    "fieldtype": "Data",
-   "label": "Permanent account number ",
-   "reqd": 1
+   "label": "Permanent account number "
   },
   {
    "depends_on": "applicable_pan",
@@ -282,8 +281,7 @@
    "depends_on": "applicable_pan",
    "fieldname": "proprietors_name",
    "fieldtype": "Data",
-   "label": "Proprietor's Name",
-   "reqd": 1
+   "label": "Proprietor's Name"
   },
   {
    "collapsible": 1,
@@ -296,29 +294,25 @@
    "fieldname": "gst_status",
    "fieldtype": "Select",
    "label": "GST Status",
-   "options": "1. Normal Registered\n2. Composition\n3. Casual\n4. Non Resident\n5. Government/LocalAuthority\n6. SEZ\n7. EOU\n8. Unregistered\n9. overseas Vendor\nA. TAN Base GST\nB. Unknown\nZ. One Time GST Registered",
-   "reqd": 1
+   "options": "1. Normal Registered\n2. Composition\n3. Casual\n4. Non Resident\n5. Government/LocalAuthority\n6. SEZ\n7. EOU\n8. Unregistered\n9. overseas Vendor\nA. TAN Base GST\nB. Unknown\nZ. One Time GST Registered"
   },
   {
    "depends_on": "applicable_gst",
    "fieldname": "gst_status_valid_from",
    "fieldtype": "Date",
-   "label": "GST Status valid from",
-   "reqd": 1
+   "label": "GST Status valid from"
   },
   {
    "depends_on": "applicable_gst",
    "fieldname": "gst_valid_from",
    "fieldtype": "Date",
-   "label": "GST valid from",
-   "reqd": 1
+   "label": "GST valid from"
   },
   {
    "depends_on": "applicable_gst",
    "fieldname": "gst_registration_number",
    "fieldtype": "Data",
-   "label": "GST Registration Number",
-   "mandatory_depends_on": "eval:doc.gst_status === '1. Normal Registered'"
+   "label": "GST Registration Number"
   },
   {
    "collapsible": 1,
@@ -330,8 +324,7 @@
    "depends_on": "applicable_address",
    "fieldname": "addressline_1",
    "fieldtype": "Data",
-   "label": "Address(Line 1)",
-   "reqd": 1
+   "label": "Address(Line 1)"
   },
   {
    "depends_on": "applicable_address",
@@ -350,30 +343,26 @@
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
-   "options": "Country",
-   "reqd": 1
+   "options": "Country"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "region",
    "fieldtype": "Data",
    "label": "Region",
-   "read_only_depends_on": "eval: doc.country == ''",
-   "reqd": 1
+   "read_only_depends_on": "eval: doc.country == ''"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "city",
    "fieldtype": "Data",
-   "label": "City",
-   "reqd": 1
+   "label": "City"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "pincode",
    "fieldtype": "Data",
-   "label": "Pincode",
-   "reqd": 1
+   "label": "Pincode"
   },
   {
    "collapsible": 1,
@@ -385,14 +374,13 @@
    "fieldname": "residential_status",
    "fieldtype": "Select",
    "label": "Residential Status",
-   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India",
-   "reqd": 1
+   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India"
   },
   {
    "fieldname": "permanent_account_no",
    "fieldtype": "Data",
    "label": "Permanent Account No.",
-   "mandatory_depends_on": "eval:doc.residential_status === 'Resident of India' ||doc.residential_status === 'Foreign Company Having Branch in India'\n\n"
+   "mandatory_depends_on": "\n"
   },
   {
    "fieldname": "tax_identification_no_tin",
@@ -460,8 +448,7 @@
    "description": "for LST Number",
    "fieldname": "lst_number",
    "fieldtype": "Data",
-   "label": "LST Number",
-   "reqd": 1
+   "label": "LST Number"
   },
   {
    "depends_on": "applicable_sales",
@@ -503,8 +490,7 @@
   {
    "fieldname": "udyam_registration_number",
    "fieldtype": "Data",
-   "label": "Udyam Registration Number ",
-   "reqd": 1
+   "label": "Udyam Registration Number "
   },
   {
    "fieldname": "column_break_rdw0v",
@@ -526,29 +512,25 @@
    "default": "1",
    "fieldname": "applicable_gst",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "default": "1",
    "fieldname": "applicable_other",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "default": "1",
    "fieldname": "applicable_esi",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "default": "1",
    "fieldname": "applicable_pf",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "fieldname": "column_break_uqhzm",
@@ -566,8 +548,7 @@
    "default": "1",
    "fieldname": "applicable_sales",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "fieldname": "column_break_fc3ph",
@@ -627,16 +608,14 @@
    "depends_on": "applicable_address",
    "fieldname": "name_",
    "fieldtype": "Data",
-   "label": "Name ",
-   "reqd": 1
+   "label": "Name "
   },
   {
    "collapsible_depends_on": "applicable",
    "default": "1",
    "fieldname": "applicable_pan",
    "fieldtype": "Check",
-   "label": "Applicable",
-   "reqd": 1
+   "label": "Applicable"
   },
   {
    "default": "1",
@@ -760,8 +739,7 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company",
-   "reqd": 1
+   "options": "Company"
   },
   {
    "allow_on_submit": 1,
@@ -780,8 +758,7 @@
   {
    "fieldname": "supplier_name",
    "fieldtype": "Data",
-   "label": "Supplier Name ",
-   "reqd": 1
+   "label": "Supplier Name "
   },
   {
    "fieldname": "related_party",
@@ -807,15 +784,13 @@
    "fieldname": "supplier_group",
    "fieldtype": "Link",
    "label": "Supplier Group",
-   "options": "Supplier Group",
-   "reqd": 1
+   "options": "Supplier Group"
   },
   {
    "fieldname": "supplier_type",
    "fieldtype": "Select",
    "label": "Supplier Type",
-   "options": "\nCompany\nIndividual\nFirm\nHindu Undivided Family\nTRUST\nBody of Individuals\nAssociation of Persons\nArtificial Juridical Person\nLocal Authority\nGovernment\nNon PAN",
-   "reqd": 1
+   "options": "\nCompany\nIndividual\nFirm\nHindu Undivided Family\nTRUST\nBody of Individuals\nAssociation of Persons\nArtificial Juridical Person\nLocal Authority\nGovernment\nNon PAN"
   },
   {
    "default": "0",
@@ -1000,8 +975,7 @@
    "fieldname": "salutation",
    "fieldtype": "Select",
    "label": "Salutation",
-   "options": "Mr\nMrs\nMs",
-   "reqd": 1
+   "options": "Mr\nMrs\nMs"
   },
   {
    "fieldname": "column_break_96fsu",
@@ -1045,20 +1019,17 @@
   {
    "fieldname": "account_number",
    "fieldtype": "Data",
-   "label": "Account Number",
-   "reqd": 1
+   "label": "Account Number"
   },
   {
    "fieldname": "confirm_account_number",
    "fieldtype": "Data",
-   "label": "Confirm Account Number",
-   "reqd": 1
+   "label": "Confirm Account Number"
   },
   {
    "fieldname": "ifsc_code",
    "fieldtype": "Data",
-   "label": "IFSC Code",
-   "reqd": 1
+   "label": "IFSC Code"
   },
   {
    "fieldname": "column_break_h3zvt",
@@ -1067,8 +1038,7 @@
   {
    "fieldname": "name_of_bank",
    "fieldtype": "Data",
-   "label": "Name Of Bank",
-   "reqd": 1
+   "label": "Name Of Bank"
   },
   {
    "fieldname": "branch_contact_number",
@@ -1167,12 +1137,30 @@
    "fieldname": "cin_attach",
    "fieldtype": "Attach",
    "label": "CIN"
+  },
+  {
+   "fieldname": "supplier_email_id",
+   "fieldtype": "Link",
+   "label": "Supplier Email Id",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_code_of_conduct",
+   "fieldtype": "Check",
+   "label": "Accept Code of Conduct"
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_esg_policy",
+   "fieldtype": "Check",
+   "label": "Accept Esg Policy"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-06 17:17:10.793146",
+ "modified": "2024-05-20 00:08:20.301539",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
