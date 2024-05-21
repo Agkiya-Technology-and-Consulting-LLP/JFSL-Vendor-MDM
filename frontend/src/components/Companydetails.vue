@@ -785,7 +785,7 @@ watch(()=>form.company_turnover,
         console.log(value)
         if(value == ">250000000"){
             form.company_size ="Large Scale"
-        }else if(value == ">10000000"){
+        }else if(value == ">100000000"){
             form.company_size ="Mid Scale"
         }else if(value == ">50000000"){
             form.company_size ="Small Scale"
