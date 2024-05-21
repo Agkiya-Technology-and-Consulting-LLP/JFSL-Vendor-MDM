@@ -56,5 +56,5 @@ function accept_code_of_conduct(){
                 })
   console.log("LLLL")
 }
-const pdfUrl = "http://127.0.0.1:8001/files/document.pdf"; 
+const pdfUrl = "https://uat-jfsl-mdm.frappe.cloud/files/document.pdf"; 
 </script>
