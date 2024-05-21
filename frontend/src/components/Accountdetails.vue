@@ -89,9 +89,11 @@
 </template>
 
 <script>
-import { ref, defineComponent, onMounted, reactive } from "vue";
+import { ref, defineComponent, onMounted, reactive, watch } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
+
+import { toast } from 'wc-toast';
 
 
 
@@ -170,6 +172,7 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
+                    // handleToast()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -178,7 +181,42 @@ export default defineComponent({
             });
 
         };
+        watch( ()=>form.ifsc_code,
+            (value)=>{
+                console.log(value)
+                if(value){
+                    try {
+                    const response =  createResource({
+                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_bank_details',
+                        makeParams:()=>({
+                            data: {
+                            ifscCode: value
+                        },
+                        }),
+                        auto: true,
+                        onSuccess :(data)=>{
+                            console.log(data)
+                            form.name_of_bank = data.result.bank;
+                            form.bank_address = data.result.address;
+                            form.state =data.result.state
+                            form.city=data.result.city
 
+                        },onError :(error)=>{
+                            console.log(error)
+                        }
+                    });
+
+                } catch (error) {
+                    console.error('Error fetching bank details:', error);
+                }
+                }
+
+                
+        })
+        
+        // function  handleToast() {
+        //         toast('Hello!');
+        //     }
         return {
             form,
             ValidateEmail

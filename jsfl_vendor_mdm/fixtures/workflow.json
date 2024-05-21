@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Supplier Clone",
   "is_active": 1,
-  "modified": "2024-04-20 17:59:38.767295",
+  "modified": "2024-05-21 12:51:30.902408",
   "name": "Approval of Supplier Clone",
   "override_status": 0,
   "send_email_alert": 0,
@@ -21,7 +21,8 @@
     "parenttype": "Workflow",
     "state": "Saved",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "Company User Team",
@@ -35,7 +36,8 @@
     "parenttype": "Workflow",
     "state": "Approval Pending By Company User Team",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "L1 Manager",
@@ -49,7 +51,8 @@
     "parenttype": "Workflow",
     "state": "Approval Pending By L1 Manager",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "MDM Manager",
@@ -63,12 +66,13 @@
     "parenttype": "Workflow",
     "state": "Approval Pending By MDM Manager",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "MDM Manager",
     "avoid_status_override": 0,
-    "doc_status": "1",
+    "doc_status": "0",
     "is_optional_state": 0,
     "message": null,
     "next_action_email_template": null,
@@ -77,7 +81,8 @@
     "parenttype": "Workflow",
     "state": "Approved",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "Company User Team",
@@ -91,7 +96,8 @@
     "parenttype": "Workflow",
     "state": "Pushed Back By MDM Manager",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    },
    {
     "allow_edit": "Company User Team",
@@ -105,7 +111,8 @@
     "parenttype": "Workflow",
     "state": "Pushed Back By L1 Manager",
     "update_field": null,
-    "update_value": null
+    "update_value": null,
+    "workflow_builder_id": null
    }
   ],
   "transitions": [
@@ -118,7 +125,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Saved"
+    "state": "Saved",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -129,7 +137,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By Company User Team"
+    "state": "Approval Pending By Company User Team",
+    "workflow_builder_id": null
    },
    {
     "action": "Push Back To Supplier",
@@ -140,7 +149,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By Company User Team"
+    "state": "Approval Pending By Company User Team",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -151,7 +161,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By L1 Manager"
+    "state": "Approval Pending By L1 Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Push Back To Company User Team",
@@ -162,7 +173,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By L1 Manager"
+    "state": "Approval Pending By L1 Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -173,7 +185,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Pushed Back By L1 Manager"
+    "state": "Pushed Back By L1 Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Push Back To Supplier",
@@ -184,7 +197,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Pushed Back By L1 Manager"
+    "state": "Pushed Back By L1 Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -195,7 +209,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By MDM Manager"
+    "state": "Approval Pending By MDM Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Push Back To Company User Team",
@@ -206,7 +221,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Approval Pending By MDM Manager"
+    "state": "Approval Pending By MDM Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Approve",
@@ -217,7 +233,8 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Pushed Back By MDM Manager"
+    "state": "Pushed Back By MDM Manager",
+    "workflow_builder_id": null
    },
    {
     "action": "Push Back To Supplier",
@@ -228,9 +245,11 @@
     "parent": "Approval of Supplier Clone",
     "parentfield": "transitions",
     "parenttype": "Workflow",
-    "state": "Pushed Back By MDM Manager"
+    "state": "Pushed Back By MDM Manager",
+    "workflow_builder_id": null
    }
   ],
+  "workflow_data": null,
   "workflow_name": "Approval of Supplier Clone",
   "workflow_state_field": "workflow_state"
  }

@@ -26,9 +26,9 @@
                     <div class="d-flex flex-col w-48 h-48 border-dashed border-1 border-gray-500 rounded p-2">
                         <span class="text-white bg-gray-500 w-14 p-0.5 rounded"><small>Pending</small></span>
                         <i class="h-16 mt-6 text-blue-500 fa-solid fa-business-time"></i>
-                        <h5 class="text-blue-500 text-center mt-4">Category Business</h5>
+                        <h5 class="text-blue-500 text-center mt-4">Supplier Details</h5>
                     </div>
-                    <p class="text-center text-gray-700 font-medium"><small>Select nature of business</small></p>
+                    <p class="text-center text-gray-700 font-medium"><small>Update your Supplier information</small></p>
                 </div>
             </router-link>
 

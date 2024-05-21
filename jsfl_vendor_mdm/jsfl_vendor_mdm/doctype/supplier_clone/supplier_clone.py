@@ -101,3 +101,6 @@ class SupplierClone(Document):
                 frappe.throw("Please Check L1 Manager Check")
             if not self.mdm_manager_check and self.workflow_state =='Approved':
                 frappe.throw("Please Check MDM Manager Check ")
+
+    def before_insert(self):
+        self.timestamp = frappe.utils.now()
