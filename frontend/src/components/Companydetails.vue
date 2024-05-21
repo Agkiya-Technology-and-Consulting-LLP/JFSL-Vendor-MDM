@@ -125,12 +125,12 @@
                     <h6>Certification</h6>
                     <div class="col-md-3 mb-3">
                         <input type="checkbox" class="form-check-input mr-2" id="iso 9001" v-model="form.iso_9001_2000">
-                        <label for="iso 9001" class="form-check-label" >ISO 9001-2000</label>
+                        <label for="iso 9001" class="form-check-label"  >ISO 9001-2000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <input type="checkbox" id="iso 4000" class="form-check-input mr-2" v-model="form.iso_4000">
-                        <label for="iso 4000" class="form-check-label">ISO 4000</label>
+                        <label for="iso 4000" class="form-check-label" >ISO 4000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
@@ -196,8 +196,22 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="GST Status" class="form-label">GST Status<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="GST Status" v-model="form.gst_status"
-                            placeholder="GST Status">
+                        <!-- <input type="text" class="form-control" id="GST Status" v-model="form.gst_status"
+                            placeholder="GST Status"> -->
+                        <select name="gst_status" id="gst_status" class="form-control"  v-model="form.gst_status">
+                            <option value="1. Normal Registered">1. Normal Registered</option>
+                            <option value="2. Composition">2. Composition</option>
+                            <option value="3. Casual">3. Casual</option>
+                            <option value="5. Government/LocalAuthority">5. Government/LocalAuthority</option>
+                            <option value="6. SEZ">6. SEZ</option>
+                            <option value="7. EOU">7. EOU</option>
+                            <option value="8. Unregistered">8. Unregistered</option>
+                            <option value="9. overseas Vendor">9. overseas Vendor</option>
+                            <option value="A. TAN Base GST">A. TAN Base GST</option>
+                            <option value="B. Unknown">B. Unknown</option>
+                            <option value="Z. One Time GST Registered">Z. One Time GST Registered</option>
+
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -283,9 +297,9 @@
                             <label for="Residential Status" class="form-label">Residential Status</label>
                             <select name="Residential Status" id="Residential Status" class="form-control"
                                 v-model="form.residential_status">
-                                <option value="">Resident of India</option>
-                                <option value="">Non-Resident of India</option>
-                                <option value="">Foreign company having branch in india</option>
+                                <option value="Resident of India">Resident of India</option>
+                                <option value="Non-Resident of India">Non-Resident of India</option>
+                                <option value="Foreign company having branch in india">Foreign company having branch in india</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -304,8 +318,17 @@
 
                         <div class="col-md-4 mb-3">
                             <label for="Tax Category" class="form-label">Tax Category</label>
-                            <input type="text" class="form-control" id="Tax Category" placeholder="Tax Category"
+                            <!-- <input type="text" class="form-control" id="Tax Category" placeholder="Tax Category"
+                                v-model="form.tax_category"> -->
+
+                            <select name="tax_category" id="tax_category" class="form-control"
                                 v-model="form.tax_category">
+                                <option value="Registered Composition">Registered Composition</option>
+                                <option value="Reverse Charge Out-State">Reverse Charge Out-State</option>
+                                <option value="Reverse Charge In-State">Reverse Charge In-State</option>
+                                <option value="Out-State">Out-State</option>
+                                <option value="In-State">In-State</option>
+                            </select>
                         </div>
 
                         <div class="col-md-4 mb-3">
@@ -332,14 +355,14 @@
                                 VAT</label>
                             <select name="Supplier under VAT" id="Supplier under VAT" class="form-control"
                                 v-model="form.type_of_supplier_under_vat">
-                                <option value="">Registered Dealer</option>
-                                <option value="">Un-Registered Dealer</option>
-                                <option value="">Incentive Unit</option>
-                                <option value="">Notified oil company</option>
-                                <option value="">SEZ unit</option>
-                                <option value="">EQU</option>
-                                <option value="">Vendor under threshold unit</option>
-                                <option value="">Foreign Unit</option>
+                                <option value="Registered Dealer">Registered Dealer</option>
+                                <option value="Unregistered Dealer">Unregistered Dealer</option>
+                                <option value="Incentive Unit">Incentive Unit</option>
+                                <option value="Notified Oil Company">Notified Oil Company</option>
+                                <option value="SEZ unit">SEZ unit</option>
+                                <option value="EQU">EQU</option>
+                                <option value="Vendor under threshold unit">Vendor under threshold unit</option>
+                                <option value="Foreign vendor">Foreign vendor</option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -395,9 +418,9 @@
                             <label for="Enterprise type" class="form-label">Select your Enterprise type</label>
                             <select name="Enterprise type" id="Enterprise type"
                                 v-model="form.select_your_enterprise_type" class="form-control">
-                                <option value="">Micro Enterprise</option>
-                                <option value="">Small Enterprise</option>
-                                <option value="">Medium Enterprise</option>
+                                <option value="Micro Enterprise">Micro Enterprise</option>
+                                <option value="Small Enterprise">Small Enterprise</option>
+                                <option value="Medium Enterprise">Medium Enterprise</option>
                             </select>
                         </div>
 
@@ -432,6 +455,28 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Tost Message -->
+    <div
+      class="toast align-items-center text-white bg-success  border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Details Saved Sucessfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
 </template>
 
 <!-- <script>
@@ -442,6 +487,7 @@ export default {
 import { ref, defineComponent, onMounted,watch, reactive,computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
+const showToast = ref(false);
 
 
 
@@ -484,10 +530,10 @@ export default defineComponent({
             company_turnover: '',
             company_size: '',
             natl_small_scale_industries_registration_no: '',
-            iso_9001_2000: '',
-            iso_4000: '',
-            has_18000: '',
-            any_other_certification: '',
+            iso_9001_2000: 0,
+            iso_4000: 0,
+            has_18000: 0,
+            any_other_certification: 0,
             permanent_account_number: '',
             ownership_information: '',
             proprietors_name: '',
@@ -554,10 +600,19 @@ export default defineComponent({
                     form.company_turnover = data.company_turnover;
                     form.company_size = data.company_size;
                     form.natl_small_scale_industries_registration_no = data.natl_small_scale_industries_registration_no;
-                    form.iso_9001_2000 = data.iso_9001_2000;
-                    form.iso_4000 = data.iso_4000
-                    form.has_18000 = data.has_18000
-                    form.any_other_certification = data.any_other_certification
+                    if(data.iso_9001_2000){
+                        form.iso_9001_2000 = true
+                    }
+                    if(data.iso_4000){
+                        form.iso_4000 = true
+                    }
+                    if(data.has_18000){
+                        form.has_18000 = true
+                    }
+                    if(data.any_other_certification){
+                        form.any_other_certification = true
+                    }
+                    
                     form.permanent_account_number = data.permanent_account_number
                     form.ownership_information = data.ownership_information
                     form.proprietors_name = data.proprietors_name
@@ -598,10 +653,17 @@ export default defineComponent({
                 }
             });
         });
-        const file =()=>{
-            const myElement = document.getElementById("logo");
-            console.log(myElement)
-        }
+        const showToastMessage = () => {
+            showToast.value = true;
+            console.log("Details saved successfully");
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+        };
         const ValidateEmail = () => {
             console.log('values are here', form);
             const supplier = createResource({
@@ -661,7 +723,7 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
-                    alert("Details Saved Sucessfully")
+                    showToastMessage()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -746,6 +808,9 @@ watch(()=>form.company_turnover,
             toggleCollapse4,
             touched,
             isValid,
+            hideToast,
+            showToastMessage,
+            showToast
         };
     }
 });
@@ -799,5 +864,26 @@ h6 {
 :disabled{
     background-color: grey;
     cursor:not-allowed;
+}
+
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>

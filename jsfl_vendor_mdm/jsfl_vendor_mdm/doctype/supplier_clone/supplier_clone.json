@@ -27,6 +27,7 @@
   "einvoice_applicable",
   "is_transporter",
   "image",
+  "is_company_part_of_reliance_company",
   "defaults_section",
   "billing_currency",
   "price_list",
@@ -999,8 +1000,9 @@
   },
   {
    "fieldname": "contact_number",
-   "fieldtype": "Phone",
-   "label": "Contact Number"
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "options": "Phone"
   },
   {
    "fieldname": "email_id",
@@ -1144,7 +1146,8 @@
    "fieldname": "supplier_email_id",
    "fieldtype": "Link",
    "label": "Supplier Email Id",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -1171,12 +1174,18 @@
    "fieldtype": "Datetime",
    "label": "Timestamp",
    "read_only": 1
+  },
+  {
+   "fieldname": "is_company_part_of_reliance_company",
+   "fieldtype": "Select",
+   "label": "Is company part of reliance company",
+   "options": "Yes\nNo"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 13:02:42.702754",
+ "modified": "2024-05-21 23:58:16.800472",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
@@ -1200,7 +1209,6 @@
    "export": 1,
    "if_owner": 1,
    "print": 1,
-   "read": 1,
    "report": 1,
    "role": "Guest_supplier",
    "share": 1

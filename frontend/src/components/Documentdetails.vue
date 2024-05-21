@@ -61,52 +61,47 @@
                         <input type="file" class="form-control" id="LST/CST" v-on:change="form.lstCst">
                     </div>
                 </div>
-
-                <div class="d-flex justify-content-end mt-1 mb-3">
+                <div class="row">
+                <div class="d-flex justify-content-end mt-1 mb-3 col-11">
                 <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
             </div>
 
-            <div class="d-flex justify-content-end mt-1 mb-3">
+            <div class="d-flex justify-content-end mt-1 mb-3 col-1 ">
                 <Button type="button" class="savebutton" @click="submit()">Submit</Button>
             </div>
+        </div>
             </div>
         </div>
     </div>
-</template>
-<!-- 
-<script>
-export default {
-    name: 'Documents',
-    data() {
-        return {
-            form: {
-                addressProof: '',
-                msmedUdyamNumber: '',
-                panAadhar: '',
-                esic: '',
-                pf: '',
-                tinUin: '',
-                gst: '',
-                cin: '',
-                lstCst: '',
-            }
-        }
-    },
-    methods: {
-        ValidateEmail() { 
-            console.log('values is here', this.form);
-        },
-        submit(){
-            console.log("1")
-        }
-    }
 
-};
-</script> -->
+
+<!-- Tost Message -->
+    <div
+      class="toast align-items-center text-white bg-success  border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Details Submitted Sucessfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+</template>
+
 <script>
 import { ref, defineComponent, onMounted, reactive } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
+const showToast = ref(false);
 
 export default defineComponent({
     name: 'ContactDetails',
@@ -179,7 +174,8 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
-                    alert("Details Submitted Sucessfully")
+                    // alert("Details Submitted Sucessfully")
+                    showToastMessage()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -187,10 +183,24 @@ export default defineComponent({
                 }
             });
         }
+        const showToastMessage = () => {
+            showToast.value = true;
+            console.log("Details saved successfully");
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+        };
         return {
             form,
             ValidateEmail,
-            submit
+            submit,
+            hideToast,
+            showToastMessage,
+            showToast
         };
     }
 });
@@ -220,5 +230,25 @@ label{
 h6{
     color: #2e6bdc;
     font-weight: bolder;
+}
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>
