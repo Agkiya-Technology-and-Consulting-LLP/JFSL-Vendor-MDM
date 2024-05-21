@@ -97,7 +97,7 @@
                         <label for="Company Turnover" class="form-label">Company Turnover</label>
                         <select name="" id="Company Turnover" class="form-control" v-model="form.company_turnover">
                             <option value=">250000000">>250000000</option>
-                            <option value=">10000000">>10000000</option>
+                            <option value=">100000000">>100000000</option>
                             <option value=">50000000">>50000000</option>
                             <option value="<5000000"><5000000 </option>
                         </select>
