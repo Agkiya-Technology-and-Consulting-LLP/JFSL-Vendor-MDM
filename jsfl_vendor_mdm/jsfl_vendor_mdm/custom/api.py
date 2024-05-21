@@ -19,6 +19,7 @@ def new(doc):
 def new_user(doc):
     new_doc=frappe.new_doc("User")
     new_doc.update(doc)
+    new_doc.append_roles("Guest_supplier")
     new_doc.insert(ignore_permissions=True)
     return new_doc
 

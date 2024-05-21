@@ -125,7 +125,7 @@
                     <h6>Certification</h6>
                     <div class="col-md-3 mb-3">
                         <input type="checkbox" class="form-check-input mr-2" id="iso 9001" v-model="form.iso_9001_2000">
-                        <label for="iso 9001" class="form-check-label">ISO 9001-2000</label>
+                        <label for="iso 9001" class="form-check-label" >ISO 9001-2000</label>
                     </div>
 
                     <div class="col-md-3 mb-3">
