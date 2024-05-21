@@ -5,11 +5,11 @@ frappe.ui.form.on('Supplier Clone', {
 	company_turnover: function(frm) {
         var turnover = frm.doc.company_turnover; 
         var company_size ;
-        if (turnover === '> 250000000') {
+        if (turnover === '>250000000') {
             company_size = 'Large Scale';
-        } else if (turnover === '> 100000000') {
+        } else if (turnover === '>100000000') {
             company_size = 'Mid Scale';
-        } else if (turnover === '> 50000000') {
+        } else if (turnover === '>50000000') {
             company_size = 'Small Scale';
         } else {
             company_size = 'Micro';
@@ -21,11 +21,11 @@ frappe.ui.form.on('Supplier Clone', {
         var size = frm.doc.company_size; 
         var turnover ;
         if (size === 'Large Scale') {
-            turnover = '> 250000000';
+            turnover = '>250000000';
         } else if (size === 'Mid Scale') {
-            turnover = '> 100000000';
+            turnover = '>100000000';
         } else if (size === 'Small Scale') {
-            turnover = '> 50000000';
+            turnover = '>50000000';
         } else {
             turnover = '<50000000';
         }
@@ -46,19 +46,19 @@ frappe.ui.form.on('Supplier Clone', {
         if(frm.doc.company_user){
             if (frappe.session.user !== frm.doc.company_user && frm.doc.company_user_check && (frm.doc.workflow_state=='Approval Pending By Company User Team'|| frm.doc.workflow_state=='Pushed Back By L1 Manager')) {
                 
-                frappe.msgprint(__("Warning: This form was viewed by a another user ({0})", [frm.doc.company_user]));
+                frappe.throw(__("Warning: This form was viewed by a another user ({0})", [frm.doc.company_user]));
             }
         }
         if (frm.doc.l1_manager){
             if (frappe.session.user !== frm.doc.l1_manager && frm.doc.l1_manager_check && (frm.doc.workflow_state=='Approval Pending By L1 Manager')) {
                 
-                frappe.msgprint(__("Warning: This form was viewed by a another user ({0})", [frm.doc.l1_manager]));
+                frappe.throw(__("Warning: This form was viewed by a another user ({0})", [frm.doc.l1_manager]));
             }
         }
         if(frm.doc.mdm_manager){
             if (frappe.session.user !== frm.doc.mdm_manager && frm.doc.mdm_manager_check && (frm.doc.workflow_state=='Approval Pending By MDM Manager')) {
                 
-                frappe.msgprint(__("Warning: This form was viewed by a another user ({0})", [frm.doc.mdm_manager]));
+                frappe.throw(__("Warning: This form was viewed by a another user ({0})", [frm.doc.mdm_manager]));
             }
         }
     }

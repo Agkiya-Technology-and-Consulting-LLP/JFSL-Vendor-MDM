@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+
                 <div class="bg-primary text-white p-1 rounded-top">
                     <h5>Select the Primary Company you are registering for</h5>
                 </div>
@@ -12,30 +13,32 @@
                             <option value="" disabled selected>Select Company</option>
                             <option value="Agkiya">Agkiya</option>
                             <option value="SMB">SMB</option>
-                            <!-- Add more options as needed -->
+                            <option value="Jio Finanace Limited">Jio Finanace Limited</option>
+                            <option value="Jio Information Aggregator Services Ltd">Jio Information Aggregator Services Ltd</option>
+                            <option value="JIO Insurance Broking Limited">JIO Insurance Broking Limited</option>
+                            <option value="Jio Payment Solutions Limited">Jio Payment Solutions Limited</option>
+                            <option value="JIO Payments Bank Limited">JIO Payments Bank Limited</option>
+                            <option value="Petroleum Trust">Petroleum Trust</option>
+                            <option value="JIO INFRASTRUCTURE MANAGEMENT SERVICE LIMITED">JIO INFRASTRUCTURE MANAGEMENT SERVICE LIMITED</option>
+                            <option value="Reliance Services and Holding Limited">Reliance Services and Holding Limited</option>
+                            <option value="Reliance Strategic Investments Limited">Reliance Strategic Investments Limited</option>
+
                         </select>
                     </div>
+                    <div class="col-md-9 mb-3 mt-4">
+                        <p>Select Comapny you are registering for</p>
+                    </div>
+                    
                     </div>
 
-
-
-
-                <div class="bg-primary text-white p-1 rounded-top">
+                    <div class="bg-primary text-white p-1 rounded-top">
                     <h5>Company Details</h5>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-3 mb-3">
-                        <label for="company" class="form-label">Company</label>
-                        <select class="form-control" id="company" v-model="form.company">
-                            <option value="" disabled selected>Select Company</option>
-                            <option value="Agkiya">Agkiya</option>
-                            <option value="SMB">SMB</option>
-                            <!-- Add more options as needed -->
-                        </select>
-                    </div>
+                    
 
-                    <div class="col-md-3 mb-3" :class="{ 'has-error': touched.company_name && !form.company_name }">
+                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.company_name && !form.company_name }">
                         <label for="companyName" class="form-label">Company Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="companyName" v-model="form.company_name"
                             placeholder="Company Name" @blur="touched.company_name = true">
@@ -44,14 +47,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="companyType" class="form-label">Company Type<span class="text-danger">*</span></label>
                         <select name="" id="companyType" class="form-control" v-model="form.company_type">
                             <option value="M/S">M/S</option>
                         </select>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="registrationNumber" class="form-label">Company Registration Number</label>
                         <input type="text" class="form-control" id="registrationNumber"
                             v-model="form.company_registration_number" placeholder="Company Number">
@@ -73,9 +76,8 @@
                     </div>
 
                     <div class="col-md-3 mb-3">
-                        <label for="About Company" class="form-label">About Company</label>
-                        <input type="text" class="form-control" id="About Company" v-model="form.about_company"
-                            placeholder="About Company">
+                        <label for="about_company" class="form-label">About Company</label>
+                        <textarea class="form-control" id="about_company" v-model="form.about_company" placeholder="About Company"></textarea>
                     </div>
 
                     <div class="col-md-3 mb-3">
@@ -94,20 +96,20 @@
                     <div class="col-md-3 mb-3">
                         <label for="Company Turnover" class="form-label">Company Turnover</label>
                         <select name="" id="Company Turnover" class="form-control" v-model="form.company_turnover">
-                            <option value="">>250000000</option>
-                            <option value="">>10000000</option>
-                            <option value="">>50000000</option>
-                            <option value="">>5000000</option>
+                            <option value=">250000000">>250000000</option>
+                            <option value=">10000000">>10000000</option>
+                            <option value=">50000000">>50000000</option>
+                            <option value="<5000000"><5000000 </option>
                         </select>
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="Company Size" class="form-label">Company Size</label>
-                        <select name="" id="Company Size" class="form-control" v-model="form.company_size">
-                            <option value="">Large Scale</option>
-                            <option value="">>Mid Scale</option>
-                            <option value="">Small Scale</option>
-                            <option value="">Micro</option>
+                        <select name="" id="Company Size" class="form-control"  v-model="form.company_size">
+                            <option value="Large Scale">Large Scale</option>
+                            <option value="Mid Scale">Mid Scale</option>
+                            <option value="Small Scale">Small Scale</option>
+                            <option value="Micro">Micro</option>
                         </select>
                     </div>
 
@@ -437,7 +439,7 @@ export default {
 };
 </script> -->
 <script>
-import { ref, defineComponent, onMounted, reactive,computed } from "vue";
+import { ref, defineComponent, onMounted,watch, reactive,computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 
@@ -517,7 +519,8 @@ export default defineComponent({
             select_your_enterprise_type: '',
             msme_certificate_number: '',
             udyam_registration_number: '',
-            wct: ''
+            wct: '',
+            pan:''
 
         });
         const touched = reactive({
@@ -572,8 +575,9 @@ export default defineComponent({
                     form.region = data.region
                     form.pincode = data.pincode
                     form.residential_status = data.residential_status
-                    form.tax_identification_no_tin = data.tax_identification_no_tin,
-                        form.permanent_account_no = data.permanent_account_no
+                    form.tax_identification_no_tin = data.tax_identification_no_tin
+                    form.permanent_account_no = data.permanent_account_no
+                    form.pan = data.permanent_account_no
                     form.tax_category = data.tax_category
                     form.tax_withholding_category = data.tax_withholding_category
                     form.type_of_supplier_under_vat = data.type_of_supplier_under_vat
@@ -594,7 +598,10 @@ export default defineComponent({
                 }
             });
         });
-
+        const file =()=>{
+            const myElement = document.getElementById("logo");
+            console.log(myElement)
+        }
         const ValidateEmail = () => {
             console.log('values are here', form);
             const supplier = createResource({
@@ -654,6 +661,7 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
+                    alert("Details Saved Sucessfully")
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -662,7 +670,67 @@ export default defineComponent({
             });
 
         };
+        // watch(()=>form.permanent_account_number,
+        // (value)=>{
+        //     if (value){
 
+        //     }
+        // }
+    // )
+    watch( ()=>form.permanent_account_number,
+            (newValue,oldValue)=>{
+                if(oldValue && newValue!=oldValue){
+                    try {
+                    const response =  createResource({
+                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
+                        makeParams:()=>({
+                            data: {
+                            pan: newValue
+                        },
+                        }),
+                        auto: true,
+                        onSuccess :(data)=>{
+                            console.log(data    )
+                            form.proprietors_name = data.result.name;
+                        },onError :(error)=>{
+                            console.log(error)
+                        }
+                    });
+                    } catch (error) {
+                        console.error('Error fetching bank details:', error);
+                    }
+
+                    const typeMap = {
+                        'P': 'Individual',
+                        'C': 'Company',
+                        'H': 'Hindu Undivided Family',
+                        'A': 'Association of Persons',
+                        'B': 'Body of Individuals',
+                        'G': 'Government Agency',
+                        'J': 'Artificial Juridical Person',
+                        'L': 'Local Authority',
+                        'F': 'Firm/Partnership',
+                        'T': 'Trust'
+                    };
+                    const fourthChar = newValue.charAt(3).toUpperCase();
+                    const panType = typeMap[fourthChar];
+                    console.log(panType)
+                    form.ownership_information = panType
+                }
+        })
+watch(()=>form.company_turnover,
+    (value)=>{
+        console.log(value)
+        if(value == ">250000000"){
+            form.company_size ="Large Scale"
+        }else if(value == ">10000000"){
+            form.company_size ="Mid Scale"
+        }else if(value == ">50000000"){
+            form.company_size ="Small Scale"
+        }else{
+            form.company_size ="Micro"
+        }
+     })
         return {
             form,
             ValidateEmail,

@@ -14,7 +14,7 @@
         <li class="sidebar-link"><a class="text-lg">Company Details</a></li>
       </router-link>
       <router-link to="/Categorybusiness">
-        <li class="sidebar-link"><a class="text-lg">Category Business</a></li>
+        <li class="sidebar-link"><a class="text-lg">Supplier Details</a></li>
       </router-link>
       <router-link to="/contactdetails">
         <li class="sidebar-link"><a class="text-lg">Contact Details</a></li>

@@ -65,11 +65,15 @@
                 <div class="d-flex justify-content-end mt-1 mb-3">
                 <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
             </div>
+
+            <div class="d-flex justify-content-end mt-1 mb-3">
+                <Button type="button" class="savebutton" @click="submit()">Submit</Button>
+            </div>
             </div>
         </div>
     </div>
 </template>
-
+<!-- 
 <script>
 export default {
     name: 'Documents',
@@ -91,10 +95,105 @@ export default {
     methods: {
         ValidateEmail() { 
             console.log('values is here', this.form);
+        },
+        submit(){
+            console.log("1")
         }
     }
 
 };
+</script> -->
+<script>
+import { ref, defineComponent, onMounted, reactive } from "vue";
+import { sessionUser } from "../data/session";
+import { createResource } from 'frappe-ui';
+
+export default defineComponent({
+    name: 'ContactDetails',
+    setup() {
+        const form = reactive({
+            addressProof: '',
+                msmedUdyamNumber: '',
+                panAadhar: '',
+                esic: '',
+                pf: '',
+                tinUin: '',
+                gst: '',
+                cin: '',
+                lstCst: '',
+                docname:''
+        });
+        const loginUser=sessionUser()
+        onMounted(() => {
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        email: loginUser
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                        console.log("data", data);
+                        form.docname=data.name
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                    // alert(`An error occurred: ${error.message}`);
+                }
+            });
+        });
+
+        function ValidateEmail() {
+            // console.log('values are here', form);
+            // const supplier = createResource({
+            //     url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
+            //     makeParams: () => ({
+            //         doc: {
+            //             supplier_name: form.supplier_name,
+            //             supplier_type: form.supplier_type,
+            //             related_party: form.related_party,
+            //             supplier_details: form.supplier_details,
+            //             docname:form.docname
+            //         }
+            //     }),
+            //     auto: true,
+            //     onSuccess: (data) => {
+            //         console.log(data)
+            //     },
+            //     onError: (error) => {
+            //         console.error('Error:', error);
+            //         alert(`An error occurred: ${error.message}`);
+            //     }
+            // });
+        }
+        function submit(){
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        docname:form.docname,
+                        workflow_state:"Approval Pending By Company User Team"
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                    console.log(data)
+                    alert("Details Submitted Sucessfully")
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                    alert(`An error occurred: ${error.message}`);
+                }
+            });
+        }
+        return {
+            form,
+            ValidateEmail,
+            submit
+        };
+    }
+});
 </script>
 
 <style scoped>

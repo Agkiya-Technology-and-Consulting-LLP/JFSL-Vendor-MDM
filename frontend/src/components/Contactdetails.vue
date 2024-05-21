@@ -193,6 +193,7 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data);
+                    alert("Details Saved Sucessfully")
                 },
                 onError: (error) => {
                     console.error('Error:', error);

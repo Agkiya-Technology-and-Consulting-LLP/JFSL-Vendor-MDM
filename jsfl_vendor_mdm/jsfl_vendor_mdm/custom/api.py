@@ -4,6 +4,7 @@ import smtplib
 import frappe
 from frappe.auth import LoginManager
 from frappe.sessions import Session, clear_sessions, delete_session, get_expiry_in_seconds
+import requests
 
 
 @frappe.whitelist(allow_guest = True)
@@ -140,7 +141,7 @@ def checkUserExists(doc):
 @frappe.whitelist(allow_guest=True)
 def get_supplier_detail(doc):
     supplier=frappe.get_doc("Supplier Clone",{"supplier_email_id":doc['email']})
-    print(f"<><><><><{supplier}")
+    # print(f"<><><><><{supplier}")
     return supplier
 
 @frappe.whitelist(allow_guest=True)
@@ -152,9 +153,110 @@ def save_supplier_detail(doc):
     return supplier
 
 @frappe.whitelist(allow_guest=True)
+def submit_supplier_detail(doc):
+    supplier=frappe.get_doc("Supplier Clone",doc['docname'])
+    supplier.update(doc)
+    supplier.save(ignore_permissions=True)
+    return supplier
+
+@frappe.whitelist(allow_guest=True)
 def accept_code_of_conduct():
     supplier =frappe.new_doc("Supplier Clone")
     supplier.supplier_email_id=frappe.session.user
     supplier.accept_code_of_conduct=1
+    supplier.ip_address=get_ip_address()
     supplier.insert(ignore_permissions=True, ignore_mandatory=True)
     return supplier
+
+
+@frappe.whitelist(allow_guest=True)
+def get_bank_details(data):
+    try:
+        if data['ifscCode']:
+            ifscCode = data['ifscCode']
+            print(f"oooooooooooooooooooooooooo{ifscCode}")
+            response = requests.post(
+                'https://testapi.karza.in/v2/ifsc',
+                headers={
+                    'Content-Type': 'application/json',
+                    'x-karza-key': 'lC81SMEYEFlwr24wrjil'  # Replace with your actual API key
+                },
+                json={'ifsc': ifscCode}  # Include ifsc code in the request body
+            )
+            print(f"response {response}")
+            if response.ok:
+                response_data = response.json()
+                # Return the JSON response from the external API
+                return response_data
+            else:
+                # Log error message if response is not OK
+                error_message = f'Error fetching bank details: {response.status_code}, {response.text}'
+                frappe.log_error(error_message)
+                return {'message': {'error': 'Error fetching bank details. Please try again later.'}}
+        else:
+            frappe.logger().error('Missing ifscCode parameter in request data')
+            return {'message': {'error': 'Missing ifsc parameter'}}
+    
+    except Exception as e:
+        # Log any exceptions that occur
+        error_message = f'Error fetching bank details: {str(e)}'
+        # frappe.log_error(error_message)
+        # frappe.logger().error(f'Exception: {error_message}')
+        print(f".................................................................{e}")
+        return {'message': {'error': 'An error occurred while fetching bank details. Please try again later.'}}
+    
+
+@frappe.whitelist(allow_guest=True)
+def get_pan_details(data):
+    if data['pan']:
+        response = requests.post(
+                'https://testapi.karza.in/v2/pan',
+                headers={
+                    'Content-Type': 'application/json',
+                    'x-karza-key': 'lC81SMEYEFlwr24wrjil'  # Replace with your actual API key
+                },
+                json={'pan': data['pan'],'consent':'Y'}  # Include ifsc code in the request body
+            )
+        print(f"********************************{response}")
+        if response.ok:
+            response_data = response.json()
+            print(f'@@@@@@@@@@@@@@@@@@@@@@Response from external API: {response_data}')
+            # frappe.logger().info(f'@@@@@@@Response from external API: {response_data}')
+            
+            # Return the JSON response from the external API
+            return response_data
+        else:
+            # Log error message if response is not OK
+            error_message = f'Error fetching PAN details: {response.status_code}, {response.text}'
+            frappe.log_error(error_message)
+            return {'message': {'error': 'Error fetching PAN details. Please try again later.'}}
+
+# save IP Address       
+import socket
+
+def get_ip_address():
+    try:
+        # Create a socket object
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+        # Connect to any remote server
+        s.connect(('8.8.8.8', 80))
+
+        # Get the local IP address associated with the socket
+        ip_address = s.getsockname()[0]
+
+        # Close the socket
+        s.close()
+
+        return ip_address
+    except socket.error as e:
+        print(f"Error: {e}")
+        return None
+
+# Get and print the IP address
+# ip_address = get_ip_address()
+
+# if ip_address:
+#     print(f"Your IP address is: {ip_address}")
+# else:
+#     print("Unable to retrieve IP address.")

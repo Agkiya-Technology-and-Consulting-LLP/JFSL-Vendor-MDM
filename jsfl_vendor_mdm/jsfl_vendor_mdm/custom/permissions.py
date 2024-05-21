@@ -25,4 +25,4 @@ def get_permission_query_conditions(user):
         elif ("L1 Manager" in frappe.get_roles()):
             return """(`tabSupplier Clone`.workflow_state = 'Approval Pending By L1 Manager')"""
         elif ("MDM Manager" in frappe.get_roles()):
-            return """(`tabSupplier Clone`.workflow_state = 'Approval Pending By MDM Manager')"""
+            return """(`tabSupplier Clone`.workflow_state = 'Approval Pending By MDM Manager' or `tabSupplier Clone`.workflow_state = 'Approved' )"""

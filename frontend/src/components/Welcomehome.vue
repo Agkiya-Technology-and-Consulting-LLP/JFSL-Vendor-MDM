@@ -28,7 +28,7 @@
                         <i class="h-16 mt-6 text-blue-500 fa-solid fa-business-time"></i>
                         <h5 class="text-blue-500 text-center mt-4">Supplier Details</h5>
                     </div>
-                    <p class="text-center text-gray-700 font-medium"><small>Select nature of business</small></p>
+                    <p class="text-center text-gray-700 font-medium"><small>Update your Supplier information</small></p>
                 </div>
             </router-link>
 

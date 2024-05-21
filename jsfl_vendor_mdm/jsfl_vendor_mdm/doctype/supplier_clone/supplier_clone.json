@@ -16,6 +16,8 @@
   "supplier_email_id",
   "accept_code_of_conduct",
   "accept_esg_policy",
+  "ip_address",
+  "timestamp",
   "column_break_4scrt",
   "supplier_group",
   "supplier_type",
@@ -224,7 +226,7 @@
    "fieldname": "company_turnover",
    "fieldtype": "Select",
    "label": "Company Turnover",
-   "options": "> 250000000\n> 100000000\n> 50000000\n<50000000"
+   "options": ">250000000\n>100000000\n>50000000\n<50000000"
   },
   {
    "fieldname": "company_size",
@@ -1148,19 +1150,33 @@
    "default": "0",
    "fieldname": "accept_code_of_conduct",
    "fieldtype": "Check",
-   "label": "Accept Code of Conduct"
+   "label": "Accept Code of Conduct",
+   "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "accept_esg_policy",
    "fieldtype": "Check",
-   "label": "Accept Esg Policy"
+   "label": "Accept Esg Policy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "label": "Timestamp",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-20 00:08:20.301539",
+ "modified": "2024-05-21 13:02:42.702754",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
