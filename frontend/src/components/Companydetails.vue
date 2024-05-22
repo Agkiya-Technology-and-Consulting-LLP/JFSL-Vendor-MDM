@@ -44,11 +44,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3" :class="{ 'has-error': touched.company_type && !form.company_type }">
                         <label for="companyType" class="form-label">Company Type<span class="text-danger">*</span></label>
-                        <select name="" id="companyType" class="form-control" v-model="form.company_type">
+                        <select name="" id="companyType" class="form-control" v-model="form.company_type" @blur="touched.company_type = true">
                             <option value="M/S">M/S</option>
                         </select>
+                        <div v-if="touched.company_type && !form.company_type" class="text-danger">
+                            Company Type is required.
+                        </div>
                     </div>
 
                     <div class="col-md-3 mb-3">
@@ -66,10 +69,13 @@
                             placeholder="Small Scale Industries Registration No.">
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-3 mb-3" :class="{ 'has-error': touched.date_of_establishment && !form.date_of_establishment }">
                         <label for="Establishment" class="form-label">Date Of Establishment<span class="text-danger">*</span></label>
                         <input type="date" class="form-control" id="Establishment" placeholder="Date Of Establishment"
-                            v-model="form.date_of_establishment">
+                            v-model="form.date_of_establishment" @blur="touched.date_of_establishment = true">
+                            <div v-if="touched.date_of_establishment && !form.date_of_establishment" class="text-danger">
+                            Establish date is required.
+                        </div>
                     </div>
 
                     <div class="col-md-3 mb-3">
@@ -522,9 +528,11 @@ export default defineComponent({
         });
         const touched = reactive({
             company_name: false,
+            date_of_establishment:false,
+            company_type:false,
         });
         const isValid = computed(() => {
-            return  form.company_name;
+            return  form.company_name && form.date_of_establishment && form.company_type;
         });
 
         const loginUser = sessionUser();

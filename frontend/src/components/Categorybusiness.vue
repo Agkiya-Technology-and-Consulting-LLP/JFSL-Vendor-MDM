@@ -8,7 +8,8 @@
 
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.supplier_name && !form.supplier_name }">
-                        <label for="supplierName" class="form-label">Supplier Name <span class="text-danger">*</span></label>
+                        <label for="supplierName" class="form-label">Supplier Name <span
+                                class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="supplierName" v-model="form.supplier_name"
                             placeholder="Supplier Name" @blur="touched.supplier_name = true">
                         <div v-if="touched.supplier_name && !form.supplier_name" class="text-danger">
@@ -16,8 +17,10 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.supplier_type && !form.supplier_type }">
-                        <label for="supplierType" class="form-label">Supplier Type <span class="text-danger">*</span></label>
-                        <select name="supplierType" id="supplierType" class="form-control" v-model="form.supplier_type" @blur="touched.supplier_type = true">
+                        <label for="supplierType" class="form-label">Supplier Type <span
+                                class="text-danger">*</span></label>
+                        <select name="supplierType" id="supplierType" class="form-control" v-model="form.supplier_type"
+                            @blur="touched.supplier_type = true">
                             <option value=""></option>
                             <option value="Company">Company</option>
                             <option value="Individual">Individual </option>
@@ -36,8 +39,10 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.related_party && !form.related_party }">
-                        <label for="relatedParty" class="form-label">Related Party <span class="text-danger">*</span></label>
-                        <select name="relatedParty" id="relatedParty" class="form-control" v-model="form.related_party" @blur="touched.related_party = true">
+                        <label for="relatedParty" class="form-label">Related Party <span
+                                class="text-danger">*</span></label>
+                        <select name="relatedParty" id="relatedParty" class="form-control" v-model="form.related_party"
+                            @blur="touched.related_party = true">
                             <option value=""></option>
                             <option value="No">No</option>
                             <option value="Yes">Yes </option>
@@ -49,9 +54,12 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.supplier_details && !form.supplier_details }">
-                        <label for="supplierDetails" class="form-label">Supplier Details <span class="text-danger">*</span></label>
-                        <textarea maxlength="1000" class="form-control" id="supplierDetails" v-model="form.supplier_details" @blur="touched.supplier_details = true"></textarea>
+                    <div class="col-md-4 mb-3"
+                        :class="{ 'has-error': touched.supplier_details && !form.supplier_details }">
+                        <label for="supplierDetails" class="form-label">Supplier Details <span
+                                class="text-danger">*</span></label>
+                        <textarea maxlength="1000" class="form-control" id="supplierDetails"
+                            v-model="form.supplier_details" @blur="touched.supplier_details = true"></textarea>
                         <div v-if="touched.supplier_details && !form.supplier_details" class="text-danger">
                             Supplier Details is required.
                         </div>
@@ -63,6 +71,36 @@
                 </div>
             </div>
         </div>
+
+        <div>
+    <div
+      class="toast align-items-center text-white bg-danger border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Hello, world! This is a toast message.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <button class="savebutton" @click="showToastMessage">Show Toast</button>
+  </div>
+
+
+
+
+
+
     </div>
 </template>
 
@@ -144,11 +182,29 @@ export default defineComponent({
             });
         }
 
+        const showToast = ref(false);
+
+        const showToastMessage = () => {
+            showToast.value = true;
+            console.log("Toast message button clicked");
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+        };
+
+
         return {
             form,
             touched,
             isValid,
-            ValidateEmail
+            ValidateEmail,
+            showToastMessage,
+            hideToast,
+            showToast
         };
     }
 });
@@ -194,5 +250,16 @@ h6 {
 }
 :disabled{
     background-color: grey;
+}
+
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>
