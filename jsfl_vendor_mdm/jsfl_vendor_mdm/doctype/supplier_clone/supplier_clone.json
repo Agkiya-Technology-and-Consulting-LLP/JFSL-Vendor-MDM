@@ -59,7 +59,7 @@
   "small_scale_industries_registration_no",
   "date_of_establishment",
   "column_break_rdw0v",
-  "about_company",
+  "nature_of_business",
   "d_b_n_d_i_number",
   "column_break_8atei",
   "logo",
@@ -198,11 +198,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Company Name"
-  },
-  {
-   "fieldname": "about_company",
-   "fieldtype": "Long Text",
-   "label": "About Company"
   },
   {
    "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
@@ -729,6 +724,7 @@
    "depends_on": "eval:doc.workflow_state=='Approval Pending By L1 Manager'",
    "fieldname": "l1_manager_check",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "L1 Manager Check"
   },
   {
@@ -1180,12 +1176,18 @@
    "fieldtype": "Select",
    "label": "Is company part of reliance company",
    "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "nature_of_business",
+   "fieldtype": "Select",
+   "label": "Nature of Business",
+   "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 23:58:16.800472",
+ "modified": "2024-05-23 22:40:13.533948",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
