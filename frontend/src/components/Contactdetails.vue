@@ -94,8 +94,9 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-end mt-1 mb-3">
+                <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
                     <button type="button" class="savebutton" @click="ValidateEmail" :disabled="!isValid">Save</button>
+                    <router-link to="/accountdetails"><button class="nextbutton">Next</button></router-link>
                 </div>
             </div>
         </div>
@@ -297,7 +298,7 @@ h5 {
     color: red;
 } */
 :disabled{
-    background-color: grey;
+    /* background-color: grey; */
     cursor:not-allowed;
 }
 
@@ -319,5 +320,12 @@ h5 {
 }
 .toast.show {
   opacity: 1;
+}
+.nextbutton{
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
 }
 </style>

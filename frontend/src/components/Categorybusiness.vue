@@ -10,14 +10,14 @@
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.supplier_name && !form.supplier_name }">
                         <label for="supplierName" class="form-label">Supplier Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="supplierName" v-model="form.supplier_name"
-                            placeholder="Supplier Name" @blur="touched.supplier_name = true">
+                            placeholder="Supplier Name" @blur="touched.supplier_name = true" :readonly="isReadonly">
                         <div v-if="touched.supplier_name && !form.supplier_name" class="text-danger">
                             Supplier Name is required.
                         </div>
                     </div>
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.supplier_type && !form.supplier_type }">
                         <label for="supplierType" class="form-label">Supplier Type <span class="text-danger">*</span></label>
-                        <select name="supplierType" id="supplierType" class="form-control" v-model="form.supplier_type" @blur="touched.supplier_type = true">
+                        <select name="supplierType" id="supplierType" class="form-control" v-model="form.supplier_type" @blur="touched.supplier_type = true" :disabled="isReadonly">
                             <option value=""></option>
                             <option value="Company">Company</option>
                             <option value="Individual">Individual </option>
@@ -58,8 +58,9 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-end mt-1 mb-3">
+                <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
                     <button type="button" class="savebutton" @click="ValidateEmail" :disabled="!isValid">Save</button>
+                    <router-link to="/contactdetails"><button class="nextbutton">Next</button></router-link>
                 </div>
             </div>
         </div>
@@ -91,6 +92,8 @@ import { ref, defineComponent, onMounted, reactive, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
+const isReadonly = ref(false);
+
 
 export default defineComponent({
     name: 'ContactDetails',
@@ -132,6 +135,8 @@ export default defineComponent({
                         form.supplier_details = data.supplier_details || '';
                         form.docname = data.name;
                         console.log(form.docname)
+
+                        isReadonly.value = !!data.supplier_name; 
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -155,6 +160,7 @@ export default defineComponent({
                 onSuccess: (data) => {
                     console.log(data);
                     showToastMessage()
+                    isReadonly.value = true;
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -180,7 +186,8 @@ export default defineComponent({
             ValidateEmail,
             hideToast,
             showToastMessage,
-            showToast
+            showToast,
+            isReadonly
         };
     }
 });
@@ -224,9 +231,6 @@ h6 {
 .has-error input, .has-error select, .has-error textarea {
     border-color: red;
 }
-:disabled{
-    background-color: grey;
-}
 
 /* tost css */
 
@@ -246,5 +250,16 @@ h6 {
 }
 .toast.show {
   opacity: 1;
+}
+:disabled {
+    /* background-color: grey; */
+    cursor: not-allowed;
+}
+.nextbutton{
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
 }
 </style>
