@@ -84,7 +84,7 @@
   "applicable_gst",
   "column_break_d2vjk",
   "gst_valid_from",
-  "gst_status_valid_from",
+  "gst_status_active",
   "gst_transporter_id",
   "cin_section",
   "cin",
@@ -293,12 +293,6 @@
    "fieldtype": "Select",
    "label": "GST Status",
    "options": "1. Normal Registered\n2. Composition\n3. Casual\n4. Non Resident\n5. Government/LocalAuthority\n6. SEZ\n7. EOU\n8. Unregistered\n9. overseas Vendor\nA. TAN Base GST\nB. Unknown\nZ. One Time GST Registered"
-  },
-  {
-   "depends_on": "applicable_gst",
-   "fieldname": "gst_status_valid_from",
-   "fieldtype": "Date",
-   "label": "GST Status valid from"
   },
   {
    "depends_on": "applicable_gst",
@@ -1182,12 +1176,19 @@
    "fieldtype": "Select",
    "label": "Nature of Business",
    "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
+  },
+  {
+   "depends_on": "applicable_gst",
+   "fieldname": "gst_status_active",
+   "fieldtype": "Select",
+   "label": "GST Status Active",
+   "options": "Yes\nNo"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-23 22:40:13.533948",
+ "modified": "2024-05-24 11:08:30.150512",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

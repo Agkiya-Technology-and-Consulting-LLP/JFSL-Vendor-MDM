@@ -29,8 +29,8 @@ class SupplierClone(Document):
         if self.gst_valid_from and getdate(self.gst_valid_from) > getdate():
             frappe.throw("GST Valid From date cannot be greater than today's date.")
 
-        if self.gst_status_valid_from and getdate(self.gst_status_valid_from) > getdate():
-            frappe.throw("GST Status Valid From date cannot be greater than today's date.")         
+        # if self.gst_status_valid_from and getdate(self.gst_status_valid_from) > getdate():
+        #     frappe.throw("GST Status Valid From date cannot be greater than today's date.")         
         if self.d_b_n_d_i_number:
             if not self.d_b_n_d_i_number.isdigit():
                 frappe.throw(_("D & B-N-D-I Number must contain only numbers."))

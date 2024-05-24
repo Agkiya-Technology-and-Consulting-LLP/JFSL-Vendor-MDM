@@ -223,9 +223,17 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
+                        <label for="GST Status Active" class="form-label">GST Status Active<span class="text-danger">*</span></label>
+                        <select name="gst_status_active" id="gst_status_active" class="form-control"  v-model="form.gst_status_active">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                <!-- <div class="col-md-6 mb-3">
                     <label for="GST Status " class="form-label">GST Status valid from<span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="GST Status " v-model="form.gst_status_valid_from">
-                </div>
+                    <input type="date" class="form-control" id="GST Status " v-model="form.gst_status_active">
+                </div> -->
             </div>
 
             <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
@@ -478,6 +486,10 @@ import {
 } from 'frappe-ui';
 const showToast = ref(false);
 
+function formatDate(dateString) {
+            const [day, month, year] = dateString.split('/');
+            return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+        } 
 export default defineComponent({
     name: 'ContactDetails',
     setup() {
@@ -526,7 +538,7 @@ export default defineComponent({
             gst_registration_number: '',
             gst_valid_from: '',
             gst_status: '',
-            gst_status_valid_from: '',
+            gst_status_active: '',
             cin: '',
             name_: '',
             addressline_1: '',
@@ -561,6 +573,8 @@ export default defineComponent({
             logourl:'',
 
         });
+        
+        
         const touched = reactive({
             company_name: false,
         });
@@ -613,7 +627,7 @@ export default defineComponent({
                     form.gst_registration_number = data.gst_registration_number
                     form.gst_valid_from = data.gst_valid_from
                     form.gst_status = data.gst_status
-                    form.gst_status_valid_from = data.gst_status_valid_from
+                    form.gst_status_active = data.gst_status_active
                     form.cin = data.cin
                     form.name_ = data.name_
                     form.addressline_1 = data.addressline_1
@@ -701,7 +715,7 @@ export default defineComponent({
                         gst_registration_number: form.gst_registration_number,
                         gst_valid_from: form.gst_valid_from,
                         gst_status: form.gst_status,
-                        gst_status_valid_from: form.gst_status_valid_from,
+                        gst_status_active: form.gst_status_active,
                         cin: form.cin,
                         name_: form.name_,
                         addressline_1: form.addressline_1,
@@ -743,66 +757,131 @@ export default defineComponent({
             });
 
         };
-        watch(() => form.permanent_account_number,
-            (newValue, oldValue) => {
-                if (oldValue && newValue != oldValue) {
-                    try {
-                        const response = createResource({
-                            url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
-                            makeParams: () => ({
-                                data: {
+        // watch(() => form.permanent_account_number,
+        //     (newValue, oldValue) => {
+        //         if (oldValue && newValue != oldValue) {
+        //             try {
+        //                 const response = createResource({
+        //                     url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
+        //                     makeParams: () => ({
+        //                         data: {
+        //                             pan: newValue
+        //                         },
+        //                     }),
+        //                     auto: true,
+        //                     onSuccess: (data) => {
+        //                         form.proprietors_name = data.result.name;
+        //                         const response = createResource({
+        //                             url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
+        //                             makeParams: () => ({
+        //                                 data: {
+        //                                     pan: newValue
+        //                                 },
+        //                             }),
+        //                             auto: true,
+        //                             onSuccess: (data) => {
+        //                                 if (data.result.isAadhaarLinked ==true) {
+        //                                     form.is_aadhar_pan_linked = "YES"
+        //                                 } else {
+        //                                     form.is_aadhar_pan_linked = "NO"
+        //                                 }
+        //                             },
+        //                             onError: (error) => {
+        //                                 console.log(error)
+        //                             }
+        //                         })
+
+        //                     },
+        //                     onError: (error) => {
+        //                         console.log(error)
+        //                     }
+        //                 });
+        //             } catch (error) {
+        //                 console.error('Error fetching bank details:', error);
+        //             }
+
+        //             const typeMap = {
+        //                 'P': 'Individual',
+        //                 'C': 'Company',
+        //                 'H': 'Hindu Undivided Family',
+        //                 'A': 'Association of Persons',
+        //                 'B': 'Body of Individuals',
+        //                 'G': 'Government Agency',
+        //                 'J': 'Artificial Juridical Person',
+        //                 'L': 'Local Authority',
+        //                 'F': 'Firm/Partnership',
+        //                 'T': 'Trust'
+        //             };
+        //             const fourthChar = newValue.charAt(3).toUpperCase();
+        //             const panType = typeMap[fourthChar];
+        //             form.ownership_information = panType
+        //         }
+        //     })
+
+        watch( ()=>form.permanent_account_number,
+            (newValue,oldValue)=>{
+                // if(oldValue && newValue!=oldValue){
+                if(oldValue && oldValue != newValue){
+
+                const isDuplicateGstNumber= createResource({
+                    url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_pan_number_duplicacy',
+                    makeParams: () =>({
+                        data: {
+                            panNumber : newValue,
+                            docname : form.docname,
+                        },
+                    }),
+                    auto : true,
+                    onSuccess : (data) => {
+                        console.log(data);
+                        console.log("@@@@@@@@@@",data.isDuplicate)
+                        const isDuplicateGst = data.isDuplicate;
+
+                        if(isDuplicateGst){
+                            console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
+                        } else{
+                            console.log("PAN NUMBER NOT FOUND")
+                            try {
+                            const response =  createResource({
+                                url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
+                                makeParams:()=>({
+                                    data: {
                                     pan: newValue
                                 },
-                            }),
-                            auto: true,
-                            onSuccess: (data) => {
-                                form.proprietors_name = data.result.name;
-                                const response = createResource({
-                                    url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
-                                    makeParams: () => ({
-                                        data: {
-                                            pan: newValue
-                                        },
-                                    }),
-                                    auto: true,
-                                    onSuccess: (data) => {
-                                        if (data.result.isAadhaarLinked ==true) {
-                                            form.is_aadhar_pan_linked = "YES"
-                                        } else {
-                                            form.is_aadhar_pan_linked = "NO"
-                                        }
-                                    },
-                                    onError: (error) => {
-                                        console.log(error)
-                                    }
-                                })
-
-                            },
-                            onError: (error) => {
-                                console.log(error)
+                                }),
+                                auto: true,
+                                onSuccess :(data)=>{
+                                    console.log(data    )
+                                    form.proprietors_name = data.result.name;
+                                },onError :(error)=>{
+                                    console.log(error)
+                                }
+                            });
+                            } catch (error) {
+                                console.error('Error fetching bank details:', error);
                             }
-                        });
-                    } catch (error) {
-                        console.error('Error fetching bank details:', error);
-                    }
 
-                    const typeMap = {
-                        'P': 'Individual',
-                        'C': 'Company',
-                        'H': 'Hindu Undivided Family',
-                        'A': 'Association of Persons',
-                        'B': 'Body of Individuals',
-                        'G': 'Government Agency',
-                        'J': 'Artificial Juridical Person',
-                        'L': 'Local Authority',
-                        'F': 'Firm/Partnership',
-                        'T': 'Trust'
-                    };
-                    const fourthChar = newValue.charAt(3).toUpperCase();
-                    const panType = typeMap[fourthChar];
-                    form.ownership_information = panType
-                }
-            })
+                            const typeMap = {
+                                'P': 'Individual',
+                                'C': 'Company',
+                                'H': 'Hindu Undivided Family',
+                                'A': 'Association of Persons',
+                                'B': 'Body of Individuals',
+                                'G': 'Government Agency',
+                                'J': 'Artificial Juridical Person',
+                                'L': 'Local Authority',
+                                'F': 'Firm/Partnership',
+                                'T': 'Trust'
+                            };
+                            const fourthChar = newValue.charAt(3).toUpperCase();
+                            const panType = typeMap[fourthChar];
+                            console.log(panType)
+                            form.ownership_information = panType
+                        }
+                    }
+                });
+        }
+    });
         watch(() => form.company_turnover,
             (value) => {
                 if (value == ">250000000") {
@@ -813,8 +892,62 @@ export default defineComponent({
                     form.company_size = "Small Scale"
                 } else {
                     form.company_size = "Micro"
+                    form.gst_status ="8. Unregistered"
                 }
             })
+
+            watch(() => form.gst_registration_number, (newValue,oldValue) => {
+                // console.log(newValue,oldValue);
+                // console.log(form.docname);
+
+                if (newValue,oldValue) {
+                    const isDuplicateGstNumber= createResource({
+                        url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_gst_number_duplicacy',
+                        makeParams: () =>({
+                            data: {
+                                gstNumber : newValue,
+                                docname : form.docname,
+                            },
+                        }),
+                        auto : true,
+                        onSuccess : (data) => {
+                            const isDuplicateGst = data.isDuplicate;
+
+                            if(isDuplicateGst){
+                                console.log("GST NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER GST NUMBER");
+                            } else{
+                                console.log("GST NUMBER NOT FOUND")
+                                try {
+                                    const response = createResource({
+                                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.gst_registration_number',
+                                        makeParams: () => ({
+                                            data: {
+                                                gstNumber: newValue
+                                            },
+                                        }),
+                                        auto: true,
+                                        onSuccess: (data) => {
+                                            console.log(data);
+                                            // form.gst_valid_from = data.result.rgdt;
+                                            const formattedDate = formatDate(data.result.rgdt);
+                                        
+                                            form.gst_valid_from = formattedDate;
+                                            const status = data.result.sts;
+                                            form.gst_status_active = status === 'Active' ? 'Yes' : 'No';
+                                        },
+                                        onError: (error) => {
+                                            console.log(error);
+                                        }
+                                    });
+                                } 
+                                catch (error) {
+                                    console.error('Error fetching GST registration details:', error);
+                                }
+                            }
+                        }
+                    });
+                }   
+            });
 
         const handleFileChange=(event)=> {
             const file = event.target.files[0];
