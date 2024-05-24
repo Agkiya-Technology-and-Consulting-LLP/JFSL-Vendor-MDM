@@ -766,7 +766,7 @@ export default defineComponent({
                                     }),
                                     auto: true,
                                     onSuccess: (data) => {
-                                        if (data.isAadhaarLinked) {
+                                        if (data.result.isAadhaarLinked ==true) {
                                             form.is_aadhar_pan_linked = "YES"
                                         } else {
                                             form.is_aadhar_pan_linked = "NO"
