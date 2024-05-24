@@ -64,12 +64,33 @@
             </div>
         </div>
     </div>
+    <!-- Tost Message -->
+    <div
+      class="toast align-items-center text-white bg-success  border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Details Saved Sucessfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
 </template>
 
 <script>
 import { ref, defineComponent, onMounted, reactive, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
+const showToast = ref(false);
 
 export default defineComponent({
     name: 'ContactDetails',
@@ -105,15 +126,12 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
-                    if (data && data.supplier_name !== undefined) {
                         form.supplier_name = data.supplier_name || '';
                         form.supplier_type = data.supplier_type || '';
                         form.related_party = data.related_party || '';
                         form.supplier_details = data.supplier_details || '';
                         form.docname = data.name;
-                    } else {
-                        console.log("Received data is not in expected format", data);
-                    }
+                        console.log(form.docname)
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -136,7 +154,7 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data);
-                    alert("Details Saved Sucessfully")
+                    showToastMessage()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -144,12 +162,25 @@ export default defineComponent({
                 }
             });
         }
+        const showToastMessage = () => {
+            showToast.value = true;
+            console.log("Details saved successfully");
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
 
+        const hideToast = () => {
+            showToast.value = false;
+        };
         return {
             form,
             touched,
             isValid,
-            ValidateEmail
+            ValidateEmail,
+            hideToast,
+            showToastMessage,
+            showToast
         };
     }
 });
@@ -195,5 +226,25 @@ h6 {
 }
 :disabled{
     background-color: grey;
+}
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>

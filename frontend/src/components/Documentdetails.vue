@@ -9,104 +9,99 @@
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="Address Proof" class="form-label">Address Proof</label>
-                        <input type="file" class="form-control" id="Address Proof" v-on:change="form.addressProof">
+                        <input type="file" class="form-control" id="Address Proof" @change="handleFileChange($event,'address_proof')" v-on:change="form.addressProof">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="MSMED/Udyam Registration" class="form-label">MSMED/Udyam Registration</label>
                         <input type="file" class="form-control" id="MSMED/Udyam Registration"
-                            v-on:change="form.msmedUdyamNumber">
+                            v-on:change="form.msmedUdyamNumber" @change="handleFileChange($event,'msmedudyam_registration')">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="PAN/Aadhar" class="form-label">PAN/Aadhar</label>
-                        <input type="file" class="form-control" id="PAN/Aadhar" v-on:change="form.panAadhar">
+                        <input type="file" class="form-control" id="PAN/Aadhar" @change="handleFileChange($event,'panaadhar')" v-on:change="form.panAadhar">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="ESIC" class="form-label">ESIC</label>
-                        <input type="file" class="form-control" id="ESIC" v-on:change="form.esic">
+                        <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event,'esic')" v-on:change="form.esic">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="PF" class="form-label">PF</label>
-                        <input type="file" class="form-control" id="PF" v-on:change="form.pf">
+                        <input type="file" class="form-control" id="PF" @change="handleFileChange($event,'pf')" v-on:change="form.pf">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="TIN/UIN" class="form-label">TIN/UIN</label>
-                        <input type="file" class="form-control" id="TIN/UIN" v-on:change="form.tinUin">
+                        <input type="file" class="form-control" id="TIN/UIN" @change="handleFileChange($event,'tinuin')" v-on:change="form.tinUin">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="GST" class="form-label">GST</label>
-                        <input type="file" class="form-control" id="GST" v-on:change="form.gst">
+                        <input type="file" class="form-control" id="GST" @change="handleFileChange($event,'gst')" v-on:change="form.gst">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="CIN" class="form-label">CIN</label>
-                        <input type="file" class="form-control" id="CIN" v-on:change="form.cin">
+                        <input type="file" class="form-control" id="CIN" @change="handleFileChange($event,'cin_attach')" v-on:change="form.cin">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
                         <label for="LST/CST" class="form-label">LST/CST</label>
-                        <input type="file" class="form-control" id="LST/CST" v-on:change="form.lstCst">
+                        <input type="file" class="form-control" id="LST/CST" @change="handleFileChange($event,'lstcst')" v-on:change="form.lstCst">
                     </div>
                 </div>
-
-                <div class="d-flex justify-content-end mt-1 mb-3">
+                <div class="row">
+                <div class="d-flex justify-content-end mt-1 mb-3 col-11">
                 <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
             </div>
 
-            <div class="d-flex justify-content-end mt-1 mb-3">
+            <div class="d-flex justify-content-end mt-1 mb-3 col-1 ">
                 <Button type="button" class="savebutton" @click="submit()">Submit</Button>
             </div>
+        </div>
             </div>
         </div>
     </div>
-</template>
-<!-- 
-<script>
-export default {
-    name: 'Documents',
-    data() {
-        return {
-            form: {
-                addressProof: '',
-                msmedUdyamNumber: '',
-                panAadhar: '',
-                esic: '',
-                pf: '',
-                tinUin: '',
-                gst: '',
-                cin: '',
-                lstCst: '',
-            }
-        }
-    },
-    methods: {
-        ValidateEmail() { 
-            console.log('values is here', this.form);
-        },
-        submit(){
-            console.log("1")
-        }
-    }
 
-};
-</script> -->
+
+<!-- Tost Message -->
+    <div
+      class="toast align-items-center text-white bg-success  border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Details Submitted Sucessfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+</template>
+
 <script>
 import { ref, defineComponent, onMounted, reactive } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
+const showToast = ref(false);
 
 export default defineComponent({
     name: 'ContactDetails',
@@ -143,7 +138,88 @@ export default defineComponent({
                 }
             });
         });
-
+        const handleFileChange=(event,field)=> {
+            const file = event.target.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('doctype',"Supplier Clone");
+            formData.append('docname', form.docname);
+            formData.append('is_private', 0);  // Change to 1 if the file should be private
+            formData.append('fieldname',field)
+            formData.append('folder',"Home")
+            formData.append('attached_to_field',field)
+            fetch('/api/method/upload_file', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.message) {
+                    var file_url = data.message.file_url;
+                    alert('File uploaded successfully. File URL:', file_url);
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+          
+            // reader.readAsBinaryString(file);
+        }
+        // const handleMSMEFileChange=(event,field)=>{
+        //     const file = event.target.files[0];
+        //     var formData = new FormData();
+        //     formData.append('file', file);
+        //     formData.append('doctype',"Supplier Clone");
+        //     formData.append('docname', form.docname);
+        //     formData.append('is_private', 0);  // Change to 1 if the file should be private
+        //     formData.append('fieldname',"msmedudyam_registration")
+        //     formData.append('folder',"Home")
+        //     formData.append('attached_to_field',"msmedudyam_registration")
+        //     fetch('/api/method/upload_file', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.message) {
+        //             var file_url = data.message.file_url;
+        //             alert('File uploaded successfully. File URL:', file_url);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error uploading file:', error);
+        //     });
+          
+        //     // reader.readAsBinaryString(file);
+        // }
+        // const handlePAN_AadharFileChange = (event,field)=>{
+        //     const file = event.target.files[0];
+        //     var formData = new FormData();
+        //     formData.append('file', file);
+        //     formData.append('doctype',"Supplier Clone");
+        //     formData.append('docname', form.docname);
+        //     formData.append('is_private', 0);  // Change to 1 if the file should be private
+        //     formData.append('fieldname',field)
+        //     formData.append('folder',"Home")
+        //     formData.append('attached_to_field',field)
+        //     fetch('/api/method/upload_file', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.message) {
+        //             var file_url = data.message.file_url;
+        //             alert('File uploaded successfully. File URL:', file_url);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error uploading file:', error);
+        //     })
+        // }
         function ValidateEmail() {
             // console.log('values are here', form);
             // const supplier = createResource({
@@ -179,7 +255,8 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
-                    alert("Details Submitted Sucessfully")
+                    // alert("Details Submitted Sucessfully")
+                    showToastMessage()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -187,10 +264,27 @@ export default defineComponent({
                 }
             });
         }
+        const showToastMessage = () => {
+            showToast.value = true;
+            console.log("Details saved successfully");
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+        };
         return {
             form,
             ValidateEmail,
-            submit
+            submit,
+            hideToast,
+            showToastMessage,
+            showToast,
+            handleFileChange,
+            // handleMSMEFileChange,
+            // handlePAN_AadharFileChange
         };
     }
 });
@@ -220,5 +314,25 @@ label{
 h6{
     color: #2e6bdc;
     font-weight: bolder;
+}
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>

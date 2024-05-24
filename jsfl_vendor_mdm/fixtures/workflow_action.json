@@ -4,6 +4,27 @@
   "completed_by_role": null,
   "docstatus": 0,
   "doctype": "Workflow Action",
+  "modified": "2024-05-21 13:24:14.569248",
+  "name": "720a3943d5",
+  "permitted_roles": [
+   {
+    "parent": "720a3943d5",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "1a19594a08",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
   "modified": "2024-04-27 12:18:11.922018",
   "name": "3d312a063c",
   "permitted_roles": [

@@ -86,16 +86,33 @@
             </div>
         </div>
     </div>
+    <!-- Tost Message -->
+    <div
+      class="toast align-items-center text-white bg-success  border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :class="{ 'show': showToast }"
+    >
+      <div class="d-flex">
+        <div class="toast-body">
+          Details Saved Sucessfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          @click="hideToast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
 </template>
 
 <script>
 import { ref, defineComponent, onMounted, reactive, watch } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
-
-import { toast } from 'wc-toast';
-
-
+const showToast = ref(false);
 
 export default defineComponent({
     name: 'ContactDetails',
@@ -127,7 +144,6 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
-                    console.log(data);
                     form.account_number = data.account_number;
                     form.confirm_account_number = data.confirm_account_number;
                     form.ifsc_code = data.ifsc_code;
@@ -149,7 +165,6 @@ export default defineComponent({
         });
 
         const ValidateEmail = () => {
-            console.log('values are here', form);
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                 makeParams: () => ({
@@ -171,9 +186,7 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
-                    console.log(data)
-                    // handleToast()
-                    alert("Details Saved Sucessfully")
+                    showToastMessage()
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -184,7 +197,6 @@ export default defineComponent({
         };
         watch( ()=>form.ifsc_code,
             (newValue,oldValue)=>{
-                console.log(newValue)
                 if(oldValue && newValue!=oldValue){
                     try {
                     const response =  createResource({
@@ -196,7 +208,6 @@ export default defineComponent({
                         }),
                         auto: true,
                         onSuccess :(data)=>{
-                            console.log(data)
                             form.name_of_bank = data.result.bank;
                             form.bank_address = data.result.address;
                             form.state =data.result.state
@@ -214,13 +225,22 @@ export default defineComponent({
 
                 
         })
-        
-        // function  handleToast() {
-        //         toast('Hello!');
-        //     }
+        const showToastMessage = () => {
+            showToast.value = true;
+            setTimeout(() => {
+                showToast.value = false;
+            }, 1000);
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+        };
         return {
             form,
-            ValidateEmail
+            ValidateEmail,
+            hideToast,
+            showToastMessage,
+            showToast
         };
     }
 });
@@ -254,5 +274,26 @@ label {
 h6 {
     color: #2e6bdc;
     font-weight: bolder;
+}
+
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+.toast {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.toast.show {
+  opacity: 1;
 }
 </style>

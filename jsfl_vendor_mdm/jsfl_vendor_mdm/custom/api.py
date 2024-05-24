@@ -19,6 +19,7 @@ def new(doc):
 def new_user(doc):
     new_doc=frappe.new_doc("User")
     new_doc.update(doc)
+    new_doc.append_roles("Guest_supplier")
     new_doc.insert(ignore_permissions=True)
     return new_doc
 
@@ -220,9 +221,30 @@ def get_pan_details(data):
         print(f"********************************{response}")
         if response.ok:
             response_data = response.json()
-            print(f'@@@@@@@@@@@@@@@@@@@@@@Response from external API: {response_data}')
+            # print(f'@@@@@@@@@@@@@@@@@@@@@@Response from external API: {response_data}')
             # frappe.logger().info(f'@@@@@@@Response from external API: {response_data}')
             
+            # Return the JSON response from the external API
+            return response_data
+        else:
+            # Log error message if response is not OK
+            error_message = f'Error fetching PAN details: {response.status_code}, {response.text}'
+            frappe.log_error(error_message)
+            return {'message': {'error': 'Error fetching PAN details. Please try again later.'}}
+        
+@frappe.whitelist(allow_guest=True)
+def is_pan_link_aadhar(data):
+    if data['pan']:
+        response = requests.post(
+                'https://testapi.karza.in/v3/pan-link',
+                headers={
+                    'Content-Type': 'application/json',
+                    'x-karza-key': 'lC81SMEYEFlwr24wrjil'  # Replace with your actual API key
+                },
+                json={'pan': data['pan'],'consent':'Y'}  # Include ifsc code in the request body
+            )
+        if response.ok:
+            response_data = response.json()
             # Return the JSON response from the external API
             return response_data
         else:
@@ -260,3 +282,31 @@ def get_ip_address():
 #     print(f"Your IP address is: {ip_address}")
 # else:
 #     print("Unable to retrieve IP address.")
+
+
+@frappe.whitelist(allow_guest=True)
+def get_tax_withholding_category():
+    taxWithholdingCategories=frappe.get_list("Tax Withholding Category",["name"])
+    taxCategory=frappe.get_list("Tax Category",['name'])
+    companyList =frappe.get_list("Company",['name'])
+    lists={
+        "taxWithholdingCategories":taxWithholdingCategories,
+        "taxCategory":taxCategory,
+        "company":companyList
+    }
+    return lists
+
+@frappe.whitelist(allow_guest=True)
+def savelogo(doc):
+    file=frappe.new_doc("File")
+    file.file=doc['binary']
+    file.is_private=1
+    file.folder="Home"
+    file.doctype="Supplier Clone"
+    file.docname=doc['docname']
+    file.fieldname="logo"
+    file.file_name=doc['file_name']
+    file.file_url=doc['file_url']
+    file.content = doc['file_name']
+    file.save(ignore_permissions=True)
+    return file

@@ -27,6 +27,7 @@
   "einvoice_applicable",
   "is_transporter",
   "image",
+  "is_company_part_of_reliance_company",
   "defaults_section",
   "billing_currency",
   "price_list",
@@ -58,7 +59,7 @@
   "small_scale_industries_registration_no",
   "date_of_establishment",
   "column_break_rdw0v",
-  "about_company",
+  "nature_of_business",
   "d_b_n_d_i_number",
   "column_break_8atei",
   "logo",
@@ -197,11 +198,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Company Name"
-  },
-  {
-   "fieldname": "about_company",
-   "fieldtype": "Long Text",
-   "label": "About Company"
   },
   {
    "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
@@ -728,6 +724,7 @@
    "depends_on": "eval:doc.workflow_state=='Approval Pending By L1 Manager'",
    "fieldname": "l1_manager_check",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "L1 Manager Check"
   },
   {
@@ -999,8 +996,9 @@
   },
   {
    "fieldname": "contact_number",
-   "fieldtype": "Phone",
-   "label": "Contact Number"
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "options": "Phone"
   },
   {
    "fieldname": "email_id",
@@ -1144,7 +1142,8 @@
    "fieldname": "supplier_email_id",
    "fieldtype": "Link",
    "label": "Supplier Email Id",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -1171,12 +1170,24 @@
    "fieldtype": "Datetime",
    "label": "Timestamp",
    "read_only": 1
+  },
+  {
+   "fieldname": "is_company_part_of_reliance_company",
+   "fieldtype": "Select",
+   "label": "Is company part of reliance company",
+   "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "nature_of_business",
+   "fieldtype": "Select",
+   "label": "Nature of Business",
+   "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 13:02:42.702754",
+ "modified": "2024-05-23 22:40:13.533948",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
@@ -1200,7 +1211,6 @@
    "export": 1,
    "if_owner": 1,
    "print": 1,
-   "read": 1,
    "report": 1,
    "role": "Guest_supplier",
    "share": 1
