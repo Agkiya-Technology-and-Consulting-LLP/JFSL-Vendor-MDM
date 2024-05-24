@@ -8,10 +8,9 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.addressProof && !form.addressProof }">
-                        <label for="AddressProof" class="form-label">Address Proof <span
-                                class="text-danger">*</span></label>
+                        <label for="AddressProof" class="form-label">Address Proof </label>
                         <input type="file" class="form-control" id="AddressProof"
-                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = true">
+                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = false">
                         <div v-if="touched.addressProof && !form.addressProof" class="text-danger">
                             Address Proof is required.
                         </div>
@@ -19,11 +18,10 @@
 
                     <div class="col-md-6 mb-3"
                         :class="{ 'has-error': touched.msmedUdyamNumber && !form.msmedUdyamNumber }">
-                        <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration <span
-                                class="text-danger">*</span></label>
+                        <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration </label>
                         <input type="file" class="form-control" id="MSMEDUdyamRegistration"
                             @change="handleFileChange($event, 'msmedudyam_registration')"
-                            @blur="touched.msmedUdyamNumber = true">
+                            @blur="touched.msmedUdyamNumber = false">
                         <div v-if="touched.msmedUdyamNumber && !form.msmedUdyamNumber" class="text-danger">
                             MSMED/Udyam Registration is required.
                         </div>
@@ -32,18 +30,18 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.panAadhar && !form.panAadhar }">
-                        <label for="PANAadhar" class="form-label">PAN/Aadhar <span class="text-danger">*</span></label>
+                        <label for="PANAadhar" class="form-label">PAN/Aadhar </label>
                         <input type="file" class="form-control" id="PANAadhar"
-                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = true">
+                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = false">
                         <div v-if="touched.panAadhar && !form.panAadhar" class="text-danger">
                             PAN/Aadhar is required.
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.esic && !form.esic }">
-                        <label for="ESIC" class="form-label">ESIC <span class="text-danger">*</span></label>
+                        <label for="ESIC" class="form-label">ESIC </label>
                         <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event, 'esic')"
-                            @blur="touched.esic = true">
+                            @blur="touched.esic = false">
                         <div v-if="touched.esic && !form.esic" class="text-danger">
                             ESIC is required.
                         </div>
@@ -52,18 +50,18 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.pf && !form.pf }">
-                        <label for="PF" class="form-label">PF <span class="text-danger">*</span></label>
+                        <label for="PF" class="form-label">PF </label>
                         <input type="file" class="form-control" id="PF" @change="handleFileChange($event, 'pf')"
-                            @blur="touched.pf = true">
+                            @blur="touched.pf = false">
                         <div v-if="touched.pf && !form.pf" class="text-danger">
                             PF is required.
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.tinUin && !form.tinUin }">
-                        <label for="TIN_UIN" class="form-label">TIN/UIN <span class="text-danger">*</span></label>
+                        <label for="TIN_UIN" class="form-label">TIN/UIN </label>
                         <input type="file" class="form-control" id="TIN_UIN"
-                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = true">
+                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = false">
                         <div v-if="touched.tinUin && !form.tinUin" class="text-danger">
                             TIN/UIN is required.
                         </div>
@@ -72,18 +70,18 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.gst && !form.gst }">
-                        <label for="GST" class="form-label">GST <span class="text-danger">*</span></label>
+                        <label for="GST" class="form-label">GST </label>
                         <input type="file" class="form-control" id="GST" @change="handleFileChange($event, 'gst')"
-                            @blur="touched.gst = true">
+                            @blur="touched.gst = false">
                         <div v-if="touched.gst && !form.gst" class="text-danger">
                             GST is required.
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cin && !form.cin }">
-                        <label for="CIN" class="form-label">CIN <span class="text-danger">*</span></label>
+                        <label for="CIN" class="form-label">CIN </label>
                         <input type="file" class="form-control" id="CIN" @change="handleFileChange($event, 'cin')"
-                            @blur="touched.cin = true">
+                            @blur="touched.cin = false">
                         <div v-if="touched.cin && !form.cin" class="text-danger">
                             CIN is required.
                         </div>
@@ -92,9 +90,9 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.lstCst && !form.lstCst }">
-                        <label for="LST_CST" class="form-label">LST/CST <span class="text-danger">*</span></label>
+                        <label for="LST_CST" class="form-label">LST/CST </label>
                         <input type="file" class="form-control" id="LST_CST"
-                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = true">
+                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = false">
                         <div v-if="touched.lstCst && !form.lstCst" class="text-danger">
                             LST/CST is required.
                         </div>
@@ -105,7 +103,7 @@
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
                         <!-- <button type="button" class="savebutton" @click="ValidateEmail()"
                             :disabled="!isValid">Save</button> -->
-                        <button type="button" class="savebutton" @click="submit()" :disabled="!isValid">Submit</button>
+                        <button type="button" class="savebutton" @click="submit()" >Submit</button>
                     </div>
                 </div>
             </div>
@@ -197,7 +195,6 @@ export default defineComponent({
             });
         });
         const handleFileChange=(event,field)=> {
-            touched.field=false
             const file = event.target.files[0];
             var formData = new FormData();
             formData.append('file', file);

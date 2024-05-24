@@ -20,7 +20,7 @@
                             product/service offerings</small></p>
                 </div>
             </router-link>
-
+<!-- 
             <router-link to="./Categorybusiness" class="no-underline">
                 <div class="w-48">
                     <div class="d-flex flex-col w-48 h-48 border-dashed border-1 border-gray-500 rounded p-2">
@@ -30,7 +30,7 @@
                     </div>
                     <p class="text-center text-gray-700 font-medium"><small>Update your Supplier information</small></p>
                 </div>
-            </router-link>
+            </router-link> -->
 
             <router-link to="./contactdetails" class="no-underline">
                 <div class="w-48">
