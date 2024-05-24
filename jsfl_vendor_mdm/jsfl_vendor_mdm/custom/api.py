@@ -310,3 +310,70 @@ def savelogo(doc):
     file.content = doc['file_name']
     file.save(ignore_permissions=True)
     return file
+
+
+
+@frappe.whitelist(allow_guest=True)
+def gst_registration_number(data):
+    try:
+        if data['gstNumber']:
+            gstNumber = data['gstNumber']
+            print(f"oooooooooooooooooooooooooo{gstNumber}")
+            response = requests.post(
+                'https://api.karza.in/gst/uat/v2/gstdetailed',
+                headers={
+                    'Content-Type': 'application/json',
+                    'x-karza-key': 'lC81SMEYEFlwr24wrjil'  
+                },
+                json={'consent': 'Y', 'gstin': gstNumber}
+            )
+            print(f"response {response}")
+            if response.ok:
+                response_data = response.json()
+                
+                return response_data
+            else:
+                error_message = f'Error fetching GST number details: {response.status_code}, {response.text}'
+                frappe.log_error(error_message)
+                return {'message': {'error': 'Error fetching GST Number. Please try again later.'}}
+        else:
+            frappe.logger().error('Missing GST Number parameter in request data')
+            return {'message': {'error': 'Missing GST Number parameter'}}
+    
+    except Exception as e:
+        error_message = f'Error fetching GST details: {str(e)}'
+        print(f".................................................................{e}")
+        return {'message': {'error': 'An error occurred while fetching GST details. Please try again later.'}}
+    
+    
+@frappe.whitelist(allow_guest=True)
+def check_gst_number_duplicacy(data):
+    gst_number = data.get('gstNumber')
+    current_docname = data.get('docname')  
+    # current_doc = frappe.get_doc("Supplier Clone", current_docname)
+    
+    
+    # Exclude the current document from the search
+    exists = frappe.db.exists(
+        "Supplier Clone",
+        {"gst_registration_number": gst_number, "name": ["!=", current_docname]}
+    )
+    
+    return {"isDuplicate": bool(exists)}
+
+
+@frappe.whitelist(allow_guest=True)
+def check_pan_number_duplicacy(data):
+    pan_number = data.get('panNumber')
+    print(pan_number)
+    current_docname = data.get('docname')  
+    # current_doc = frappe.get_doc("Supplier Clone", current_docname)
+    
+    
+    # Exclude the current document from the search
+    exists = frappe.db.exists(
+        "Supplier Clone",
+        {"permanent_account_number": pan_number, "name": ["!=", current_docname]}
+    )
+    
+    return {"isDuplicate": bool(exists)}

@@ -85,6 +85,6 @@
                 }
             });
   }
-  const pdfUrl = "https://uat-jfsl-mdm.frappe.cloud/files/document.pdf"; 
+  const pdfUrl = "https://uat-jfsl-mdm.frappe.cloud/files/JFSL%20Supplier%20Code%20of%20Conduct.pdf"; 
   </script>
   
