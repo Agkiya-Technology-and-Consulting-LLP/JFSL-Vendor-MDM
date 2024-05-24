@@ -8,38 +8,62 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-4 mb-3">
-                        <label for="Account Number" class="form-label">Account Number</label>
-                        <input type="text" class="form-control" id="Account Number" v-model="form.account_number" placeholder="Account Number">
+                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.account_number && !form.account_number }">
+                        <label for="AccountNumber" class="form-label">Account Number <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="AccountNumber" v-model="form.account_number"
+                            placeholder="Account Number" @blur="touched.account_number = true">
+                        <div v-if="touched.account_number && !form.account_number" class="text-danger">
+                            Account Number is required.
+                        </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="Confirm Account Number" class="form-label">Confirm Account Number</label>
-                        <input type="text" class="form-control" id="Confirm Account Number" v-model="form.confirm_account_number"
-                            placeholder="Confirm Account Number">
+
+                    <div class="col-md-4 mb-3"
+                        :class="{ 'has-error': touched.confirm_account_number && !form.confirm_account_number }">
+                        <label for="ConfirmAccountNumber" class="form-label">Confirm Account Number <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="ConfirmAccountNumber"
+                            v-model="form.confirm_account_number" placeholder="Confirm Account Number"
+                            @blur="touched.confirm_account_number = true">
+                        <div v-if="touched.confirm_account_number && !form.confirm_account_number" class="text-danger">
+                            Confirm Account Number is required.
+                        </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="IFSC Code" class="form-label">IFSC Code</label>
-                        <input type="text" class="form-control" id="IFSC Code" v-model="form.ifsc_code"
-                            placeholder="IFSC Code">
+
+                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.ifsc_code && !form.ifsc_code }">
+                        <label for="IFSCCode" class="form-label">IFSC Code <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="IFSCCode" v-model="form.ifsc_code"
+                            placeholder="IFSC Code" @blur="touched.ifsc_code = true">
+                        <div v-if="touched.ifsc_code && !form.ifsc_code" class="text-danger">
+                            IFSC Code is required.
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="row mt-3">
 
-                    <div class="col-md-4 mb-3">
-                        <label for="Name Of Bank" class="form-label">Name Of Bank</label>
-                        <input type="text" class="form-control" id="Name Of Bank" v-model="form.name_of_bank" placeholder="Name Of Bank">
+                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.name_of_bank && !form.name_of_bank }">
+                        <label for="NameOfBank" class="form-label">Name Of Bank <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="NameOfBank" v-model="form.name_of_bank"
+                            placeholder="Name Of Bank" @blur="touched.name_of_bank = true">
+                        <div v-if="touched.name_of_bank && !form.name_of_bank" class="text-danger">
+                            Name Of Bank is required.
+                        </div>
                     </div>
+
 
                     <div class="col-md-4 mb-3">
                         <label for="Branch Contact number" class="form-label">Branch Contact number</label>
-                        <input type="tel" maxlength="13" class="form-control" id="contact" v-model="form.branch_contact_number"
-                            placeholder="Contact Number">
+                        <input type="tel" maxlength="13" class="form-control" id="contact"
+                            v-model="form.branch_contact_number" placeholder="Contact Number">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Branch Email Id" class="form-check-label">Branch Email Id</label>
-                        <input type="text" class="form-control" id="Branch Email Id" v-model="form.branch_email_id" placeholder="Branch Email Id">
+                        <input type="text" class="form-control" id="Branch Email Id" v-model="form.branch_email_id"
+                            placeholder="Branch Email Id">
                     </div>
                 </div>
 
@@ -51,7 +75,8 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Bank Address" class="form-label">Bank Address</label>
-                        <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address" placeholder="Bank Address">
+                        <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
+                            placeholder="Bank Address">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="Country" class="form-label">Country</label>
@@ -74,42 +99,34 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="Zipcode" class="form-label">Zipcode</label>
-                        <input type="tel" maxlength="13" class="form-control"  id="Zipcode" v-model="form.branch_zipcode"
+                        <input type="tel" maxlength="13" class="form-control" id="Zipcode" v-model="form.branch_zipcode"
                             placeholder="Zipcode">
                     </div>
                 </div>
 
 
-                <div class="d-flex justify-content-end mt-1 mb-3">
-                    <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
+                <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
+                    <Button type="button" class="savebutton" @click="ValidateEmail()" :disabled="!isValid">Save</Button>
+                    <router-link to="/documentdetails" class="nextbutton"><button>Next</button></router-link>
                 </div>
             </div>
         </div>
     </div>
     <!-- Tost Message -->
-    <div
-      class="toast align-items-center text-white bg-success  border-0"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      :class="{ 'show': showToast }"
-    >
-      <div class="d-flex">
-        <div class="toast-body">
-          Details Saved Sucessfully.
+    <div class="toast align-items-center text-white bg-success  border-0" role="alert" aria-live="assertive"
+        aria-atomic="true" :class="{ 'show': showToast }">
+        <div class="d-flex">
+            <div class="toast-body">
+                Details Saved Sucessfully.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideToast"
+                aria-label="Close"></button>
         </div>
-        <button
-          type="button"
-          class="btn-close btn-close-white me-2 m-auto"
-          @click="hideToast"
-          aria-label="Close"
-        ></button>
-      </div>
     </div>
 </template>
 
 <script>
-import { ref, defineComponent, onMounted, reactive, watch } from "vue";
+import { ref, defineComponent, onMounted, reactive, watch, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
@@ -123,13 +140,23 @@ export default defineComponent({
             ifsc_code: '',
             name_of_bank: '',
             branch_contact_number: '',
-            docname:'',
-            branch_email_id:'',
-            bank_address:'',
-            branch_country:'',
-            branch_state:'',
-            branch_city:'',
-            branch_zipcode:''
+            docname: '',
+            branch_email_id: '',
+            bank_address: '',
+            branch_country: '',
+            branch_state: '',
+            branch_city: '',
+            branch_zipcode: ''
+        });
+
+        const touched = reactive({
+            account_number: false,
+            confirm_account_number: false,
+            ifsc_code: false,
+            name_of_bank: false,
+        });
+        const isValid = computed(() => {
+            return form.account_number && form.confirm_account_number && form.confirm_account_number && form.name_of_bank;
         });
 
         const loginUser = sessionUser();
@@ -156,7 +183,7 @@ export default defineComponent({
                     form.branch_state = data.branch_state;
                     form.branch_city = data.branch_city;
                     form.branch_zipcode = data.branch_zipcode;
-                    form.docname=data.name
+                    form.docname = data.name
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -174,14 +201,14 @@ export default defineComponent({
                         ifsc_code: form.ifsc_code,
                         contact_number: form.contact_number,
                         name_of_bank: form.name_of_bank,
-                        docname:form.docname,
-                        branch_contact_number:form.branch_contact_number,
-                        branch_email_id:form.branch_email_id,
-                        bank_address:form.bank_address,
-                        branch_country:form.branch_country,
-                        branch_state:form.branch_state,
-                        branch_city :form.branch_city,
-                        branch_zipcode : form.branch_zipcode
+                        docname: form.docname,
+                        branch_contact_number: form.branch_contact_number,
+                        branch_email_id: form.branch_email_id,
+                        bank_address: form.bank_address,
+                        branch_country: form.branch_country,
+                        branch_state: form.branch_state,
+                        branch_city: form.branch_city,
+                        branch_zipcode: form.branch_zipcode
                     }
                 }),
                 auto: true,
@@ -195,36 +222,36 @@ export default defineComponent({
             });
 
         };
-        watch( ()=>form.ifsc_code,
-            (newValue,oldValue)=>{
-                if(oldValue && newValue!=oldValue){
+        watch(() => form.ifsc_code,
+            (newValue, oldValue) => {
+                if (oldValue && newValue != oldValue) {
                     try {
-                    const response =  createResource({
-                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_bank_details',
-                        makeParams:()=>({
-                            data: {
-                            ifscCode: newValue
-                        },
-                        }),
-                        auto: true,
-                        onSuccess :(data)=>{
-                            form.name_of_bank = data.result.bank;
-                            form.bank_address = data.result.address;
-                            form.state =data.result.state
-                            form.city=data.result.city
+                        const response = createResource({
+                            url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_bank_details',
+                            makeParams: () => ({
+                                data: {
+                                    ifscCode: newValue
+                                },
+                            }),
+                            auto: true,
+                            onSuccess: (data) => {
+                                form.name_of_bank = data.result.bank;
+                                form.bank_address = data.result.address;
+                                form.state = data.result.state
+                                form.city = data.result.city
 
-                        },onError :(error)=>{
-                            console.log(error)
-                        }
-                    });
+                            }, onError: (error) => {
+                                console.log(error)
+                            }
+                        });
 
-                } catch (error) {
-                    console.error('Error fetching bank details:', error);
+                    } catch (error) {
+                        console.error('Error fetching bank details:', error);
+                    }
                 }
-                }
 
-                
-        })
+
+            })
         const showToastMessage = () => {
             showToast.value = true;
             setTimeout(() => {
@@ -240,7 +267,9 @@ export default defineComponent({
             ValidateEmail,
             hideToast,
             showToastMessage,
-            showToast
+            showToast,
+            touched,
+            isValid
         };
     }
 });
@@ -286,14 +315,28 @@ h6 {
     padding: 0px 20px 0px 20px;
     border-radius: 10px;
 }
+
 .toast {
-  position: fixed;
-  top: 5rem;
-  right: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
+
 .toast.show {
-  opacity: 1;
+    opacity: 1;
+}
+
+:disabled {
+    /* background-color: grey; */
+    cursor: not-allowed;
+}
+.nextbutton{
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.20rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
 }
 </style>

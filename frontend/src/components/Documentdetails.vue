@@ -7,98 +7,128 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="Address Proof" class="form-label">Address Proof</label>
-                        <input type="file" class="form-control" id="Address Proof" @change="handleFileChange($event,'address_proof')" v-on:change="form.addressProof">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.addressProof && !form.addressProof }">
+                        <label for="AddressProof" class="form-label">Address Proof <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="AddressProof"
+                            @change="handleFileChange($event, 'addressProof')" @blur="touched.addressProof = true">
+                        <div v-if="touched.addressProof && !form.addressProof" class="text-danger">
+                            Address Proof is required.
+                        </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="MSMED/Udyam Registration" class="form-label">MSMED/Udyam Registration</label>
-                        <input type="file" class="form-control" id="MSMED/Udyam Registration"
-                            v-on:change="form.msmedUdyamNumber" @change="handleFileChange($event,'msmedudyam_registration')">
+                    <div class="col-md-6 mb-3"
+                        :class="{ 'has-error': touched.msmedUdyamNumber && !form.msmedUdyamNumber }">
+                        <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="MSMEDUdyamRegistration"
+                            @change="handleFileChange($event, 'msmedUdyamNumber')"
+                            @blur="touched.msmedUdyamNumber = true">
+                        <div v-if="touched.msmedUdyamNumber && !form.msmedUdyamNumber" class="text-danger">
+                            MSMED/Udyam Registration is required.
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="PAN/Aadhar" class="form-label">PAN/Aadhar</label>
-                        <input type="file" class="form-control" id="PAN/Aadhar" @change="handleFileChange($event,'panaadhar')" v-on:change="form.panAadhar">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.panAadhar && !form.panAadhar }">
+                        <label for="PANAadhar" class="form-label">PAN/Aadhar <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="PANAadhar"
+                            @change="handleFileChange($event, 'panAadhar')" @blur="touched.panAadhar = true">
+                        <div v-if="touched.panAadhar && !form.panAadhar" class="text-danger">
+                            PAN/Aadhar is required.
+                        </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="ESIC" class="form-label">ESIC</label>
-                        <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event,'esic')" v-on:change="form.esic">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.esic && !form.esic }">
+                        <label for="ESIC" class="form-label">ESIC <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event, 'esic')"
+                            @blur="touched.esic = true">
+                        <div v-if="touched.esic && !form.esic" class="text-danger">
+                            ESIC is required.
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="PF" class="form-label">PF</label>
-                        <input type="file" class="form-control" id="PF" @change="handleFileChange($event,'pf')" v-on:change="form.pf">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.pf && !form.pf }">
+                        <label for="PF" class="form-label">PF <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="PF" @change="handleFileChange($event, 'pf')"
+                            @blur="touched.pf = true">
+                        <div v-if="touched.pf && !form.pf" class="text-danger">
+                            PF is required.
+                        </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="TIN/UIN" class="form-label">TIN/UIN</label>
-                        <input type="file" class="form-control" id="TIN/UIN" @change="handleFileChange($event,'tinuin')" v-on:change="form.tinUin">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.tinUin && !form.tinUin }">
+                        <label for="TIN_UIN" class="form-label">TIN/UIN <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="TIN_UIN"
+                            @change="handleFileChange($event, 'tinUin')" @blur="touched.tinUin = true">
+                        <div v-if="touched.tinUin && !form.tinUin" class="text-danger">
+                            TIN/UIN is required.
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="GST" class="form-label">GST</label>
-                        <input type="file" class="form-control" id="GST" @change="handleFileChange($event,'gst')" v-on:change="form.gst">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.gst && !form.gst }">
+                        <label for="GST" class="form-label">GST <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="GST" @change="handleFileChange($event, 'gst')"
+                            @blur="touched.gst = true">
+                        <div v-if="touched.gst && !form.gst" class="text-danger">
+                            GST is required.
+                        </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="CIN" class="form-label">CIN</label>
-                        <input type="file" class="form-control" id="CIN" @change="handleFileChange($event,'cin_attach')" v-on:change="form.cin">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cin && !form.cin }">
+                        <label for="CIN" class="form-label">CIN <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="CIN" @change="handleFileChange($event, 'cin')"
+                            @blur="touched.cin = true">
+                        <div v-if="touched.cin && !form.cin" class="text-danger">
+                            CIN is required.
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="LST/CST" class="form-label">LST/CST</label>
-                        <input type="file" class="form-control" id="LST/CST" @change="handleFileChange($event,'lstcst')" v-on:change="form.lstCst">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.lstCst && !form.lstCst }">
+                        <label for="LST_CST" class="form-label">LST/CST <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="LST_CST"
+                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = true">
+                        <div v-if="touched.lstCst && !form.lstCst" class="text-danger">
+                            LST/CST is required.
+                        </div>
                     </div>
                 </div>
+
                 <div class="row">
-                <div class="d-flex justify-content-end mt-1 mb-3 col-11">
-                <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
-            </div>
-
-            <div class="d-flex justify-content-end mt-1 mb-3 col-1 ">
-                <Button type="button" class="savebutton" @click="submit()">Submit</Button>
-            </div>
-        </div>
+                    <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
+                        <!-- <button type="button" class="savebutton" @click="ValidateEmail()"
+                            :disabled="!isValid">Save</button> -->
+                        <button type="button" class="savebutton" @click="submit()" :disabled="!isValid">Submit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 
-<!-- Tost Message -->
-    <div
-      class="toast align-items-center text-white bg-success  border-0"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      :class="{ 'show': showToast }"
-    >
-      <div class="d-flex">
-        <div class="toast-body">
-          Details Submitted Sucessfully.
+
+    <!-- Tost Message -->
+    <div class="toast align-items-center text-white bg-success  border-0" role="alert" aria-live="assertive"
+        aria-atomic="true" :class="{ 'show': showToast }">
+        <div class="d-flex">
+            <div class="toast-body">
+                Details Submitted Sucessfully.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideToast"
+                aria-label="Close"></button>
         </div>
-        <button
-          type="button"
-          class="btn-close btn-close-white me-2 m-auto"
-          @click="hideToast"
-          aria-label="Close"
-        ></button>
-      </div>
     </div>
 </template>
 
 <script>
-import { ref, defineComponent, onMounted, reactive } from "vue";
+import { ref, defineComponent, onMounted, reactive, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
@@ -108,17 +138,43 @@ export default defineComponent({
     setup() {
         const form = reactive({
             addressProof: '',
-                msmedUdyamNumber: '',
-                panAadhar: '',
-                esic: '',
-                pf: '',
-                tinUin: '',
-                gst: '',
-                cin: '',
-                lstCst: '',
-                docname:''
+            msmedUdyamNumber: '',
+            panAadhar: '',
+            esic: '',
+            pf: '',
+            tinUin: '',
+            gst: '',
+            cin: '',
+            lstCst: '',
+            docname: ''
         });
-        const loginUser=sessionUser()
+
+
+        const touched = reactive({
+            addressProof: false,
+            msmedUdyamNumber: false,
+            panAadhar: false,
+            esic: false,
+            pf: false,
+            tinUin: false,
+            gst: false,
+            cin: false,
+            lstCst: false,
+        });
+
+        const isValid = computed(() => {
+            return form.addressProof
+                && form.msmedUdyamNumber
+                && form.panAadhar
+                && form.esic
+                && form.pf
+                && form.tinUin
+                && form.gst
+                && form.cin
+                && form.lstCst;
+        });
+
+        const loginUser = sessionUser()
         onMounted(() => {
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
@@ -129,8 +185,8 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
-                        console.log("data", data);
-                        form.docname=data.name
+                    console.log("data", data);
+                    form.docname = data.name
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -243,13 +299,13 @@ export default defineComponent({
             //     }
             // });
         }
-        function submit(){
+        function submit() {
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
                 makeParams: () => ({
                     doc: {
-                        docname:form.docname,
-                        workflow_state:"Approval Pending By Company User Team"
+                        docname: form.docname,
+                        workflow_state: "Approval Pending By Company User Team"
                     }
                 }),
                 auto: true,
@@ -285,6 +341,8 @@ export default defineComponent({
             handleFileChange,
             // handleMSMEFileChange,
             // handlePAN_AadharFileChange
+            touched,
+            isValid
         };
     }
 });
@@ -302,16 +360,19 @@ export default defineComponent({
 .rounded-top {
     border-radius: 10px 10px 0px 0px;
 }
+
 .savebutton {
     background-color: #2e6bdc;
     color: white;
     font-size: 1.5rem;
     padding: 1rem;
 }
-label{
-    font-weight:600;
+
+label {
+    font-weight: 600;
 }
-h6{
+
+h6 {
     color: #2e6bdc;
     font-weight: bolder;
 }
@@ -325,14 +386,21 @@ h6{
     padding: 0px 20px 0px 20px;
     border-radius: 10px;
 }
+
 .toast {
-  position: fixed;
-  top: 5rem;
-  right: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
+
 .toast.show {
-  opacity: 1;
+    opacity: 1;
+}
+
+:disabled {
+    /* background-color: grey; */
+    cursor: not-allowed;
 }
 </style>

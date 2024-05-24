@@ -7,25 +7,7 @@
                 <h5>Select the Primary Company you are registering for</h5>
             </div>
             <div class="row mt-3">
-                <!-- <div class="col-md-3 mb-3">
-                        <label for="company" class="form-label">Company</label>
-                        <select class="form-control" id="company" v-model="form.company">
-                            <option value="" disabled selected>Select Company</option>
-                            <option value="Agkiya">Agkiya</option>
-                            <option value="SMB">SMB</option>
-                            <option value="Jio Finanace Limited">Jio Finanace Limited</option>
-                            <option value="Jio Information Aggregator Services Ltd">Jio Information Aggregator Services Ltd</option>
-                            <option value="JIO Insurance Broking Limited">JIO Insurance Broking Limited</option>
-                            <option value="Jio Payment Solutions Limited">Jio Payment Solutions Limited</option>
-                            <option value="JIO Payments Bank Limited">JIO Payments Bank Limited</option>
-                            <option value="Petroleum Trust">Petroleum Trust</option>
-                            <option value="JIO INFRASTRUCTURE MANAGEMENT SERVICE LIMITED">JIO INFRASTRUCTURE MANAGEMENT SERVICE LIMITED</option>
-                            <option value="Reliance Services and Holding Limited">Reliance Services and Holding Limited</option>
-                            <option value="Reliance Strategic Investments Limited">Reliance Strategic Investments Limited</option>
-
-                        </select>
-                    </div> -->
-
+              
                 <div class="col-md-3 mb-3">
                     <label for="company" class="form-label">Company</label>
                     <select class="form-control" id="company" v-model="form.company">
@@ -73,11 +55,24 @@
                     <input type="text" class="form-control" id="Registration" v-model="form.small_scale_industries_registration_no" placeholder="Small Scale Industries Registration No.">
                 </div>
 
-                <div class="col-md-3 mb-3">
+                <!-- <div class="col-md-3 mb-3">
                     <label for="Establishment" class="form-label">Date Of Establishment<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="Establishment" placeholder="Date Of Establishment" v-model="form.date_of_establishment">
-                </div>
-
+                </div> -->
+                <div class="col-md-3 mb-3"
+                        :class="{ 'has-error': touched.date_of_establishment && (!form.date_of_establishment || isFutureDate) }">
+                        <label for="Establishment" class="form-label">Date Of Establishment<span
+                                class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="Establishment" placeholder="Date Of Establishment"
+                            v-model="form.date_of_establishment" @blur="touched.date_of_establishment = true"
+                            :max="maxDate">
+                        <div v-if="touched.date_of_establishment && !form.date_of_establishment" class="text-danger">
+                            Establishment date is required.
+                        </div>
+                        <div v-if="touched.date_of_establishment && isFutureDate" class="text-danger">
+                            Can Not be greater than today's date
+                        </div>
+                    </div>
                 <div class="col-md-3 mb-3">
                     <label for="nature_of_business" class="form-label">Nature Of Business</label>
                     <select name="" id="nature_of_business" class="form-control" v-model="form.nature_of_business" >
@@ -157,10 +152,22 @@
             </div>
 
             <div class="row mt-3" v-if="!isCollapsed1">
-                <div class="col-md-4 mb-3">
+                <!-- <div class="col-md-4 mb-3">
                     <label for="pan" class="form-label">Permanent account number <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number" placeholder="Enter PAN No">
-                </div>
+                </div> -->
+
+                <div class="col-md-4 mb-3"
+                        :class="{ 'has-error': touched.permanent_account_number && !form.permanent_account_number }">
+                        <label for="pan" class="form-label">Permanent account number <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number"
+                            placeholder="Enter PAN No" @blur="touched.permanent_account_number = true">
+                        <div v-if="touched.permanent_account_number && !form.permanent_account_number"
+                            class="text-danger">
+                            PAN is required.
+                        </div>
+                    </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="Ownership" class="form-label">Ownership information</label>
@@ -191,22 +198,30 @@
             </div>
 
             <div class="row mt-3" v-if="!isCollapsed2">
-                <div class="col-md-6 mb-3">
+                <!-- <div class="col-md-6 mb-3">
                     <label for="GST" class="form-label">GST Registration <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
-                </div>
+                </div> -->
+                <div class="col-md-6 mb-3"
+                        :class="{ 'has-error': touched.gst_registration_number && !form.gst_registration_number }">
+                        <label for="GST" class="form-label">GST Registration <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number"
+                            placeholder="Enter GST No" @blur="touched.gst_registration_number = true">
+                        <div v-if="touched.gst_registration_number && !form.gst_registration_number"
+                            class="text-danger">
+                            GST Number is required.
+                        </div>
+                    </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="valid" class="form-label">GST valid from <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="valid" v-model="form.gst_valid_from">
+                    <label for="valid" class="form-label">GST valid from </label>
+                    <input type="date" class="form-control" id="valid" v-model="form.gst_valid_from" disabled>
 
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <!-- <div class="col-md-6 mb-3">
                     <label for="GST Status" class="form-label">GST Status<span class="text-danger">*</span></label>
-                    <!-- <input type="text" class="form-control" id="GST Status" v-model="form.gst_status"
-                            placeholder="GST Status"> -->
-                    <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status">
+                    <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status" >
                         <option value="1. Normal Registered">1. Normal Registered</option>
                         <option value="2. Composition">2. Composition</option>
                         <option value="3. Casual">3. Casual</option>
@@ -220,14 +235,36 @@
                         <option value="Z. One Time GST Registered">Z. One Time GST Registered</option>
 
                     </select>
+                </div> -->
+                <div class="col-md-6 mb-3" :class="{ 'has-error': touched.gst_status && !form.gst_status }">
+                        <label for="GST Status" class="form-label">GST Status<span class="text-danger">*</span></label>
+                        <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status"
+                            @blur="touched.gst_status = true">
+                            <option value="1. Normal Registered">1. Normal Registered</option>
+                            <option value="2. Composition">2. Composition</option>
+                            <option value="3. Casual">3. Casual</option>
+                            <option value="5. Government/LocalAuthority">5. Government/LocalAuthority</option>
+                            <option value="6. SEZ">6. SEZ</option>
+                            <option value="7. EOU">7. EOU</option>
+                            <option value="8. Unregistered">8. Unregistered</option>
+                            <option value="9. overseas Vendor">9. overseas Vendor</option>
+                            <option value="A. TAN Base GST">A. TAN Base GST</option>
+                            <option value="B. Unknown">B. Unknown</option>
+                            <option value="Z. One Time GST Registered">Z. One Time GST Registered</option>
+                        </select>
+                        <div v-if="touched.gst_status && !form.gst_status" class="text-danger">
+                            Enter gst status
+                        </div>
                 </div>
-
                 <div class="col-md-6 mb-3">
-                        <label for="GST Status Active" class="form-label">GST Status Active<span class="text-danger">*</span></label>
-                        <select name="gst_status_active" id="gst_status_active" class="form-control"  v-model="form.gst_status_active">
+                        <label for="GST Status Active" class="form-label">GST Status Active</label>
+                        <select name="gst_status_active" id="gst_status_active" class="form-control"  v-model="form.gst_status_active" disabled>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </select>
+                        <div v-if="touched.gst_status && !form.gst_status" class="text-danger">
+                            Enter gst status
+                        </div>
                     </div>
 
                 <!-- <div class="col-md-6 mb-3">
@@ -260,14 +297,36 @@
             <div v-if="!isCollapsed4">
                 <h6 class="mt-3">Registered Address </h6>
                 <div class="row mt-3">
-                    <div class="col-md-3 mb-3">
+                    <!-- <div class="col-md-3 mb-3">
                         <label for="Name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="Name" v-model="form.name_" placeholder="Name">
+                    </div> -->
+
+                    <div class="col-md-3 mb-3" :class="{ 'has-error': touched.name_ && !form.name_ }">
+                            <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Name" v-model="form.name_" placeholder="Name"
+                                @blur="touched.name_ = true">
+                            <div v-if="touched.name_ && !form.name_" class="text-danger">
+                                Name is required.
+                            </div>
                     </div>
-                    <div class="col-md-3 mb-3">
+
+                    <!-- <div class="col-md-3 mb-3">
                         <label for="Address(Line 1)" class="form-label">Address(Line 1)</label>
                         <input type="text" class="form-control" id="Address(Line 1)" v-model="form.addressline_1" placeholder="Address(Line 1)">
+                    </div> -->
+
+                    <div class="col-md-3 mb-3"
+                            :class="{ 'has-error': touched.addressline_1 && !form.addressline_1 }">
+                            <label for="AddressLine1" class="form-label">Address (Line 1) <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="AddressLine1" v-model="form.addressline_1"
+                                placeholder="Address (Line 1)" @blur="touched.addressline_1 = true">
+                            <div v-if="touched.addressline_1 && !form.addressline_1" class="text-danger">
+                                Address (Line 1) is required.
+                            </div>
                     </div>
+                    
                     <div class="col-md-3 mb-3">
                         <label for="Address(Line 2)" class="form-label">Address(Line 2)</label>
                         <input type="text" class="form-control" id="Address(Line 2)" v-model="form.addressline_2" placeholder="Address(Line 2)">
@@ -279,7 +338,7 @@
 
                 </div>
 
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <div class="col-md-3 mb-3">
                         <label for="Country" class="form-label">Country</label>
                         <input type="text" class="form-control" id="Country" v-model="form.country" placeholder="Country">
@@ -299,18 +358,75 @@
                         <label for="" class="form-label">Pincode</label>
                         <input type="text" class="form-control" id="Pincode" v-model="form.pincode" placeholder="Pincode">
                     </div>
-                </div>
+                </div> -->
+
+                <div class="row mt-3">
+                        <div class="col-md-3 mb-3" :class="{ 'has-error': touched.country && !form.country }">
+                            <label for="Country" class="form-label">Country <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Country" v-model="form.country"
+                                placeholder="Country" @blur="touched.country = true">
+                            <div v-if="touched.country && !form.country" class="text-danger">
+                                Country is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3" :class="{ 'has-error': touched.city && !form.city }">
+                            <label for="City" class="form-label">City <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="City" v-model="form.city" placeholder="City"
+                                @blur="touched.city = true">
+                            <div v-if="touched.city && !form.city" class="text-danger">
+                                City is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3" :class="{ 'has-error': touched.region && !form.region }">
+                            <label for="Region" class="form-label">Region <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Region" v-model="form.region"
+                                placeholder="Region" @blur="touched.region = true">
+                            <div v-if="touched.region && !form.region" class="text-danger">
+                                Region is required.
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3" :class="{ 'has-error': touched.pincode && !form.pincode }">
+                            <label for="Pincode" class="form-label">Pincode <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Pincode" v-model="form.pincode"
+                                placeholder="Pincode" @blur="touched.pincode = true">
+                            <div v-if="touched.pincode && !form.pincode" class="text-danger">
+                                Pincode is required.
+                            </div>
+                        </div>
+
+                    </div>
 
                 <h6 class="mt-3">Residential Details</h6>
                 <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
+                    <!-- <div class="col-md-6 mb-3">
                         <label for="Residential Status" class="form-label">Residential Status</label>
                         <select name="Residential Status" id="Residential Status" class="form-control" v-model="form.residential_status">
                             <option value="Resident of India">Resident of India</option>
                             <option value="Non-Resident of India">Non-Resident of India</option>
                             <option value="Foreign company having branch in india">Foreign company having branch in india</option>
                         </select>
-                    </div>
+                    </div> -->
+
+
+                    <div class="col-md-6 mb-3"
+                            :class="{ 'has-error': touched.residential_status && !form.residential_status }">
+                            <label for="ResidentialStatus" class="form-label">Residential Status <span
+                                    class="text-danger">*</span></label>
+                            <select name="ResidentialStatus" id="ResidentialStatus" class="form-control"
+                                v-model="form.residential_status" @blur="touched.residential_status = true">
+                                <option value="">Select Residential Status</option>
+                                <option value="Resident of India">Resident of India</option>
+                                <option value="Non-Resident of India">Non-Resident of India</option>
+                                <option value="Foreign company having branch in india">Foreign company having branch in
+                                    India</option>
+                            </select>
+                            <div v-if="touched.residential_status && !form.residential_status" class="text-danger">
+                                Residential Status is required.
+                            </div>
+                        </div>
                     <div class="col-md-6 mb-3">
                         <label for="TIN" class="form-label">Tax Identification No. (TIN)</label>
                         <input type="text" class="form-control" id="TIN" v-model="form.tax_identification_no_tin" placeholder="TIN No">
@@ -384,9 +500,18 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-4 mb-3">
+                    <!-- <div class="col-md-4 mb-3">
                         <label for="LST Number" class="form-label">LST Number</label>
                         <input type="text" class="form-control" id="LST Number" v-model="form.lst_number" placeholder="LST Number">
+                    </div> -->
+                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.lst_number && !form.lst_number }">
+                            <label for="LSTNumber" class="form-label">LST Number <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="LSTNumber" v-model="form.lst_number"
+                                placeholder="LST Number" @blur="touched.lst_number = true">
+                            <div v-if="touched.lst_number && !form.lst_number" class="text-danger">
+                                LST Number is required.
+                            </div>
                     </div>
 
                     <div class="col-md-4 mb-3">
@@ -436,10 +561,22 @@
                         <input type="text" class="form-control" id="Certificate Number" v-model="form.msme_certificate_number" placeholder="Certificate Number">
                     </div>
 
-                    <div class="col-md-3 mb-3">
+                    <!-- <div class="col-md-3 mb-3">
                         <label for="Udyam" class="form-label">Udyam Registration Number </label>
                         <input type="text" class="form-control" id="Udyam" placeholder="Udyam" v-model="form.udyam_registration_number">
-                    </div>
+                    </div> -->
+
+                    <div class="col-md-4 mb-3"
+                            :class="{ 'has-error': touched.udyam_registration_number && !form.udyam_registration_number }">
+                            <label for="Udyam" class="form-label">Udyam Registration Number <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="Udyam" v-model="form.udyam_registration_number"
+                                placeholder="Udyam" @blur="touched.udyam_registration_number = true">
+                            <div v-if="touched.udyam_registration_number && !form.udyam_registration_number"
+                                class="text-danger">
+                                Udyam Registration Number is required.
+                            </div>
+                        </div>
                 </div>
 
                 <h6 class="mt-3">WCT</h6>
@@ -452,9 +589,15 @@
             </div>
 
         </div>
-        <div class="d-flex justify-content-end mt-4 mb-3">
+        <!-- <div class="d-flex justify-content-end mt-4 mb-3">
             <Button type="button" class="savebutton" @click="ValidateEmail()">Save</Button>
-        </div>
+        </div> -->
+
+        <div class="d-flex justify-content-end gap-2 mt-4 mb-3">
+                <Button type="button" class="savebutton" @click="ValidateEmail()" :disabled="!isValid">Save</Button>
+                <router-link to="/Categorybusiness"><button class="nextbutton">Next</button></router-link>
+                
+            </div>
     </div>
 </div>
 
@@ -468,22 +611,10 @@
     </div>
 </div>
 </template>
-
 <script>
-import {
-    ref,
-    defineComponent,
-    onMounted,
-    watch,
-    reactive,
-    computed
-} from "vue";
-import {
-    sessionUser
-} from "../data/session";
-import {
-    createResource
-} from 'frappe-ui';
+import { ref, defineComponent, onMounted, watch, reactive, computed } from "vue";
+import { sessionUser } from "../data/session";
+import { createResource } from 'frappe-ui';
 const showToast = ref(false);
 
 function formatDate(dateString) {
@@ -570,16 +701,61 @@ export default defineComponent({
             companylist: [],
             msme_applicable: '',
             is_aadhar_pan_linked: 'NO',
-            logourl:'',
+            logourl:''
 
         });
         
         
         const touched = reactive({
             company_name: false,
+            company_type: false,
+            date_of_establishment: false,
+            permanent_account_number: false,
+            proprietors_name: false,
+            gst_registration_number: false,
+            gst_valid_from: false,
+            gst_status: false,
+            gst_status_valid_from: false,
+            name_: false,
+            addressline_1: false,
+            country: false,
+            city: false,
+            region: false,
+            pincode: false,
+            residential_status: false,
+            tax_identification_no_tin: false,
+            permanent_account_no: false,
+            lst_number: false,
+            udyam_registration_number: false,
         });
         const isValid = computed(() => {
-            return form.company_name;
+            return form.company_name
+                && form.date_of_establishment
+                && form.permanent_account_number
+                && form.gst_registration_number
+                && form.gst_status
+                && form.name_
+                && form.addressline_1
+                && form.country
+                && form.city
+                && form.region
+                && form.pincode
+                && form.residential_status
+                // && form.permanent_account_no
+                && form.lst_number
+                && form.udyam_registration_number;
+        });
+
+        const maxDate = ref(new Date().toISOString().split('T')[0]);
+
+        const isFutureDate = computed(() => {
+            return form.date_of_establishment > maxDate.value;
+        });
+        const isFutureDate1 = computed(() => {
+            return form.gst_valid_from > maxDate.value;
+        });
+        const isFutureDate2 = computed(() => {
+            return form.gst_status_valid_from > maxDate.value;
         });
 
         const loginUser = sessionUser();
@@ -995,7 +1171,11 @@ export default defineComponent({
             hideToast,
             showToastMessage,
             showToast,
-            handleFileChange
+            handleFileChange,
+            maxDate,
+            isFutureDate,
+            isFutureDate1,
+            isFutureDate2
         };
     }
 });
@@ -1038,6 +1218,8 @@ h6 {
 
 .text-danger {
     color: red;
+    /* font-weight: bolder; */
+    margin-left: 0.25rem;
 }
 
 .has-error input,
@@ -1072,5 +1254,12 @@ h6 {
 
 .toast.show {
     opacity: 1;
+}
+.nextbutton{
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.20rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
 }
 </style>
