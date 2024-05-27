@@ -253,17 +253,17 @@
                         <label for="GST Status" class="form-label">GST Status<span class="text-danger">*</span></label>
                         <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status"
                             @blur="touched.gst_status = true">
-                            <option value="1. Normal Registered">1. Normal Registered</option>
-                            <option value="2. Composition">2. Composition</option>
-                            <option value="3. Casual">3. Casual</option>
-                            <option value="5. Government/LocalAuthority">5. Government/LocalAuthority</option>
-                            <option value="6. SEZ">6. SEZ</option>
-                            <option value="7. EOU">7. EOU</option>
-                            <option value="8. Unregistered">8. Unregistered</option>
-                            <option value="9. overseas Vendor">9. overseas Vendor</option>
-                            <option value="A. TAN Base GST">A. TAN Base GST</option>
-                            <option value="B. Unknown">B. Unknown</option>
-                            <option value="Z. One Time GST Registered">Z. One Time GST Registered</option>
+                            <option value="Registered Regular">1. Registered Regular</option>
+                            <option value="Registered Composition">2. Registered Composition</option>
+                            <option value="Unregistered">3. Unregistered</option>
+                            <option value="Overseas">5. Overseas</option>
+                            <option value="SEZ">6. SEZ</option>
+                            <option value="Deemed Export">7. Deemed Export</option>
+                            <option value="UIN Holders">8. UIN Holders</option>
+                            <option value="Tax Deductor">9. Tax Deductor</option>
+                            <option value="Tax Collector">A. Tax Collector</option>
+                            <!-- <option value="B. Unknown">B. Unknown</option>
+                            <option value="Z. One Time GST Registered">Z. One Time GST Registered</option> -->
                         </select>
                         <div v-if="touched.gst_status && !form.gst_status" class="text-danger">
                             Enter gst status
@@ -923,13 +923,14 @@ export default defineComponent({
 
 
         const ValidateEmail = () => {
-            if(form.error_message && form.gst_error){
-                // alert("PAN & GST number already exists")
-                showErrorToastMessage("PAN & GST number already exists")
-            }else if(form.error_message){
-                // alert("PAN number already exists")
-                showErrorToastMessage("PAN number already exists")
-            }else if(form.gst_error){
+            // if(form.error_message && form.gst_error){
+            //     // alert("PAN & GST number already exists")
+            //     showErrorToastMessage("PAN & GST number already exists")
+            // }else if(form.error_message){
+            //     // alert("PAN number already exists")
+            //     showErrorToastMessage("PAN number already exists")
+            // }else 
+            if(form.gst_error){
                 // alert("GST number already exists")
                 showErrorToastMessage("GST number already exists")
             }else{
@@ -1009,27 +1010,44 @@ export default defineComponent({
         watch( ()=>form.permanent_account_number,
             (newValue,oldValue)=>{
                 // if(oldValue && newValue!=oldValue){
-                if(oldValue && oldValue != newValue){
-                form.error_message=''
-                
-                const isDuplicateGstNumber= createResource({
-                    url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_pan_number_duplicacy',
-                    makeParams: () =>({
-                        data: {
-                            panNumber : newValue,
-                            docname : form.docname,
-                        },
-                    }),
-                    auto : true,
-                    onSuccess : (data) => {
-                        const isDuplicateGst = data.isDuplicate;
+                if(oldValue != newValue){
+                // form.error_message=''
+                if (newValue && typeof newValue === 'string' && newValue.length >= 4){
+                const typeMap = {
+                                'P': 'Individual',
+                                'C': 'Company',
+                                'H': 'Hindu Undivided Family',
+                                'A': 'Association of Persons',
+                                'B': 'Body of Individuals',
+                                'G': 'Government Agency',
+                                'J': 'Artificial Juridical Person',
+                                'L': 'Local Authority',
+                                'F': 'Firm/Partnership',
+                                'T': 'Trust'
+                            };
+                            const fourthChar = newValue[3].toUpperCase();
+                            const panType = typeMap[fourthChar];
+                            console.log(panType)
+                            form.ownership_information = panType
+                        }
+                // const isDuplicateGstNumber= createResource({
+                //     url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_pan_number_duplicacy',
+                //     makeParams: () =>({
+                //         data: {
+                //             panNumber : newValue,
+                //             docname : form.docname,
+                //         },
+                //     }),
+                //     auto : true,
+                //     onSuccess : (data) => {
+                //         const isDuplicateGst = data.isDuplicate;
 
-                        if(isDuplicateGst){
-                            console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
-                            form.error_message="PAN already exist, please use another. "
-                        } else{
-                            console.log("PAN NUMBER NOT FOUND")
-                            try {
+                //         if(isDuplicateGst){
+                //             console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
+                //             // form.error_message="PAN already exist, please use another. "
+                //         } else{
+                //             console.log("PAN NUMBER NOT FOUND")
+                //             try {
                             const response =  createResource({
                                 url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
                                 makeParams:()=>({
@@ -1066,29 +1084,29 @@ export default defineComponent({
                                     console.log(error)
                                 }
                             });
-                            } catch (error) {
-                                console.error('Error fetching bank details:', error);
-                            }
+                            // } catch (error) {
+                            //     console.error('Error fetching bank details:', error);
+                            // }
 
-                            const typeMap = {
-                                'P': 'Individual',
-                                'C': 'Company',
-                                'H': 'Hindu Undivided Family',
-                                'A': 'Association of Persons',
-                                'B': 'Body of Individuals',
-                                'G': 'Government Agency',
-                                'J': 'Artificial Juridical Person',
-                                'L': 'Local Authority',
-                                'F': 'Firm/Partnership',
-                                'T': 'Trust'
-                            };
-                            const fourthChar = newValue.charAt(3).toUpperCase();
-                            const panType = typeMap[fourthChar];
-                            console.log(panType)
-                            form.ownership_information = panType
-                        }
-                    }
-                });
+                //             const typeMap = {
+                //                 'P': 'Individual',
+                //                 'C': 'Company',
+                //                 'H': 'Hindu Undivided Family',
+                //                 'A': 'Association of Persons',
+                //                 'B': 'Body of Individuals',
+                //                 'G': 'Government Agency',
+                //                 'J': 'Artificial Juridical Person',
+                //                 'L': 'Local Authority',
+                //                 'F': 'Firm/Partnership',
+                //                 'T': 'Trust'
+                //             };
+                //             const fourthChar = newValue.charAt(3).toUpperCase();
+                //             const panType = typeMap[fourthChar];
+                //             console.log(panType)
+                //             form.ownership_information = panType
+                //         }
+                //     }
+                // });
         }
     });
         watch(() => form.company_turnover,
@@ -1105,15 +1123,15 @@ export default defineComponent({
                 }
             })
 
-            watch(() => form.gst_registration_number, (newValue,oldValue) => {
+            watch(() => form.gst_registration_number, (value) => {
                
-                if (newValue,oldValue) {
+                if (value) {
                     form.gst_error=''
                     const isDuplicateGstNumber= createResource({
                         url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_gst_number_duplicacy',
                         makeParams: () =>({
                             data: {
-                                gstNumber : newValue,
+                                gstNumber : value,
                                 docname : form.docname,
                             },
                         }),
@@ -1131,7 +1149,7 @@ export default defineComponent({
                                         url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.gst_registration_number',
                                         makeParams: () => ({
                                             data: {
-                                                gstNumber: newValue
+                                                gstNumber: value
                                             },
                                         }),
                                         auto: true,
@@ -1146,11 +1164,34 @@ export default defineComponent({
                                             form.legal_name_of_the_business = data.result.lgnm
                                             form.constitution_of_business = data.result.ctb
                                             form.address_information_for_principal_place_of_business = data.result.pradr.adr
+                                            form.proprietors_name=data.result.tradeNam
+                                            if (data.result.adhrVFlag =="Yes"){
+                                                form.is_aadhar_pan_linked="YES"
+                                            }else{
+                                                form.is_aadhar_pan_linked="NO"
+                                            }
                                         },
                                         onError: (error) => {
                                             console.log(error);
                                         }
                                     });
+                                    createResource({
+                                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.validate_gstin',
+                                        makeParams: () => ({
+                                            doc: {
+                                                gstin: form.gst_registration_number,
+                                                region:form.region
+                                            },
+                                        }),
+                                        auto: true,
+                                        onSuccess: (data) => {
+                                            console.log(data)
+                                            form.gst_status=data
+                                         },
+                                        onError: (error) => {
+                                            console.log(error);
+                                        }
+                                    })
                                 } 
                                 catch (error) {
                                     console.error('Error fetching GST registration details:', error);
@@ -1158,6 +1199,9 @@ export default defineComponent({
                             }
                         }
                     });
+
+                    form.permanent_account_number=value.slice(2,12)
+                    
                 }   
             });
 
@@ -1187,7 +1231,7 @@ export default defineComponent({
                 console.error('Error uploading file:', error);
             });
           
-            reader.readAsBinaryString(file);
+            // reader.readAsBinaryString(file);
         }
         return {
             form,

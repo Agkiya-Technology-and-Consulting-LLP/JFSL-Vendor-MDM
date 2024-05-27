@@ -35,6 +35,7 @@
   import { session, sessionUser } from '../data/session'
   import {createResource} from 'frappe-ui'
   const docname=ref('')
+  const pdfUrl = ref('');
   function logout() {
         session.logout.submit();
       }
@@ -64,6 +65,21 @@
                     // alert(`An error occurred: ${error.message}`);
                 }
             });
+
+
+
+            createResource({
+              url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_config",
+              makeParams: () => ({}),
+              auto: true,
+              onSuccess: (data) => {
+                console.log(data);
+                pdfUrl.value = window.location.origin + data.esg_policy_url;
+              },
+              onError: (error) => {
+                console.log(error);
+              }
+            });
         });
   function save(){
     console.log("................",docname)
@@ -85,6 +101,6 @@
                 }
             });
   }
-  const pdfUrl = "https://uat-jfsl-mdm.frappe.cloud/files/JFSL%20Supplier%20Code%20of%20Conduct.pdf"; 
+  // const pdfUrl = "https://uat-jfsl-mdm.frappe.cloud/files/JFSL%20Supplier%20Code%20of%20Conduct.pdf"; 
   </script>
   

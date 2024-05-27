@@ -291,11 +291,12 @@
    "label": " GST(Goods & Services)"
   },
   {
+   "default": "Unregistered",
    "depends_on": "applicable_gst",
    "fieldname": "gst_status",
    "fieldtype": "Select",
    "label": "GST Status",
-   "options": "1. Normal Registered\n2. Composition\n3. Casual\n4. Non Resident\n5. Government/LocalAuthority\n6. SEZ\n7. EOU\n8. Unregistered\n9. overseas Vendor\nA. TAN Base GST\nB. Unknown\nZ. One Time GST Registered"
+   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector"
   },
   {
    "depends_on": "applicable_gst",
@@ -1206,7 +1207,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-24 15:35:25.870572",
+ "modified": "2024-05-27 15:43:27.970311",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
