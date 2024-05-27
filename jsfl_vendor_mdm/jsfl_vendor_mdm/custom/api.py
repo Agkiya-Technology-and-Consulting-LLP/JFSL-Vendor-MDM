@@ -5,8 +5,16 @@ import frappe
 from frappe.auth import LoginManager
 from frappe.sessions import Session, clear_sessions, delete_session, get_expiry_in_seconds
 import requests
+from india_compliance.gst_india.utils import (
+    guess_gst_category,
+    is_api_enabled,
+    validate_gstin,
+)
 
-
+@frappe.whitelist(allow_guest=True)
+def validate_gstin(doc):
+    return guess_gst_category(doc['gstin'],"India")
+    
 @frappe.whitelist(allow_guest = True)
 def new(doc):
     new_doc=frappe.new_doc("OTP Authentication")
@@ -325,7 +333,7 @@ def gst_registration_number(data):
                     'Content-Type': 'application/json',
                     'x-karza-key': 'lC81SMEYEFlwr24wrjil'  
                 },
-                json={'consent': 'Y', 'gstin': gstNumber}
+                json={'consent': 'Y', 'gstin': gstNumber ,"additionalData":True}
             )
             print(f"response {response}")
             if response.ok:
@@ -383,3 +391,5 @@ def check_pan_number_duplicacy(data):
 def get_config():
     config=frappe.get_doc("Configuration")
     return config
+
+
