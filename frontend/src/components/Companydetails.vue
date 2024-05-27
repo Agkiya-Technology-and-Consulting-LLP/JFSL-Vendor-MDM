@@ -1059,26 +1059,26 @@ export default defineComponent({
                                 onSuccess :(data)=>{
                                     console.log(data    )
                                     form.proprietors_name = data.result.name;
-                                    const response = createResource({
-                                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
-                                        makeParams: () => ({
-                                            data: {
-                                                pan: newValue
-                                            },
-                                        }),
-                                        auto: true,
-                                        onSuccess: (data) => {
-                                            if (data.result.isAadhaarLinked ==true) {
-                                                console.log(data.result.isAadhaarLinked)
-                                                form.is_aadhar_pan_linked = "YES"
-                                            } else {
-                                                form.is_aadhar_pan_linked = "NO"
-                                            }
-                                        },
-                                        onError: (error) => {
-                                            console.log(error)
-                                        }
-                                    })
+                                    // const response = createResource({
+                                    //     url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
+                                    //     makeParams: () => ({
+                                    //         data: {
+                                    //             pan: newValue
+                                    //         },
+                                    //     }),
+                                    //     auto: true,
+                                    //     onSuccess: (data) => {
+                                    //         if (data.result.isAadhaarLinked ==true) {
+                                    //             console.log(data.result.isAadhaarLinked)
+                                    //             form.is_aadhar_pan_linked = "YES"
+                                    //         } else {
+                                    //             form.is_aadhar_pan_linked = "NO"
+                                    //         }
+                                    //     },
+                                    //     onError: (error) => {
+                                    //         console.log(error)
+                                    //     }
+                                    // })
 
                                 },onError :(error)=>{
                                     console.log(error)
