@@ -377,3 +377,9 @@ def check_pan_number_duplicacy(data):
     )
     
     return {"isDuplicate": bool(exists)}
+
+
+@frappe.whitelist(allow_guest=True)
+def get_config():
+    config=frappe.get_doc("Configuration")
+    return config

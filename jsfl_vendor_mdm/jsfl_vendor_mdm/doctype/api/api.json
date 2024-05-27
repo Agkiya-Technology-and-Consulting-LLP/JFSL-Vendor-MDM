@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-25 15:31:05.062395",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "api_key",
+  "url",
+  "header_key",
+  "header_value",
+  "body_example"
+ ],
+ "fields": [
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "API Key",
+   "options": "API Key"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "URL"
+  },
+  {
+   "fieldname": "header_key",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Header Key"
+  },
+  {
+   "fieldname": "header_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Header Value"
+  },
+  {
+   "fieldname": "body_example",
+   "fieldtype": "Code",
+   "label": "Body Example"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-25 15:35:31.864146",
+ "modified_by": "Administrator",
+ "module": "Jsfl Vendor Mdm",
+ "name": "API",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

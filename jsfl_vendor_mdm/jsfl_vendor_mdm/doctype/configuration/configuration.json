@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-25 15:30:32.706259",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code_of_conduct_url",
+  "esg_policy_url",
+  "column_break_ctvj",
+  "guidline_url",
+  "section_break_duuf",
+  "api"
+ ],
+ "fields": [
+  {
+   "fieldname": "api",
+   "fieldtype": "Table",
+   "label": "API",
+   "options": "API"
+  },
+  {
+   "fieldname": "code_of_conduct_url",
+   "fieldtype": "Data",
+   "label": "Code of Conduct URl"
+  },
+  {
+   "fieldname": "esg_policy_url",
+   "fieldtype": "Data",
+   "label": "ESG Policy URl"
+  },
+  {
+   "fieldname": "guidline_url",
+   "fieldtype": "Data",
+   "label": "Guidline URL"
+  },
+  {
+   "fieldname": "column_break_ctvj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_duuf",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-05-25 15:41:00.951043",
+ "modified_by": "Administrator",
+ "module": "Jsfl Vendor Mdm",
+ "name": "Configuration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
