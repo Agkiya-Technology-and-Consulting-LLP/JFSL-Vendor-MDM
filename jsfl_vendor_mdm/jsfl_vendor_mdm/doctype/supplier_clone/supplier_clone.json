@@ -10,12 +10,18 @@
   "workflow_state",
   "viewed_by_tab",
   "company_user",
-  "l1_manager",
   "mdm_manager",
   "column_break_ihrm",
   "company_user_check",
   "l1_manager_check",
   "mdm_manager_check",
+  "reviewing_doc",
+  "tab_break_3rnn",
+  "companies",
+  "column_break_7hh8",
+  "nature_of_business",
+  "is_company_part_of_reliance_company",
+  "l1_manager",
   "supplier_deatils_section",
   "supplier_name",
   "related_party",
@@ -35,7 +41,6 @@
   "einvoice_applicable",
   "is_transporter",
   "image",
-  "is_company_part_of_reliance_company",
   "defaults_section",
   "billing_currency",
   "price_list",
@@ -52,14 +57,12 @@
   "print_language",
   "company_details_tab",
   "company_details_section",
-  "company",
   "company_name",
   "company_type",
   "company_registration_number",
   "small_scale_industries_registration_no",
   "date_of_establishment",
   "column_break_rdw0v",
-  "nature_of_business",
   "d_b_n_d_i_number",
   "column_break_8atei",
   "logo",
@@ -184,11 +187,13 @@
   "push_back_by_mdm_manager",
   "reason_by_mdm_manager",
   "reason_by_company_user_team",
+  "reason_for_rejection",
   "column_break_jlkck",
   "company_user_team_id",
   "l1_manager_id",
   "reason_by_l1_manager",
-  "amended_from"
+  "amended_from",
+  "reason_by_reviewer"
  ],
  "fields": [
   {
@@ -206,6 +211,7 @@
    "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
    "fieldname": "logo",
    "fieldtype": "Attach",
+   "hidden": 1,
    "label": "Logo"
   },
   {
@@ -225,7 +231,7 @@
    "fieldname": "company_turnover",
    "fieldtype": "Select",
    "label": "Company Turnover",
-   "options": ">250000000\n>100000000\n>50000000\n<50000000"
+   "options": ">250000000\n>100000000\n>50000000\n<50000000\n<2000000"
   },
   {
    "fieldname": "company_size",
@@ -241,6 +247,7 @@
   {
    "fieldname": "natl_small_scale_industries_registration_no",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Natl. Small Scale Industries Registration No."
   },
   {
@@ -251,6 +258,7 @@
   {
    "fieldname": "d_b_n_d_i_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "D & B-N-D-I Number"
   },
   {
@@ -296,19 +304,22 @@
    "fieldname": "gst_status",
    "fieldtype": "Select",
    "label": "GST Status",
-   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector"
+   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector",
+   "read_only": 1
   },
   {
    "depends_on": "applicable_gst",
    "fieldname": "gst_valid_from",
    "fieldtype": "Date",
-   "label": "GST valid from"
+   "label": "GST valid from",
+   "read_only": 1
   },
   {
    "depends_on": "applicable_gst",
    "fieldname": "gst_registration_number",
    "fieldtype": "Data",
-   "label": "GST Registration Number"
+   "label": "GST Registration Number",
+   "mandatory_depends_on": "eval:doc.company_turnover != \"<2000000\""
   },
   {
    "collapsible": 1,
@@ -480,6 +491,7 @@
   {
    "fieldname": "select_your_enterprise_type",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Select your Enterprise type",
    "options": "Micro Enterprise\nSmall Enterprise\nMedium Enterprise"
   },
@@ -490,7 +502,8 @@
   },
   {
    "fieldname": "column_break_rdw0v",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "hidden": 1
   },
   {
    "fieldname": "column_break_8atei",
@@ -696,8 +709,7 @@
    "fieldname": "l1_manager",
    "fieldtype": "Link",
    "label": "L1 Manager",
-   "options": "User",
-   "read_only": 1
+   "options": "User"
   },
   {
    "fieldname": "mdm_manager",
@@ -715,6 +727,7 @@
    "depends_on": "eval:doc.workflow_state=='Approval Pending By Company User Team'",
    "fieldname": "company_user_check",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Picked"
   },
   {
@@ -731,12 +744,6 @@
    "fieldname": "mdm_manager_check",
    "fieldtype": "Check",
    "label": "Picked"
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company"
   },
   {
    "allow_on_submit": 1,
@@ -799,7 +806,7 @@
    "fieldname": "is_aadhar_pan_linked",
    "fieldtype": "Select",
    "label": "Is Aadhar PAN linked",
-   "options": "\nYES\nNO\nN/A"
+   "options": "\nYes\nNo\nN/A"
   },
   {
    "default": "0",
@@ -963,7 +970,7 @@
    "label": "Contact Details"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "mark_as_primary",
    "fieldtype": "Check",
    "label": "Mark as Primary"
@@ -1186,7 +1193,8 @@
    "fieldname": "gst_status_active",
    "fieldtype": "Select",
    "label": "GST Status Active",
-   "options": "Yes\nNo"
+   "options": "Yes\nNo",
+   "read_only": 1
   },
   {
    "fieldname": "legal_name_of_the_business",
@@ -1202,12 +1210,45 @@
    "fieldname": "constitution_of_business",
    "fieldtype": "Data",
    "label": "Constitution of Business"
+  },
+  {
+   "fieldname": "tab_break_3rnn",
+   "fieldtype": "Tab Break",
+   "label": "User Section"
+  },
+  {
+   "fieldname": "companies",
+   "fieldtype": "Table MultiSelect",
+   "label": "Company",
+   "options": "Companies"
+  },
+  {
+   "fieldname": "column_break_7hh8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "reviewing_doc",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Reviewing Doc",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason_for_rejection",
+   "fieldtype": "Small Text",
+   "label": "Reason For Rejection"
+  },
+  {
+   "fieldname": "reason_by_reviewer",
+   "fieldtype": "Small Text",
+   "label": "Reason By Reviewer"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-27 15:43:27.970311",
+ "modified": "2024-06-02 22:37:25.295923",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

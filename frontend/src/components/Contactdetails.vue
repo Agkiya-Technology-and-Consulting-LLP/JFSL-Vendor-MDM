@@ -54,10 +54,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 mt-4 mb-3">
+                    <!-- <div class="col-md-4 mt-4 mb-3">
                         <input type="checkbox" v-model="form.mark_as_primary" id="markAsPrimary" class="form-check-input mr-2">
                         <label for="markAsPrimary" class="form-check-label">Mark As Primary</label>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="bg-primary text-white p-1 rounded-top">
@@ -143,7 +143,7 @@ export default defineComponent({
             last_name: '',
             contact_number: '',
             email_id: '',
-            mark_as_primary: false,
+            // mark_as_primary: false,
             docname: '',
             website: '',
             facebook: '',
@@ -182,9 +182,9 @@ export default defineComponent({
                     form.last_name = data.last_name || '';
                     form.contact_number = data.contact_number || '';
                     form.email_id = data.email_id || '';
-                    if(data.mark_as_primary){
-                        form.mark_as_primary = true
-                    }
+                    // if(data.mark_as_primary){
+                    //     form.mark_as_primary = true
+                    // }
                     form.website = data.website || '';
                     form.facebook = data.facebook || '';
                     form.linkedin = data.linkedin || '';
@@ -209,7 +209,7 @@ export default defineComponent({
                         last_name: form.last_name,
                         contact_number: form.contact_number,
                         email_id: form.email_id,
-                        mark_as_primary: form.mark_as_primary,
+                        // mark_as_primary: form.mark_as_primary,
                         docname: form.docname,
                         website: form.website,
                         facebook: form.facebook,

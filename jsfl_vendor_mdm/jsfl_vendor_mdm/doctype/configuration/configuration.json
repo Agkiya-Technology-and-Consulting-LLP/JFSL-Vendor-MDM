@@ -9,6 +9,7 @@
   "esg_policy_url",
   "column_break_ctvj",
   "guidline_url",
+  "check_list_url",
   "section_break_duuf",
   "api"
  ],
@@ -41,12 +42,17 @@
   {
    "fieldname": "section_break_duuf",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "check_list_url",
+   "fieldtype": "Data",
+   "label": "Check List URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-05-25 15:41:00.951043",
+ "modified": "2024-06-02 13:45:17.394233",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Configuration",

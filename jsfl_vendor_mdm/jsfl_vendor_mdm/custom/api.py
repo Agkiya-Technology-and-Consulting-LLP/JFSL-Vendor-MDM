@@ -169,12 +169,13 @@ def submit_supplier_detail(doc):
     return supplier
 
 @frappe.whitelist(allow_guest=True)
-def accept_code_of_conduct():
-    supplier =frappe.new_doc("Supplier Clone")
+def accept_code_of_conduct(doc):
+    print(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.....{doc['docname']}")
+    supplier =frappe.get_doc("Supplier Clone",doc['docname'])
     supplier.supplier_email_id=frappe.session.user
     supplier.accept_code_of_conduct=1
     supplier.ip_address=get_ip_address()
-    supplier.insert(ignore_permissions=True, ignore_mandatory=True)
+    supplier.save(ignore_permissions=True)
     return supplier
 
 

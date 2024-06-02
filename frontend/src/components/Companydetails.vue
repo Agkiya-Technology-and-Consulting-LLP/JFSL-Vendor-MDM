@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
 
-            <div class="bg-primary text-white p-1 rounded-top">
+            <!-- <div class="bg-primary text-white p-1 rounded-top">
                 <h5>Select the Primary Company you are registering for</h5>
             </div>
             <div class="row mt-3">
@@ -20,7 +20,7 @@
                     <p>Select Comapny you are registering for</p>
                 </div>
 
-            </div>
+            </div> -->
 
             <div class="bg-primary text-white p-1 rounded-top">
                 <h5>Company Details</h5>
@@ -89,20 +89,20 @@
             </div>
 
             <div class="row mt-3">
-                <div class="col-md-3 mb-3">
+                <!-- <div class="col-md-3 mb-3">
                     <label for="D & B-N-D-I Number" class="form-label">D & B-N-D-I Number</label>
                     <input type="text" class="form-control" id="D & B-N-D-I Number" v-model="form.d_b_n_d_i_number" placeholder="D & B-N-D-I Number">
-                </div>
+                </div> -->
                 
                 <!-- <a href={{ form.logourl }}> See Attachment</a> -->
                 <div class="col-md-3 mb-3">
                     <label for="Company Turnover" class="form-label">Company Turnover</label>
                     <select name="" id="Company Turnover" class="form-control" v-model="form.company_turnover">
-                        <option value=">250000000">>250000000</option>
-                        <option value=">100000000">>100000000</option>
-                        <option value=">50000000">>50000000</option>
-                        <option value="<5000000">
-                            <5000000 </option> </select> 
+                        <option value=">250000000">> 250000000</option>
+                        <option value=">100000000">> 100000000</option>
+                        <option value=">50000000">> 50000000</option>
+                        <option value="<5000000">< 5000000 </option> 
+                        <option value="<2000000">< 2000000 </option> </select> 
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="Company Size" class="form-label">Company Size</label>
@@ -114,17 +114,17 @@
                     </select>
                 </div>
 
-                <div class="col-md-3 mb-3">
+                <!-- <div class="col-md-3 mb-3">
                     <label for="Small Scale" class="form-label">Natl. Small Scale Industries Rg No.</label>
                     <input type="text" class="form-control" id="Small Scale" v-model="form.natl_small_scale_industries_registration_no" placeholder="Small Scale registration no">
-                </div>
+                </div> -->
             </div>
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
                 <div class="col-md-3 mb-3">
                     <label for="Logo" class="form-label">Logo</label>
                     <input type="file" class="form-control" id="Logo" @change="handleFileChange" >
                 </div>
-            </div>
+            </div> -->
             <div class="row mt-3">
                 <h6>Certification</h6>
                 <div class="col-md-3 mb-3">
@@ -185,15 +185,15 @@
                 </div>
 
                 <div class="col-md-4 mb-3">
-                    <label for="Proprietor" class="form-label">Proprietor's Name<span class="text-danger">*</span></label>
+                    <label for="Proprietor" class="form-label">Proprietor's Name</label>
                     <input type="text" class="form-control" id="Proprietor" v-model="form.proprietors_name" disabled placeholder="Proprietor's Name">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label for="is_aadhar_pan_linked" class="form-label">Is Aadhar PAN Linked <span class="text-danger"></span></label>
                     <select name="" id="is_aadhar_pan_linked" class="form-control" v-model="form.is_aadhar_pan_linked" disabled>
-                        <option value="YES">YES</option>
-                        <option value="NO">NO</option>
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
                     </select>
                 </div>
 
@@ -212,11 +212,11 @@
                     <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
                 </div> -->
                 <div class="col-md-6 mb-3"
-                        :class="{ 'has-error': touched.gst_registration_number && !form.gst_registration_number }">
-                        <label for="GST" class="form-label">GST Registration <span class="text-danger">*</span></label>
+                        :class="{ 'has-error': touched.gst_registration_number && !form.gst_registration_number && form.company_turnover !='<2000000'}">
+                        <label for="GST" class="form-label">GST Registration <span class="text-danger" v-if="form.company_turnover !='<2000000'">*</span></label>
                         <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number"
                             placeholder="Enter GST No" @blur="touched.gst_registration_number = true">
-                        <div v-if="touched.gst_registration_number && !form.gst_registration_number"
+                        <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover !='<2000000')"
                             class="text-danger">
                             GST Number is required.
                         </div>
@@ -250,8 +250,8 @@
                     </select>
                 </div> -->
                 <div class="col-md-6 mb-3" :class="{ 'has-error': touched.gst_status && !form.gst_status }">
-                        <label for="GST Status" class="form-label">GST Status<span class="text-danger">*</span></label>
-                        <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status"
+                        <label for="GST Status" class="form-label">GST Status</label>
+                        <select name="gst_status" id="gst_status" class="form-control" v-model="form.gst_status" disabled
                             @blur="touched.gst_status = true">
                             <option value="Registered Regular">1. Registered Regular</option>
                             <option value="Registered Composition">2. Registered Composition</option>
@@ -527,11 +527,11 @@
                 </div>
 
                 <div class="row mt-3">
-                    <!-- <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="LST Number" class="form-label">LST Number</label>
                         <input type="text" class="form-control" id="LST Number" v-model="form.lst_number" placeholder="LST Number">
-                    </div> -->
-                    <div class="col-md-4 mb-3" :class="{ 'has-error': touched.lst_number && !form.lst_number }">
+                    </div>
+                    <!-- <div class="col-md-4 mb-3" :class="{ 'has-error': touched.lst_number && !form.lst_number }">
                             <label for="LSTNumber" class="form-label">LST Number <span
                                     class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="LSTNumber" v-model="form.lst_number"
@@ -539,7 +539,7 @@
                             <div v-if="touched.lst_number && !form.lst_number" class="text-danger">
                                 LST Number is required.
                             </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-4 mb-3">
                         <label for="Date for CST" class="form-label">Registration Date for CST</label>
@@ -570,21 +570,21 @@
 
                 <h6 class="mt-3">MSMED</h6>
                 <div class="row mt-3">
-                    <div class="col-md-3 mb-3">
+                    <!-- <div class="col-md-3 mb-3">
                         <label for="Enterprise type" class="form-label">Select your Enterprise type</label>
                         <select name="Enterprise type" id="Enterprise type" v-model="form.select_your_enterprise_type" class="form-control">
                             <option value="Micro Enterprise">Micro Enterprise</option>
                             <option value="Small Enterprise">Small Enterprise</option>
                             <option value="Medium Enterprise">Medium Enterprise</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col-md-3 mb-3">
                         <input type="checkbox" id="msme_applicable" class="form-check-input mr-2" v-model="form.msme_applicable">
                         <label for="msme_applicable" class="form-check-label">MSME Applicable</label>
                     </div>
 
                     <div class="col-md-3 mb-3" v-if="form.msme_applicable">
-                        <label for="Certificate Number" class="form-label">MSME Certificate Number</label>
+                        <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number</label>
                         <input type="text" class="form-control" id="Certificate Number" v-model="form.msme_certificate_number" placeholder="Certificate Number">
                     </div>
 
@@ -593,7 +593,7 @@
                         <input type="text" class="form-control" id="Udyam" placeholder="Udyam" v-model="form.udyam_registration_number">
                     </div> -->
 
-                    <div class="col-md-3 mb-3"
+                    <!-- <div class="col-md-3 mb-3"
                             :class="{ 'has-error': touched.udyam_registration_number && !form.udyam_registration_number }">
                             <label for="Udyam" class="form-label">Udyam Registration Number <span
                                     class="text-danger">*</span></label>
@@ -603,7 +603,7 @@
                                 class="text-danger">
                                 Udyam Registration Number is required.
                             </div>
-                        </div>
+                        </div> -->
                 </div>
 
                 <h6 class="mt-3">WCT</h6>
@@ -684,7 +684,6 @@ export default defineComponent({
         };
 
         const form = reactive({
-            company: '',
             company_name: '',
             company_type: '',
             company_registration_number: '',
@@ -692,10 +691,10 @@ export default defineComponent({
             date_of_establishment: '',
             docname: '',
             nature_of_business: '',
-            d_b_n_d_i_number: '',
+            // d_b_n_d_i_number: '',
             company_turnover: '',
             company_size: '',
-            natl_small_scale_industries_registration_no: '',
+            // natl_small_scale_industries_registration_no: '',
             iso_9001_2000: 0,
             iso_4000: 0,
             has_18000: 0,
@@ -728,7 +727,7 @@ export default defineComponent({
             registration_date_lst: '',
             esi_number: '',
             epf_number: '',
-            select_your_enterprise_type: '',
+            // select_your_enterprise_type: '',
             msme_certificate_number: '',
             udyam_registration_number: '',
             wct: '',
@@ -737,8 +736,8 @@ export default defineComponent({
             taxCategory: [],
             companylist: [],
             msme_applicable: '',
-            is_aadhar_pan_linked: 'NO',
-            logourl:'',
+            is_aadhar_pan_linked: 'No',
+            // logourl:'',
             legal_name_of_the_business:'',
             constitution_of_business:'',
             address_information_for_principal_place_of_business:'',
@@ -773,8 +772,8 @@ export default defineComponent({
             return form.company_name
                 && form.date_of_establishment
                 && form.permanent_account_number
-                && form.gst_registration_number
-                && form.gst_status
+                // && form.gst_registration_number
+                // && form.gst_status
                 && form.name_
                 && form.addressline_1
                 && form.country
@@ -783,8 +782,8 @@ export default defineComponent({
                 && form.pincode
                 && form.residential_status
                 // && form.permanent_account_no
-                && form.lst_number
-                && form.udyam_registration_number;
+                // && form.lst_number
+                // && form.udyam_registration_number;
         });
 
         const maxDate = ref(new Date().toISOString().split('T')[0]);
@@ -812,17 +811,16 @@ export default defineComponent({
                 auto: true,
                 onSuccess: (data) => {
                     console.log(data)
-                    form.company = data.company;
                     form.company_name = data.company_name;
                     form.company_type = data.company_type;
                     form.company_registration_number = data.company_registration_number;
                     form.small_scale_industries_registration_no = data.small_scale_industries_registration_no;
                     form.date_of_establishment = data.date_of_establishment;
                     form.nature_of_business = data.nature_of_business;
-                    form.d_b_n_d_i_number = data.d_b_n_d_i_number;
+                    // form.d_b_n_d_i_number = data.d_b_n_d_i_number;
                     form.company_turnover = data.company_turnover;
                     form.company_size = data.company_size;
-                    form.natl_small_scale_industries_registration_no = data.natl_small_scale_industries_registration_no;
+                    // form.natl_small_scale_industries_registration_no = data.natl_small_scale_industries_registration_no;
                     if (data.iso_9001_2000) {
                         form.iso_9001_2000 = true
                     }
@@ -867,12 +865,12 @@ export default defineComponent({
                     form.registration_date_lst = data.registration_date_lst
                     form.esi_number = data.esi_number
                     form.epf_number = data.epf_number
-                    form.select_your_enterprise_type = data.select_your_enterprise_type
+                    // form.select_your_enterprise_type = data.select_your_enterprise_type
                     form.msme_certificate_number = data.msme_certificate_number
                     form.udyam_registration_number = data.udyam_registration_number
                     form.wct = data.wct
                     form.is_aadhar_pan_linked = data.is_aadhar_pan_linked
-                    form.logourl = String(data.logo)
+                    // form.logourl = String(data.logo)
                     form.legal_name_of_the_business =data.legal_name_of_the_business
                     form.constitution_of_business =data.constitution_of_business
                     form.address_information_for_principal_place_of_business = data.address_information_for_principal_place_of_business
@@ -923,14 +921,16 @@ export default defineComponent({
 
 
         const ValidateEmail = () => {
-            // if(form.error_message && form.gst_error){
-            //     // alert("PAN & GST number already exists")
-            //     showErrorToastMessage("PAN & GST number already exists")
-            // }else if(form.error_message){
-            //     // alert("PAN number already exists")
-            //     showErrorToastMessage("PAN number already exists")
-            // }else 
-            if(form.gst_error){
+            if(!form.gst_registration_number && form.company_turnover !=='<2000000'){
+                showErrorToastMessage("GST number is required")
+            }else{
+            if(form.error_message && form.gst_error){
+                // alert("PAN & GST number already exists")
+                showErrorToastMessage("PAN & GST number already exists")
+            }else if(form.error_message){
+                // alert("PAN number already exists")
+                showErrorToastMessage("PAN number already exists")
+            }else if(form.gst_error){
                 // alert("GST number already exists")
                 showErrorToastMessage("GST number already exists")
             }else{
@@ -938,7 +938,6 @@ export default defineComponent({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                 makeParams: () => ({
                     doc: {
-                        company: form.company,
                         company_name: form.company_name,
                         company_type: form.company_type,
                         company_registration_number: form.company_registration_number,
@@ -946,10 +945,10 @@ export default defineComponent({
                         docname: form.docname,
                         date_of_establishment: form.date_of_establishment,
                         nature_of_business: form.nature_of_business,
-                        d_b_n_d_i_number: form.d_b_n_d_i_number,
+                        // d_b_n_d_i_number: form.d_b_n_d_i_number,
                         company_turnover: form.company_turnover,
                         company_size: form.company_size,
-                        natl_small_scale_industries_registration_no: form.natl_small_scale_industries_registration_no,
+                        // natl_small_scale_industries_registration_no: form.natl_small_scale_industries_registration_no,
                         iso_9001_2000: form.iso_9001_2000,
                         iso_4000: form.iso_4000,
                         has_18000: form.has_18000,
@@ -982,7 +981,7 @@ export default defineComponent({
                         registration_date_lst: form.registration_date_lst,
                         esi_number: form.esi_number,
                         epf_number: form.epf_number,
-                        select_your_enterprise_type: form.select_your_enterprise_type,
+                        // select_your_enterprise_type: form.select_your_enterprise_type,
                         msme_certificate_number: form.msme_certificate_number,
                         udyam_registration_number: form.udyam_registration_number,
                         wct: form.wct,
@@ -1000,11 +999,12 @@ export default defineComponent({
                 },
                 onError: (error) => {
                     console.error('Error:', error);
-                    alert(`An error occurred: ${error.message}`);
+                    // alert(`An error occurred: ${error.message}`);
+                    showErrorToastMessage("Error Occur while data saving ,Please try again")
                 }
             });
         }
-
+    }
         };
         
         watch( ()=>form.permanent_account_number,
@@ -1030,24 +1030,24 @@ export default defineComponent({
                             console.log(panType)
                             form.ownership_information = panType
                         }
-                // const isDuplicateGstNumber= createResource({
-                //     url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_pan_number_duplicacy',
-                //     makeParams: () =>({
-                //         data: {
-                //             panNumber : newValue,
-                //             docname : form.docname,
-                //         },
-                //     }),
-                //     auto : true,
-                //     onSuccess : (data) => {
-                //         const isDuplicateGst = data.isDuplicate;
+                const isDuplicateGstNumber= createResource({
+                    url:'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.check_pan_number_duplicacy',
+                    makeParams: () =>({
+                        data: {
+                            panNumber : newValue,
+                            docname : form.docname,
+                        },
+                    }),
+                    auto : true,
+                    onSuccess : (data) => {
+                        const isDuplicateGst = data.isDuplicate;
 
-                //         if(isDuplicateGst){
-                //             console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
-                //             // form.error_message="PAN already exist, please use another. "
-                //         } else{
-                //             console.log("PAN NUMBER NOT FOUND")
-                //             try {
+                        if(isDuplicateGst){
+                            console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
+                            // form.error_message="PAN already exist, please use another. "
+                        } else{
+                            console.log("PAN NUMBER NOT FOUND")
+                            try {
                             const response =  createResource({
                                 url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_pan_details',
                                 makeParams:()=>({
@@ -1057,36 +1057,36 @@ export default defineComponent({
                                 }),
                                 auto: true,
                                 onSuccess :(data)=>{
-                                    console.log(data    )
+                                    console.log(data )
                                     form.proprietors_name = data.result.name;
-                                    // const response = createResource({
-                                    //     url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
-                                    //     makeParams: () => ({
-                                    //         data: {
-                                    //             pan: newValue
-                                    //         },
-                                    //     }),
-                                    //     auto: true,
-                                    //     onSuccess: (data) => {
-                                    //         if (data.result.isAadhaarLinked ==true) {
-                                    //             console.log(data.result.isAadhaarLinked)
-                                    //             form.is_aadhar_pan_linked = "YES"
-                                    //         } else {
-                                    //             form.is_aadhar_pan_linked = "NO"
-                                    //         }
-                                    //     },
-                                    //     onError: (error) => {
-                                    //         console.log(error)
-                                    //     }
-                                    // })
+                                    const response = createResource({
+                                        url: 'jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.is_pan_link_aadhar',
+                                        makeParams: () => ({
+                                            data: {
+                                                pan: newValue
+                                            },
+                                        }),
+                                        auto: true,
+                                        onSuccess: (data) => {
+                                            if (data.result.isAadhaarLinked ==true) {
+                                                console.log(data.result.isAadhaarLinked)
+                                                form.is_aadhar_pan_linked = "Yes"
+                                            } else {
+                                                form.is_aadhar_pan_linked = "No"
+                                            }
+                                        },
+                                        onError: (error) => {
+                                            console.log(error)
+                                        }
+                                    })
 
                                 },onError :(error)=>{
                                     console.log(error)
                                 }
                             });
-                            // } catch (error) {
-                            //     console.error('Error fetching bank details:', error);
-                            // }
+                            } catch (error) {
+                                console.error('Error fetching bank details:', error);
+                            }
 
                 //             const typeMap = {
                 //                 'P': 'Individual',
@@ -1104,9 +1104,9 @@ export default defineComponent({
                 //             const panType = typeMap[fourthChar];
                 //             console.log(panType)
                 //             form.ownership_information = panType
-                //         }
-                //     }
-                // });
+                        }
+                    }
+                });
         }
     });
         watch(() => form.company_turnover,
@@ -1119,7 +1119,10 @@ export default defineComponent({
                     form.company_size = "Small Scale"
                 } else {
                     form.company_size = "Micro"
-                    form.gst_status ="8. Unregistered"
+                    if(value == "<2000000"){
+                        form.gst_status ="Unregistered"
+                    }
+                    
                 }
             })
 
@@ -1164,12 +1167,12 @@ export default defineComponent({
                                             form.legal_name_of_the_business = data.result.lgnm
                                             form.constitution_of_business = data.result.ctb
                                             form.address_information_for_principal_place_of_business = data.result.pradr.adr
-                                            form.proprietors_name=data.result.tradeNam
-                                            if (data.result.adhrVFlag =="Yes"){
-                                                form.is_aadhar_pan_linked="YES"
-                                            }else{
-                                                form.is_aadhar_pan_linked="NO"
-                                            }
+                                            // form.proprietors_name=data.result.tradeNam
+                                            // if (data.result.adhrVFlag =="Yes"){
+                                            //     form.is_aadhar_pan_linked="Yes"
+                                            // }else{
+                                            //     form.is_aadhar_pan_linked="No"
+                                            // }
                                         },
                                         onError: (error) => {
                                             console.log(error);
@@ -1205,34 +1208,34 @@ export default defineComponent({
                 }   
             });
 
-        const handleFileChange=(event)=> {
-            const file = event.target.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('doctype',"Supplier Clone");
-            formData.append('docname', form.docname);
-            formData.append('is_private', 0);  // Change to 1 if the file should be private
-            formData.append('fieldname',"logo")
-            formData.append('folder',"Home")
-            formData.append('attached_to_field',"logo")
-            fetch('/api/method/upload_file', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.message) {
-                    var file_url = data.message.file_url;
-                    alert('File uploaded successfully. File URL:', file_url);
-                }
-            })
-            .catch(error => {
-                console.error('Error uploading file:', error);
-            });
+        // const handleFileChange=(event)=> {
+        //     const file = event.target.files[0];
+        //     var formData = new FormData();
+        //     formData.append('file', file);
+        //     formData.append('doctype',"Supplier Clone");
+        //     formData.append('docname', form.docname);
+        //     formData.append('is_private', 0);  // Change to 1 if the file should be private
+        //     formData.append('fieldname',"logo")
+        //     formData.append('folder',"Home")
+        //     formData.append('attached_to_field',"logo")
+        //     fetch('/api/method/upload_file', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.message) {
+        //             var file_url = data.message.file_url;
+        //             alert('File uploaded successfully. File URL:', file_url);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error uploading file:', error);
+        //     });
           
-            // reader.readAsBinaryString(file);
-        }
+        //     // reader.readAsBinaryString(file);
+        // }
         return {
             form,
             ValidateEmail,
@@ -1251,7 +1254,7 @@ export default defineComponent({
             hideToast,
             showToastMessage,
             showToast,
-            handleFileChange,
+            // handleFileChange,
             maxDate,
             isFutureDate,
             isFutureDate1,
