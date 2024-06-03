@@ -197,492 +197,13 @@
  ],
  "fields": [
   {
-   "fieldname": "company_details_section",
-   "fieldtype": "Section Break",
-   "label": "Company Details"
-  },
-  {
-   "fieldname": "company_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Company Name"
-  },
-  {
-   "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
-   "fieldname": "logo",
-   "fieldtype": "Attach",
-   "label": "Logo"
-  },
-  {
-   "fieldname": "company_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Company Type",
-   "options": "M/S"
-  },
-  {
-   "fieldname": "date_of_establishment",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Date Of Establishment"
-  },
-  {
-   "fieldname": "company_turnover",
-   "fieldtype": "Select",
-   "label": "Company Turnover",
-   "options": ">250000000\n>100000000\n>50000000\n<50000000"
-  },
-  {
-   "fieldname": "company_size",
-   "fieldtype": "Select",
-   "label": "Company Size",
-   "options": "Large Scale\nMid Scale\nSmall Scale\nMicro"
-  },
-  {
-   "fieldname": "company_registration_number",
-   "fieldtype": "Data",
-   "label": "Company Registration Number"
-  },
-  {
-   "fieldname": "natl_small_scale_industries_registration_no",
-   "fieldtype": "Data",
-   "label": "Natl. Small Scale Industries Registration No."
-  },
-  {
-   "fieldname": "small_scale_industries_registration_no",
-   "fieldtype": "Data",
-   "label": "Small Scale Industries Registration No."
-  },
-  {
-   "fieldname": "d_b_n_d_i_number",
-   "fieldtype": "Data",
-   "label": "D & B-N-D-I Number"
-  },
-  {
-   "default": "0",
-   "fieldname": "certification",
-   "fieldtype": "Heading",
-   "label": "Certification"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "pan_details_section",
-   "fieldtype": "Section Break",
-   "label": "Pan Details"
-  },
-  {
-   "depends_on": "applicable_pan",
-   "fieldname": "permanent_account_number",
-   "fieldtype": "Data",
-   "label": "Permanent account number "
-  },
-  {
-   "depends_on": "applicable_pan",
-   "description": "Auto fill on Entering PAN",
-   "fieldname": "ownership_information",
-   "fieldtype": "Data",
-   "label": "Ownership information"
-  },
-  {
-   "depends_on": "applicable_pan",
-   "fieldname": "proprietors_name",
-   "fieldtype": "Data",
-   "label": "Proprietor's Name"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "gst_goods_services",
-   "fieldtype": "Section Break",
-   "label": " GST(Goods & Services)"
-  },
-  {
-   "default": "Unregistered",
-   "depends_on": "applicable_gst",
-   "fieldname": "gst_status",
-   "fieldtype": "Select",
-   "label": "GST Status",
-   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector"
-  },
-  {
-   "depends_on": "applicable_gst",
-   "fieldname": "gst_valid_from",
-   "fieldtype": "Date",
-   "label": "GST valid from"
-  },
-  {
-   "depends_on": "applicable_gst",
-   "fieldname": "gst_registration_number",
-   "fieldtype": "Data",
-   "label": "GST Registration Number"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "registered_address_section",
-   "fieldtype": "Section Break",
-   "label": "Registered Address"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "addressline_1",
-   "fieldtype": "Data",
-   "label": "Address(Line 1)"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "addressline_2",
-   "fieldtype": "Data",
-   "label": "Address(Line 2)"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "addressline_3",
-   "fieldtype": "Data",
-   "label": "Address(Line 3)"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "country",
+   "allow_on_submit": 1,
+   "fieldname": "workflow_state",
    "fieldtype": "Link",
-   "label": "Country",
-   "options": "Country"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "region",
-   "fieldtype": "Data",
-   "label": "Region",
-   "read_only_depends_on": "eval: doc.country == ''"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "pincode",
-   "fieldtype": "Data",
-   "label": "Pincode"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "residential_details_section",
-   "fieldtype": "Section Break",
-   "label": "Residential Details"
-  },
-  {
-   "fieldname": "residential_status",
-   "fieldtype": "Select",
-   "label": "Residential Status",
-   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India"
-  },
-  {
-   "fieldname": "permanent_account_no",
-   "fieldtype": "Data",
-   "label": "Permanent Account No.",
-   "mandatory_depends_on": "\n"
-  },
-  {
-   "fieldname": "tax_identification_no_tin",
-   "fieldtype": "Data",
-   "label": "Tax Identification No. (TIN)",
-   "mandatory_depends_on": "eval:doc.residential_status === 'Non Resident of India' ||doc.residential_status === 'Foreign Company Having Branch in India'"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_sts9p",
-   "fieldtype": "Section Break",
-   "label": "Social Media Handles"
-  },
-  {
-   "fieldname": "website",
-   "fieldtype": "Data",
-   "label": "Website"
-  },
-  {
-   "fieldname": "linkedin",
-   "fieldtype": "Data",
-   "label": "LinkedIn"
-  },
-  {
-   "fieldname": "twitter",
-   "fieldtype": "Data",
-   "label": "Twitter"
-  },
-  {
-   "fieldname": "facebook",
-   "fieldtype": "Data",
-   "label": "Facebook"
-  },
-  {
-   "fieldname": "instagram",
-   "fieldtype": "Data",
-   "label": "Instagram"
-  },
-  {
-   "fieldname": "youtube",
-   "fieldtype": "Data",
-   "label": "YouTube"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "other_details_section",
-   "fieldtype": "Section Break",
-   "label": "Other Details"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "sales_tax_section",
-   "fieldtype": "Section Break",
-   "label": "Sales Tax"
-  },
-  {
-   "depends_on": "applicable_sales",
-   "fieldname": "type_of_supplier_under_vat",
-   "fieldtype": "Select",
-   "label": "Type of Supplier under VAT",
-   "options": "Registered Dealer\nUnregistered Dealer\nIncentive Unit\nNotified Oil Company\nSEZ unit\nEQU\nVender under threshold unit\nForiegn vendor"
-  },
-  {
-   "depends_on": "applicable_sales",
-   "description": "for LST Number",
-   "fieldname": "lst_number",
-   "fieldtype": "Data",
-   "label": "LST Number"
-  },
-  {
-   "depends_on": "applicable_sales",
-   "description": "for CST Number",
-   "fieldname": "cst_number",
-   "fieldtype": "Data",
-   "label": "CST Number"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "esi_employee_state_insurance_section",
-   "fieldtype": "Section Break",
-   "label": "ESI (Employee State Insurance)"
-  },
-  {
-   "depends_on": "applicable_esi",
-   "fieldname": "esi_number",
-   "fieldtype": "Data",
-   "label": "ESI Number"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "pf_provident_fund_section",
-   "fieldtype": "Section Break",
-   "label": " PF (Provident Fund)"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "msmed_section",
-   "fieldtype": "Section Break",
-   "label": " MSMED"
-  },
-  {
-   "fieldname": "select_your_enterprise_type",
-   "fieldtype": "Select",
-   "label": "Select your Enterprise type",
-   "options": "Micro Enterprise\nSmall Enterprise\nMedium Enterprise"
-  },
-  {
-   "fieldname": "udyam_registration_number",
-   "fieldtype": "Data",
-   "label": "Udyam Registration Number "
-  },
-  {
-   "fieldname": "column_break_rdw0v",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_8atei",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_d2vjk",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_zhazw",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_gst",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_other",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_esi",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_pf",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "fieldname": "column_break_uqhzm",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_2jkxu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_jktac",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_sales",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "fieldname": "column_break_fc3ph",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "iso_9001_2000",
-   "fieldtype": "Check",
-   "label": "ISO 9001-2000"
-  },
-  {
-   "default": "0",
-   "fieldname": "iso_4000",
-   "fieldtype": "Check",
-   "label": "ISO 4000"
-  },
-  {
-   "default": "0",
-   "fieldname": "has_18000",
-   "fieldtype": "Check",
-   "label": "HAS 18000"
-  },
-  {
-   "default": "0",
-   "fieldname": "any_other_certification",
-   "fieldtype": "Check",
-   "label": "Any other Certification"
-  },
-  {
-   "fieldname": "column_break_r0age",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Supplier Clone",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "depends_on": "applicable_sales",
-   "fieldname": "resistration_date_cst",
-   "fieldtype": "Date",
-   "label": "Registration Date"
-  },
-  {
-   "depends_on": "applicable_sales",
-   "fieldname": "registration_date_lst",
-   "fieldtype": "Date",
-   "label": "Registration Date"
-  },
-  {
-   "depends_on": "applicable_address",
-   "fieldname": "name_",
-   "fieldtype": "Data",
-   "label": "Name "
-  },
-  {
-   "collapsible_depends_on": "applicable",
-   "default": "1",
-   "fieldname": "applicable_pan",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "default": "1",
-   "fieldname": "applicable_address",
-   "fieldtype": "Check",
-   "label": "Applicable"
-  },
-  {
-   "fieldname": "reason_by_mdm_manager",
-   "fieldtype": "Small Text",
-   "label": "Reason By MDM Manager"
-  },
-  {
-   "fieldname": "reason_by_l1_manager",
-   "fieldtype": "Small Text",
-   "label": "Reason By L1 Manager"
-  },
-  {
-   "fieldname": "reason_by_company_user_team",
-   "fieldtype": "Small Text",
-   "label": "Reason By Company User Team"
-  },
-  {
-   "fieldname": "reason_section_tab",
-   "fieldtype": "Tab Break",
-   "label": "Reason Section"
-  },
-  {
-   "fieldname": "company_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Company Details"
-  },
-  {
-   "fieldname": "pan_and_gst_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "PAN, GST And CIN Details"
-  },
-  {
-   "fieldname": "address_and_residential_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Address And Residential Details"
-  },
-  {
-   "fieldname": "media_and_other_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Media And Other Details"
-  },
-  {
-   "fieldname": "column_break_jlkck",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "push_back_by_mdm_manager",
-   "fieldtype": "Data",
-   "label": "Push Back By MDM Manager"
-  },
-  {
-   "fieldname": "company_user_team_id",
-   "fieldtype": "Data",
-   "label": "Company User Team Id "
-  },
-  {
-   "fieldname": "l1_manager_id",
-   "fieldtype": "Data",
    "hidden": 1,
-   "label": "L1 Manager Id"
+   "label": "Workflow State",
+   "no_copy": 1,
+   "options": "Workflow State"
   },
   {
    "depends_on": "eval:doc.workflow_state != 'Saved'",
@@ -739,15 +260,6 @@
    "label": "Picked"
   },
   {
-   "allow_on_submit": 1,
-   "fieldname": "workflow_state",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Workflow State",
-   "no_copy": 1,
-   "options": "Workflow State"
-  },
-  {
    "fieldname": "supplier_deatils_section",
    "fieldtype": "Tab Break",
    "label": "Supplier Deatils"
@@ -772,6 +284,38 @@
    "fieldname": "reason",
    "fieldtype": "Data",
    "label": "Reason"
+  },
+  {
+   "fieldname": "supplier_email_id",
+   "fieldtype": "Link",
+   "label": "Supplier Email Id",
+   "options": "User"
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_code_of_conduct",
+   "fieldtype": "Check",
+   "label": "Accept Code of Conduct",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "accept_esg_policy",
+   "fieldtype": "Check",
+   "label": "Accept Esg Policy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "label": "Timestamp",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_4scrt",
@@ -823,6 +367,12 @@
    "fieldname": "image",
    "fieldtype": "Attach",
    "label": "Image"
+  },
+  {
+   "fieldname": "is_company_part_of_reliance_company",
+   "fieldtype": "Select",
+   "label": "Is company part of reliance company",
+   "options": "Yes\nNo"
   },
   {
    "fieldname": "defaults_section",
@@ -899,33 +449,226 @@
    "options": "Language"
   },
   {
-   "fieldname": "tax_category",
-   "fieldtype": "Link",
-   "label": "Tax Category",
-   "options": "Tax Category"
+   "fieldname": "company_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Company Details"
   },
   {
-   "fieldname": "tax_withholding_category",
+   "fieldname": "company_details_section",
+   "fieldtype": "Section Break",
+   "label": "Company Details"
+  },
+  {
+   "fieldname": "company",
    "fieldtype": "Link",
-   "label": "Tax Withholding Category",
-   "options": "Tax Withholding Category"
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "company_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Company Type",
+   "options": "M/S"
+  },
+  {
+   "fieldname": "company_registration_number",
+   "fieldtype": "Data",
+   "label": "Company Registration Number"
+  },
+  {
+   "fieldname": "small_scale_industries_registration_no",
+   "fieldtype": "Data",
+   "label": "Small Scale Industries Registration No."
+  },
+  {
+   "fieldname": "date_of_establishment",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Of Establishment"
+  },
+  {
+   "fieldname": "column_break_rdw0v",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nature_of_business",
+   "fieldtype": "Select",
+   "label": "Nature of Business",
+   "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
+  },
+  {
+   "fieldname": "d_b_n_d_i_number",
+   "fieldtype": "Data",
+   "label": "D & B-N-D-I Number"
+  },
+  {
+   "fieldname": "column_break_8atei",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
+   "fieldname": "logo",
+   "fieldtype": "Attach",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "company_turnover",
+   "fieldtype": "Select",
+   "label": "Company Turnover",
+   "options": ">250000000\n>100000000\n>50000000\n<50000000"
+  },
+  {
+   "fieldname": "company_size",
+   "fieldtype": "Select",
+   "label": "Company Size",
+   "options": "Large Scale\nMid Scale\nSmall Scale\nMicro"
+  },
+  {
+   "fieldname": "natl_small_scale_industries_registration_no",
+   "fieldtype": "Data",
+   "label": "Natl. Small Scale Industries Registration No."
   },
   {
    "default": "0",
-   "fieldname": "msme_applicable",
-   "fieldtype": "Check",
-   "label": "MSME Applicable"
+   "fieldname": "certification",
+   "fieldtype": "Heading",
+   "label": "Certification"
   },
   {
-   "fieldname": "msme_certificate_number",
+   "default": "0",
+   "fieldname": "iso_9001_2000",
+   "fieldtype": "Check",
+   "label": "ISO 9001-2000"
+  },
+  {
+   "default": "0",
+   "fieldname": "iso_4000",
+   "fieldtype": "Check",
+   "label": "ISO 4000"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_18000",
+   "fieldtype": "Check",
+   "label": "HAS 18000"
+  },
+  {
+   "default": "0",
+   "fieldname": "any_other_certification",
+   "fieldtype": "Check",
+   "label": "Any other Certification"
+  },
+  {
+   "fieldname": "pan_and_gst_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "PAN, GST And CIN Details"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pan_details_section",
+   "fieldtype": "Section Break",
+   "label": "Pan Details"
+  },
+  {
+   "depends_on": "applicable_pan",
+   "fieldname": "permanent_account_number",
    "fieldtype": "Data",
-   "label": "MSME Certificate Number"
+   "label": "Permanent account number "
+  },
+  {
+   "depends_on": "applicable_pan",
+   "fieldname": "proprietors_name",
+   "fieldtype": "Data",
+   "label": "Proprietor's Name"
+  },
+  {
+   "collapsible_depends_on": "applicable",
+   "default": "1",
+   "fieldname": "applicable_pan",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "fieldname": "column_break_r0age",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "applicable_pan",
+   "description": "Auto fill on Entering PAN",
+   "fieldname": "ownership_information",
+   "fieldtype": "Data",
+   "label": "Ownership information"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "gst_goods_services",
+   "fieldtype": "Section Break",
+   "label": " GST(Goods & Services)"
+  },
+  {
+   "depends_on": "applicable_gst",
+   "fieldname": "gst_registration_number",
+   "fieldtype": "Data",
+   "label": "GST Registration Number"
+  },
+  {
+   "default": "Unregistered",
+   "depends_on": "applicable_gst",
+   "fieldname": "gst_status",
+   "fieldtype": "Select",
+   "label": "GST Status",
+   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_gst",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "fieldname": "legal_name_of_the_business",
+   "fieldtype": "Data",
+   "label": "Legal Name of the Business"
+  },
+  {
+   "fieldname": "address_information_for_principal_place_of_business",
+   "fieldtype": "Small Text",
+   "label": "Address information for principal place of business"
+  },
+  {
+   "fieldname": "column_break_d2vjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "applicable_gst",
+   "fieldname": "gst_valid_from",
+   "fieldtype": "Date",
+   "label": "GST valid from"
+  },
+  {
+   "depends_on": "applicable_gst",
+   "fieldname": "gst_status_active",
+   "fieldtype": "Select",
+   "label": "GST Status Active",
+   "options": "Yes\nNo"
   },
   {
    "depends_on": "eval:doc.is_transporter",
    "fieldname": "gst_transporter_id",
    "fieldtype": "Data",
    "label": "GST Transporter ID"
+  },
+  {
+   "fieldname": "constitution_of_business",
+   "fieldtype": "Data",
+   "label": "Constitution of Business"
   },
   {
    "fieldname": "cin_section",
@@ -938,24 +681,115 @@
    "label": "CIN"
   },
   {
-   "fieldname": "epf_number",
-   "fieldtype": "Data",
-   "label": "EPF Number"
-  },
-  {
-   "fieldname": "sales_tax_esipf_msmed_and_wct_details_tab",
+   "fieldname": "address_and_residential_details_tab",
    "fieldtype": "Tab Break",
-   "label": "Sales Tax, ESI,PF, MSMED And WCT Details"
+   "label": "Address And Residential Details"
   },
   {
-   "fieldname": "wct_section",
+   "collapsible": 1,
+   "fieldname": "registered_address_section",
    "fieldtype": "Section Break",
-   "label": "WCT"
+   "label": "Registered Address"
   },
   {
-   "fieldname": "wct",
+   "depends_on": "applicable_address",
+   "fieldname": "name_",
    "fieldtype": "Data",
-   "label": "WCT"
+   "label": "Name "
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "addressline_1",
+   "fieldtype": "Data",
+   "label": "Address(Line 1)"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "addressline_2",
+   "fieldtype": "Data",
+   "label": "Address(Line 2)"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "addressline_3",
+   "fieldtype": "Data",
+   "label": "Address(Line 3)"
+  },
+  {
+   "fieldname": "column_break_zhazw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "Region",
+   "read_only_depends_on": "eval: doc.country == ''"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "depends_on": "applicable_address",
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_address",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "residential_details_section",
+   "fieldtype": "Section Break",
+   "label": "Residential Details"
+  },
+  {
+   "fieldname": "residential_status",
+   "fieldtype": "Select",
+   "label": "Residential Status",
+   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India"
+  },
+  {
+   "fieldname": "permanent_account_no",
+   "fieldtype": "Data",
+   "label": "Permanent Account No.",
+   "mandatory_depends_on": "\n"
+  },
+  {
+   "fieldname": "tax_withholding_category",
+   "fieldtype": "Link",
+   "label": "Tax Withholding Category",
+   "options": "Tax Withholding Category"
+  },
+  {
+   "fieldname": "column_break_uqhzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_identification_no_tin",
+   "fieldtype": "Data",
+   "label": "Tax Identification No. (TIN)",
+   "mandatory_depends_on": "eval:doc.residential_status === 'Non Resident of India' ||doc.residential_status === 'Foreign Company Having Branch in India'"
+  },
+  {
+   "fieldname": "tax_category",
+   "fieldtype": "Link",
+   "label": "Tax Category",
+   "options": "Tax Category"
   },
   {
    "fieldname": "contact_details_tab",
@@ -963,16 +797,16 @@
    "label": "Contact Details"
   },
   {
-   "default": "0",
-   "fieldname": "mark_as_primary",
-   "fieldtype": "Check",
-   "label": "Mark as Primary"
-  },
-  {
    "fieldname": "salutation",
    "fieldtype": "Select",
    "label": "Salutation",
    "options": "Mr\nMrs\nMs"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "options": "Phone"
   },
   {
    "fieldname": "column_break_96fsu",
@@ -984,6 +818,12 @@
    "label": "First Name"
   },
   {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id",
+   "options": "Email"
+  },
+  {
    "fieldname": "column_break_bjjug",
    "fieldtype": "Column Break"
   },
@@ -993,16 +833,10 @@
    "label": "Last Name"
   },
   {
-   "fieldname": "contact_number",
-   "fieldtype": "Data",
-   "label": "Contact Number",
-   "options": "Phone"
-  },
-  {
-   "fieldname": "email_id",
-   "fieldtype": "Data",
-   "label": "Email Id",
-   "options": "Email"
+   "default": "0",
+   "fieldname": "mark_as_primary",
+   "fieldtype": "Check",
+   "label": "Mark as Primary"
   },
   {
    "fieldname": "bank_details_section",
@@ -1083,6 +917,194 @@
    "label": "City"
   },
   {
+   "fieldname": "media_and_other_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media And Other Details"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_sts9p",
+   "fieldtype": "Section Break",
+   "label": "Social Media Handles"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "linkedin",
+   "fieldtype": "Data",
+   "label": "LinkedIn"
+  },
+  {
+   "fieldname": "twitter",
+   "fieldtype": "Data",
+   "label": "Twitter"
+  },
+  {
+   "fieldname": "column_break_2jkxu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "facebook",
+   "fieldtype": "Data",
+   "label": "Facebook"
+  },
+  {
+   "fieldname": "instagram",
+   "fieldtype": "Data",
+   "label": "Instagram"
+  },
+  {
+   "fieldname": "youtube",
+   "fieldtype": "Data",
+   "label": "YouTube"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "other_details_section",
+   "fieldtype": "Section Break",
+   "label": "Other Details"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_other",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "fieldname": "sales_tax_esipf_msmed_and_wct_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sales Tax, ESI,PF, MSMED And WCT Details"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sales_tax_section",
+   "fieldtype": "Section Break",
+   "label": "Sales Tax"
+  },
+  {
+   "depends_on": "applicable_sales",
+   "fieldname": "type_of_supplier_under_vat",
+   "fieldtype": "Select",
+   "label": "Type of Supplier under VAT",
+   "options": "Registered Dealer\nUnregistered Dealer\nIncentive Unit\nNotified Oil Company\nSEZ unit\nEQU\nVender under threshold unit\nForiegn vendor"
+  },
+  {
+   "depends_on": "applicable_sales",
+   "description": "for LST Number",
+   "fieldname": "lst_number",
+   "fieldtype": "Data",
+   "label": "LST Number"
+  },
+  {
+   "depends_on": "applicable_sales",
+   "fieldname": "registration_date_lst",
+   "fieldtype": "Date",
+   "label": "Registration Date"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_sales",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "fieldname": "column_break_jktac",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "applicable_sales",
+   "description": "for CST Number",
+   "fieldname": "cst_number",
+   "fieldtype": "Data",
+   "label": "CST Number"
+  },
+  {
+   "depends_on": "applicable_sales",
+   "fieldname": "resistration_date_cst",
+   "fieldtype": "Date",
+   "label": "Registration Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "esi_employee_state_insurance_section",
+   "fieldtype": "Section Break",
+   "label": "ESI (Employee State Insurance)"
+  },
+  {
+   "depends_on": "applicable_esi",
+   "fieldname": "esi_number",
+   "fieldtype": "Data",
+   "label": "ESI Number"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_esi",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pf_provident_fund_section",
+   "fieldtype": "Section Break",
+   "label": " PF (Provident Fund)"
+  },
+  {
+   "fieldname": "epf_number",
+   "fieldtype": "Data",
+   "label": "EPF Number"
+  },
+  {
+   "default": "1",
+   "fieldname": "applicable_pf",
+   "fieldtype": "Check",
+   "label": "Applicable"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "msmed_section",
+   "fieldtype": "Section Break",
+   "label": " MSMED"
+  },
+  {
+   "fieldname": "select_your_enterprise_type",
+   "fieldtype": "Select",
+   "label": "Select your Enterprise type",
+   "options": "Micro Enterprise\nSmall Enterprise\nMedium Enterprise"
+  },
+  {
+   "default": "0",
+   "fieldname": "msme_applicable",
+   "fieldtype": "Check",
+   "label": "MSME Applicable"
+  },
+  {
+   "fieldname": "column_break_fc3ph",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "msme_certificate_number",
+   "fieldtype": "Data",
+   "label": "MSME Certificate Number"
+  },
+  {
+   "fieldname": "udyam_registration_number",
+   "fieldtype": "Data",
+   "label": "Udyam Registration Number "
+  },
+  {
+   "fieldname": "wct_section",
+   "fieldtype": "Section Break",
+   "label": "WCT"
+  },
+  {
+   "fieldname": "wct",
+   "fieldtype": "Data",
+   "label": "WCT"
+  },
+  {
    "fieldname": "upload_documents_tab",
    "fieldtype": "Tab Break",
    "label": "Upload Documents"
@@ -1137,70 +1159,54 @@
    "label": "CIN"
   },
   {
-   "fieldname": "supplier_email_id",
-   "fieldtype": "Link",
-   "label": "Supplier Email Id",
-   "options": "User"
+   "fieldname": "reason_section_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reason Section"
   },
   {
-   "default": "0",
-   "fieldname": "accept_code_of_conduct",
-   "fieldtype": "Check",
-   "label": "Accept Code of Conduct",
-   "read_only": 1
+   "fieldname": "reasons_for_push_back_section",
+   "fieldtype": "Section Break",
+   "label": "Reasons For Push Back "
   },
   {
-   "default": "0",
-   "fieldname": "accept_esg_policy",
-   "fieldtype": "Check",
-   "label": "Accept Esg Policy",
-   "read_only": 1
-  },
-  {
-   "fieldname": "ip_address",
+   "fieldname": "push_back_by_mdm_manager",
    "fieldtype": "Data",
-   "label": "IP Address",
-   "read_only": 1
+   "label": "Push Back By MDM Manager"
   },
   {
-   "fieldname": "timestamp",
-   "fieldtype": "Datetime",
-   "label": "Timestamp",
-   "read_only": 1
-  },
-  {
-   "fieldname": "is_company_part_of_reliance_company",
-   "fieldtype": "Select",
-   "label": "Is company part of reliance company",
-   "options": "Yes\nNo"
-  },
-  {
-   "fieldname": "nature_of_business",
-   "fieldtype": "Select",
-   "label": "Nature of Business",
-   "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
-  },
-  {
-   "depends_on": "applicable_gst",
-   "fieldname": "gst_status_active",
-   "fieldtype": "Select",
-   "label": "GST Status Active",
-   "options": "Yes\nNo"
-  },
-  {
-   "fieldname": "legal_name_of_the_business",
-   "fieldtype": "Data",
-   "label": "Legal Name of the Business"
-  },
-  {
-   "fieldname": "address_information_for_principal_place_of_business",
+   "fieldname": "reason_by_mdm_manager",
    "fieldtype": "Small Text",
-   "label": "Address information for principal place of business"
+   "label": "Reason By MDM Manager"
   },
   {
-   "fieldname": "constitution_of_business",
+   "fieldname": "reason_by_company_user_team",
+   "fieldtype": "Small Text",
+   "label": "Reason By Company User Team"
+  },
+  {
+   "fieldname": "column_break_jlkck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company_user_team_id",
    "fieldtype": "Data",
-   "label": "Constitution of Business"
+   "label": "Company User Team Id "
+  },
+  {
+   "fieldname": "l1_manager_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "L1 Manager Id"
+  },
+  {
+   "fieldname": "reason_by_l1_manager",
+   "fieldtype": "Small Text",
+   "label": "Reason By L1 Manager"
+  },
+  {
+   "fieldname": "reason_by_reviewer",
+   "fieldtype": "Small Text",
+   "label": "Reason By Reviewer"
   },
   {
    "default": "0",
@@ -1210,36 +1216,30 @@
    "label": "Reviewing Doc"
   },
   {
+   "fieldname": "reason_for_rejection_section",
+   "fieldtype": "Section Break",
+   "label": "Reason For Rejection"
+  },
+  {
    "fieldname": "reason_for_rejection",
    "fieldtype": "Small Text",
    "label": "Reason For Rejection"
   },
   {
-   "fieldname": "reason_by_reviewer",
-   "fieldtype": "Small Text",
-   "label": "Reason By Reviewer"
-  },
-  {
-   "fieldname": "company",
+   "fieldname": "amended_from",
    "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company"
-  },
-  {
-   "fieldname": "reasons_for_push_back_section",
-   "fieldtype": "Section Break",
-   "label": "Reasons For Push Back "
-  },
-  {
-   "fieldname": "reason_for_rejection_section",
-   "fieldtype": "Section Break",
-   "label": "Reason For Rejection"
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Supplier Clone",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-04 00:43:03.928004",
+ "modified": "2024-06-04 02:00:41.984193",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
