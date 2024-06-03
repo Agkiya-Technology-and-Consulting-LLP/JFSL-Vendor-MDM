@@ -102,18 +102,108 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-04-20 17:47:35.420884",
+  "modified": "2024-06-02 20:50:01.839381",
   "name": "Pushed Back By MDM Manager",
-  "style": "",
+  "style": "Warning",
   "workflow_state_name": "Pushed Back By MDM Manager"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-04-20 17:48:05.223647",
+  "modified": "2024-06-02 20:50:13.072261",
   "name": "Pushed Back By L1 Manager",
-  "style": "",
+  "style": "Warning",
   "workflow_state_name": "Pushed Back By L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:29:40.102988",
+  "name": "Change Requested",
+  "style": "",
+  "workflow_state_name": "Change Requested"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:32:34.612187",
+  "name": "Change Request Pending with User",
+  "style": "",
+  "workflow_state_name": "Change Request Pending with User"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:33:07.350462",
+  "name": "Change Request Pending with L1 Manager",
+  "style": "",
+  "workflow_state_name": "Change Request Pending with L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:33:54.358903",
+  "name": "Change Request Pending with MDM Manager",
+  "style": "",
+  "workflow_state_name": "Change Request Pending with MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:47:31.802904",
+  "name": "Change Request Approved",
+  "style": "Success",
+  "workflow_state_name": "Change Request Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:48:58.276482",
+  "name": "Change Request Push Back by MDM Manager",
+  "style": "Warning",
+  "workflow_state_name": "Change Request Push Back by MDM Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:48:48.966680",
+  "name": "Change Request Push Back by L1 Manager",
+  "style": "Warning",
+  "workflow_state_name": "Change Request Push Back by L1 Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:48:22.007778",
+  "name": "Change Request Push Back to Supplier",
+  "style": "Warning",
+  "workflow_state_name": "Change Request Push Back to Supplier"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 22:08:35.791196",
+  "name": "Approval Pending By Tamalika",
+  "style": "",
+  "workflow_state_name": "Approval Pending By Tamalika"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 22:12:01.105467",
+  "name": "Pushed Back By Tamalika",
+  "style": "",
+  "workflow_state_name": "Pushed Back By Tamalika"
  }
 ]
