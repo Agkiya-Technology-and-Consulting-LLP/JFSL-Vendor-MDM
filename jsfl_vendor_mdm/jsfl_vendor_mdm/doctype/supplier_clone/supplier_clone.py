@@ -151,14 +151,31 @@ class SupplierClone(Document):
 
     @frappe.whitelist()
     def get_user_list(self):
-        return frappe.db.get_list(
-            'User',
-            filters={
-                'name': ['in', frappe.db.get_list(
-                    'Has Role',
-                    filters={'role': 'L1 Manager'},
-                    pluck='parent'
-                )]
-            },
-            fields=['name', 'full_name']
-        )
+        # return frappe.db.get_list(
+        #     'User',
+        #     filters={
+        #         'name': ['in', frappe.db.get_list(
+        #             'Has Role',
+        #             filters={'role': 'L1 Manager'},
+        #             pluck='parent'
+        #         )]
+        #     },
+        #     fields=['name', 'full_name']
+        # )
+
+
+        role_user=frappe.db.sql("""
+		SELECT 
+			u.name 
+		from  
+			`tabUser` u ,`tabHas Role` hr 
+		where  
+			hr.parent=u.name 
+		and  
+			u.enabled=1 and hr.role ='{}'
+		""".format("L1 Manager"),as_dict=True,debug=0)
+        return role_user
+        # return frappe.db.sql("""
+                
+
+        #     """)
