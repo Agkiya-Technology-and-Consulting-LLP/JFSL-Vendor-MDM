@@ -13,7 +13,7 @@ def has_permission(doc, user):
             return True
         elif user == "Administrator" or (("MDM Manager" in frappe.get_roles()) and (doc.workflow_state =='Approval Pending By MDM Manager' or doc.workflow_state=='Pushed Back By MDM Manager' or doc.workflow_state == 'Approved' or doc.workflow_state =='Change Request Pending with MDM Manager' or doc.workflow_state == 'Change Request Approved' or doc.workflow_state == 'Change Request Push Back by MDM Manager')):
             return True
-        elif user == "Administrator" or (("Guest_supplier" in frappe.get_roles() or doc.workflow_state =='Change Requested' or doc.workflow_state == 'Change Request Pending with User') and doc.supplier_email_id == frappe.session.user):
+        elif user == "Administrator" or (("Guest_supplier" in frappe.get_roles() or doc.workflow_state =='Change Requested' or doc.workflow_state == 'Change Request Pending with User' or doc.workflow_state == 'Saved' or doc.workflow_state =='Approval Pending By Company User Team') and doc.supplier_email_id == user ):
             return True
         else:
             return False
@@ -33,4 +33,4 @@ def get_permission_query_conditions(user):
         elif ("MDM Manager" in frappe.get_roles()):
             return """(`tabSupplier Clone`.workflow_state = 'Approval Pending By MDM Manager' or `tabSupplier Clone`.workflow_state = 'Approved' or `tabSupplier Clone`.workflow_state ='Change Request Pending with MDM Manager')"""
         elif ("Guest_supplier" in frappe.get_roles()):
-            return """ (`tabSupplier Clone`.supplier_email_id ='{user}')""".format(user=user)
+            return """ (`tabSupplier Clone`.supplier_email_id ='{user}' and `tabSupplier Clone`.workflow_state ='Saved')""".format(user=user)
