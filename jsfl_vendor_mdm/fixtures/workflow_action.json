@@ -3912,6 +3912,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "Guest_supplier"
+   },
+   {
+    "parent": "d01d7a8af6",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -3928,6 +3934,12 @@
   "modified": "2024-06-02 20:43:32.204549",
   "name": "c86529512a",
   "permitted_roles": [
+   {
+    "parent": "c86529512a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   },
    {
     "parent": "c86529512a",
     "parentfield": "permitted_roles",
@@ -3954,6 +3966,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "L1 Manager"
+   },
+   {
+    "parent": "70e1278756",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -3970,6 +3988,12 @@
   "modified": "2024-06-02 20:43:44.046516",
   "name": "8c94f6f780",
   "permitted_roles": [
+   {
+    "parent": "8c94f6f780",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   },
    {
     "parent": "8c94f6f780",
     "parentfield": "permitted_roles",
@@ -3996,6 +4020,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "Guest_supplier"
+   },
+   {
+    "parent": "dcfed85fdc",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4012,6 +4042,12 @@
   "modified": "2024-06-02 20:44:11.139576",
   "name": "56bee720ee",
   "permitted_roles": [
+   {
+    "parent": "56bee720ee",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   },
    {
     "parent": "56bee720ee",
     "parentfield": "permitted_roles",
@@ -4038,6 +4074,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "L1 Manager"
+   },
+   {
+    "parent": "cbc68e681d",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4054,6 +4096,12 @@
   "modified": "2024-06-02 20:46:00.207254",
   "name": "acb5916b3a",
   "permitted_roles": [
+   {
+    "parent": "acb5916b3a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   },
    {
     "parent": "acb5916b3a",
     "parentfield": "permitted_roles",
@@ -4080,6 +4128,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "Company User Team"
+   },
+   {
+    "parent": "b1ad70c98b",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4096,6 +4150,12 @@
   "modified": "2024-06-02 22:34:29.774141",
   "name": "90e36a1bcd",
   "permitted_roles": [
+   {
+    "parent": "90e36a1bcd",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   },
    {
     "parent": "90e36a1bcd",
     "parentfield": "permitted_roles",
@@ -4122,6 +4182,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "Company User Team"
+   },
+   {
+    "parent": "02e0da706b",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4138,6 +4204,12 @@
   "modified": "2024-06-02 22:34:58.202697",
   "name": "c19f4c8505",
   "permitted_roles": [
+   {
+    "parent": "c19f4c8505",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   },
    {
     "parent": "c19f4c8505",
     "parentfield": "permitted_roles",
@@ -4164,6 +4236,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "Company User Team"
+   },
+   {
+    "parent": "444346677d",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4185,6 +4263,12 @@
     "parentfield": "permitted_roles",
     "parenttype": "Workflow Action",
     "role": "L1 Manager"
+   },
+   {
+    "parent": "265ecb2f60",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
    }
   ],
   "reference_doctype": "Supplier Clone",
@@ -4201,6 +4285,12 @@
   "modified": "2024-06-02 23:07:06.465294",
   "name": "53f08e3b9f",
   "permitted_roles": [
+   {
+    "parent": "53f08e3b9f",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   },
    {
     "parent": "53f08e3b9f",
     "parentfield": "permitted_roles",

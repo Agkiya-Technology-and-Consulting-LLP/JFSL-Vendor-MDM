@@ -117,12 +117,12 @@ frappe.ui.form.on('Supplier Clone', {
     },
     onload(frm) {
         if(frappe.session.user !='Administrator'){
-        if(frm.doc.company_user){
-            if (frappe.session.user !== frm.doc.company_user && frm.doc.company_user_check && (frm.doc.workflow_state=='Approval Pending By Company User Team'|| frm.doc.workflow_state=='Pushed Back By L1 Manager')) {
+        // if(frm.doc.company_user){
+        //     if (frappe.session.user !== frm.doc.company_user && frm.doc.company_user_check && (frm.doc.workflow_state=='Approval Pending By Company User Team'|| frm.doc.workflow_state=='Pushed Back By L1 Manager')) {
                 
-                frappe.throw(__("Warning: This form was viewed by a another user ({0})", [frm.doc.company_user]));
-            }
-        }
+        //         frappe.throw(__("Warning: This form was viewed by a another user ({0})", [frm.doc.company_user]));
+        //     }
+        // }
         // if (frm.doc.l1_manager){
         //     if (frappe.session.user !== frm.doc.l1_manager && frm.doc.l1_manager_check && (frm.doc.workflow_state=='Approval Pending By L1 Manager')) {
                 
@@ -139,11 +139,11 @@ frappe.ui.form.on('Supplier Clone', {
     },
     validate(frm) {
         if(frappe.session.user !='Administrator'){
-        if(frm.doc.company_user){
-            if (frappe.session.user !== frm.doc.company_user && (frm.doc.company_user_check && frm.doc.workflow_state=='Approval Pending By Company User Team'|| frm.doc.workflow_state=='Pushed Back By L1 Manager')) {
-                frappe.throw(__("This form was already viewed by a different user ({0})", [frm.doc.company_user]));
-            }
-        }
+        // if(frm.doc.company_user){
+        //     if (frappe.session.user !== frm.doc.company_user && (frm.doc.company_user_check && frm.doc.workflow_state=='Approval Pending By Company User Team'|| frm.doc.workflow_state=='Pushed Back By L1 Manager')) {
+        //         frappe.throw(__("This form was already viewed by a different user ({0})", [frm.doc.company_user]));
+        //     }
+        // }
         // if(frm.doc.l1_manager){
         //     if (frappe.session.user !== frm.doc.l1_manager && (frm.doc.l1_manager_check && frm.doc.workflow_state=='Approval Pending By L1 Manager')) {
         //         frappe.throw(__("This form was already viewed by a different user ({0})", [frm.doc.l1_manager]));
