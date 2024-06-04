@@ -130,8 +130,8 @@ class SupplierClone(Document):
 
         # Freez Window for multiple users
         if frappe.session.user!='Administrator':
-            if self.company_user_check and ("Company User Team" in frappe.get_roles()):
-                self.company_user=frappe.session.user
+            # if self.company_user_check and ("Company User Team" in frappe.get_roles()):
+            #     self.company_user=frappe.session.user
             # if ("L1 Manager" in frappe.get_roles()):
             #     self.l1_manager=frappe.session.user
             if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
