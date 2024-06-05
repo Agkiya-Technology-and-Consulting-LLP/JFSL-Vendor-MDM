@@ -28,6 +28,9 @@
                         <div v-if="touched.confirm_account_number && !form.confirm_account_number" class="text-danger">
                             Confirm Account Number is required.
                         </div>
+                        <div v-if="match" class="text-danger">
+                            Enter correct account number.
+                        </div>
                     </div>
 
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.ifsc_code && !form.ifsc_code }">
@@ -123,6 +126,17 @@
                 aria-label="Close"></button>
         </div>
     </div>
+
+
+<!-- Tost Error Message -->
+<div class="toast align-items-center text-white bg-danger  border-0" role="alert" aria-live="assertive" aria-atomic="true" :class="{ 'show': showErrorToast }" >
+    <div class="d-flex">
+        <div class="toast-body">
+            {{form.error}}.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast" aria-label="Close"></button>
+    </div>
+</div>
 </template>
 
 <script>
@@ -130,7 +144,8 @@ import { ref, defineComponent, onMounted, reactive, watch, computed } from "vue"
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
-
+const match =ref(false)
+const showErrorToast = ref(false)
 export default defineComponent({
     name: 'ContactDetails',
     setup() {
@@ -146,7 +161,7 @@ export default defineComponent({
             branch_country: '',
             branch_state: '',
             branch_city: '',
-            branch_zipcode: ''
+            branch_zipcode: '',
         });
 
         const touched = reactive({
@@ -192,6 +207,9 @@ export default defineComponent({
         });
 
         const ValidateEmail = () => {
+            if(match.value ==true){
+                showErrorToastMessage("Enter correct Account No.")
+            }else{
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                 makeParams: () => ({
@@ -220,7 +238,7 @@ export default defineComponent({
                     alert(`An error occurred: ${error.message}`);
                 }
             });
-
+        }
         };
         watch(() => form.ifsc_code,
             (newValue, oldValue) => {
@@ -252,6 +270,17 @@ export default defineComponent({
 
 
             })
+
+
+        watch(()=>form.confirm_account_number,
+        (value)=>{
+            if(form.account_number != form.confirm_account_number){
+                match.value =true
+            }else{
+                match.value =false
+            }
+            
+        })
         const showToastMessage = () => {
             showToast.value = true;
             setTimeout(() => {
@@ -262,12 +291,27 @@ export default defineComponent({
         const hideToast = () => {
             showToast.value = false;
         };
+
+
+        const showErrorToastMessage = (data) => {
+            form.error = data
+            showErrorToast.value = true;
+            setTimeout(() => {
+                showErrorToast.value = false;
+            }, 1000);
+        };
+        const hideErrorToast = () => {
+            showErrorToast.value = false;
+        };
         return {
             form,
             ValidateEmail,
             hideToast,
             showToastMessage,
+            hideErrorToast,
+            showErrorToast,
             showToast,
+            match,
             touched,
             isValid
         };
