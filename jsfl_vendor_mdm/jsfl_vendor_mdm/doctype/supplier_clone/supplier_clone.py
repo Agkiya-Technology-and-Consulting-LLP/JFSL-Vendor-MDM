@@ -59,6 +59,13 @@ class SupplierClone(Document):
         if self.date_of_establishment and getdate(self.date_of_establishment) > getdate():
             frappe.throw("Date of establishment cannot be greater than today's date.")  
         
+        
+        if self.account_number:
+            if not self.confirm_account_number:
+                frappe.throw("Confirm Account Number field is mandatory if Account Number is provided.")
+            elif self.account_number != self.confirm_account_number:
+                frappe.throw("Account Number and Confirm Account Number fields should be the same.")
+
         # if self.sent_back_by:
         #     current_workflow_state = self.workflow_state
         #     old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
@@ -90,7 +97,8 @@ class SupplierClone(Document):
                 frappe.throw("Reason By L1 Manager field is mandatory for L1 manager to fill before sending back the doc.")
         elif ((old_workflow_state == "Pushed Back By L1 Manager" and current_workflow_state == "Saved")
             or (old_workflow_state == "Approval Pending By Company User Team" and current_workflow_state == "Saved")
-            or (old_workflow_state == "Pushed Back By MDM Manager" and current_workflow_state == "Saved")):
+            or (old_workflow_state == "Pushed Back By MDM Manager" and current_workflow_state == "Saved")
+            or (old_workflow_state == "Pushed Back By Tamalika" and current_workflow_state == "Saved")):
             if((not self.reason_by_company_user_team)):
                 frappe.throw("Reason By Company User Team field is mandatory for Company User Team to fill before sending back the doc.")   
         elif ((old_workflow_state == "Approval Pending By Tamalika" and current_workflow_state == "Pushed Back By Tamalika")):
@@ -111,12 +119,15 @@ class SupplierClone(Document):
                     frappe.sendmail(
                         recipients=self.supplier_email_id,
                         subject=f"Supplier Registration Form named  {self.name} is returned by User Team",
-                        content=f"""
-                            <p>Supplier Registration Form named {self.name} has been returned. Please take necessary action.</p>
-                            <p>Dear {self.supplier_name},</p>
-                            <p>We regret to inform you that your form has been returned by the User Team:</p>
-                            <p><strong>Reason:</strong> {self.reason_by_company_user_team}</p>
-                            <p><strong> Please take necessary action on it.</strong></p>
+                        content=f"""                            
+                            <div style="border: 2px solid #0199aa; padding: 20px; display: inline-block; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; background-color: #f9f9f9;">
+                                <h3 style="margin-top: 0; color: #6a0cc7; text-align: center; text-decoration: underline;">Form named {self.name} has been returned.</h3>
+                                <p>Dear {self.supplier_name},</p>
+                                <p>We regret to inform you that your form has been returned by the User Team:</p>
+                                <p><strong>Reason:</strong> {self.reason_by_company_user_team}</p>
+                                <p>Please click <a href="https://uat-jfsl-mdm.frappe.cloud/frontend/account/login">THIS LINK</a> to update your information</p>
+                                <p><strong> Please take necessary action on it.</strong></p>
+                            </div>
                         """
                     )
                     frappe.msgprint("Email sent successfully.", alert=True)
@@ -144,6 +155,9 @@ class SupplierClone(Document):
             #     frappe.throw("Please Check L1 Manager Check")
             if not self.mdm_manager_check and self.workflow_state =='Approved':
                 frappe.throw("Please Check MDM Manager Check ")
+                
+            if not self.l1_manager and self.workflow_state =='Approval Pending By L1 Manager':
+                frappe.throw("Please Select L1 Manager First ")
 
     def before_insert(self):
         self.timestamp = frappe.utils.now()
