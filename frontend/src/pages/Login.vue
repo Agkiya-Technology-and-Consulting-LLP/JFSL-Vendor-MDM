@@ -52,9 +52,9 @@
                 <button class="btn btn-primary btn-block mb-4" v-on:click="checkUserExists()" :disabled="!email ">
                   Login
                 </button>
-                <div class="text-center">
+                <!--<div class="text-center">
                   <p>Not registered with us? <a style="color:blue" v-on:click="show=!show">Sign up</a></p>
-                </div>
+                </div>-->
               <!-- </form> -->
               </div>
 
