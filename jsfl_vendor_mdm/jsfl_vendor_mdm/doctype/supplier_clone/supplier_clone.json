@@ -706,11 +706,13 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.workflow_state=='Approval Pending By Company User Team'",
    "fieldname": "l1_manager",
    "fieldtype": "Link",
    "label": "L1 Manager",
    "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
-   "options": "User"
+   "options": "User",
+   "read_only_depends_on": "eval:doc.workflow_state !='Approval Pending By Company User Team'"
   },
   {
    "fieldname": "mdm_manager",
@@ -1250,7 +1252,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-05 13:20:39.079111",
+ "modified": "2024-06-06 11:50:22.707616",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
