@@ -234,6 +234,13 @@ fixtures = [
     "Workflow Action Master"
 ]
 
+
+from frappe.core.doctype.user.user import User
+from jsfl_vendor_mdm.jsfl_vendor_mdm.custom.user import password_reset_mail
+User.password_reset_mail =password_reset_mail
+
+
+
 website_route_rules = [{'from_route': '/frontend/<path:app_path>', 'to_route': 'frontend'}]
 
 permission_query_conditions = {

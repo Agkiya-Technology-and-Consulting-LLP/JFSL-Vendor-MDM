@@ -255,8 +255,9 @@ export default defineComponent({
                             onSuccess: (data) => {
                                 form.name_of_bank = data.result.bank;
                                 form.bank_address = data.result.address;
-                                form.state = data.result.state
-                                form.city = data.result.city
+                                form.branch_state = data.result.state
+                                form.branch_city = data.result.city
+                                form.branch_contact_number = data.result.contact
 
                             }, onError: (error) => {
                                 console.log(error)
