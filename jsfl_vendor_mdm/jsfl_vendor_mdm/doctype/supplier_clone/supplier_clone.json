@@ -709,6 +709,7 @@
    "fieldname": "l1_manager",
    "fieldtype": "Link",
    "label": "L1 Manager",
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
    "options": "User"
   },
   {
@@ -1220,6 +1221,7 @@
    "fieldname": "companies",
    "fieldtype": "Table MultiSelect",
    "label": "Company",
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
    "options": "Companies"
   },
   {
@@ -1248,7 +1250,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-04 10:35:54.510093",
+ "modified": "2024-06-05 13:20:39.079111",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
