@@ -240,7 +240,7 @@ export default defineComponent({
                 },
                 onError: (error) => {
                     console.error('Error:', error);
-                    alert(`An error occurred: ${error.message}`);
+                    // alert(`An error occurred: ${error.message}`);
                 }
             });
         };
