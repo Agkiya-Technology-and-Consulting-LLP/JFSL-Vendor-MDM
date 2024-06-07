@@ -9,7 +9,8 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.salutation && !form.salutation }">
                         <label for="salutation" class="form-label">Salutation <span class="text-danger">*</span></label>
-                        <select name="salutation" id="salutation" class="form-control" v-model="form.salutation" @blur="touched.salutation = true">
+                        <select name="salutation" id="salutation" class="form-control" v-model="form.salutation"
+                            @blur="touched.salutation = true" :disabled="isReadonly">
                             <option value=""></option>
                             <option value="Mr">Mr.</option>
                             <option value="Mrs">Mrs.</option>
@@ -22,7 +23,8 @@
 
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.first_name && !form.first_name }">
                         <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="firstName" v-model="form.first_name" placeholder="First Name" @blur="touched.first_name = true">
+                        <input type="text" class="form-control" id="firstName" v-model="form.first_name"
+                            placeholder="First Name" @blur="touched.first_name = true" :disabled="isReadonly">
                         <div v-if="touched.first_name && !form.first_name" class="text-danger">
                             First Name is required.
                         </div>
@@ -30,7 +32,8 @@
 
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.last_name && !form.last_name }">
                         <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="lastName" v-model="form.last_name" placeholder="Last Name" @blur="touched.last_name = true">
+                        <input type="text" class="form-control" id="lastName" v-model="form.last_name"
+                            placeholder="Last Name" @blur="touched.last_name = true" :disabled="isReadonly">
                         <div v-if="touched.last_name && !form.last_name" class="text-danger">
                             Last Name is required.
                         </div>
@@ -39,8 +42,10 @@
 
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.contact_number && !form.contact_number }">
-                        <label for="contact" class="form-label">Contact Number <span class="text-danger">*</span></label>
-                        <input type="tel" maxlength="10" class="form-control" id="contact" v-model="form.contact_number" placeholder="Contact Number" @blur="touched.contact_number = true">
+                        <label for="contact" class="form-label">Contact Number <span
+                                class="text-danger">*</span></label>
+                        <input type="tel" maxlength="10" class="form-control" id="contact" v-model="form.contact_number"
+                            placeholder="Contact Number" @blur="touched.contact_number = true" :disabled="isReadonly">
                         <div v-if="touched.contact_number && !form.contact_number" class="text-danger">
                             Contact Number is required.
                         </div>
@@ -48,7 +53,8 @@
 
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.email_id && !form.email_id }">
                         <label for="email" class="form-label">Email ID <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" v-model="form.email_id" placeholder="Email Id" @blur="touched.email_id = true">
+                        <input type="email" class="form-control" id="email" v-model="form.email_id"
+                            placeholder="Email Id" @blur="touched.email_id = true" :disabled="isReadonly">
                         <div v-if="touched.email_id && !form.email_id" class="text-danger">
                             Enter valid Email
                         </div>
@@ -67,66 +73,63 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="website" class="form-label">Website</label>
-                        <input type="text" class="form-control" id="website" v-model="form.website" placeholder="Website">
+                        <input type="text" class="form-control" id="website" v-model="form.website"
+                            placeholder="Website" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="facebook" class="form-label">Facebook</label>
-                        <input type="text" class="form-control" id="facebook" v-model="form.facebook" placeholder="Facebook">
+                        <input type="text" class="form-control" id="facebook" v-model="form.facebook"
+                            placeholder="Facebook" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="linkedin" class="form-label">LinkedIn</label>
-                        <input type="text" class="form-control" id="linkedin" v-model="form.linkedin" placeholder="LinkedIn">
+                        <input type="text" class="form-control" id="linkedin" v-model="form.linkedin"
+                            placeholder="LinkedIn" :disabled="isReadonly">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="instagram" class="form-label">Instagram</label>
-                        <input type="text" class="form-control" id="instagram" v-model="form.instagram" placeholder="Instagram">
+                        <input type="text" class="form-control" id="instagram" v-model="form.instagram"
+                            placeholder="Instagram" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="twitter" class="form-label">Twitter</label>
-                        <input type="text" class="form-control" id="twitter" v-model="form.twitter" placeholder="Twitter">
+                        <input type="text" class="form-control" id="twitter" v-model="form.twitter"
+                            placeholder="Twitter" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="youtube" class="form-label">YouTube</label>
-                        <input type="text" class="form-control" id="youtube" v-model="form.youtube" placeholder="YouTube">
+                        <input type="text" class="form-control" id="youtube" v-model="form.youtube"
+                            placeholder="YouTube" :disabled="isReadonly">
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                    <button type="button" class="savebutton" @click="ValidateEmail" :disabled="!isValid">Save</button>
-                    <router-link to="/accountdetails"><button class="nextbutton">Next</button></router-link>
+                    <button type="button" class="btn btn-primary"  @click="ValidateEmail" :disabled="!isValid">Save</button>
+                    <router-link to="/accountdetails"><button class="btn btn-primary">Next</button></router-link>
                 </div>
             </div>
         </div>
     </div>
 
 
-<!-- Tost Message -->
+    <!-- Tost Message -->
     <div>
-    <div
-      class="toast align-items-center text-white bg-success  border-0"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      :class="{ 'show': showToast }"
-    >
-      <div class="d-flex">
-        <div class="toast-body">
-          Details Saved Sucessfully.
+        <div class="toast align-items-center text-white bg-success  border-0" role="alert" aria-live="assertive"
+            aria-atomic="true" :class="{ 'show': showToast }">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Details Saved Sucessfully.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideToast"
+                    aria-label="Close"></button>
+            </div>
         </div>
-        <button
-          type="button"
-          class="btn-close btn-close-white me-2 m-auto"
-          @click="hideToast"
-          aria-label="Close"
-        ></button>
-      </div>
-    </div>
 
-    <!-- <button class="savebutton" @click="showToastMessage">Show Toast</button> -->
-  </div>
+        <!-- <button class="savebutton" @click="showToastMessage">Show Toast</button> -->
+    </div>
 </template>
 
 <script>
@@ -162,10 +165,18 @@ export default defineComponent({
         });
 
         const loginUser = sessionUser();
+        const workflowState = ref('');
+
 
         const isValid = computed(() => {
             return form.salutation && form.first_name && form.last_name && form.contact_number && form.email_id;
         });
+        // const isReadonly = computed(() => workflowState.value !== 'Saved');
+        const isReadonly = computed(() => {
+            return !['Saved', 'Change Requested', 'Approved'].includes(workflowState.value);
+        });
+
+
 
         onMounted(() => {
             const supplier = createResource({
@@ -177,6 +188,7 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
+                    console.log("coming from contact details", data);
                     form.first_name = data.first_name || '';
                     form.salutation = data.salutation || '';
                     form.last_name = data.last_name || '';
@@ -192,7 +204,9 @@ export default defineComponent({
                     form.twitter = data.twitter || '';
                     form.youtube = data.youtube || '';
                     form.docname = data.name || '';
+                    workflowState.value = data.workflow_state || '';
                 },
+
                 onError: (error) => {
                     console.error('Error:', error);
                 }
@@ -248,7 +262,8 @@ export default defineComponent({
             ValidateEmail,
             hideToast,
             showToastMessage,
-            showToast
+            showToast,
+            isReadonly
         };
     }
 });
@@ -297,9 +312,9 @@ h5 {
 /* .has-error label {
     color: red;
 } */
-:disabled{
+:disabled {
     /* background-color: grey; */
-    cursor:not-allowed;
+    cursor: not-allowed;
 }
 
 /* tost css */
@@ -311,17 +326,20 @@ h5 {
     padding: 0px 20px 0px 20px;
     border-radius: 10px;
 }
+
 .toast {
-  position: fixed;
-  top: 5rem;
-  right: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
+
 .toast.show {
-  opacity: 1;
+    opacity: 1;
 }
-.nextbutton{
+
+.nextbutton {
     background-color: #2e6bdc;
     color: white;
     font-size: 1.5rem;
