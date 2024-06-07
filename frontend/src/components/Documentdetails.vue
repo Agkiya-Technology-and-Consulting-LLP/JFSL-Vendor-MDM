@@ -110,9 +110,16 @@
                     
                 </div>
 
-                <div class="row">
+                <div class="row" v-if="!isReadonly && isupdate">
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                        <button type="button" class="btn btn-primary" @click="submit()">Submit</button>
+                        <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly">Submit</button>
+                    </div>
+                </div>
+                <!-- <div class="row" v-if="!isupdate"> -->
+                <div class="row" v-if="!isupdate">
+
+                    <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
+                        <button type="button" class="btn btn-primary" @click="update()">Update</button>
                     </div>
                 </div>
             </div>
@@ -192,6 +199,9 @@ export default defineComponent({
         const isReadonly = computed(() => {
             return !['Saved', 'Change Requested', 'Approved'].includes(workflowState.value);
         });
+        const isupdate = computed(()=>{
+            return !['Change Requested', 'Approved'].includes(workflowState.value)
+        })
 
         onMounted(() => {
             const supplier = createResource({
@@ -293,10 +303,37 @@ export default defineComponent({
                     console.log(data)
                     // alert("Details Submitted Sucessfully")
                     showToastMessage("Details Submitted Sucessfully")
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000)
                 },
                 onError: (error) => {
                     console.error('Error:', error);
-                    alert(`An error occurred: ${error.message}`);
+                    // alert(`An error occurred: ${error.message}`);
+                }
+            });
+        }
+        function update(){
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.update_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        docname: form.docname,
+                        workflow_state: "Change Request Pending with User"
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                    console.log(data)
+                    // alert("Details Submitted Sucessfully")
+                    showToastMessage("Details Update Sucessfully")
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000)
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                    // alert(`An error occurred: ${error.message}`);
                 }
             });
         }
@@ -324,7 +361,9 @@ export default defineComponent({
             // handlePAN_AadharFileChange
             touched,
             isValid,
-            isReadonly
+            isReadonly,
+            update,
+            isupdate
         };
     }
 });

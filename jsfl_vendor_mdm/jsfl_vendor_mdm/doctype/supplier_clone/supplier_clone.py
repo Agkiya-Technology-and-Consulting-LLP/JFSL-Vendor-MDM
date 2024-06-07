@@ -157,6 +157,22 @@ class SupplierClone(Document):
             if not self.l1_manager and self.workflow_state =='Approval Pending By L1 Manager':
                 frappe.throw("Please Select L1 Manager First ")
 
+        old_doc = self.get_doc_before_save()
+        if old_doc.workflow_state == "Approved":
+            # Check if any field value has changed
+            has_changes = False
+            for field in self.meta.fields:
+                fieldname = field.fieldname
+                if old_doc.get(fieldname) != self.get(fieldname):
+                    has_changes = True
+                    break
+
+            if has_changes:
+                self.workflow_state = "Change Requested"
+                # doc.save()
+                frappe.db.commit
+                # frappe.msgprint("Workflow state changed to 'Change Requested' due to changes in the document.")
+
     def before_insert(self):
         self.timestamp = frappe.utils.now()
 

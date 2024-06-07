@@ -190,7 +190,7 @@
 <script >
 // import axios from "axios" 
 import { session } from '../data/session'
-import { createResource } from 'frappe-ui'
+import { createResource ,toast,} from 'frappe-ui'
 
 export default {
   name: 'Login',
@@ -412,6 +412,13 @@ export default {
           },
           onError: (error) => {
             console.error("this is Error:", error);
+            toast({
+              title: "Error",
+              text: `User is not exists`,
+              icon: "alert-circle",
+              position: "bottom-center",
+              iconClasses: "text-red-500",
+            })
           }
         })
     },
@@ -431,7 +438,14 @@ export default {
         },
         onError: (error) => {
           console.error('Error:', error);
-          alert(`An error occurred: ${error.message}`);
+          // alert(`An error occurred: ${error.message}`);
+          toast({
+              title: "Error",
+              text: `User is not exists`,
+              icon: "alert-circle",
+              position: "bottom-center",
+              iconClasses: "text-red-500",
+            })
         }
       });
     },
@@ -450,13 +464,21 @@ export default {
             this.userExists=true
             this.mobile_no=data.mobile_no
           }else{
-            alert("User Not Registered")
+            // alert("User Not Registered")
+            
           }
           
         },
         onError: (error) => {
           console.error('Error:', error);
-          alert(`An error occurred: ${error.message}`);
+          // alert(`An error occurred: ${error.message}`);
+          toast({
+              title: "Error",
+              text: `User is not exists`,
+              icon: "alert-circle",
+              position: "bottom-center",
+              iconClasses: "text-red-500",
+            })
         }
       });
     },
