@@ -12,7 +12,7 @@
                         <label for="AccountNumber" class="form-label">Account Number <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="AccountNumber" v-model="form.account_number"
-                            placeholder="Account Number" @blur="touched.account_number = true">
+                            placeholder="Account Number" @blur="touched.account_number = true" :disabled="isReadonly">
                         <div v-if="touched.account_number && !form.account_number" class="text-danger">
                             Account Number is required.
                         </div>
@@ -24,7 +24,7 @@
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="ConfirmAccountNumber"
                             v-model="form.confirm_account_number" placeholder="Confirm Account Number"
-                            @blur="touched.confirm_account_number = true">
+                            @blur="touched.confirm_account_number = true" :disabled="isReadonly">
                         <div v-if="touched.confirm_account_number && !form.confirm_account_number" class="text-danger">
                             Confirm Account Number is required.
                         </div>
@@ -36,7 +36,7 @@
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.ifsc_code && !form.ifsc_code }">
                         <label for="IFSCCode" class="form-label">IFSC Code <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="IFSCCode" v-model="form.ifsc_code"
-                            placeholder="IFSC Code" @blur="touched.ifsc_code = true">
+                            placeholder="IFSC Code" @blur="touched.ifsc_code = true" :disabled="isReadonly">
                         <div v-if="touched.ifsc_code && !form.ifsc_code" class="text-danger">
                             IFSC Code is required.
                         </div>
@@ -50,7 +50,7 @@
                         <label for="NameOfBank" class="form-label">Name Of Bank <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="NameOfBank" v-model="form.name_of_bank"
-                            placeholder="Name Of Bank" @blur="touched.name_of_bank = true">
+                            placeholder="Name Of Bank" @blur="touched.name_of_bank = true" :disabled="isReadonly">
                         <div v-if="touched.name_of_bank && !form.name_of_bank" class="text-danger">
                             Name Of Bank is required.
                         </div>
@@ -60,13 +60,13 @@
                     <div class="col-md-4 mb-3">
                         <label for="Branch Contact number" class="form-label">Branch Contact number</label>
                         <input type="tel" maxlength="13" class="form-control" id="contact"
-                            v-model="form.branch_contact_number" placeholder="Contact Number">
+                            v-model="form.branch_contact_number" placeholder="Contact Number" :disabled="isReadonly">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="Branch Email Id" class="form-check-label">Branch Email Id</label>
                         <input type="text" class="form-control" id="Branch Email Id" v-model="form.branch_email_id"
-                            placeholder="Branch Email Id">
+                            placeholder="Branch Email Id" :disabled="isReadonly">
                     </div>
                 </div>
 
@@ -79,17 +79,17 @@
                     <div class="col-md-4 mb-3">
                         <label for="Bank Address" class="form-label">Bank Address</label>
                         <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
-                            placeholder="Bank Address">
+                            placeholder="Bank Address" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="Country" class="form-label">Country</label>
                         <input type="text" class="form-control" id="Country" v-model="form.branch_country"
-                            placeholder="Country">
+                            placeholder="Country" :disabled="isReadonly">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="State" class="form-label">State</label>
                         <input type="text" class="form-control" id="State" v-model="form.branch_state"
-                            placeholder="State">
+                            placeholder="State" :disabled="isReadonly">
                     </div>
                 </div>
 
@@ -97,20 +97,20 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="City" class="form-label">City</label>
-                        <input type="text" class="form-control" id="City" v-model="form.branch_city" placeholder="City">
+                        <input type="text" class="form-control" id="City" v-model="form.branch_city" placeholder="City" :disabled="isReadonly">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="Zipcode" class="form-label">Zipcode</label>
                         <input type="tel" maxlength="13" class="form-control" id="Zipcode" v-model="form.branch_zipcode"
-                            placeholder="Zipcode">
+                            placeholder="Zipcode" :disabled="isReadonly">
                     </div>
                 </div>
 
 
                 <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                    <Button type="button" class="savebutton" @click="ValidateEmail()" :disabled="!isValid">Save</Button>
-                    <router-link to="/documentdetails" class="nextbutton"><button>Next</button></router-link>
+                    <button type="button" class="btn btn-primary" @click="ValidateEmail()" :disabled="!isValid">Save</button>
+                    <router-link to="/documentdetails" class="btn btn-primary"><button>Next</button></router-link>
                 </div>
             </div>
         </div>
@@ -175,6 +175,11 @@ export default defineComponent({
         });
 
         const loginUser = sessionUser();
+        const workflowState = ref('');
+        // const isReadonly = computed(() => workflowState.value !== 'Saved');
+        const isReadonly = computed(() => {
+            return !['Saved', 'Change Requested', 'Approved'].includes(workflowState.value);
+        });
 
         onMounted(() => {
             const supplier = createResource({
@@ -199,6 +204,7 @@ export default defineComponent({
                     form.branch_city = data.branch_city;
                     form.branch_zipcode = data.branch_zipcode;
                     form.docname = data.name
+                    workflowState.value = data.workflow_state || '';
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -314,7 +320,8 @@ export default defineComponent({
             showToast,
             match,
             touched,
-            isValid
+            isValid,
+            isReadonly
         };
     }
 });
