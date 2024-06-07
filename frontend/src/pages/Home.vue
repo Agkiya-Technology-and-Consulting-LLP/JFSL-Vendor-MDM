@@ -45,7 +45,7 @@
                   onSuccess: (data) => {
                     let url = window.location.origin;
                     let targetPath=''
-                      console.log(";;;;;;;",data)
+                      console.log("yes i am here coming from home.vue",data)
                       if (!data.accept_code_of_conduct){
                         targetPath='/frontend/codeofConduct'
                       }else if (!data.accept_esg_policy){

@@ -8,12 +8,33 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.addressProof && !form.addressProof }">
-                        <label for="AddressProof" class="form-label">Address Proof </label>
+                        <label for="AddressProof" class="form-label">Aadhar card <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" id="AddressProof"
-                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = false">
-                        <div v-if="touched.addressProof && !form.addressProof" class="text-danger">
-                            Address Proof is required.
-                        </div>
+                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = true" :disabled="isReadonly">
+                        <!-- <div v-if="touched.addressProof && !form.addressProof" class="text-danger">
+                            Aadhar is required.
+                        </div> -->
+                    </div>
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cheque && !form.cheque }">
+                        <label for="cheque" class="form-label">Cancelled cheque <span class="text-danger">*</span> </label>
+                        <input type="file" class="form-control" id="cheque"
+                            @change="handleFileChange($event, 'cheque')" @blur="touched.cheque = true" :disabled="isReadonly">
+                        <!-- <div v-if="touched.cheque && !form.cheque" class="text-danger">
+                            cancelled cheque required.
+                        </div> -->
+                    </div>
+
+                   
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.panAadhar && !form.panAadhar }">
+                        <label for="PANAadhar" class="form-label">PAN Card <span class="text-danger">*</span> </label>
+                        <input type="file" class="form-control" id="PANAadhar"
+                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = true" :disabled="isReadonly">
+                        <!-- <div v-if="touched.panAadhar && !form.panAadhar" class="text-danger">
+                            PAN is required.
+                        </div> -->
                     </div>
 
                     <div class="col-md-6 mb-3"
@@ -21,30 +42,10 @@
                         <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration </label>
                         <input type="file" class="form-control" id="MSMEDUdyamRegistration"
                             @change="handleFileChange($event, 'msmedudyam_registration')"
-                            @blur="touched.msmedUdyamNumber = false">
-                        <div v-if="touched.msmedUdyamNumber && !form.msmedUdyamNumber" class="text-danger">
+                            @blur="touched.msmedUdyamNumber = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.msmedUdyamNumber && !form.msmedUdyamNumber" class="text-danger">
                             MSMED/Udyam Registration is required.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.panAadhar && !form.panAadhar }">
-                        <label for="PANAadhar" class="form-label">PAN/Aadhar </label>
-                        <input type="file" class="form-control" id="PANAadhar"
-                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = false">
-                        <div v-if="touched.panAadhar && !form.panAadhar" class="text-danger">
-                            PAN/Aadhar is required.
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.esic && !form.esic }">
-                        <label for="ESIC" class="form-label">ESIC </label>
-                        <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event, 'esic')"
-                            @blur="touched.esic = false">
-                        <div v-if="touched.esic && !form.esic" class="text-danger">
-                            ESIC is required.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -52,19 +53,19 @@
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.pf && !form.pf }">
                         <label for="PF" class="form-label">PF </label>
                         <input type="file" class="form-control" id="PF" @change="handleFileChange($event, 'pf')"
-                            @blur="touched.pf = false">
-                        <div v-if="touched.pf && !form.pf" class="text-danger">
+                            @blur="touched.pf = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.pf && !form.pf" class="text-danger">
                             PF is required.
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.tinUin && !form.tinUin }">
                         <label for="TIN_UIN" class="form-label">TIN/UIN </label>
                         <input type="file" class="form-control" id="TIN_UIN"
-                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = false">
-                        <div v-if="touched.tinUin && !form.tinUin" class="text-danger">
+                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.tinUin && !form.tinUin" class="text-danger">
                             TIN/UIN is required.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -72,19 +73,19 @@
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.gst && !form.gst }">
                         <label for="GST" class="form-label">GST </label>
                         <input type="file" class="form-control" id="GST" @change="handleFileChange($event, 'gst')"
-                            @blur="touched.gst = false">
-                        <div v-if="touched.gst && !form.gst" class="text-danger">
+                            @blur="touched.gst = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.gst && !form.gst" class="text-danger">
                             GST is required.
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cin && !form.cin }">
                         <label for="CIN" class="form-label">CIN </label>
                         <input type="file" class="form-control" id="CIN" @change="handleFileChange($event, 'cin')"
-                            @blur="touched.cin = false">
-                        <div v-if="touched.cin && !form.cin" class="text-danger">
+                            @blur="touched.cin = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.cin && !form.cin" class="text-danger">
                             CIN is required.
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -92,18 +93,26 @@
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.lstCst && !form.lstCst }">
                         <label for="LST_CST" class="form-label">LST/CST </label>
                         <input type="file" class="form-control" id="LST_CST"
-                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = false">
-                        <div v-if="touched.lstCst && !form.lstCst" class="text-danger">
+                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.lstCst && !form.lstCst" class="text-danger">
                             LST/CST is required.
-                        </div>
+                        </div> -->
                     </div>
+                    <div class="col-md-6 mb-3" :class="{ 'has-error': touched.esic && !form.esic }">
+                        <label for="ESIC" class="form-label">ESIC </label>
+                        <input type="file" class="form-control" id="ESIC" @change="handleFileChange($event, 'esic')"
+                            @blur="touched.esic = false" :disabled="isReadonly">
+                        <!-- <div v-if="touched.esic && !form.esic" class="text-danger">
+                            ESIC is required.
+                        </div> -->
+                    </div>
+
+                    
                 </div>
 
                 <div class="row">
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                        <!-- <button type="button" class="savebutton" @click="ValidateEmail()"
-                            :disabled="!isValid">Save</button> -->
-                        <button type="button" class="savebutton" @click="submit()" >Submit</button>
+                        <button type="button" class="btn btn-primary" @click="submit()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -145,6 +154,7 @@ export default defineComponent({
             gst: '',
             cin: '',
             lstCst: '',
+            cheque: '',
             docname: '',
             sucessMSG:''
         });
@@ -160,21 +170,29 @@ export default defineComponent({
             gst: false,
             cin: false,
             lstCst: false,
+            cheque: false,
         });
 
         const isValid = computed(() => {
             return form.addressProof
-                && form.msmedUdyamNumber
+                // && form.msmedUdyamNumber
                 && form.panAadhar
-                && form.esic
-                && form.pf
-                && form.tinUin
-                && form.gst
-                && form.cin
-                && form.lstCst;
+                // && form.esic
+                // && form.pf
+                // && form.tinUin
+                // && form.gst
+                // && form.cin
+                // && form.lstCst
+                && form.cheque;
         });
 
         const loginUser = sessionUser()
+        const workflowState = ref('');
+        // const isReadonly = computed(() => workflowState.value !== 'Saved');
+        const isReadonly = computed(() => {
+            return !['Saved', 'Change Requested', 'Approved'].includes(workflowState.value);
+        });
+
         onMounted(() => {
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
@@ -185,8 +203,9 @@ export default defineComponent({
                 }),
                 auto: true,
                 onSuccess: (data) => {
-                    console.log("data", data);
+                    console.log("data coming from documents", data);
                     form.docname = data.name
+                    workflowState.value = data.workflow_state || '';
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -196,6 +215,11 @@ export default defineComponent({
         });
         const handleFileChange=(event,field)=> {
             const file = event.target.files[0];
+            
+            if( field === 'addressProof' ){
+                touched.addressProof = false;
+            }
+
             var formData = new FormData();
             formData.append('file', file);
             formData.append('doctype',"Supplier Clone");
@@ -213,8 +237,16 @@ export default defineComponent({
                 console.log(data);
                 if (data.message) {
                     var file_url = data.message.file_url;
-                    // alert('File uploaded successfully. File URL:', file_url);
                     showToastMessage("File Upload Sucessfully")
+
+                     // **Update form field here**
+                    //  form[field] = file_url; 
+
+                      // **Added code to hide validation message**
+                    // if (field === 'addressProof') {
+                    //     touched.addressProof = true;  //
+                    // }
+
                 }
             })
             .catch(error => {
@@ -246,6 +278,7 @@ export default defineComponent({
             //     }
             // });
         }
+
         function submit() {
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
@@ -290,7 +323,8 @@ export default defineComponent({
             // handleMSMEFileChange,
             // handlePAN_AadharFileChange
             touched,
-            isValid
+            isValid,
+            isReadonly
         };
     }
 });
@@ -309,13 +343,6 @@ export default defineComponent({
     border-radius: 10px 10px 0px 0px;
 }
 
-.savebutton {
-    background-color: #2e6bdc;
-    color: white;
-    font-size: 1.5rem;
-    padding: 1rem;
-}
-
 label {
     font-weight: 600;
 }
@@ -326,14 +353,6 @@ h6 {
 }
 
 /* tost css */
-
-.savebutton {
-    background-color: #2e6bdc;
-    color: white;
-    font-size: 1.5rem;
-    padding: 0px 20px 0px 20px;
-    border-radius: 10px;
-}
 
 .toast {
     position: fixed;

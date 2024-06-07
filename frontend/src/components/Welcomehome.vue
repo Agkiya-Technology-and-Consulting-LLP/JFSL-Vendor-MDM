@@ -71,7 +71,7 @@
 
         <div class="action d-flex justify-end mt-10">
             <router-link to="./companydetails" class="no-underline">
-            <button class="text-white bg-blue-500 p-2 rounded ">Get Started</button>
+            <button class="text-white bg-blue-500 p-2 rounded">Get Started</button>
         </router-link>
         </div>
 
