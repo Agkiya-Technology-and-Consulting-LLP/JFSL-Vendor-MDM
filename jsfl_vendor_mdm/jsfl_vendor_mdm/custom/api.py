@@ -184,6 +184,7 @@ def accept_code_of_conduct(doc):
     supplier.accept_code_of_conduct=1
     supplier.ip_address=get_ip_address()
     supplier.save(ignore_permissions=True)
+    print(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.....{supplier}")
     return supplier
 
 
