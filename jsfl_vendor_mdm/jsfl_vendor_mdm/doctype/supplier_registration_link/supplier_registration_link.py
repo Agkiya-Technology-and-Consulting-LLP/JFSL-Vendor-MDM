@@ -49,7 +49,7 @@ class SupplierRegistrationLink(Document):
                 'company_user' : frappe.session.user
 		})
         new_supplier.insert(ignore_permissions=True)
-        frappe.msgprint("Supplier Created")
+        frappe.msgprint("Supplier Clone Created")
         frappe.db.commit()
     # def send_email_to_supplier(doc, method):
     #     if method == "on_submit":
