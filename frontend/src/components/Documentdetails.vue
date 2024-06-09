@@ -112,14 +112,14 @@
 
                 <div class="row" v-if="!isReadonly && isupdate">
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                        <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly">Submit</button>
+                        <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly" v-if="!isReadonly">Submit</button>
                     </div>
                 </div>
                 <!-- <div class="row" v-if="!isupdate"> -->
                 <div class="row" v-if="!isupdate">
 
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                        <button type="button" class="btn btn-primary" @click="update()">Update</button>
+                        <button type="button" class="btn btn-primary" @click="update()" v-if="!isReadonly">Update</button>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:SUP-{####}",
  "creation": "2024-03-22 13:50:31.135989",
  "default_view": "List",
  "doctype": "DocType",
@@ -707,7 +708,6 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.workflow_state=='Approval Pending By Company User Team'",
    "fieldname": "l1_manager",
    "fieldtype": "Link",
    "label": "L1 Manager",
@@ -990,6 +990,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "supplier_email_id.first_name",
    "fieldname": "first_name",
    "fieldtype": "Data",
    "label": "First Name"
@@ -999,6 +1000,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "supplier_email_id.last_name",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name"
@@ -1258,10 +1260,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-08 11:34:32.269328",
+ "modified": "2024-06-09 16:48:14.952354",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

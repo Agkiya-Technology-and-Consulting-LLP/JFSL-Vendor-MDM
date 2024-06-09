@@ -109,7 +109,7 @@
 
 
                 <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                    <button type="button" class="btn btn-primary" @click="ValidateEmail()" :disabled="!isValid">Save</button>
+                    <button type="button" class="btn btn-primary" @click="ValidateEmail()" :disabled="!isValid" v-if="!isReadonly">Save</button>
                     <router-link to="/documentdetails" class="btn btn-primary"><button>Next</button></router-link>
                 </div>
             </div>
