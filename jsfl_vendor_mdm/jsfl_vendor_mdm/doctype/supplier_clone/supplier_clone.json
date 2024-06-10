@@ -322,8 +322,7 @@
    "fieldname": "gst_registration_number",
    "fieldtype": "Data",
    "label": "GST Registration Number",
-   "mandatory_depends_on": "eval:doc.company_turnover != \"<2000000\"",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.company_turnover != \"<2000000\""
   },
   {
    "collapsible": 1,
@@ -1284,7 +1283,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-10 17:28:10.864735",
+ "modified": "2024-06-10 18:12:18.226697",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
