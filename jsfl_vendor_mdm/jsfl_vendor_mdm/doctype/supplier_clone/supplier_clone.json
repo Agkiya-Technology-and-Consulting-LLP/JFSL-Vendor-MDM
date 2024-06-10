@@ -183,7 +183,7 @@
   "esic",
   "tinuin",
   "cin_attach",
-  "cancelled_cheque",
+  "cheque",
   "reason_section_tab",
   "push_back_by_mdm_manager",
   "reason_by_mdm_manager",
@@ -1254,7 +1254,7 @@
    "label": " Pushback Reason By Reviewer"
   },
   {
-   "fieldname": "cancelled_cheque",
+   "fieldname": "cheque",
    "fieldtype": "Attach",
    "label": "Cancelled Cheque"
   }
@@ -1262,7 +1262,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-10 18:26:37.710458",
+ "modified": "2024-06-10 18:33:16.895534",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
