@@ -83,57 +83,57 @@ class SupplierClone(Document):
         old_workflow_state = frappe.db.get_value("Supplier Clone",self.name,'workflow_state')
         if (current_workflow_state == "Rejected" and (old_workflow_state == "Approval Pending By MDM Manager" or old_workflow_state == "Approval Pending By L1 Manager" or old_workflow_state == "Approval Pending By Tamalika")):
             if (not self.reason_for_rejection):
-                frappe.throw("Reason for Rejection is mandetory before rejecting the form")
+                frappe.throw("Rejection Reason is mandetory before rejecting the form")
         if ((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Pushed Back By MDM Manager")):
             self.push_back_by_mdm_manager = frappe.session.user
         
         if ((old_workflow_state == "Approval Pending By MDM Manager" and current_workflow_state == "Pushed Back By MDM Manager")):
             if ((not self.reason_by_mdm_manager)):
-                frappe.throw("Reason By MDM manager field is mandatory for MDM manager to fill before sending back the doc.")
+                frappe.throw("Pushback Reason By MDM manager field is mandatory for MDM manager to fill before sending back the doc.")
         elif ((old_workflow_state == "Approval Pending By L1 Manager" and current_workflow_state == "Pushed Back By L1 Manager")):
             if((not self.reason_by_l1_manager)):
-                frappe.throw("Reason By L1 Manager field is mandatory for L1 manager to fill before sending back the doc.")
+                frappe.throw("Pushback Reason By L1 Manager field is mandatory for L1 manager to fill before sending back the doc.")
         elif ((old_workflow_state == "Pushed Back By L1 Manager" and current_workflow_state == "Saved")
             or (old_workflow_state == "Approval Pending By Company User Team" and current_workflow_state == "Saved")
             or (old_workflow_state == "Pushed Back By MDM Manager" and current_workflow_state == "Saved")
             or (old_workflow_state == "Pushed Back By Tamalika" and current_workflow_state == "Saved")):
             if((not self.reason_by_company_user_team)):
-                frappe.throw("Reason By Company User Team field is mandatory for Company User Team to fill before sending back the doc.")   
+                frappe.throw("Pushback Reason By Company User Team field is mandatory for Company User Team to fill before sending back the doc.")   
         elif ((old_workflow_state == "Approval Pending By Tamalika" and current_workflow_state == "Pushed Back By Tamalika")):
             if ((not self.reason_by_reviewer)):
-                frappe.throw("Reason By Reviewer field is mandatory for Tamalika to fill before sending back the doc.")
+                frappe.throw("Pushback Reason By Reviewer field is mandatory for Tamalika to fill before sending back the doc.")
         
 
         # ***********************************************************************************************************************
-        if ((old_workflow_state == "Approval Pending By Company User Team" or old_workflow_state == "Pushed Back By MDM Manager" or old_workflow_state == "Pushed Back By L1 Manager" or old_workflow_state=="Pushed Back By Tamalika") and current_workflow_state == "Saved"):
-        # Retrieve the supplier email
-            # user_email = frappe.db.get_value("Supplier Clone", self.supplier_email_id, "supplier_email_id")
+        # if ((old_workflow_state == "Approval Pending By Company User Team" or old_workflow_state == "Pushed Back By MDM Manager" or old_workflow_state == "Pushed Back By L1 Manager" or old_workflow_state=="Pushed Back By Tamalika") and current_workflow_state == "Saved"):
+        # # Retrieve the supplier email
+        #     # user_email = frappe.db.get_value("Supplier Clone", self.supplier_email_id, "supplier_email_id")
             
-            # Debug: Check the retrieved email
-            # print(f"@@@@@@@@@@@@Retrieved user email:",self.supplier_email_id)
+        #     # Debug: Check the retrieved email
+        #     # print(f"@@@@@@@@@@@@Retrieved user email:",self.supplier_email_id)
             
-            if self.supplier_email_id:
-                try:
-                    # Send email
-                    frappe.sendmail(
-                        recipients=self.supplier_email_id,
-                        subject=f"Supplier Registration Form named  {self.name} is returned by User Team",
-                        content=f"""
-                            <div style="border: 2px solid #0199aa; padding: 20px; display: inline-block; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; background-color: #f9f9f9;">
-                                <h3 style="margin-top: 0; color: #6a0cc7; text-align: center; text-decoration: underline;">Form named {self.name} has been returned.</h3>
-                                <p>Dear {self.supplier_name},</p>
-                                <p>We regret to inform you that your form has been returned by the User Team:</p>
-                                <p><strong>Reason:</strong> {self.reason_by_company_user_team}</p>
-                                <p>Please click <a href="https://uat-jfsl-mdm.frappe.cloud/frontend/account/login">THIS LINK</a> to update your information</p>
-                                <p><strong> Please take necessary action on it.</strong></p>
-                            </div>
-                        """
-                    )
-                    frappe.msgprint("Email sent successfully.", alert=True)
-                except Exception as e:
-                    frappe.throw(f"An error occurred while sending the email: {str(e)}")
-            else:
-                frappe.msgprint("No valid email address found for the supplier.", alert=True)
+        #     if self.supplier_email_id:
+        #         try:
+        #             # Send email
+        #             frappe.sendmail(
+        #                 recipients=self.supplier_email_id,
+        #                 subject=f"Supplier Registration Form named  {self.name} is returned by User Team",
+        #                 content=f"""
+        #                     <div style="border: 2px solid #0199aa; padding: 20px; display: inline-block; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; background-color: #f9f9f9;">
+        #                         <h3 style="margin-top: 0; color: #6a0cc7; text-align: center; text-decoration: underline;">Form named {self.name} has been returned.</h3>
+        #                         <p>Dear {self.supplier_name},</p>
+        #                         <p>We regret to inform you that your form has been returned by the User Team:</p>
+        #                         <p><strong>Reason:</strong> {self.reason_by_company_user_team}</p>
+        #                         <p>Please click <a href="https://uat-jfsl-mdm.frappe.cloud/frontend/account/login">THIS LINK</a> to update your information</p>
+        #                         <p><strong> Please take necessary action on it.</strong></p>
+        #                     </div>
+        #                 """
+        #             )
+        #             frappe.msgprint("Email sent successfully.", alert=True)
+        #         except Exception as e:
+        #             frappe.throw(f"An error occurred while sending the email: {str(e)}")
+        #     else:
+        #         frappe.msgprint("No valid email address found for the supplier.", alert=True)
 
         # ***********************************************************************************************************************
 
