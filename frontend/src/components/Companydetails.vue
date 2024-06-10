@@ -418,11 +418,11 @@
                         </div>
 
                         <div class="col-md-3 mb-3" :class="{ 'has-error': touched.region && !form.region }">
-                            <label for="Region" class="form-label">Region <span class="text-danger">*</span></label>
+                            <label for="Region" class="form-label">State <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="Region" v-model="form.region"
                                 placeholder="Region" @blur="touched.region = true" :disabled="isReadonly">
                             <div v-if="touched.region && !form.region" class="text-danger">
-                                Region is required.
+                                State is required.
                             </div>
                         </div>
 
