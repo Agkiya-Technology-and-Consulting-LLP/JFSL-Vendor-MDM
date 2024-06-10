@@ -112,6 +112,7 @@
 
                 <div class="row" v-if="!isReadonly && isupdate">
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
+                        <router-link to="/accountdetails" class="btn btn-primary"><button>Back</button></router-link>
                         <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly" v-if="!isReadonly">Submit</button>
                     </div>
                 </div>
@@ -140,6 +141,16 @@
         </div>
     </div>
 
+    <!-- Tost Error Message -->
+    <div class="toast align-items-center text-white bg-danger  border-0" role="alert" aria-live="assertive" aria-atomic="true" :class="{ 'show': showErrorToast }" >
+        <div class="d-flex">
+            <div class="toast-body">
+                {{form.error}}.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast" aria-label="Close"></button>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -147,7 +158,7 @@ import { ref, defineComponent, onMounted, reactive, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
-
+const showErrorToast = ref(false)
 export default defineComponent({
     name: 'ContactDetails',
     setup() {
@@ -163,7 +174,8 @@ export default defineComponent({
             lstCst: '',
             cheque: '',
             docname: '',
-            sucessMSG:''
+            sucessMSG:'',
+            validateSubmit:false
         });
 
 
@@ -178,6 +190,7 @@ export default defineComponent({
             cin: false,
             lstCst: false,
             cheque: false,
+            // validateSubmit: false,
         });
 
         const isValid = computed(() => {
@@ -215,6 +228,19 @@ export default defineComponent({
                 onSuccess: (data) => {
                     console.log("data coming from documents", data);
                     form.docname = data.name
+                    // console.log(data.email_id)
+                    const fields =['company_name','permanent_account_number','name_','addressline_1','country','city','region','pincode','residential_status','salutation','first_name','email_id','contact_number','account_number','confirm_account_number','ifsc_code','address_proof','panaadhar','cheque']
+                    fields.forEach((field)=>{
+                        // console.log(field)
+                        if (!data[field]) {
+                            console.log(`Missing field: ${field}`);
+                            form.validateSubmit=true
+                        }   
+                    })
+                    console.log("validateSubmit",form.validateSubmit)
+                    // if( data.name_ ){
+                    //     console.log(':::::::::::::::::KKKKKKKKKKKKK:::::::::::::')
+                    // }
                     workflowState.value = data.workflow_state || '';
                 },
                 onError: (error) => {
@@ -290,6 +316,9 @@ export default defineComponent({
         }
 
         function submit() {
+            if(form.validateSubmit){
+                showErrorToastMessage("Please fill all mandatory details")
+            }else{
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
                 makeParams: () => ({
@@ -312,6 +341,7 @@ export default defineComponent({
                     // alert(`An error occurred: ${error.message}`);
                 }
             });
+        }
         }
         function update(){
             const supplier = createResource({
@@ -349,6 +379,18 @@ export default defineComponent({
         const hideToast = () => {
             showToast.value = false;
         };
+
+
+        const showErrorToastMessage = (data) => {
+            form.error = data
+            showErrorToast.value = true;
+            setTimeout(() => {
+                showErrorToast.value = false;
+            }, 1000);
+        };
+        const hideErrorToast = () => {
+            showErrorToast.value = false;
+        };
         return {
             form,
             ValidateEmail,
@@ -363,7 +405,10 @@ export default defineComponent({
             isValid,
             isReadonly,
             update,
-            isupdate
+            isupdate,
+            showErrorToastMessage,
+            hideErrorToast,
+            showErrorToast
         };
     }
 });

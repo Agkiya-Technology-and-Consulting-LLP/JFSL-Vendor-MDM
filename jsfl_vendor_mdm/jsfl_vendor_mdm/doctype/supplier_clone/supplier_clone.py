@@ -106,8 +106,8 @@ class SupplierClone(Document):
 
         # ***********************************************************************************************************************
         # if ((old_workflow_state == "Approval Pending By Company User Team" or old_workflow_state == "Pushed Back By MDM Manager" or old_workflow_state == "Pushed Back By L1 Manager" or old_workflow_state=="Pushed Back By Tamalika") and current_workflow_state == "Saved"):
-        # # Retrieve the supplier email
-        #     # user_email = frappe.db.get_value("Supplier Clone", self.supplier_email_id, "supplier_email_id")
+        # Retrieve the supplier email
+            # user_email = frappe.db.get_value("Supplier Clone", self.supplier_email_id, "supplier_email_id")
             
         #     # Debug: Check the retrieved email
         #     # print(f"@@@@@@@@@@@@Retrieved user email:",self.supplier_email_id)
@@ -135,7 +135,7 @@ class SupplierClone(Document):
         #     else:
         #         frappe.msgprint("No valid email address found for the supplier.", alert=True)
 
-        # ***********************************************************************************************************************
+        # *****************************************
 
 
         # Freez Window for multiple users

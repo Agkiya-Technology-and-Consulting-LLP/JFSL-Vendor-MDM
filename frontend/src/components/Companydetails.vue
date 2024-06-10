@@ -100,8 +100,8 @@
                             <option value=">50000000">> 50000000</option>
                             <option value="<5000000">
                                 < 5000000 </option>
-                            <option value="<2000000">
-                                < 2000000 </option>
+                            <!-- <option value="<2000000">
+                                < 2000000 </option> -->
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -216,15 +216,14 @@
                     <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
                 </div> -->
                     <div class="col-md-6 mb-3"
-                        :class="{ 'has-error': touched.gst_registration_number && !form.gst_registration_number && form.company_turnover != '<2000000' }">
-                        <label for="GST" class="form-label">GST Registration <span class="text-danger"
-                                v-if="form.company_turnover != '<2000000'">*</span></label>
+                        >
+                        <label for="GST" class="form-label">GST Registration </label>
                         <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number"
                             placeholder="Enter GST No" @blur="touched.gst_registration_number = true" :disabled="isReadonly">
-                        <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover != '<2000000')"
+                        <!-- <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover != '<2000000')"
                             class="text-danger">
                             GST Number is required.
-                        </div>
+                        </div> -->
                         <div v-if="form.gst_error" class="text-danger">
                             {{ form.gst_error }}
                         </div>
@@ -607,7 +606,8 @@
                         </div>
 
                         <div class="col-md-3 mb-3" v-if="form.msme_applicable">
-                            <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number</label>
+                            <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number <span
+                                class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="Certificate Number"
                                 v-model="form.msme_certificate_number" placeholder="Certificate Number" :disabled="isReadonly">
                         </div>
@@ -954,9 +954,7 @@ export default defineComponent({
 
 
         const ValidateEmail = () => {
-            if (!form.gst_registration_number && form.company_turnover !== '<2000000') {
-                showErrorToastMessage("GST number is required")
-            } else {
+            {
                 if (form.error_message && form.gst_error) {
                     // alert("PAN & GST number already exists")
                     showErrorToastMessage("PAN & GST number already exists")
@@ -966,7 +964,9 @@ export default defineComponent({
                 } else if (form.gst_error) {
                     // alert("GST number already exists")
                     showErrorToastMessage("GST number already exists")
-                } else {
+                } else if(form.msme_applicable && !form.msme_certificate_number){
+                    showErrorToastMessage("MSME Registration No. required")
+                }else {
                     const supplier = createResource({
                         url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                         makeParams: () => ({
@@ -1077,7 +1077,7 @@ export default defineComponent({
 
                             if (isDuplicateGst) {
                                 console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
-                                // form.error_message="PAN already exist, please use another. "
+                                form.error_message="PAN already exist, please use another. "
                             } else {
                                 console.log("PAN NUMBER NOT FOUND")
                                 try {

@@ -182,7 +182,15 @@
       </div>
     </div>
     <div>
-    
+    <!-- Tost Error Message -->
+    <div class="toast align-items-center text-white bg-danger  border-0 show" role="alert" aria-live="assertive" aria-atomic="true" v-if="errormessage">
+        <div class="d-flex">
+            <div class="toast-body">
+                User Not Exists.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast" aria-label="Close"></button>
+        </div>
+    </div>
     </div>
   </section>
 </template>
@@ -190,7 +198,7 @@
 <script >
 // import axios from "axios" 
 import { session } from '../data/session'
-import { createResource ,toast,} from 'frappe-ui'
+import { createResource ,toast} from 'frappe-ui'
 
 export default {
   name: 'Login',
@@ -209,7 +217,8 @@ export default {
       otp:'',
       userExists:false,
       email_otp_send:'',
-      enter_otp:false
+      enter_otp:false,
+      errormessage:false
     }
   },
   methods: {
@@ -472,6 +481,10 @@ export default {
         onError: (error) => {
           console.error('Error:', error);
           // alert(`An error occurred: ${error.message}`);
+          this.errormessage=true
+          setTimeout(() => {
+            this.errormessage=false
+              }, 2000);
           toast({
               title: "Error",
               text: `User is not exists`,
@@ -519,5 +532,27 @@ export default {
   margin-left: 5rem;
   width: 50%;
   height: auto;
+}
+
+/* tost css */
+
+.savebutton {
+    background-color: #2e6bdc;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0px 20px 0px 20px;
+    border-radius: 10px;
+}
+
+.toast {
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
 }
 </style>

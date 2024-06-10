@@ -319,8 +319,7 @@
    "depends_on": "applicable_gst",
    "fieldname": "gst_registration_number",
    "fieldtype": "Data",
-   "label": "GST Registration Number",
-   "mandatory_depends_on": "eval:doc.company_turnover != \"<2000000\""
+   "label": "GST Registration Number"
   },
   {
    "collapsible": 1,
@@ -696,7 +695,7 @@
    "label": "L1 Manager Id"
   },
   {
-   "depends_on": "eval:doc.workflow_state != 'Saved'",
+   "depends_on": "eval:(doc.workflow_state != 'Saved'&& doc.workflow_state != 'Approval Pending By Company User Team' && doc.workflow_state != 'Change Request Pending with User')",
    "fieldname": "viewed_by_tab",
    "fieldtype": "Tab Break",
    "label": "Picking Status"
@@ -1050,12 +1049,14 @@
   {
    "fieldname": "name_of_bank",
    "fieldtype": "Data",
-   "label": "Name Of Bank"
+   "label": "Name Of Bank",
+   "read_only": 1
   },
   {
    "fieldname": "branch_contact_number",
    "fieldtype": "Data",
-   "label": "Branch Contact number"
+   "label": "Branch Contact number",
+   "read_only": 1
   },
   {
    "fieldname": "branch_email_id",
@@ -1071,7 +1072,8 @@
   {
    "fieldname": "bank_address",
    "fieldtype": "Data",
-   "label": "Bank Address"
+   "label": "Bank Address",
+   "read_only": 1
   },
   {
    "fieldname": "branch_country",
@@ -1090,12 +1092,14 @@
   {
    "fieldname": "branch_state",
    "fieldtype": "Data",
-   "label": "State"
+   "label": "State",
+   "read_only": 1
   },
   {
    "fieldname": "branch_city",
    "fieldtype": "Data",
-   "label": "City"
+   "label": "City",
+   "read_only": 1
   },
   {
    "fieldname": "upload_documents_tab",
@@ -1188,12 +1192,14 @@
    "fieldname": "is_company_part_of_reliance_company",
    "fieldtype": "Select",
    "label": "Is company part of reliance company",
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
    "options": "Yes\nNo"
   },
   {
    "fieldname": "nature_of_business",
    "fieldtype": "Select",
    "label": "Nature of Business",
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
    "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
   },
   {
