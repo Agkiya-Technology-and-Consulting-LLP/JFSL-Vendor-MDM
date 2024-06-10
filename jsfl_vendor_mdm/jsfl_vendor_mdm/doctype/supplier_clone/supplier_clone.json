@@ -206,8 +206,7 @@
    "fieldname": "company_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Company Name",
-   "reqd": 1
+   "label": "Company Name"
   },
   {
    "description": "Specifications\na) Image must be in an aspect ratio 1:1\nb) Image must be less that 25kb in size.\nc) Minimum resolution 72dpi.",
@@ -279,8 +278,7 @@
    "depends_on": "applicable_pan",
    "fieldname": "permanent_account_number",
    "fieldtype": "Data",
-   "label": "Permanent account number ",
-   "reqd": 1
+   "label": "Permanent account number "
   },
   {
    "depends_on": "applicable_pan",
@@ -334,15 +332,13 @@
    "depends_on": "applicable_address",
    "fieldname": "addressline_1",
    "fieldtype": "Data",
-   "label": "Address(Line 1)",
-   "reqd": 1
+   "label": "Address(Line 1)"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "addressline_2",
    "fieldtype": "Data",
-   "label": "Address(Line 2)",
-   "reqd": 1
+   "label": "Address(Line 2)"
   },
   {
    "depends_on": "applicable_address",
@@ -355,30 +351,26 @@
    "fieldname": "country",
    "fieldtype": "Link",
    "label": "Country",
-   "options": "Country",
-   "reqd": 1
+   "options": "Country"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "region",
    "fieldtype": "Data",
    "label": "State",
-   "read_only_depends_on": "eval: doc.country == ''",
-   "reqd": 1
+   "read_only_depends_on": "eval: doc.country == ''"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "city",
    "fieldtype": "Data",
-   "label": "City",
-   "reqd": 1
+   "label": "City"
   },
   {
    "depends_on": "applicable_address",
    "fieldname": "pincode",
    "fieldtype": "Data",
-   "label": "Pincode",
-   "reqd": 1
+   "label": "Pincode"
   },
   {
    "collapsible": 1,
@@ -390,12 +382,12 @@
    "fieldname": "residential_status",
    "fieldtype": "Select",
    "label": "Residential Status",
-   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India",
-   "reqd": 1
+   "options": "Resident of India\nNon Resident of India\nForeign Company Having Branch in India"
   },
   {
    "fieldname": "permanent_account_no",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Permanent Account No.",
    "mandatory_depends_on": "\n"
   },
@@ -628,8 +620,7 @@
    "depends_on": "applicable_address",
    "fieldname": "name_",
    "fieldtype": "Data",
-   "label": "Name ",
-   "reqd": 1
+   "label": "Name "
   },
   {
    "collapsible_depends_on": "applicable",
@@ -995,8 +986,7 @@
    "fieldname": "salutation",
    "fieldtype": "Select",
    "label": "Salutation",
-   "options": "Mr\nMrs\nMs",
-   "reqd": 1
+   "options": "Mr\nMrs\nMs"
   },
   {
    "fieldname": "column_break_96fsu",
@@ -1005,8 +995,7 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name",
-   "reqd": 1
+   "label": "First Name"
   },
   {
    "fieldname": "column_break_bjjug",
@@ -1015,22 +1004,19 @@
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name",
-   "reqd": 1
+   "label": "Last Name"
   },
   {
    "fieldname": "contact_number",
    "fieldtype": "Data",
    "label": "Contact Number",
-   "options": "Phone",
-   "reqd": 1
+   "options": "Phone"
   },
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
    "label": "Email Id",
-   "options": "Email",
-   "reqd": 1
+   "options": "Email"
   },
   {
    "fieldname": "bank_details_section",
@@ -1045,20 +1031,17 @@
   {
    "fieldname": "account_number",
    "fieldtype": "Data",
-   "label": "Account Number",
-   "reqd": 1
+   "label": "Account Number"
   },
   {
    "fieldname": "confirm_account_number",
    "fieldtype": "Data",
-   "label": "Confirm Account Number",
-   "reqd": 1
+   "label": "Confirm Account Number"
   },
   {
    "fieldname": "ifsc_code",
    "fieldtype": "Data",
-   "label": "IFSC Code",
-   "reqd": 1
+   "label": "IFSC Code"
   },
   {
    "fieldname": "column_break_h3zvt",
@@ -1067,8 +1050,7 @@
   {
    "fieldname": "name_of_bank",
    "fieldtype": "Data",
-   "label": "Name Of Bank",
-   "reqd": 1
+   "label": "Name Of Bank"
   },
   {
    "fieldname": "branch_contact_number",
@@ -1123,14 +1105,12 @@
   {
    "fieldname": "address_proof",
    "fieldtype": "Attach",
-   "label": "Aadhar Proof",
-   "reqd": 1
+   "label": "Aadhar Proof"
   },
   {
    "fieldname": "panaadhar",
    "fieldtype": "Attach",
-   "label": "PAN Card",
-   "reqd": 1
+   "label": "PAN Card"
   },
   {
    "fieldname": "pf",
@@ -1276,14 +1256,13 @@
   {
    "fieldname": "cancelled_cheque",
    "fieldtype": "Attach",
-   "label": "Cancelled Cheque",
-   "reqd": 1
+   "label": "Cancelled Cheque"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-10 18:12:18.226697",
+ "modified": "2024-06-10 18:26:37.710458",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
