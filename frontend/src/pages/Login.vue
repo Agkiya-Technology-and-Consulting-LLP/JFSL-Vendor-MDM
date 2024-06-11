@@ -67,7 +67,7 @@
                   <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoEmail" />
                    &nbsp; Email: {{ email }}
                 </label><br>
-                <label>
+                <!--<label>
                   <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoMobile" />
                   &nbsp; Mobile: {{ mobile_no  }}
                 </label><br>
@@ -75,8 +75,9 @@
                   <input required type="radio" name="email" class="" v-model="email_otp_send" value="otpSendtoBoth" />
                   &nbsp; Both: Email {{ eamil }} & Mobile {{ mobile_no }}
                 </label><br>
+                -->
               </div>
-
+              <!-- <p>{{ otpmessage }}</p> -->
                 <button class="btn btn-primary btn-block mb-4" v-on:click="send()" :disabled="!email_otp_send ">
                   Continue
                 </button>
@@ -218,7 +219,8 @@ export default {
       userExists:false,
       email_otp_send:'',
       enter_otp:false,
-      errormessage:false
+      errormessage:false,
+      otpmessage:''
     }
   },
   methods: {
@@ -444,6 +446,7 @@ export default {
           console.log(data);
           this.enter_otp=true
           this.recievedOtp=data.email_otp
+          this.otpmessage="OTP send to your mail"
         },
         onError: (error) => {
           console.error('Error:', error);
@@ -498,6 +501,7 @@ export default {
     send(){
       console.log(this.email_otp_send)
       if(this.email_otp_send=="otpSendtoEmail"){
+        this.enter_otp=true
         this.sendOTPforLogintoEmail()
       }
     }
