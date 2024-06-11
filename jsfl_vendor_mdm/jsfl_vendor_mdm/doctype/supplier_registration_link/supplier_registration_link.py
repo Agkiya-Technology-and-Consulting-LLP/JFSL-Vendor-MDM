@@ -25,7 +25,7 @@ class SupplierRegistrationLink(Document):
                 'email': self.supplier_email,
                 'enabled': 1,  # Enable the user
                 'roles': [{
-                    'role': 'guest_Supplier'  # Assign the guest_Supplier role
+                    'role': 'Guest_supplier'  # Assign the guest_Supplier role
                 }]
             })
             new_user.insert(ignore_permissions=True)

@@ -236,8 +236,9 @@ fixtures = [
 
 
 from frappe.core.doctype.user.user import User
-from jsfl_vendor_mdm.jsfl_vendor_mdm.custom.user import password_reset_mail
+from jsfl_vendor_mdm.jsfl_vendor_mdm.custom.user import password_reset_mail,send_password_notification
 User.password_reset_mail =password_reset_mail
+User.send_password_notification= send_password_notification
 
 
 
