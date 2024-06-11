@@ -173,7 +173,7 @@
                             class="text-danger">
                             PAN is required.
                         </div>
-                        <div v-if="form.error_message" class="text-danger">
+                        <div v-if="form.error_message && form.permanent_account_number" class="text-danger">
                             {{ form.error_message }}.
                         </div>
                     </div>
