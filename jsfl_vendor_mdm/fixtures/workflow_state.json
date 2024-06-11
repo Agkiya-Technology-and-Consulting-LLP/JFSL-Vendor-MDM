@@ -2,6 +2,42 @@
  {
   "docstatus": 0,
   "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-22 17:02:29.504911",
+  "name": "Pending with site master approver",
+  "style": "",
+  "workflow_state_name": "Pending with site master approver"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-29 16:38:29.293320",
+  "name": "Approval pending by CUT",
+  "style": "",
+  "workflow_state_name": "Approval pending by CUT"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:28:11.890379",
+  "name": "Pushed Back By Reviewer",
+  "style": "",
+  "workflow_state_name": "Pushed Back By Reviewer"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-06-02 20:28:54.407459",
+  "name": "Approval Pending By Reviewer",
+  "style": "",
+  "workflow_state_name": "Approval Pending By Reviewer"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
   "icon": "question-sign",
   "modified": "2024-03-21 11:31:24.866737",
   "name": "Pending",
@@ -205,5 +241,32 @@
   "name": "Pushed Back By Tamalika",
   "style": "",
   "workflow_state_name": "Pushed Back By Tamalika"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-05-29 12:55:49.361190",
+  "name": "Pushed Back By Company User Team",
+  "style": "",
+  "workflow_state_name": "Pushed Back By Company User Team"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-05-29 12:38:40.624255",
+  "name": "Pushed Back By T Officer",
+  "style": "",
+  "workflow_state_name": "Pushed Back By T Officer"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-05-29 12:38:00.125389",
+  "name": "Approval Pending By T Officer",
+  "style": "",
+  "workflow_state_name": "Approval Pending By T Officer"
  }
 ]

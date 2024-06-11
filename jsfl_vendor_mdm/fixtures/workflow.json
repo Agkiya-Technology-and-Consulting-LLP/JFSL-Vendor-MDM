@@ -4,7 +4,7 @@
   "doctype": "Workflow",
   "document_type": "Supplier Clone",
   "is_active": 1,
-  "modified": "2024-06-05 12:56:33.304046",
+  "modified": "2024-06-11 09:59:43.854394",
   "name": "Approval of Supplier Clone",
   "override_status": 0,
   "send_email_alert": 0,
@@ -157,36 +157,6 @@
     "state": "Pushed Back By Tamalika",
     "update_field": "reviewing_doc",
     "update_value": "1",
-    "workflow_builder_id": null
-   },
-   {
-    "allow_edit": "L1 Manager",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "is_optional_state": 0,
-    "message": null,
-    "next_action_email_template": null,
-    "parent": "Approval of Supplier Clone",
-    "parentfield": "states",
-    "parenttype": "Workflow",
-    "state": "Rejected",
-    "update_field": null,
-    "update_value": null,
-    "workflow_builder_id": null
-   },
-   {
-    "allow_edit": "Reviewer",
-    "avoid_status_override": 0,
-    "doc_status": "0",
-    "is_optional_state": 0,
-    "message": null,
-    "next_action_email_template": null,
-    "parent": "Approval of Supplier Clone",
-    "parentfield": "states",
-    "parenttype": "Workflow",
-    "state": "Rejected",
-    "update_field": null,
-    "update_value": null,
     "workflow_builder_id": null
    },
    {
@@ -513,30 +483,6 @@
     "parentfield": "transitions",
     "parenttype": "Workflow",
     "state": "Approval Pending By MDM Manager",
-    "workflow_builder_id": null
-   },
-   {
-    "action": "Reject",
-    "allow_self_approval": 1,
-    "allowed": "L1 Manager",
-    "condition": null,
-    "next_state": "Rejected",
-    "parent": "Approval of Supplier Clone",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "Approval Pending By L1 Manager",
-    "workflow_builder_id": null
-   },
-   {
-    "action": "Reject",
-    "allow_self_approval": 1,
-    "allowed": "Reviewer",
-    "condition": null,
-    "next_state": "Rejected",
-    "parent": "Approval of Supplier Clone",
-    "parentfield": "transitions",
-    "parenttype": "Workflow",
-    "state": "Approval Pending By Tamalika",
     "workflow_builder_id": null
    },
    {

@@ -1,5 +1,1334 @@
 [
  {
+  "completed_by": "Administrator",
+  "completed_by_role": "Reviewer",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:40:31.929297",
+  "name": "5c13ed3a59",
+  "permitted_roles": [
+   {
+    "parent": "5c13ed3a59",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Reviewer"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Tamalika"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "MDM Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:41:24.929560",
+  "name": "fe58885e4c",
+  "permitted_roles": [
+   {
+    "parent": "fe58885e4c",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By MDM Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:41:27.668546",
+  "name": "b83e44ad34",
+  "permitted_roles": [
+   {
+    "parent": "b83e44ad34",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:41:34.211660",
+  "name": "f8695b335b",
+  "permitted_roles": [
+   {
+    "parent": "f8695b335b",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Requested"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:41:42.335073",
+  "name": "d6006e4f49",
+  "permitted_roles": [
+   {
+    "parent": "d6006e4f49",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with User"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:42:54.041566",
+  "name": "c596f0f786",
+  "permitted_roles": [
+   {
+    "parent": "c596f0f786",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 15:42:58.642631",
+  "name": "35398cf118",
+  "permitted_roles": [
+   {
+    "parent": "35398cf118",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "dc4872df13",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Change Request Pending with MDM Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:34:32.272973",
+  "name": "bb684ef147",
+  "permitted_roles": [
+   {
+    "parent": "bb684ef147",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "467b61c8e1",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "krutika@agkiya.com",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:36:37.351111",
+  "name": "6381a88cc5",
+  "permitted_roles": [
+   {
+    "parent": "6381a88cc5",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "528df43bbb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "sanika@agkiya.com",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:36:44.895854",
+  "name": "ad2168763e",
+  "permitted_roles": [
+   {
+    "parent": "ad2168763e",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "528df43bbb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:37:48.536894",
+  "name": "62c313768f",
+  "permitted_roles": [
+   {
+    "parent": "62c313768f",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "528df43bbb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "krutika@agkiya.com",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:38:01.694216",
+  "name": "810f323f38",
+  "permitted_roles": [
+   {
+    "parent": "810f323f38",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-06 11:38:09.443554",
+  "name": "fd03de6585",
+  "permitted_roles": [
+   {
+    "parent": "fd03de6585",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-07 23:48:23.568725",
+  "name": "8287d57241",
+  "permitted_roles": [
+   {
+    "parent": "8287d57241",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Reviewer",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:32:38.534977",
+  "name": "8c1412a32b",
+  "permitted_roles": [
+   {
+    "parent": "8c1412a32b",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Reviewer"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Tamalika"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "MDM Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:32:40.088953",
+  "name": "d0943bf932",
+  "permitted_roles": [
+   {
+    "parent": "d0943bf932",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By MDM Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:32:56.543381",
+  "name": "16c67aea64",
+  "permitted_roles": [
+   {
+    "parent": "16c67aea64",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:34:17.777351",
+  "name": "9c8c994ccd",
+  "permitted_roles": [
+   {
+    "parent": "9c8c994ccd",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Requested"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:34:22.355596",
+  "name": "8020c3e3ca",
+  "permitted_roles": [
+   {
+    "parent": "8020c3e3ca",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with User"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:34:23.825362",
+  "name": "6a8a4f2b97",
+  "permitted_roles": [
+   {
+    "parent": "6a8a4f2b97",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:34:26.601142",
+  "name": "18008a2bd7",
+  "permitted_roles": [
+   {
+    "parent": "18008a2bd7",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "5e45d789bb",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Change Request Pending with MDM Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:36:09.394004",
+  "name": "30d295cdaf",
+  "permitted_roles": [
+   {
+    "parent": "30d295cdaf",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:36:11.368318",
+  "name": "591186e534",
+  "permitted_roles": [
+   {
+    "parent": "591186e534",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Reviewer",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:36:13.090977",
+  "name": "3385efecf0",
+  "permitted_roles": [
+   {
+    "parent": "3385efecf0",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Reviewer"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Tamalika"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "MDM Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:36:14.862971",
+  "name": "5845b00571",
+  "permitted_roles": [
+   {
+    "parent": "5845b00571",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By MDM Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:36:17.057910",
+  "name": "3572944c58",
+  "permitted_roles": [
+   {
+    "parent": "3572944c58",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:39:03.233909",
+  "name": "b54f0ba1c1",
+  "permitted_roles": [
+   {
+    "parent": "b54f0ba1c1",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Requested"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:39:08.354377",
+  "name": "8bb2e2ef04",
+  "permitted_roles": [
+   {
+    "parent": "8bb2e2ef04",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with User"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:39:10.701805",
+  "name": "1075c73a49",
+  "permitted_roles": [
+   {
+    "parent": "1075c73a49",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:39:12.606992",
+  "name": "224189ff80",
+  "permitted_roles": [
+   {
+    "parent": "224189ff80",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "0ace728dd9",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Change Request Pending with MDM Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 00:42:10.162693",
+  "name": "ebad43728f",
+  "permitted_roles": [
+   {
+    "parent": "ebad43728f",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "069cb953e6",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Change Request Pending with MDM Manager"
+ },
+ {
+  "completed_by": "krutika@agkiya.com",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:26:58.875814",
+  "name": "ab7cb1f045",
+  "permitted_roles": [
+   {
+    "parent": "ab7cb1f045",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "sanika@agkiya.com",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:34:46.222805",
+  "name": "f3b518c8ad",
+  "permitted_roles": [
+   {
+    "parent": "f3b518c8ad",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "bhushan@agkiya.com",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:36:47.182563",
+  "name": "b824dd073a",
+  "permitted_roles": [
+   {
+    "parent": "b824dd073a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "anisa@agkiya.com",
+  "completed_by_role": "MDM Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:37:56.782073",
+  "name": "45f8be8985",
+  "permitted_roles": [
+   {
+    "parent": "45f8be8985",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By MDM Manager"
+ },
+ {
+  "completed_by": "krutika@agkiya.com",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:40:20.214683",
+  "name": "01a4bbf1f4",
+  "permitted_roles": [
+   {
+    "parent": "01a4bbf1f4",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "krutika@agkiya.com",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:41:15.918131",
+  "name": "3350da4632",
+  "permitted_roles": [
+   {
+    "parent": "3350da4632",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Requested"
+ },
+ {
+  "completed_by": "sanika@agkiya.com",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:41:16.003399",
+  "name": "9f6af40be8",
+  "permitted_roles": [
+   {
+    "parent": "9f6af40be8",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with User"
+ },
+ {
+  "completed_by": "bhushan@agkiya.com",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:41:37.161990",
+  "name": "6fc040f9c6",
+  "permitted_roles": [
+   {
+    "parent": "6fc040f9c6",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "26d019fb56",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with L1 Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 11:59:28.687952",
+  "name": "5e3933b861",
+  "permitted_roles": [
+   {
+    "parent": "5e3933b861",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:07:07.116775",
+  "name": "d514887a40",
+  "permitted_roles": [
+   {
+    "parent": "d514887a40",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:08:49.368668",
+  "name": "1e50125b51",
+  "permitted_roles": [
+   {
+    "parent": "1e50125b51",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Reviewer",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:08:51.450255",
+  "name": "603c75b415",
+  "permitted_roles": [
+   {
+    "parent": "603c75b415",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Reviewer"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Tamalika"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "MDM Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:08:54.101235",
+  "name": "fcad8e86c3",
+  "permitted_roles": [
+   {
+    "parent": "fcad8e86c3",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "MDM Manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By MDM Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:08:58.006888",
+  "name": "81886213fe",
+  "permitted_roles": [
+   {
+    "parent": "81886213fe",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:10:30.013432",
+  "name": "5ab6326fa5",
+  "permitted_roles": [
+   {
+    "parent": "5ab6326fa5",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Requested"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:10:32.158046",
+  "name": "eda60873e7",
+  "permitted_roles": [
+   {
+    "parent": "eda60873e7",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Change Request Pending with User"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:28:07.589805",
+  "name": "7c5dd351d0",
+  "permitted_roles": [
+   {
+    "parent": "7c5dd351d0",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f202d750b0",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Change Request Push Back to Supplier"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:28:37.016567",
+  "name": "0f8878e15a",
+  "permitted_roles": [
+   {
+    "parent": "0f8878e15a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "528df43bbb",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Pushed Back By L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-09 16:49:15.464258",
+  "name": "b9f68771b2",
+  "permitted_roles": [
+   {
+    "parent": "b9f68771b2",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "SUP-0001",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-11 09:46:49.198135",
+  "name": "8dc87a8067",
+  "permitted_roles": [
+   {
+    "parent": "8dc87a8067",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "SUP-0002",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-04-27 12:18:11.922018",
+  "name": "3d312a063c",
+  "permitted_roles": [
+   {
+    "parent": "3d312a063c",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   },
+   {
+    "parent": "3d312a063c",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "67ddae221b",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "abhishek@agkiya.com",
+  "completed_by_role": "Guest_Supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 12:43:40.947776",
+  "name": "bcd542a88a",
+  "permitted_roles": [
+   {
+    "parent": "bcd542a88a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_Supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "df37bb8882",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "rahul@agkiya.com",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 12:55:34.661770",
+  "name": "13e9c6f9de",
+  "permitted_roles": [
+   {
+    "parent": "13e9c6f9de",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "df37bb8882",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "L1 manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 13:00:24.235059",
+  "name": "8957fa416e",
+  "permitted_roles": [
+   {
+    "parent": "8957fa416e",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "df37bb8882",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-05 13:01:47.904595",
+  "name": "7c3d2a44b4",
+  "permitted_roles": [
+   {
+    "parent": "7c3d2a44b4",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "df37bb8882",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Pushed Back By L1 Manager"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 12:05:20.666277",
+  "name": "855f10a7d8",
+  "permitted_roles": [
+   {
+    "parent": "855f10a7d8",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_Supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "f58fa8ef32",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_Supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-08 12:14:14.581479",
+  "name": "26f52fd7bb",
+  "permitted_roles": [
+   {
+    "parent": "26f52fd7bb",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_Supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "de5488f83c",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Guest_Supplier",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-10 18:28:34.044534",
+  "name": "65f05cdfb8",
+  "permitted_roles": [
+   {
+    "parent": "65f05cdfb8",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Guest_Supplier"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "4a590d9c96",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Saved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-10 18:29:15.476015",
+  "name": "9af56b6266",
+  "permitted_roles": [
+   {
+    "parent": "9af56b6266",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "4a590d9c96",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-10 19:54:35.070383",
+  "name": "cfcf253e51",
+  "permitted_roles": [
+   {
+    "parent": "cfcf253e51",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "4a590d9c96",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Company User Team",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-10 19:55:52.162756",
+  "name": "b7b56c533e",
+  "permitted_roles": [
+   {
+    "parent": "b7b56c533e",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Company User Team"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "de5488f83c",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approval Pending By Company User Team"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-06-10 19:55:56.592983",
+  "name": "72c8a4af8e",
+  "permitted_roles": [
+   {
+    "parent": "72c8a4af8e",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "L1 manager"
+   }
+  ],
+  "reference_doctype": "Supplier Clone",
+  "reference_name": "de5488f83c",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approval Pending By L1 Manager"
+ },
+ {
   "completed_by": "krutika@agkiya.com",
   "completed_by_role": "Guest_supplier",
   "docstatus": 0,

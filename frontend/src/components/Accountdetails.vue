@@ -47,27 +47,26 @@
                 <div class="row mt-3">
 
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.name_of_bank && !form.name_of_bank }">
-                        <label for="NameOfBank" class="form-label">Name Of Bank <span
-                                class="text-danger">*</span></label>
+                        <label for="NameOfBank" class="form-label">Name Of Bank </label>
                         <input type="text" class="form-control" id="NameOfBank" v-model="form.name_of_bank"
-                            placeholder="Name Of Bank" @blur="touched.name_of_bank = true" :disabled="isReadonly">
-                        <div v-if="touched.name_of_bank && !form.name_of_bank" class="text-danger">
+                            placeholder="Name Of Bank" @blur="touched.name_of_bank = true" disabled>
+                        <!-- <div v-if="touched.name_of_bank && !form.name_of_bank" class="text-danger">
                             Name Of Bank is required.
-                        </div>
+                        </div> -->
                     </div>
 
 
                     <div class="col-md-4 mb-3">
                         <label for="Branch Contact number" class="form-label">Branch Contact number</label>
                         <input type="tel" maxlength="13" class="form-control" id="contact"
-                            v-model="form.branch_contact_number" placeholder="Contact Number" :disabled="isReadonly">
+                            v-model="form.branch_contact_number" placeholder="Contact Number" disabled>
                     </div>
 
-                    <div class="col-md-4 mb-3">
+                    <!-- <div class="col-md-4 mb-3">
                         <label for="Branch Email Id" class="form-check-label">Branch Email Id</label>
                         <input type="text" class="form-control" id="Branch Email Id" v-model="form.branch_email_id"
                             placeholder="Branch Email Id" :disabled="isReadonly">
-                    </div>
+                    </div> -->
                 </div>
 
 
@@ -78,8 +77,10 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Bank Address" class="form-label">Bank Address</label>
-                        <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
-                            placeholder="Bank Address" :disabled="isReadonly">
+                        <!-- <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
+                            placeholder="Bank Address" disabled> -->
+                        <textarea class="form-control" id="Bank Address"
+                            v-model="form.bank_address" placeholder="Bank Address" disabled> </textarea>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="Country" class="form-label">Country</label>
@@ -89,7 +90,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="State" class="form-label">State</label>
                         <input type="text" class="form-control" id="State" v-model="form.branch_state"
-                            placeholder="State" :disabled="isReadonly">
+                            placeholder="State" disabled>
                     </div>
                 </div>
 
@@ -97,7 +98,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="City" class="form-label">City</label>
-                        <input type="text" class="form-control" id="City" v-model="form.branch_city" placeholder="City" :disabled="isReadonly">
+                        <input type="text" class="form-control" id="City" v-model="form.branch_city" placeholder="City" disabled>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -109,7 +110,8 @@
 
 
                 <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                    <button type="button" class="btn btn-primary" @click="ValidateEmail()" :disabled="!isValid">Save</button>
+                    <router-link to="/contactdetails" class="btn btn-primary"><button>Back</button></router-link>
+                    <button type="button" class="btn btn-primary" @click="ValidateEmail()" :disabled="!isValid" v-if="!isReadonly">Save</button>
                     <router-link to="/documentdetails" class="btn btn-primary"><button>Next</button></router-link>
                 </div>
             </div>
@@ -171,7 +173,8 @@ export default defineComponent({
             name_of_bank: false,
         });
         const isValid = computed(() => {
-            return form.account_number && form.confirm_account_number && form.confirm_account_number && form.name_of_bank;
+            return form.account_number && form.confirm_account_number && form.ifsc_code
+            //  && form.name_of_bank;
         });
 
         const loginUser = sessionUser();

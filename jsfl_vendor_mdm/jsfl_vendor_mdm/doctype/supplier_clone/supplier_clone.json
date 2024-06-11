@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:SUP-{####}",
  "creation": "2024-03-22 13:50:31.135989",
  "default_view": "List",
  "doctype": "DocType",
@@ -319,8 +320,7 @@
    "depends_on": "applicable_gst",
    "fieldname": "gst_registration_number",
    "fieldtype": "Data",
-   "label": "GST Registration Number",
-   "mandatory_depends_on": "eval:doc.company_turnover != \"<2000000\""
+   "label": "GST Registration Number"
   },
   {
    "collapsible": 1,
@@ -357,7 +357,7 @@
    "depends_on": "applicable_address",
    "fieldname": "region",
    "fieldtype": "Data",
-   "label": "Region",
+   "label": "State",
    "read_only_depends_on": "eval: doc.country == ''"
   },
   {
@@ -387,6 +387,7 @@
   {
    "fieldname": "permanent_account_no",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Permanent Account No.",
    "mandatory_depends_on": "\n"
   },
@@ -694,7 +695,7 @@
    "label": "L1 Manager Id"
   },
   {
-   "depends_on": "eval:doc.workflow_state != 'Saved'",
+   "depends_on": "eval:(doc.workflow_state == 'Approval Pending By MDM Manager' && doc.workflow_state == 'Change Request Pending with MDM Manager')",
    "fieldname": "viewed_by_tab",
    "fieldtype": "Tab Break",
    "label": "Picking Status"
@@ -707,7 +708,6 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.workflow_state=='Approval Pending By Company User Team'",
    "fieldname": "l1_manager",
    "fieldtype": "Link",
    "label": "L1 Manager",
@@ -990,6 +990,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "supplier_email_id.first_name",
    "fieldname": "first_name",
    "fieldtype": "Data",
    "label": "First Name"
@@ -999,6 +1000,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "supplier_email_id.last_name",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name"
@@ -1047,16 +1049,19 @@
   {
    "fieldname": "name_of_bank",
    "fieldtype": "Data",
-   "label": "Name Of Bank"
+   "label": "Name Of Bank",
+   "read_only": 1
   },
   {
    "fieldname": "branch_contact_number",
    "fieldtype": "Data",
-   "label": "Branch Contact number"
+   "label": "Branch Contact number",
+   "read_only": 1
   },
   {
    "fieldname": "branch_email_id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Branch Email Id"
   },
   {
@@ -1066,8 +1071,9 @@
   },
   {
    "fieldname": "bank_address",
-   "fieldtype": "Data",
-   "label": "Bank Address"
+   "fieldtype": "Small Text",
+   "label": "Bank Address",
+   "read_only": 1
   },
   {
    "fieldname": "branch_country",
@@ -1086,12 +1092,14 @@
   {
    "fieldname": "branch_state",
    "fieldtype": "Data",
-   "label": "State"
+   "label": "State",
+   "read_only": 1
   },
   {
    "fieldname": "branch_city",
    "fieldtype": "Data",
-   "label": "City"
+   "label": "City",
+   "read_only": 1
   },
   {
    "fieldname": "upload_documents_tab",
@@ -1184,13 +1192,15 @@
    "fieldname": "is_company_part_of_reliance_company",
    "fieldtype": "Select",
    "label": "Is company part of reliance company",
-   "options": "Yes\nNo"
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
+   "options": "\nYes\nNo"
   },
   {
    "fieldname": "nature_of_business",
    "fieldtype": "Select",
    "label": "Nature of Business",
-   "options": "Professional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
+   "mandatory_depends_on": "eval:doc.workflow_state ===\"Approval Pending By Company User Team\"",
+   "options": "\nProfessional Services\nMan Power\nGoods & Materials\nIT\nConsultancy"
   },
   {
    "depends_on": "applicable_gst",
@@ -1258,10 +1268,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-08 11:34:32.269328",
+ "modified": "2024-06-11 09:56:43.096702",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

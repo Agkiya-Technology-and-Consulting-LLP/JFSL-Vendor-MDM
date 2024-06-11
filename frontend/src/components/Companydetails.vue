@@ -100,8 +100,8 @@
                             <option value=">50000000">> 50000000</option>
                             <option value="<5000000">
                                 < 5000000 </option>
-                            <option value="<2000000">
-                                < 2000000 </option>
+                            <!-- <option value="<2000000">
+                                < 2000000 </option> -->
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -173,7 +173,7 @@
                             class="text-danger">
                             PAN is required.
                         </div>
-                        <div v-if="form.error_message" class="text-danger">
+                        <div v-if="form.error_message && form.permanent_account_number" class="text-danger">
                             {{ form.error_message }}.
                         </div>
                     </div>
@@ -216,15 +216,14 @@
                     <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
                 </div> -->
                     <div class="col-md-6 mb-3"
-                        :class="{ 'has-error': touched.gst_registration_number && !form.gst_registration_number && form.company_turnover != '<2000000' }">
-                        <label for="GST" class="form-label">GST Registration <span class="text-danger"
-                                v-if="form.company_turnover != '<2000000'">*</span></label>
+                        >
+                        <label for="GST" class="form-label">GST Registration </label>
                         <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number"
                             placeholder="Enter GST No" @blur="touched.gst_registration_number = true" :disabled="isReadonly">
-                        <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover != '<2000000')"
+                        <!-- <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover != '<2000000')"
                             class="text-danger">
                             GST Number is required.
-                        </div>
+                        </div> -->
                         <div v-if="form.gst_error" class="text-danger">
                             {{ form.gst_error }}
                         </div>
@@ -285,6 +284,7 @@
                         </div>
                     </div>
 
+                    
                     <!-- <div class="col-md-6 mb-3">
                     <label for="GST Status " class="form-label">GST Status valid from<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="GST Status " v-model="form.gst_status_active">
@@ -346,6 +346,7 @@
                                 Name is required.
                             </div>
                         </div>
+
 
                         <!-- <div class="col-md-3 mb-3">
                         <label for="Address(Line 1)" class="form-label">Address(Line 1)</label>
@@ -418,11 +419,11 @@
                         </div>
 
                         <div class="col-md-3 mb-3" :class="{ 'has-error': touched.region && !form.region }">
-                            <label for="Region" class="form-label">Region <span class="text-danger">*</span></label>
+                            <label for="Region" class="form-label">State <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="Region" v-model="form.region"
                                 placeholder="Region" @blur="touched.region = true" :disabled="isReadonly">
                             <div v-if="touched.region && !form.region" class="text-danger">
-                                Region is required.
+                                State is required.
                             </div>
                         </div>
 
@@ -607,7 +608,8 @@
                         </div>
 
                         <div class="col-md-3 mb-3" v-if="form.msme_applicable">
-                            <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number</label>
+                            <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number <span
+                                class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="Certificate Number"
                                 v-model="form.msme_certificate_number" placeholder="Certificate Number" :disabled="isReadonly">
                         </div>
@@ -642,7 +644,7 @@
             </div>
             
             <div class="d-flex flex-row justify-content-end gap-2 mt-4 mb-3">
-                <div><button type="button" class="btn btn-primary"  @click="ValidateEmail()" :disabled="!isValid">Save</button></div>
+                <div v-if="!isReadonly"><button type="button" class="btn btn-primary"  @click="ValidateEmail()" :disabled="!isValid">Save</button></div>
                 <div><router-link to="/contactdetails">
                     <button type="button" class="btn btn-primary">Next</button>
                 </router-link></div>
@@ -954,9 +956,7 @@ export default defineComponent({
 
 
         const ValidateEmail = () => {
-            if (!form.gst_registration_number && form.company_turnover !== '<2000000') {
-                showErrorToastMessage("GST number is required")
-            } else {
+            {
                 if (form.error_message && form.gst_error) {
                     // alert("PAN & GST number already exists")
                     showErrorToastMessage("PAN & GST number already exists")
@@ -966,7 +966,9 @@ export default defineComponent({
                 } else if (form.gst_error) {
                     // alert("GST number already exists")
                     showErrorToastMessage("GST number already exists")
-                } else {
+                } else if(form.msme_applicable && !form.msme_certificate_number){
+                    showErrorToastMessage("MSME Registration No. required")
+                }else {
                     const supplier = createResource({
                         url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                         makeParams: () => ({
@@ -1044,7 +1046,7 @@ export default defineComponent({
             (newValue, oldValue) => {
                 // if(oldValue && newValue!=oldValue){
                 if (oldValue != newValue) {
-                    // form.error_message=''
+                    form.error_message=''
                     if (newValue && typeof newValue === 'string' && newValue.length >= 4) {
                         const typeMap = {
                             'P': 'Individual',
@@ -1077,7 +1079,7 @@ export default defineComponent({
 
                             if (isDuplicateGst) {
                                 console.log("PAN NUMBER ALREADY IN USE, PLEASE SELECT ANOTHER PAN NUMBER");
-                                // form.error_message="PAN already exist, please use another. "
+                                form.error_message="PAN already exist, please use another. "
                             } else {
                                 console.log("PAN NUMBER NOT FOUND")
                                 try {
@@ -1235,9 +1237,6 @@ export default defineComponent({
                         }
                     }
                 });
-
-                form.permanent_account_number = value.slice(2, 12)
-
             }
         });
 
