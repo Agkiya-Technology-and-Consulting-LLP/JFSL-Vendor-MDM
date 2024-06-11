@@ -29,6 +29,7 @@ class OTPAuthentication(Document):
 			# msg.set_content("OTP for account varification is \n "+ otp)
 
 			# server.send_message(msg)
+			
 			self.email_otp=otp
 		# if self.mobile:
 		# 	account_sid = "AC018938439c1b5945e6eb9800f786f6b7"
