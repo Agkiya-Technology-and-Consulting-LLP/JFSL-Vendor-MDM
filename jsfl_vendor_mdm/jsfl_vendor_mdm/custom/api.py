@@ -145,7 +145,10 @@ def check(doc):
 def checkUserExists(doc):
     user=frappe.db.exists("User",doc['email'])
     user_doc=frappe.get_doc("User",user)
-    return user_doc
+    for role in user_doc.get("roles"):
+        if role.role == "Guest_supplier":
+            return user_doc
+    return frappe.throw("User is not guest supplier")
 
 @frappe.whitelist(allow_guest=True)
 def get_supplier_detail(doc):
