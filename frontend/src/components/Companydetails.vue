@@ -284,6 +284,7 @@
                         </div>
                     </div>
 
+                    
                     <!-- <div class="col-md-6 mb-3">
                     <label for="GST Status " class="form-label">GST Status valid from<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="GST Status " v-model="form.gst_status_active">
@@ -346,7 +347,7 @@
                             </div>
                         </div>
 
-                        
+
                         <!-- <div class="col-md-3 mb-3">
                         <label for="Address(Line 1)" class="form-label">Address(Line 1)</label>
                         <input type="text" class="form-control" id="Address(Line 1)" v-model="form.addressline_1" placeholder="Address(Line 1)">
