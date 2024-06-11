@@ -77,8 +77,10 @@
                 <div class="row mt-3">
                     <div class="col-md-4 mb-3">
                         <label for="Bank Address" class="form-label">Bank Address</label>
-                        <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
-                            placeholder="Bank Address" disabled>
+                        <!-- <input type="text" class="form-control" id="Bank Address" v-model="form.bank_address"
+                            placeholder="Bank Address" disabled> -->
+                        <textarea class="form-control" id="Bank Address"
+                            v-model="form.bank_address" placeholder="Bank Address" disabled> </textarea>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="Country" class="form-label">Country</label>

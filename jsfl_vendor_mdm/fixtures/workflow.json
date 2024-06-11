@@ -4,13 +4,13 @@
   "doctype": "Workflow",
   "document_type": "Supplier Clone",
   "is_active": 1,
-  "modified": "2024-06-10 22:24:27.410140",
+  "modified": "2024-06-11 09:59:43.854394",
   "name": "Approval of Supplier Clone",
   "override_status": 0,
   "send_email_alert": 0,
   "states": [
    {
-    "allow_edit": "Guest_Supplier",
+    "allow_edit": "Guest_supplier",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -40,7 +40,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "L1 manager",
+    "allow_edit": "L1 Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -55,7 +55,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "MDM manager",
+    "allow_edit": "MDM Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -70,7 +70,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "MDM manager",
+    "allow_edit": "MDM Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -115,7 +115,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "MDM manager",
+    "allow_edit": "MDM Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -160,7 +160,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "Guest_Supplier",
+    "allow_edit": "Guest_supplier",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -175,7 +175,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "Guest_Supplier",
+    "allow_edit": "Guest_supplier",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -205,7 +205,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "L1 manager",
+    "allow_edit": "L1 Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -220,7 +220,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "MDM manager",
+    "allow_edit": "MDM Manager",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -265,7 +265,7 @@
     "workflow_builder_id": null
    },
    {
-    "allow_edit": "Guest_Supplier",
+    "allow_edit": "Guest_supplier",
     "avoid_status_override": 0,
     "doc_status": "0",
     "is_optional_state": 0,
@@ -284,7 +284,7 @@
    {
     "action": "Submit",
     "allow_self_approval": 1,
-    "allowed": "Guest_Supplier",
+    "allowed": "Guest_supplier",
     "condition": null,
     "next_state": "Approval Pending By Company User Team",
     "parent": "Approval of Supplier Clone",
@@ -320,7 +320,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 1,
-    "allowed": "L1 manager",
+    "allowed": "L1 Manager",
     "condition": "doc.reviewing_doc == 0",
     "next_state": "Approval Pending By Tamalika",
     "parent": "Approval of Supplier Clone",
@@ -332,7 +332,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 1,
-    "allowed": "L1 manager",
+    "allowed": "L1 Manager",
     "condition": "doc.reviewing_doc",
     "next_state": "Approval Pending By MDM Manager",
     "parent": "Approval of Supplier Clone",
@@ -392,7 +392,7 @@
    {
     "action": "Push Back To Company User Team",
     "allow_self_approval": 1,
-    "allowed": "L1 manager",
+    "allowed": "L1 Manager",
     "condition": null,
     "next_state": "Pushed Back By L1 Manager",
     "parent": "Approval of Supplier Clone",
@@ -428,7 +428,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 1,
-    "allowed": "MDM manager",
+    "allowed": "MDM Manager",
     "condition": null,
     "next_state": "Approved",
     "parent": "Approval of Supplier Clone",
@@ -440,7 +440,7 @@
    {
     "action": "Push Back To Company User Team",
     "allow_self_approval": 1,
-    "allowed": "MDM manager",
+    "allowed": "MDM Manager",
     "condition": null,
     "next_state": "Pushed Back By MDM Manager",
     "parent": "Approval of Supplier Clone",
@@ -476,7 +476,7 @@
    {
     "action": "Reject",
     "allow_self_approval": 1,
-    "allowed": "MDM manager",
+    "allowed": "MDM Manager",
     "condition": null,
     "next_state": "Rejected",
     "parent": "Approval of Supplier Clone",
@@ -488,7 +488,7 @@
    {
     "action": "Submit",
     "allow_self_approval": 1,
-    "allowed": "Guest_Supplier",
+    "allowed": "Guest_supplier",
     "condition": null,
     "next_state": "Change Requested",
     "parent": "Approval of Supplier Clone",
@@ -500,7 +500,7 @@
    {
     "action": "Submit",
     "allow_self_approval": 1,
-    "allowed": "Guest_Supplier",
+    "allowed": "Guest_supplier",
     "condition": null,
     "next_state": "Change Request Pending with User",
     "parent": "Approval of Supplier Clone",
@@ -524,7 +524,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 1,
-    "allowed": "L1 manager",
+    "allowed": "L1 Manager",
     "condition": null,
     "next_state": "Change Request Pending with MDM Manager",
     "parent": "Approval of Supplier Clone",
@@ -536,7 +536,7 @@
    {
     "action": "Approve",
     "allow_self_approval": 1,
-    "allowed": "MDM manager",
+    "allowed": "MDM Manager",
     "condition": null,
     "next_state": "Approved",
     "parent": "Approval of Supplier Clone",
@@ -560,7 +560,7 @@
    {
     "action": "Push Back To Company User Team",
     "allow_self_approval": 1,
-    "allowed": "L1 manager",
+    "allowed": "L1 Manager",
     "condition": null,
     "next_state": "Change Request Push Back by L1 Manager",
     "parent": "Approval of Supplier Clone",
@@ -596,7 +596,7 @@
    {
     "action": "Push Back To Company User Team",
     "allow_self_approval": 1,
-    "allowed": "MDM manager",
+    "allowed": "MDM Manager",
     "condition": null,
     "next_state": "Change Request Push Back by MDM Manager",
     "parent": "Approval of Supplier Clone",
@@ -608,7 +608,7 @@
    {
     "action": "Submit",
     "allow_self_approval": 1,
-    "allowed": "Guest_Supplier",
+    "allowed": "Guest_supplier",
     "condition": null,
     "next_state": "Change Request Pending with User",
     "parent": "Approval of Supplier Clone",
