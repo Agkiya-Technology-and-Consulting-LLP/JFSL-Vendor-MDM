@@ -80,9 +80,9 @@
                 <button class="btn btn-primary btn-block mb-4" v-on:click="send()" :disabled="!email_otp_send ">
                   Continue
                 </button>
-                <div class="text-center">
+                <!-- <div class="text-center">
                   <p>Not registered with us? <a style="color:blue" v-on:click="()=>{show=!show; userExists=!userExists}">Sign up</a></p>
-                </div>
+                </div> -->
               <!-- </form> -->
               </div>
               

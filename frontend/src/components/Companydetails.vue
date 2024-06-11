@@ -1044,7 +1044,7 @@ export default defineComponent({
             (newValue, oldValue) => {
                 // if(oldValue && newValue!=oldValue){
                 if (oldValue != newValue) {
-                    // form.error_message=''
+                    form.error_message=''
                     if (newValue && typeof newValue === 'string' && newValue.length >= 4) {
                         const typeMap = {
                             'P': 'Individual',
@@ -1235,9 +1235,6 @@ export default defineComponent({
                         }
                     }
                 });
-
-                form.permanent_account_number = value.slice(2, 12)
-
             }
         });
 
