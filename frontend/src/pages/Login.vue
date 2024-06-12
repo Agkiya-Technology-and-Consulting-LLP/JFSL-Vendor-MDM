@@ -88,7 +88,7 @@
               </div>
               
 
-              <div class="card-body px-4 py-5 px-md-5" v-if="enter_otp">
+              <div class="card-body px-4 py-5 px-md-5" v-if="enter_otp && userExists">
               <h1 style="color:blue ; text-align: center;">Welcome</h1>
                 <div class="form-outline mb-4" v-if="enter_otp">
                   <input required type="text" name="emailotp" id="emailotp" class="form-control" v-model="emailotp"
@@ -474,7 +474,9 @@ export default {
           if (data){
             console.log(data);
             this.userExists=true
+            this.enter_otp = true
             this.mobile_no=data.mobile_no
+            this.sendOTPforLogintoEmail()
           }else{
             // alert("User Not Registered")
             
