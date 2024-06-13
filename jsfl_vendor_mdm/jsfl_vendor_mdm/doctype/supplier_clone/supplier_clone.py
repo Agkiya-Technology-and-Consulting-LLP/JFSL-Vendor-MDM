@@ -136,7 +136,8 @@ class SupplierClone(Document):
         #         frappe.msgprint("No valid email address found for the supplier.", alert=True)
 
         # *****************************************
-
+        if self.l1_manager:
+            frappe.db.set_value(self.doctype,self.name,'l1_manager_id',self.l1_manager)
 
         # Freez Window for multiple users
         if frappe.session.user!='Administrator':
