@@ -209,21 +209,28 @@
                         <i class="h-5 fa-solid fa-circle-chevron-down"></i>
                     </button>
                 </div>
-
+               
                 <div class="row mt-3" v-if="!isCollapsed2">
+                    <div class="col-md-3 mb-3">
+                        <input type="checkbox" id="applicable_gst" class="form-check-input mr-2" v-model="form.applicable_gst" :disabled="isReadonly">
+                        <label for="applicable_gst" class="form-check-label">Gst Applicable</label>
+                    </div>
+                    <div class="row mt-3" v-if="form.applicable_gst">
+                        
+                   
                     <!-- <div class="col-md-6 mb-3">
                     <label for="GST" class="form-label">GST Registration <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number" placeholder="Enter GST No">
                 </div> -->
-                    <div class="col-md-6 mb-3"
-                        >
-                        <label for="GST" class="form-label">GST Registration </label>
+                    <div class="col-md-6 mb-3">
+                        <label for="GST" class="form-label">GST Registration <span
+                            class="text-danger">*</span> </label>
                         <input type="text" class="form-control" id="GST" v-model="form.gst_registration_number"
                             placeholder="Enter GST No" @blur="touched.gst_registration_number = true" :disabled="isReadonly">
-                        <!-- <div v-if="touched.gst_registration_number && (!form.gst_registration_number && form.company_turnover != '<2000000')"
+                        <div v-if="touched.gst_registration_number && !form.gst_registration_number"
                             class="text-danger">
                             GST Number is required.
-                        </div> -->
+                        </div>
                         <div v-if="form.gst_error" class="text-danger">
                             {{ form.gst_error }}
                         </div>
@@ -307,6 +314,7 @@
                         <textarea class="form-control" id="address_information_for_principal_place_of_business"
                             v-model="form.address_information_for_principal_place_of_business" disabled></textarea>
                     </div>
+                </div>
                 </div>
 
                 <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
@@ -611,7 +619,14 @@
                             <label for="Certificate Number" class="form-label">MSME/Udyam Registration Number <span
                                 class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="Certificate Number"
-                                v-model="form.msme_certificate_number" placeholder="Certificate Number" :disabled="isReadonly">
+                                v-model="form.msme_certificate_number" 
+                                placeholder="Certificate Number" 
+                                :disabled="isReadonly">
+
+                                <!-- <div v-if="touched.msme_certificate_number"
+                                class="text-danger">
+                               MSME/Udyam Registration Number is required.
+                            </div> -->
                         </div>
 
                         <!-- <div class="col-md-3 mb-3">
@@ -646,7 +661,7 @@
             <div class="d-flex flex-row justify-content-end gap-2 mt-4 mb-3">
                 <div v-if="!isReadonly"><button type="button" class="btn btn-primary"  @click="ValidateEmail()" :disabled="!isValid">Save</button></div>
                 <div><router-link to="/contactdetails">
-                    <button type="button" class="btn btn-primary">Next</button>
+                    <button type="button" class="btn btn-primary" >Next</button>
                 </router-link></div>
             </div>
 
@@ -772,7 +787,8 @@ export default defineComponent({
             address_information_for_principal_place_of_business: '',
             error_message: '',
             gst_error: '',
-            error: ''
+            error: '',
+            applicable_gst:0
         });
 
 
@@ -795,6 +811,7 @@ export default defineComponent({
             permanent_account_no: false,
             // lst_number: false,
             udyam_registration_number: false,
+            msme_certificate_number: false,
         });
         const isValid = computed(() => {
             return form.company_name
@@ -869,6 +886,9 @@ export default defineComponent({
                     }
                     if (data.msme_applicable) {
                         form.msme_applicable = true
+                    }
+                    if(data.applicable_gst){
+                        form.applicable_gst = true
                     }
                     form.permanent_account_number = data.permanent_account_number
                     form.ownership_information = data.ownership_information
@@ -968,6 +988,8 @@ export default defineComponent({
                     showErrorToastMessage("GST number already exists")
                 } else if(form.msme_applicable && !form.msme_certificate_number){
                     showErrorToastMessage("MSME Registration No. required")
+                }else if(form.applicable_gst && !form.gst_registration_number){
+                    showErrorToastMessage("Gst Registration No. required")
                 }else {
                     const supplier = createResource({
                         url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",

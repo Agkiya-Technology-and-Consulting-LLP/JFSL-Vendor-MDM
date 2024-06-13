@@ -12,6 +12,7 @@
   "viewed_by_tab",
   "company_user",
   "mdm_manager",
+  "l1_manager_id",
   "column_break_ihrm",
   "company_user_check",
   "l1_manager_check",
@@ -192,7 +193,6 @@
   "reason_for_rejection",
   "column_break_jlkck",
   "company_user_team_id",
-  "l1_manager_id",
   "reason_by_l1_manager",
   "amended_from",
   "reason_by_reviewer"
@@ -637,17 +637,17 @@
   {
    "fieldname": "reason_by_mdm_manager",
    "fieldtype": "Small Text",
-   "label": "Reason By MDM Manager"
+   "label": "Pushback Reason By MDM Manager"
   },
   {
    "fieldname": "reason_by_l1_manager",
    "fieldtype": "Small Text",
-   "label": "Reason By L1 Manager"
+   "label": "Pushback Reason By L1 Manager"
   },
   {
    "fieldname": "reason_by_company_user_team",
    "fieldtype": "Small Text",
-   "label": "Reason By Company User Team"
+   "label": "Pushback Reason By Company User Team"
   },
   {
    "fieldname": "reason_section_tab",
@@ -681,6 +681,7 @@
   {
    "fieldname": "push_back_by_mdm_manager",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Push Back By MDM Manager"
   },
   {
@@ -691,11 +692,10 @@
   {
    "fieldname": "l1_manager_id",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "L1 Manager Id"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Approval Pending By MDM Manager' && doc.workflow_state == 'Change Request Pending with MDM Manager')",
+   "depends_on": "eval:(doc.workflow_state == 'Approval Pending By MDM Manager' || doc.workflow_state == 'Change Request Pending with MDM Manager')",
    "fieldname": "viewed_by_tab",
    "fieldtype": "Tab Break",
    "label": "Picking Status"
@@ -744,7 +744,7 @@
   },
   {
    "default": "0",
-   "depends_on": "eval:doc.workflow_state=='Approval Pending By MDM Manager'",
+   "depends_on": "eval:doc.l1_manager != frappe.session.user",
    "fieldname": "mdm_manager_check",
    "fieldtype": "Check",
    "label": "Picked"
@@ -990,7 +990,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "supplier_email_id.first_name",
+   "fetch_from": ".",
    "fieldname": "first_name",
    "fieldtype": "Data",
    "label": "First Name"
@@ -1000,7 +1000,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "supplier_email_id.last_name",
+   "fetch_from": ".",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "label": "Last Name"
@@ -1257,7 +1257,7 @@
   {
    "fieldname": "reason_by_reviewer",
    "fieldtype": "Small Text",
-   "label": "Reason By Reviewer"
+   "label": "Pushback Reason By Reviewer"
   },
   {
    "fieldname": "cheque",
@@ -1268,7 +1268,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-11 09:56:43.096702",
+ "modified": "2024-06-13 23:46:11.007963",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",

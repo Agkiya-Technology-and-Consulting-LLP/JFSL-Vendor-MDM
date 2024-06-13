@@ -8,44 +8,61 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.addressProof && !form.addressProof }">
-                        <label for="AddressProof" class="form-label">Aadhar card <span class="text-danger">*</span></label>
+                        <label for="AddressProof" class="form-label">Aadhar card <span
+                                class="text-danger">*</span></label>
                         <input type="file" class="form-control" id="AddressProof"
-                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = true" :disabled="isReadonly">
+                            @change="handleFileChange($event, 'address_proof')" @blur="touched.addressProof = true"
+                            :disabled="isReadonly">
                         <!-- <div v-if="touched.addressProof && !form.addressProof" class="text-danger">
                             Aadhar is required.
                         </div> -->
+                        <div class="text-success">
+                            <!-- File uploaded: &nbsp;{{ form.addressProofurl }}<br> -->
+                            File uploaded: <a href="#" @click="visiturl(form.addressProofurl)" v-if="form.addressProofurl">{{ form.addressProofurl }}</a>
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cheque && !form.cheque }">
-                        <label for="cheque" class="form-label">Cancelled cheque <span class="text-danger">*</span> </label>
-                        <input type="file" class="form-control" id="cheque"
-                            @change="handleFileChange($event, 'cheque')" @blur="touched.cheque = true" :disabled="isReadonly">
+                        <label for="cheque" class="form-label">Cancelled cheque <span class="text-danger">*</span>
+                        </label>
+                        <input type="file" class="form-control" id="cheque" @change="handleFileChange($event, 'cheque')"
+                            @blur="touched.cheque = true" :disabled="isReadonly">
                         <!-- <div v-if="touched.cheque && !form.cheque" class="text-danger">
                             cancelled cheque required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.chequeurl)" v-if="form.chequeurl">{{ form.chequeurl }}</a>
+                        </div>
                     </div>
 
-                   
+
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.panAadhar && !form.panAadhar }">
                         <label for="PANAadhar" class="form-label">PAN Card <span class="text-danger">*</span> </label>
                         <input type="file" class="form-control" id="PANAadhar"
-                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = true" :disabled="isReadonly">
+                            @change="handleFileChange($event, 'panaadhar')" @blur="touched.panAadhar = true"
+                            :disabled="isReadonly">
                         <!-- <div v-if="touched.panAadhar && !form.panAadhar" class="text-danger">
                             PAN is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.panaadharurl)" v-if="form.panaadharurl">{{ form.panaadharurl }}</a>
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3"
                         :class="{ 'has-error': touched.msmedUdyamNumber && !form.msmedUdyamNumber }">
-                        <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration </label>
+                        <label for="MSMEDUdyamRegistration" class="form-label">MSMED/Udyam Registration <span class="text-danger" v-if="form.msme_applicable">*</span> </label>
                         <input type="file" class="form-control" id="MSMEDUdyamRegistration"
                             @change="handleFileChange($event, 'msmedudyam_registration')"
                             @blur="touched.msmedUdyamNumber = false" :disabled="isReadonly">
                         <!-- <div v-if="touched.msmedUdyamNumber && !form.msmedUdyamNumber" class="text-danger">
                             MSMED/Udyam Registration is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.msmedudyam_registration_url)" v-if="form.msmedudyam_registration_url">{{ form.msmedudyam_registration_url }}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -57,15 +74,22 @@
                         <!-- <div v-if="touched.pf && !form.pf" class="text-danger">
                             PF is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.pfurl)" v-if="form.pfurl">{{ form.pfurl }}</a>
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.tinUin && !form.tinUin }">
                         <label for="TIN_UIN" class="form-label">TIN/UIN </label>
                         <input type="file" class="form-control" id="TIN_UIN"
-                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = false" :disabled="isReadonly">
+                            @change="handleFileChange($event, 'tinuin')" @blur="touched.tinUin = false"
+                            :disabled="isReadonly">
                         <!-- <div v-if="touched.tinUin && !form.tinUin" class="text-danger">
                             TIN/UIN is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.tinuinurl)" v-if="form.tinuinurl">{{ form.tinuinurl }}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -77,6 +101,9 @@
                         <!-- <div v-if="touched.gst && !form.gst" class="text-danger">
                             GST is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.gsturl)" v-if="form.gsturl">{{ form.gsturl }}</a>
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.cin && !form.cin }">
@@ -86,6 +113,9 @@
                         <!-- <div v-if="touched.cin && !form.cin" class="text-danger">
                             CIN is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.cin_attachurl)" v-if="form.cin_attachurl">{{ form.cin_attachurl }}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -93,10 +123,14 @@
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.lstCst && !form.lstCst }">
                         <label for="LST_CST" class="form-label">LST/CST </label>
                         <input type="file" class="form-control" id="LST_CST"
-                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = false" :disabled="isReadonly">
+                            @change="handleFileChange($event, 'lstCst')" @blur="touched.lstCst = false"
+                            :disabled="isReadonly">
                         <!-- <div v-if="touched.lstCst && !form.lstCst" class="text-danger">
                             LST/CST is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.lstcsturl)" v-if="form.lstcsturl">{{ form.lstcsturl }}</a>
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3" :class="{ 'has-error': touched.esic && !form.esic }">
                         <label for="ESIC" class="form-label">ESIC </label>
@@ -105,22 +139,27 @@
                         <!-- <div v-if="touched.esic && !form.esic" class="text-danger">
                             ESIC is required.
                         </div> -->
+                        <div class="text-success">
+                            File uploaded: <a href="#" @click="visiturl(form.esicurl)" v-if="form.esicurl">{{ form.esicurl }}</a>
+                        </div>
                     </div>
 
-                    
-                </div>
 
-                <div class="row" v-if="!isReadonly && isupdate">
+                </div>
+                
+                <div class="row" >
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
                         <router-link to="/accountdetails" class="btn btn-primary"><button>Back</button></router-link>
-                        <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly" v-if="!isReadonly">Submit</button>
+                        <button type="button" class="btn btn-primary" @click="submit()" :disabled="isReadonly"
+                            v-if="!isReadonly && isupdate">Submit</button>
                     </div>
                 </div>
                 <!-- <div class="row" v-if="!isupdate"> -->
                 <div class="row" v-if="!isupdate">
 
                     <div class="d-flex justify-content-end gap-2 mt-1 mb-3">
-                        <button type="button" class="btn btn-primary" @click="update()" v-if="!isReadonly">Update</button>
+                        <button type="button" class="btn btn-primary" @click="update()"
+                            v-if="!isReadonly">Update</button>
                     </div>
                 </div>
             </div>
@@ -134,7 +173,7 @@
         aria-atomic="true" :class="{ 'show': showToast }">
         <div class="d-flex">
             <div class="toast-body">
-                {{form.sucessMSG}}.
+                {{ form.sucessMSG }}.
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideToast"
                 aria-label="Close"></button>
@@ -142,12 +181,14 @@
     </div>
 
     <!-- Tost Error Message -->
-    <div class="toast align-items-center text-white bg-danger  border-0" role="alert" aria-live="assertive" aria-atomic="true" :class="{ 'show': showErrorToast }" >
+    <div class="toast align-items-center text-white bg-danger  border-0" role="alert" aria-live="assertive"
+        aria-atomic="true" :class="{ 'show': showErrorToast }">
         <div class="d-flex">
             <div class="toast-body">
-                {{form.error}}.
+                {{ form.error }}.
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast"
+                aria-label="Close"></button>
         </div>
     </div>
 
@@ -174,8 +215,19 @@ export default defineComponent({
             lstCst: '',
             cheque: '',
             docname: '',
-            sucessMSG:'',
-            validateSubmit:false
+            sucessMSG: '',
+            validateSubmit: false,
+            addressProofurl:'',
+            msmedudyam_registration_url:'',
+            panaadharurl:'',
+            esicurl:'',
+            pfurl:'',
+            tinuinurl:'',
+            gsturl:'',
+            cin_attachurl:'',
+            lstcsturl:'',
+            chequeurl:'',
+            msme_applicable:0
         });
 
 
@@ -212,85 +264,123 @@ export default defineComponent({
         const isReadonly = computed(() => {
             return !['Saved', 'Change Requested', 'Approved'].includes(workflowState.value);
         });
-        const isupdate = computed(()=>{
+        const isupdate = computed(() => {
             return !['Change Requested', 'Approved'].includes(workflowState.value)
         })
 
         onMounted(() => {
-            const supplier = createResource({
-                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
-                makeParams: () => ({
-                    doc: {
-                        email: loginUser
-                    }
-                }),
-                auto: true,
-                onSuccess: (data) => {
-                    console.log("data coming from documents", data);
-                    form.docname = data.name
-                    // console.log(data.email_id)
-                    const fields =['company_name','permanent_account_number','name_','addressline_1','country','city','region','pincode','residential_status','salutation','first_name','email_id','contact_number','account_number','confirm_account_number','ifsc_code','address_proof','panaadhar','cheque']
-                    fields.forEach((field)=>{
-                        // console.log(field)
-                        if (!data[field]) {
-                            console.log(`Missing field: ${field}`);
-                            form.validateSubmit=true
-                        }   
-                    })
-                    console.log("validateSubmit",form.validateSubmit)
-                    // if( data.name_ ){
-                    //     console.log(':::::::::::::::::KKKKKKKKKKKKK:::::::::::::')
-                    // }
-                    workflowState.value = data.workflow_state || '';
-                },
-                onError: (error) => {
-                    console.error('Error:', error);
-                    // alert(`An error occurred: ${error.message}`);
-                }
-            });
+            // const supplier = createResource({
+            //     url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
+            //     makeParams: () => ({
+            //         doc: {
+            //             email: loginUser
+            //         }
+            //     }),
+            //     auto: true,
+            //     onSuccess: (data) => {
+            //         console.log("data coming from documents", data);
+            //         form.docname = data.name
+            //         form.addressProofurl =String(data.address_proof)
+            //         form.chequeurl=String(data.cheque)
+            //         form.panaadharurl =String(data.panaadhar)
+            //         form.msmedudyam_registration_url = String(data.msmedudyam_registration)
+            //         form.pfurl = String(data.pf)
+            //         form.tinuinurl=String(data.tinuin)
+            //         form.gsturl =String(data.gst)
+            //         form.cin_attachurl=String(data.cin_attach)
+            //         form.lstcsturl=String(data.lstcst)
+            //         form.esicurl=String(data.esic)
+            //         form.msme_applicable = data.msme_applicable
+            //         // console.log(data.email_id)
+            //         const fields = ['company_name', 'permanent_account_number', 'name_', 'addressline_1', 'country', 'city', 'region', 'pincode', 'residential_status', 'salutation', 'first_name', 'email_id', 'contact_number', 'account_number', 'confirm_account_number', 'ifsc_code', 'address_proof', 'panaadhar', 'cheque','msme_applicable']
+            //         fields.forEach((field) => {
+            //             // console.log(field)
+            //             if(data['msme_applicable'] && !form.msmedudyam_registration_url){
+            //                 form.validateSubmit = true
+            //             }else if (!data[field]) {
+            //                 console.log(`Missing field: ${field}`);
+            //                 form.validateSubmit = true
+            //             }
+                        
+            //         })
+            //         console.log("validateSubmit", form.validateSubmit)
+            //         // if( data.name_ ){
+            //         //     console.log(':::::::::::::::::KKKKKKKKKKKKK:::::::::::::')
+            //         // }
+            //         workflowState.value = data.workflow_state || '';
+            //     },
+            //     onError: (error) => {
+            //         console.error('Error:', error);
+            //         // alert(`An error occurred: ${error.message}`);
+            //     }
+            // });
+            get_data()
         });
-        const handleFileChange=(event,field)=> {
+
+        const handleFileChange = (event, field) => {
             const file = event.target.files[0];
-            
-            if( field === 'addressProof' ){
+
+            if (field === 'addressProof') {
                 touched.addressProof = false;
             }
 
             var formData = new FormData();
             formData.append('file', file);
-            formData.append('doctype',"Supplier Clone");
+            formData.append('doctype', "Supplier Clone");
             formData.append('docname', form.docname);
             formData.append('is_private', 0);  // Change to 1 if the file should be private
-            formData.append('fieldname',field)
-            formData.append('folder',"Home")
-            formData.append('attached_to_field',field)
+            formData.append('fieldname', field)
+            formData.append('folder', "Home")
+            formData.append('attached_to_field', field)
             fetch('/api/method/upload_file', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.message) {
-                    var file_url = data.message.file_url;
-                    showToastMessage("File Upload Sucessfully")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(field);
+                    if (data.message) {
+                        if(field == 'address_proof'){
+                            form.addressProofurl = data.message.file_url;
+                        }if(field == 'cheque'){
+                            form.chequeurl = data.message.file_url;
+                        }if(field == 'panaadhar'){
+                            form.panaadharurl = data.message.file_url;
+                        }if(field =='msmedudyam_registration'){
+                            form.msmedudyam_registration_url = data.message.file_url;
+                        }if(field == 'pf'){
+                            form.pfurl = data.message.file_url;
+                        }if(field == 'tinuin'){
+                            form.tinuinurl = data.message.file_url;
+                        }if(field == 'gst'){
+                            form.gsturl = data.message.file_url;
+                        }if(field == 'cin'){
+                            form.cin_attachurl = data.message.file_url;
+                        }if(field == 'lstCst'){
+                            form.lstcsturl = data.message.file_url;
+                        }if(field == 'esic'){
+                            form.esicurl = data.message.file_url;
+                        }
+                        
+                        showToastMessage("File Upload Sucessfully")
+                        // location.reload()
+                        // **Update form field here**
+                        //  form[field] = file_url; 
 
-                     // **Update form field here**
-                    //  form[field] = file_url; 
+                        // **Added code to hide validation message**
+                        // if (field === 'addressProof') {
+                        //     touched.addressProof = true;  //
+                        // }
+                        get_data()
 
-                      // **Added code to hide validation message**
-                    // if (field === 'addressProof') {
-                    //     touched.addressProof = true;  //
-                    // }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading file:', error);
+                });
 
-                }
-            })
-            .catch(error => {
-                console.error('Error uploading file:', error);
-            });
-          
         }
-   
+
         function ValidateEmail() {
             // console.log('values are here', form);
             // const supplier = createResource({
@@ -316,34 +406,34 @@ export default defineComponent({
         }
 
         function submit() {
-            if(form.validateSubmit){
+            if (form.validateSubmit) {
                 showErrorToastMessage("Please fill all mandatory details")
-            }else{
-            const supplier = createResource({
-                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
-                makeParams: () => ({
-                    doc: {
-                        docname: form.docname,
-                        workflow_state: "Approval Pending By Company User Team"
+            } else {
+                const supplier = createResource({
+                    url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.submit_supplier_detail",
+                    makeParams: () => ({
+                        doc: {
+                            docname: form.docname,
+                            workflow_state: "Approval Pending By Company User Team"
+                        }
+                    }),
+                    auto: true,
+                    onSuccess: (data) => {
+                        console.log(data)
+                        // alert("Details Submitted Sucessfully")
+                        showToastMessage("Details Submitted Sucessfully")
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000)
+                    },
+                    onError: (error) => {
+                        console.error('Error:', error);
+                        // alert(`An error occurred: ${error.message}`);
                     }
-                }),
-                auto: true,
-                onSuccess: (data) => {
-                    console.log(data)
-                    // alert("Details Submitted Sucessfully")
-                    showToastMessage("Details Submitted Sucessfully")
-                    setTimeout(() => {
-                        location.reload();
-                    }, 2000)
-                },
-                onError: (error) => {
-                    console.error('Error:', error);
-                    // alert(`An error occurred: ${error.message}`);
-                }
-            });
+                });
+            }
         }
-        }
-        function update(){
+        function update() {
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.update_supplier_detail",
                 makeParams: () => ({
@@ -368,7 +458,7 @@ export default defineComponent({
             });
         }
         const showToastMessage = (data) => {
-            form.sucessMSG=data
+            form.sucessMSG = data
             showToast.value = true;
             console.log("Details saved successfully");
             setTimeout(() => {
@@ -391,6 +481,64 @@ export default defineComponent({
         const hideErrorToast = () => {
             showErrorToast.value = false;
         };
+
+        function visiturl(document){
+            console.log("::::")
+            const url = window.location.origin
+			if (url){
+				var desk_url=url+document
+				window.open(desk_url, '_blank')
+			}
+        }
+        function get_data(){
+            form.validateSubmit = false
+            const supplier = createResource({
+                url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.get_supplier_detail",
+                makeParams: () => ({
+                    doc: {
+                        email: loginUser
+                    }
+                }),
+                auto: true,
+                onSuccess: (data) => {
+                    console.log("data coming from documents", data);
+                    form.docname = data.name
+                    form.addressProofurl =String(data.address_proof)
+                    form.chequeurl=String(data.cheque)
+                    form.panaadharurl =String(data.panaadhar)
+                    form.msmedudyam_registration_url = String(data.msmedudyam_registration)
+                    form.pfurl = String(data.pf)
+                    form.tinuinurl=String(data.tinuin)
+                    form.gsturl =String(data.gst)
+                    form.cin_attachurl=String(data.cin_attach)
+                    form.lstcsturl=String(data.lstcst)
+                    form.esicurl=String(data.esic)
+                    form.msme_applicable = data.msme_applicable
+                    // console.log(data.email_id)
+                    const fields = ['company_name', 'permanent_account_number', 'name_', 'addressline_1', 'country', 'city', 'region', 'pincode', 'residential_status', 'salutation', 'first_name', 'email_id', 'contact_number', 'account_number', 'confirm_account_number', 'ifsc_code', 'address_proof', 'panaadhar', 'cheque','msme_applicable']
+                    fields.forEach((field) => {
+                        // console.log(field)
+                        if(data['msme_applicable'] && !form.msmedudyam_registration_url){
+                            console.log("::::::;::")
+                            form.validateSubmit = true
+                        }else if (!data[field]) {
+                            console.log(`Missing field: ${field}`);
+                            form.validateSubmit = true
+                        }
+                        
+                    })
+                    console.log("validateSubmit", form.validateSubmit)
+                    // if( data.name_ ){
+                    //     console.log(':::::::::::::::::KKKKKKKKKKKKK:::::::::::::')
+                    // }
+                    workflowState.value = data.workflow_state || '';
+                },
+                onError: (error) => {
+                    console.error('Error:', error);
+                    // alert(`An error occurred: ${error.message}`);
+                }
+            });
+        }
         return {
             form,
             ValidateEmail,
@@ -408,7 +556,9 @@ export default defineComponent({
             isupdate,
             showErrorToastMessage,
             hideErrorToast,
-            showErrorToast
+            showErrorToast,
+            visiturl,
+            get_data
         };
     }
 });
