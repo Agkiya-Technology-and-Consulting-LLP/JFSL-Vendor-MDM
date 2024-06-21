@@ -137,6 +137,7 @@ class SupplierClone(Document):
 
         # *****************************************
         
+        
         if self.l1_manager:
             frappe.db.set_value(self.doctype,self.name,'l1_manager_id',self.l1_manager)
 
