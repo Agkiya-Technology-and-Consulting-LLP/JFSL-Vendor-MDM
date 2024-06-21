@@ -137,7 +137,7 @@ class SupplierClone(Document):
 
         # *****************************************
         
-        
+
         if self.l1_manager:
             frappe.db.set_value(self.doctype,self.name,'l1_manager_id',self.l1_manager)
 
@@ -149,6 +149,7 @@ class SupplierClone(Document):
             #     self.l1_manager=frappe.session.user
             if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
                 self.mdm_manager=frappe.session.user
+
 
             ##Commented Line
             # if not self.company_user_check and self.workflow_state=='Approval Pending By L1 Manager':
