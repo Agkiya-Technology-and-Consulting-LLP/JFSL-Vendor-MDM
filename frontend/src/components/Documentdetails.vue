@@ -515,7 +515,7 @@ export default defineComponent({
                     form.esicurl=String(data.esic)
                     form.msme_applicable = data.msme_applicable
                     // console.log(data.email_id)
-                    const fields = ['company_name', 'permanent_account_number', 'name_', 'addressline_1', 'country', 'city', 'region', 'pincode', 'residential_status', 'salutation', 'first_name', 'email_id', 'contact_number', 'account_number', 'confirm_account_number', 'ifsc_code', 'address_proof', 'panaadhar', 'cheque','msme_applicable']
+                    const fields = ['company_name', 'permanent_account_number', 'name_', 'addressline_1', 'country', 'city', 'region', 'pincode', 'residential_status', 'salutation', 'first_name', 'email_id', 'contact_number', 'account_number', 'confirm_account_number', 'ifsc_code', 'address_proof', 'panaadhar', 'cheque']
                     fields.forEach((field) => {
                         // console.log(field)
                         if(data['msme_applicable'] && !form.msmedudyam_registration_url){
