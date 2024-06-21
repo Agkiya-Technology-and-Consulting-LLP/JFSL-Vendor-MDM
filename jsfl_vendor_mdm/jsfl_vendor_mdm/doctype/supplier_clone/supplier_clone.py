@@ -148,7 +148,7 @@ class SupplierClone(Document):
             if self.mdm_manager_check and ("MDM Manager" in frappe.get_roles()):
                 self.mdm_manager=frappe.session.user
 
-
+            ##Commented Line
             # if not self.company_user_check and self.workflow_state=='Approval Pending By L1 Manager':
             #     frappe.throw("Please Check Company User Check")
             # if not self.l1_manager_check and self.workflow_state =='Approval Pending By MDM Manager':
