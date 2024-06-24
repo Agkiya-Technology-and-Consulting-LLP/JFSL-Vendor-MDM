@@ -44,8 +44,8 @@
                     <div class="col-md-4 mb-3" :class="{ 'has-error': touched.contact_number && !form.contact_number }">
                         <label for="contact" class="form-label">Contact Number <span
                                 class="text-danger">*</span></label>
-                        <input type="tel" maxlength="10" class="form-control" id="contact" v-model="form.contact_number"
-                            placeholder="Contact Number" @blur="touched.contact_number = true" :disabled="isReadonly">
+                        <input type="tel" maxlength="10" minlength="10" class="form-control" id="contact" v-model="form.contact_number"
+                            placeholder="Contact Number" @blur="touched.contact_number = true" :disabled="isReadonly" pattern="[7-9]{1}[0-9]{9}">
                         <div v-if="touched.contact_number && !form.contact_number" class="text-danger">
                             Contact Number is required.
                         </div>
@@ -131,6 +131,19 @@
 
         <!-- <button class="savebutton" @click="showToastMessage">Show Toast</button> -->
     </div>
+
+    <!-- Tost Error Message -->
+    <div class="toast align-items-center text-white bg-danger  border-0" role="alert" aria-live="assertive"
+        aria-atomic="true" :class="{ 'show': showErrorToast }">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ form.error }}.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" @click="hideErrorToast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -138,6 +151,8 @@ import { ref, defineComponent, onMounted, reactive, computed } from "vue";
 import { sessionUser } from "../data/session";
 import { createResource } from 'frappe-ui';
 const showToast = ref(false);
+const showErrorToast = ref(false)
+
 export default defineComponent({
     name: 'ContactDetails',
     setup() {
@@ -154,7 +169,8 @@ export default defineComponent({
             linkedin: '',
             instagram: '',
             twitter: '',
-            youtube: ''
+            youtube: '',
+            error: ''
         });
 
         const touched = reactive({
@@ -215,6 +231,10 @@ export default defineComponent({
         });
 
         const ValidateEmail = () => {
+            if (form.contact_number.length <10) {
+                    // alert("PAN & GST number already exists")
+                    showErrorToastMessage("Please Enter Valid Contact No.")
+                } else{
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                 makeParams: () => ({
@@ -244,6 +264,7 @@ export default defineComponent({
                     // alert(`An error occurred: ${error.message}`);
                 }
             });
+        }
         };
         const showToastMessage = () => {
             showToast.value = true;
@@ -256,6 +277,16 @@ export default defineComponent({
         const hideToast = () => {
             showToast.value = false;
         };
+        const showErrorToastMessage = (data) => {
+            form.error = data
+            showErrorToast.value = true;
+            setTimeout(() => {
+                showErrorToast.value = false;
+            }, 1000);
+        };
+        const hideErrorToast = () => {
+            showErrorToast.value = false;
+        };
         return {
             form,
             touched,
@@ -264,7 +295,10 @@ export default defineComponent({
             hideToast,
             showToastMessage,
             showToast,
-            isReadonly
+            isReadonly,
+            showErrorToastMessage,
+            showErrorToast,
+            hideErrorToast,
         };
     }
 });

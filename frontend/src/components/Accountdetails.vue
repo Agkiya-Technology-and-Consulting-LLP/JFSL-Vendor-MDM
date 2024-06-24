@@ -216,9 +216,12 @@ export default defineComponent({
         });
 
         const ValidateEmail = () => {
-            if(match.value ==true){
+            if(form.account_number != form.confirm_account_number){
                 showErrorToastMessage("Enter correct Account No.")
-            }else{
+            }else if(form.account_number.length>18 || form.account_number.length<9){
+                showErrorToastMessage("Enter valid Account No.Account number should be 9-18 characters long.")
+            }
+            else{
             const supplier = createResource({
                 url: "jsfl_vendor_mdm.jsfl_vendor_mdm.custom.api.save_supplier_detail",
                 makeParams: () => ({
