@@ -148,69 +148,24 @@
                         <label for="Any" class="form-check-label">Any other Certification</label>
                     </div>
                 </div>
-
                 <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
-                    <h5>PAN Details</h5>
-                    <button @click="toggleCollapse1">
-                        <i class="h-5 fa-solid fa-circle-chevron-down"></i>
-                        <!-- <i :class="['h-5', 'fa-solid', 'fa-circle-chevron-down', { 'rotate-icon': isCollapsed1 }]"></i> -->
-                    </button>
-                </div>
-
-                <div class="row mt-3" v-if="!isCollapsed1">
-                    <!-- <div class="col-md-4 mb-3">
-                    <label for="pan" class="form-label">Permanent account number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number" placeholder="Enter PAN No">
-                </div> -->
-
-                    <div class="col-md-4 mb-3"
-                        :class="{ 'has-error': touched.permanent_account_number && !form.permanent_account_number }">
-                        <label for="pan" class="form-label">Permanent account number <span
-                                class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number"
-                            placeholder="Enter PAN No" @blur="touched.permanent_account_number = true" :disabled="isReadonly">
-                        <div v-if="touched.permanent_account_number && !form.permanent_account_number"
-                            class="text-danger">
-                            PAN is required.
-                        </div>
-                        <div v-if="form.error_message && form.permanent_account_number" class="text-danger">
-                            {{ form.error_message }}.
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label for="Ownership" class="form-label">Ownership information</label>
-                        <input type="text" class="form-control" id="Ownership" v-model="form.ownership_information"
-                            placeholder="Ownership information" disabled>
-
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label for="Proprietor" class="form-label">Proprietor's Name</label>
-                        <input type="text" class="form-control" id="Proprietor" v-model="form.proprietors_name" disabled
-                            placeholder="Proprietor's Name">
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label for="is_aadhar_pan_linked" class="form-label">Is Aadhar PAN Linked <span
-                                class="text-danger"></span></label>
-                        <select name="" id="is_aadhar_pan_linked" class="form-control"
-                            v-model="form.is_aadhar_pan_linked" disabled>
-                            <option value="Yes">YES</option>
-                            <option value="No">NO</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
-                    <h5>GST(Goods & Services )</h5>
+                    <h5>GST(Goods & Services ),Aadhar Details</h5>
                     <button @click="toggleCollapse2">
                         <i class="h-5 fa-solid fa-circle-chevron-down"></i>
                     </button>
                 </div>
                
                 <div class="row mt-3" v-if="!isCollapsed2">
+                    <div class="col-md-6 mb-3">
+                        <label for="aadhar_number" class="form-label">Aadhar Number <span
+                            class="text-danger" v-if="!form.applicable_gst">*</span> </label>
+                        <input type="text" class="form-control" id="aadhar_number" v-model="form.aadhar_number"
+                            placeholder="Owner's / Company's Aadhaar" @blur="touched.aadhar_number = true" :disabled="isReadonly">
+                        <div v-if="touched.aadhar_number && !form.aadhar_number && !form.applicable_gst "
+                            class="text-danger">
+                            Aadhar Number is required.
+                        </div>
+                    </div>
                     <div class="col-md-3 mb-3">
                         <input type="checkbox" id="applicable_gst" class="form-check-input mr-2" v-model="form.applicable_gst" :disabled="isReadonly">
                         <label for="applicable_gst" class="form-check-label">Gst Applicable</label>
@@ -316,6 +271,61 @@
                     </div>
                 </div>
                 </div>
+                <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
+                    <h5>PAN Details</h5>
+                    <button @click="toggleCollapse1">
+                        <i class="h-5 fa-solid fa-circle-chevron-down"></i>
+                        <!-- <i :class="['h-5', 'fa-solid', 'fa-circle-chevron-down', { 'rotate-icon': isCollapsed1 }]"></i> -->
+                    </button>
+                </div>
+
+                <div class="row mt-3" v-if="!isCollapsed1">
+                    <!-- <div class="col-md-4 mb-3">
+                    <label for="pan" class="form-label">Permanent account number <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number" placeholder="Enter PAN No">
+                </div> -->
+
+                    <div class="col-md-4 mb-3"
+                        :class="{ 'has-error': touched.permanent_account_number && !form.permanent_account_number }">
+                        <label for="pan" class="form-label">Permanent account number <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="pan" v-model="form.permanent_account_number"
+                            placeholder="Enter PAN No" @blur="touched.permanent_account_number = true" :disabled="isReadonly">
+                        <div v-if="touched.permanent_account_number && !form.permanent_account_number"
+                            class="text-danger">
+                            PAN is required.
+                        </div>
+                        <div v-if="form.error_message && form.permanent_account_number" class="text-danger">
+                            {{ form.error_message }}.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="Ownership" class="form-label">Ownership information</label>
+                        <input type="text" class="form-control" id="Ownership" v-model="form.ownership_information"
+                            placeholder="Ownership information" disabled>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="Proprietor" class="form-label">Proprietor's Name</label>
+                        <input type="text" class="form-control" id="Proprietor" v-model="form.proprietors_name" disabled
+                            placeholder="Proprietor's Name">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="is_aadhar_pan_linked" class="form-label">Is Aadhar PAN Linked <span
+                                class="text-danger"></span></label>
+                        <select name="" id="is_aadhar_pan_linked" class="form-control"
+                            v-model="form.is_aadhar_pan_linked" disabled>
+                            <option value="Yes">YES</option>
+                            <option value="No">NO</option>
+                        </select>
+                    </div>
+
+                </div>
+
+               
 
                 <div class="bg-primary text-white p-1 rounded-top mt-2 d-flex justify-content-between">
                     <h5>CIN</h5>
@@ -788,7 +798,8 @@ export default defineComponent({
             error_message: '',
             gst_error: '',
             error: '',
-            applicable_gst:0
+            applicable_gst:0,
+            aadhar_number:''
         });
 
 
@@ -930,6 +941,7 @@ export default defineComponent({
                     form.address_information_for_principal_place_of_business = data.address_information_for_principal_place_of_business
                     form.docname = data.name
                     workflowState.value = data.workflow_state || '';
+                    form.aadhar_number = data.aadhar_number
                 },
                 onError: (error) => {
                     console.error('Error:', error);
@@ -978,13 +990,12 @@ export default defineComponent({
         const ValidateEmail = () => {
             {
                 if (form.error_message && form.gst_error) {
-                    // alert("PAN & GST number already exists")
                     showErrorToastMessage("PAN & GST number already exists")
+                } else if (!form.applicable_gst && !form.aadhar_number) {
+                    showErrorToastMessage("Aadhar number is required")
                 } else if (form.error_message) {
-                    // alert("PAN number already exists")
                     showErrorToastMessage("PAN number already exists")
                 } else if (form.gst_error) {
-                    // alert("GST number already exists")
                     showErrorToastMessage("GST number already exists")
                 } else if(form.msme_applicable && !form.msme_certificate_number){
                     showErrorToastMessage("MSME Registration No. required")
@@ -1046,7 +1057,9 @@ export default defineComponent({
                                 is_aadhar_pan_linked: form.is_aadhar_pan_linked,
                                 legal_name_of_the_business: form.legal_name_of_the_business,
                                 constitution_of_business: form.constitution_of_business,
-                                address_information_for_principal_place_of_business: form.address_information_for_principal_place_of_business
+                                address_information_for_principal_place_of_business: form.address_information_for_principal_place_of_business,
+                                applicable_gst : form.applicable_gst,
+                                aadhar_number:form.aadhar_number
                                 // logo : form.logo
                             }
                         }),

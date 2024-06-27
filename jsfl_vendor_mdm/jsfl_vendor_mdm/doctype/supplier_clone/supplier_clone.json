@@ -83,6 +83,7 @@
   "applicable_pan",
   "column_break_r0age",
   "ownership_information",
+  "aadhar_number",
   "gst_goods_services",
   "gst_registration_number",
   "gst_status",
@@ -1263,12 +1264,17 @@
    "fieldname": "cheque",
    "fieldtype": "Attach",
    "label": "Cheque"
+  },
+  {
+   "fieldname": "aadhar_number",
+   "fieldtype": "Data",
+   "label": "Aadhar Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-13 23:46:11.007963",
+ "modified": "2024-06-24 15:46:40.254671",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
