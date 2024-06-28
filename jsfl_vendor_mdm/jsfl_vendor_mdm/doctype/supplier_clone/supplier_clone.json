@@ -523,8 +523,9 @@
   {
    "default": "1",
    "fieldname": "applicable_gst",
-   "fieldtype": "Check",
-   "label": "Applicable"
+   "fieldtype": "Select",
+   "label": "Applicable",
+   "options": "\n0\n1"
   },
   {
    "default": "1",
@@ -1274,7 +1275,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-24 15:46:40.254671",
+ "modified": "2024-06-28 10:38:49.067995",
  "modified_by": "Administrator",
  "module": "Jsfl Vendor Mdm",
  "name": "Supplier Clone",
