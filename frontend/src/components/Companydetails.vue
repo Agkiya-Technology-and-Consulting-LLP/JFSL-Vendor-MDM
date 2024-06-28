@@ -156,9 +156,24 @@
                 </div>
                
                 <div class="row mt-3" v-if="!isCollapsed2">
+                    <div class="col-md-3 mb-3">
+                        <!-- <input type="checkbox" id="applicable_gst" class="form-check-input mr-2" v-model="form.applicable_gst" :disabled="isReadonly">
+                        <label for="applicable_gst" class="form-check-label">Gst Applicable</label> -->
+
+                        <label for="applicable_gst" class="form-label">Gst Applicable</label>
+                        <select name="" id="applicable_gst" class="form-control" v-model="form.applicable_gst" >
+                            <option value=""></option>
+                            <option value=0>No</option>
+                            <option value=1>Yes</option>
+                            <!-- <option value="Goods & Materials">Goods & Materials</option>
+                            <option value="IT">IT</option>
+                            <option value="Consultancy">Consultancy</option> -->
+                        </select>
+                    </div>
                     <div class="col-md-6 mb-3">
                         <label for="aadhar_number" class="form-label">Aadhar Number <span
-                            class="text-danger" v-if="!form.applicable_gst">*</span> </label>
+                            class="text-danger" v-if="form.applicable_gst ==0">*</span> </label>
+
                         <input type="text" class="form-control" id="aadhar_number" v-model="form.aadhar_number"
                             placeholder="Owner's / Company's Aadhaar" @blur="touched.aadhar_number = true" :disabled="isReadonly">
                         <div v-if="touched.aadhar_number && !form.aadhar_number && !form.applicable_gst "
@@ -166,11 +181,8 @@
                             Aadhar Number is required.
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
-                        <input type="checkbox" id="applicable_gst" class="form-check-input mr-2" v-model="form.applicable_gst" :disabled="isReadonly">
-                        <label for="applicable_gst" class="form-check-label">Gst Applicable</label>
-                    </div>
-                    <div class="row mt-3" v-if="form.applicable_gst">
+                    
+                    <div class="row mt-3" v-if="form.applicable_gst == 1">
                         
                    
                     <!-- <div class="col-md-6 mb-3">
@@ -898,8 +910,11 @@ export default defineComponent({
                     if (data.msme_applicable) {
                         form.msme_applicable = true
                     }
-                    if(data.applicable_gst){
-                        form.applicable_gst = true
+                    if(data.applicable_gst==1){
+                        form.applicable_gst = 1
+                    }
+                    if(data.applicable_gst==0){
+                        form.applicable_gst = 0
                     }
                     form.permanent_account_number = data.permanent_account_number
                     form.ownership_information = data.ownership_information
@@ -991,7 +1006,7 @@ export default defineComponent({
             {
                 if (form.error_message && form.gst_error) {
                     showErrorToastMessage("PAN & GST number already exists")
-                } else if (!form.applicable_gst && !form.aadhar_number) {
+                } else if (form.applicable_gst==0 && !form.aadhar_number) {
                     showErrorToastMessage("Aadhar number is required")
                 } else if (form.error_message) {
                     showErrorToastMessage("PAN number already exists")
@@ -999,7 +1014,7 @@ export default defineComponent({
                     showErrorToastMessage("GST number already exists")
                 } else if(form.msme_applicable && !form.msme_certificate_number){
                     showErrorToastMessage("MSME Registration No. required")
-                }else if(form.applicable_gst && !form.gst_registration_number){
+                }else if(form.applicable_gst==1 && !form.gst_registration_number){
                     showErrorToastMessage("Gst Registration No. required")
                 }else {
                     const supplier = createResource({
